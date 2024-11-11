@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="kn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ಕನ್ನಡ ಫಾರ್ಮ್</title>
+    <style>
+        /* Basic styling */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 20px;
+            background-color: #f7f7f7;
+        }
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            width: 100%;
+            max-width: 600px;
+            margin: auto;
+        }
+        h2 {
+            text-align: center;
+        }
+        label {
+            font-size: 16px;
+            margin-bottom: 8px;
+            display: block;
+        }
+        input, select {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 12px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .input-group {
+            margin-bottom: 15px;
+        }
+        .remove-row {
+            background-color: #f44336;
+            color: white;
+            padding: 5px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        .remove-row:hover {
+            background-color: #d32f2f;
+        }
+        .add-row {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>ಕನ್ನಡ ಫಾರ್ಮ್</h2>
+
+    <form action="YOUR_GOOGLE_APPS_SCRIPT_URL_HERE" method="POST">
+        <label for="name">ಹೆಸರು:</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="mobile">ಮೊಬೈಲ್:</label>
+        <input type="text" id="mobile" name="mobile" required>
+
+        <label for="email">ಇಮೇಲ್:</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="address">ಪ್ರಸಾದ ಕಳಿಸುವ ವಿಳಾಸ:</label>
+        <input type="text" id="address" name="address" required>
+
+        <label for="service_date">ದೈನಂದಿನ ಸೇವೆ ದಿನಾಂಕ:</label>
+        <input type="date" id="service_date" name="service_date" required>
+
+        <label for="star_sign">ಹೆಸರು ನಕ್ಷತ್ರ ರಾಶಿ:</label>
+        <div id="star-sign-group">
+            <div class="input-group">
+                <input type="text" name="names[]" placeholder="ಹೆಸರು" required>
+                <input type="text" name="nakshatras[]" placeholder="ನಕ್ಷತ್ರ" required>
+                <input type="text" name="rashis[]" placeholder="ರಾಶಿ" required>
+                <button type="button" class="remove-row">ಹೆಚ್ಚಿಸಲು ತೆಗೆದುಹಾಕಿ</button>
+            </div>
+        </div>
+        <button type="button" class="add-row">ಹೆಚ್ಚಿಸಲು ಇನ್ನೊಂದು ಸಾಲು ಸೇರಿಸಿ</button>
+
+        <label for="payer_name">ಪಾವತಿ ಮಾಡಲಾದವರ ಹೆಸರು:</label>
+        <select name="payer_name" id="payer_name" required>
+            <option value="Palachandra Krishnamurthy Srungeshwara Raju">ಪಾಲಚಂದ್ರ ಕೃಷ್ಣಮೂರ್ತಿ ಶೃಂಗೇಶ್ವರ ರಾಜು</option>
+            <option value="Other">ಇತರೆ</option>
+        </select>
+
+        <label for="special_name">ಪಾಲಚಂದ್ರ ಕೃಷ್ಣಮೂರ್ತಿ ಶೃಂಗೇಶ್ವರ ರಾಜು (if selected above):</label>
+        <input type="text" id="special_name" name="special_name">
+
+        <button type="submit">ಸಬ್ಮಿಟ್</button>
+    </form>
+
+    <script>
+        // Function to add a new set of "ಹೆಸರು", "ನಕ್ಷತ್ರ", and "ರಾಶಿ" inputs
+        document.querySelector('.add-row').addEventListener('click', function() {
+            var container = document.getElementById('star-sign-group');
+            var newRow = document.createElement('div');
+            newRow.classList.add('input-group');
+            newRow.innerHTML = `
+                <input type="text" name="names[]" placeholder="ಹೆಸರು" required>
+                <input type="text" name="nakshatras[]" placeholder="ನಕ್ಷತ್ರ" required>
+                <input type="text" name="rashis[]" placeholder="ರಾಶಿ" required>
+                <button type="button" class="remove-row">ಹೆಚ್ಚಿಸಲು ತೆಗೆದುಹಾಕಿ</button>
+            `;
+            container.appendChild(newRow);
+
+            // Add event listener to remove button
+            newRow.querySelector('.remove-row').addEventListener('click', function() {
+                container.removeChild(newRow);
+            });
+        });
+
+        // Add event listener to remove buttons in the initial row
+        document.querySelectorAll('.remove-row').forEach(function(button) {
+            button.addEventListener('click', function() {
+                var row = button.closest('.input-group');
+                row.parentNode.removeChild(row);
+            });
+        });
+
+        // Show/hide special name input based on the selected payer name
+        document.getElementById('payer_name').addEventListener('change', function() {
+            var specialNameInput = document.getElementById('special_name');
+            if (this.value === 'Palachandra Krishnamurthy Srungeshwara Raju') {
+                specialNameInput.style.display = 'block';  // Show the input field
+            } else {
+                specialNameInput.style.display = 'none';  // Hide the input field
+                specialNameInput.value = '';  // Clear the value
+            }
+        });
+
+        // Initialize the visibility of special name input
+        window.onload = function() {
+            var payerName = document.getElementById('payer_name').value;
+            if (payerName !== 'Palachandra Krishnamurthy Srungeshwara Raju') {
+                document.getElementById('special_name').style.display = 'none';
+            }
+        };
+    </script>
+
+</body>
+</html>

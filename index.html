@@ -99,17 +99,51 @@
         <input type="date" id="service_date" name="service_date" required>
 
         <h3>ಹೆಸರು ನಕ್ಷತ್ರ ರಾಶಿ</h3>
-        <div id="star-sign-group">
-         <div class="input-group">
           <input type="text" name="names[]" placeholder="ಹೆಸರು" required>
-          <input type="text" name="nakshatras[]" placeholder="ನಕ್ಷತ್ರ" required>
-          <input type="text" name="rashis[]" placeholder="ರಾಶಿ" required>
+          <select name="nakshatras[]"  placeholder="ನಕ್ಷತ್ರ" required>
+            <option value="ಅಶ್ವಿನಿ">ಅಶ್ವಿನಿ</option>
+            <option value="ಭರಣಿ">ಭರಣಿ</option>
+            <option value="ಕೃತಿಕಾ">ಕೃತಿಕಾ</option>
+            <option value="ರೋಹಿಣಿ">ರೋಹಿಣಿ</option>
+            <option value="ಮೃಗಶಿರ">ಮೃಗಶಿರ</option>
+            <option value="ಆರ್ದ್ರಾ">ಆರ್ದ್ರಾ (ಆರಿದ್ರಾ)</option>
+            <option value="ಪುನರ್ವಸು">ಪುನರ್ವಸು</option>
+            <option value="ಪುಷ್ಯ">ಪುಷ್ಯ</option>
+            <option value="ಆಶ್ಲೇಷ">ಆಶ್ಲೇಷ</option>
+            <option value="ಮಖ">ಮಖ</option>
+            <option value="ಪುಬ್ಬ">ಪುಬ್ಬ (ಪೂರ್ವ ಫಲ್ಗುಣಿ)</option>
+            <option value="ಉತ್ತರಾ">ಉತ್ತರಾ (ಉತ್ತರ ಫಲ್ಗುಣಿ)</option>
+            <option value="ಹಸ್ತ">ಹಸ್ತ</option>
+            <option value="ಚಿತ್ತಾ">ಚಿತ್ತಾ ನಕ್ಷತ್ರ</option>
+            <option value="ಸ್ವಾತಿ">ಸ್ವಾತಿ</option>
+            <option value="ವಿಶಾಖ">ವಿಶಾಖ</option>
+            <option value="ಅನುರಾಧ">ಅನುರಾಧ</option>
+            <option value="ಜ್ಯೇಷ್ಠ">ಜ್ಯೇಷ್ಠ</option>
+            <option value="ಮೂಲ">ಮೂಲ</option>
+            <option value="ಪೂರ್ವಾಷಾಡಾ">ಪೂರ್ವಾಷಾಡಾ</option>
+            <option value="ಉತ್ತರಾಷಾಡಾ">ಉತ್ತರಾಷ್ಟಾ</option>
+            <option value="ಶ್ರವಣ">ಶ್ರವಣ</option>
+            <option value="ಧನಿಷ್ಠ">ಧನಿಷ್ಠ</option>
+            <option value="ಶತಭಿಷ">ಶತಭಿಷ</option>
+            <option value="ಪೂರ್ವಭಾದ್ರ">ಪೂರ್ವಭಾದ್ರ</option>
+            <option value="ಉತ್ತರಭಾದ್ರ">ಉತ್ತರಭಾದ್ರ</option>
+            <option value="ರೇವತಿ">ರೇವತಿ</option>
+        </select>
+           <select name="rashis[]" required>
+            <option value="ಮೇಷ">ಮೇಷ</option>
+            <option value="ವೃಷಭ">ವೃಷಭ</option>
+            <option value="ಮಿಥುನ">ಮಿಥುನ</option>
+            <option value="ಕಟಕ">ಕಟಕ</option>
+            <option value="ಸಿಂಹ">ಸಿಂಹ</option>
+            <option value="ಕನ್ಯಾ">ಕನ್ಯಾ</option>
+            <option value="ತುಲಾ">ತುಲಾ</option>
+            <option value="ವೃಶ್ಚಿಕ">ವೃಶ್ಚಿಕ</option>
+            <option value="ಧನು">ಧನು</option>
+            <option value="ಮಕರ">ಮಕರ</option>
+            <option value="ಕುಂಭ">ಕುಂಭ</option>
+            <option value="ಮೀನ">ಮೀನ</option>
+        </select>
           <button type="button" class="remove-row">ತೆಗೆದುಹಾಕಿ</button>
-         </div>
-        </div>
-
-<button type="button" class="add-row">ಇನ್ನೊಂದು ಸೇರಿಸಿ</button>
-
 
         <button type="button" class="add-row">ಇನ್ನೊಂದು ಸೇರಿಸಿ</button>
 
@@ -132,8 +166,49 @@
         newRow.classList.add('input-group');
         newRow.innerHTML = `
             <input type="text" name="names[]" placeholder="ಹೆಸರು" required>
-            <input type="text" name="nakshatras[]" placeholder="ನಕ್ಷತ್ರ" required>
-            <input type="text" name="rashis[]" placeholder="ರಾಶಿ" required>
+            <select name="nakshatras[]"  placeholder="ನಕ್ಷತ್ರ" required>
+            <option value="ಅಶ್ವಿನಿ">ಅಶ್ವಿನಿ</option>
+            <option value="ಭರಣಿ">ಭರಣಿ</option>
+            <option value="ಕೃತಿಕಾ">ಕೃತಿಕಾ</option>
+            <option value="ರೋಹಿಣಿ">ರೋಹಿಣಿ</option>
+            <option value="ಮೃಗಶಿರ">ಮೃಗಶಿರ</option>
+            <option value="ಆರ್ದ್ರಾ">ಆರ್ದ್ರಾ (ಆರಿದ್ರಾ)</option>
+            <option value="ಪುನರ್ವಸು">ಪುನರ್ವಸು</option>
+            <option value="ಪುಷ್ಯ">ಪುಷ್ಯ</option>
+            <option value="ಆಶ್ಲೇಷ">ಆಶ್ಲೇಷ</option>
+            <option value="ಮಖ">ಮಖ</option>
+            <option value="ಪುಬ್ಬ">ಪುಬ್ಬ (ಪೂರ್ವ ಫಲ್ಗುಣಿ)</option>
+            <option value="ಉತ್ತರಾ">ಉತ್ತರಾ (ಉತ್ತರ ಫಲ್ಗುಣಿ)</option>
+            <option value="ಹಸ್ತ">ಹಸ್ತ</option>
+            <option value="ಚಿತ್ತಾ">ಚಿತ್ತಾ ನಕ್ಷತ್ರ</option>
+            <option value="ಸ್ವಾತಿ">ಸ್ವಾತಿ</option>
+            <option value="ವಿಶಾಖ">ವಿಶಾಖ</option>
+            <option value="ಅನುರಾಧ">ಅನುರಾಧ</option>
+            <option value="ಜ್ಯೇಷ್ಠ">ಜ್ಯೇಷ್ಠ</option>
+            <option value="ಮೂಲ">ಮೂಲ</option>
+            <option value="ಪೂರ್ವಾಷಾಡಾ">ಪೂರ್ವಾಷಾಡಾ</option>
+            <option value="ಉತ್ತರಾಷಾಡಾ">ಉತ್ತರಾಷ್ಟಾ</option>
+            <option value="ಶ್ರವಣ">ಶ್ರವಣ</option>
+            <option value="ಧನಿಷ್ಠ">ಧನಿಷ್ಠ</option>
+            <option value="ಶತಭಿಷ">ಶತಭಿಷ</option>
+            <option value="ಪೂರ್ವಭಾದ್ರ">ಪೂರ್ವಭಾದ್ರ</option>
+            <option value="ಉತ್ತರಭಾದ್ರ">ಉತ್ತರಭಾದ್ರ</option>
+            <option value="ರೇವತಿ">ರೇವತಿ</option>
+        </select>
+            <select name="rashis[]"  placeholder="ರಾಶಿ" required>
+            <option value="ಮೇಷ">ಮೇಷ</option>
+            <option value="ವೃಷಭ">ವೃಷಭ</option>
+            <option value="ಮಿಥುನ">ಮಿಥುನ</option>
+            <option value="ಕಟಕ">ಕಟಕ</option>
+            <option value="ಸಿಂಹ">ಸಿಂಹ</option>
+            <option value="ಕನ್ಯಾ">ಕನ್ಯಾ</option>
+            <option value="ತುಲಾ">ತುಲಾ</option>
+            <option value="ವೃಶ್ಚಿಕ">ವೃಶ್ಚಿಕ</option>
+            <option value="ಧನು">ಧನು</option>
+            <option value="ಮಕರ">ಮಕರ</option>
+            <option value="ಕುಂಭ">ಕುಂಭ</option>
+            <option value="ಮೀನ">ಮೀನ</option>
+        </select>
             <button type="button" class="remove-row">ತೆಗೆದುಹಾಕಿ</button>
         `;
         container.appendChild(newRow);

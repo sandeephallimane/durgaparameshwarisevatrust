@@ -100,13 +100,16 @@
 
         <h3>ಹೆಸರು ನಕ್ಷತ್ರ ರಾಶಿ</h3>
         <div id="star-sign-group">
-            <div class="input-group">
-                <input type="text" name="names[]" id="names" placeholder="ಹೆಸರು" required>
-                <input type="text" name="nakshatras[]" id="nakshatras" placeholder="ನಕ್ಷತ್ರ" required>
-                <input type="text" name="rashis[]" id="rashis" placeholder="ರಾಶಿ" required>
-                <button type="button" class="remove-row">ತೆಗೆದುಹಾಕಿ</button>
-            </div>
+         <div class="input-group">
+          <input type="text" name="names[]" placeholder="ಹೆಸರು" required>
+          <input type="text" name="nakshatras[]" placeholder="ನಕ್ಷತ್ರ" required>
+          <input type="text" name="rashis[]" placeholder="ರಾಶಿ" required>
+          <button type="button" class="remove-row">ತೆಗೆದುಹಾಕಿ</button>
+         </div>
         </div>
+
+<button type="button" class="add-row">ಇನ್ನೊಂದು ಸೇರಿಸಿ</button>
+
 
         <button type="button" class="add-row">ಇನ್ನೊಂದು ಸೇರಿಸಿ</button>
 
@@ -121,33 +124,35 @@
         <button type="submit">ಸಬ್ಮಿಟ್</button>
     </form>
 
-    <script>
-        document.querySelector('.add-row').addEventListener('click', function () {
-            var container = document.getElementById('star-sign-group');
-            var newRow = document.createElement('div');
-            newRow.classList.add('input-group');
-            newRow.innerHTML = `
-                <input type="text" name="names[]" placeholder="ಹೆಸರು" required>
-                <input type="text" name="nakshatras[]" placeholder="ನಕ್ಷತ್ರ" required>
-                <input type="text" name="rashis[]" placeholder="ರಾಶಿ" required>
-                <button type="button" class="remove-row">ತೆಗೆಯಲು</button>
-            `;
-            container.appendChild(newRow);
+<script>
+    // Function to add a new row dynamically
+    document.querySelector('.add-row').addEventListener('click', function() {
+        var container = document.getElementById('star-sign-group');
+        var newRow = document.createElement('div');
+        newRow.classList.add('input-group');
+        newRow.innerHTML = `
+            <input type="text" name="names[]" placeholder="ಹೆಸರು" required>
+            <input type="text" name="nakshatras[]" placeholder="ನಕ್ಷತ್ರ" required>
+            <input type="text" name="rashis[]" placeholder="ರಾಶಿ" required>
+            <button type="button" class="remove-row">ತೆಗೆದುಹಾಕಿ</button>
+        `;
+        container.appendChild(newRow);
 
-            // Add event listener to the remove button of the new row
-            newRow.querySelector('.remove-row').addEventListener('click', function () {
-                container.removeChild(newRow);
-            });
+        // Add event listener to the remove button of the new row
+        newRow.querySelector('.remove-row').addEventListener('click', function() {
+            container.removeChild(newRow);
         });
+    });
 
-        // Add event listener to remove buttons in the initial row
-        document.querySelectorAll('.remove-row').forEach(function (button) {
-            button.addEventListener('click', function () {
-                var row = button.closest('.input-group');
-                row.parentNode.removeChild(row);
-            });
+    // Add event listener to the remove buttons for the initial rows
+    document.querySelectorAll('.remove-row').forEach(function(button) {
+        button.addEventListener('click', function() {
+            var row = button.closest('.input-group');
+            row.parentNode.removeChild(row);
         });
-    </script>
+    });
+</script>
+
 
 </body>
 </html>

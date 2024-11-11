@@ -101,9 +101,9 @@
         <h3>ಹೆಸರು ನಕ್ಷತ್ರ ರಾಶಿ</h3>
         <div id="star-sign-group">
             <div class="input-group">
-                <input type="text" name="names" id="names" placeholder="ಹೆಸರು" required>
-                <input type="text" name="nakshatras" id="nakshatras" placeholder="ನಕ್ಷತ್ರ" required>
-                <input type="text" name="rashis" id="rashis" placeholder="ರಾಶಿ" required>
+                <input type="text" name="names[]" id="names" placeholder="ಹೆಸರು" required>
+                <input type="text" name="nakshatras[]" id="nakshatras" placeholder="ನಕ್ಷತ್ರ" required>
+                <input type="text" name="rashis[]" id="rashis" placeholder="ರಾಶಿ" required>
                 <button type="button" class="remove-row">ತೆಗೆದುಹಾಕಿ</button>
             </div>
         </div>
@@ -127,9 +127,9 @@
             var newRow = document.createElement('div');
             newRow.classList.add('input-group');
             newRow.innerHTML = `
-                <input type="text" name="names" placeholder="ಹೆಸರು" required>
-                <input type="text" name="nakshatras" placeholder="ನಕ್ಷತ್ರ" required>
-                <input type="text" name="rashis" placeholder="ರಾಶಿ" required>
+                <input type="text" name="names[]" placeholder="ಹೆಸರು" required>
+                <input type="text" name="nakshatras[]" placeholder="ನಕ್ಷತ್ರ" required>
+                <input type="text" name="rashis[]" placeholder="ರಾಶಿ" required>
                 <button type="button" class="remove-row">ತೆಗೆಯಲು</button>
             `;
             container.appendChild(newRow);

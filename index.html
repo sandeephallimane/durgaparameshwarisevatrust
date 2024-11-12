@@ -3,7 +3,80 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Form with Multiple Sets of 3 Elements</title>
+     <title>ದುರ್ಗಾಪರಮೇಶ್ವರಿ ಸೇವಾಟ್ರಸ್ಟ್, ವಿಶ್ವನಾಥಪುರ - ದೈನಂದಿನ ಪೂಜಾ ಸೇವೆ ಫಾರ್ಮ್</title>
+    <style>
+        /* Basic styling */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 20px;
+            background-color: #f7f7f7;
+        }
+        img {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+           }
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            width: 100%;
+            max-width: 600px;
+            margin: auto;
+        }
+        h2 {
+            text-align: center;
+        }
+        label {
+            font-size: 16px;
+            margin-bottom: 8px;
+            display: block;
+        }
+        input, select {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 12px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .input-group {
+            margin-bottom: 15px;
+        }
+        .remove-row {
+            background-color: #f44336;
+            color: white;
+            padding: 5px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        .remove-row:hover {
+            background-color: #d32f2f;
+        }
+        .add-row {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+    </style>
     <script>
         // Function to dynamically add sets of 3 fields for field 7 (array of names, raashi, nakshatra)
         let setCount = 1;
@@ -14,99 +87,134 @@
             const newSet = document.createElement('div');
             newSet.className = 'set';
             newSet.innerHTML = `
-                <input type="text" id="field7a${setCount}" name="field7a${setCount}"><br><br>
-
-                <input type="text" id="field7b${setCount}" name="field7b${setCount}"><br><br>
-
-                <input type="text" id="field7c${setCount}" name="field7c${setCount}"><br><br>
+                <input type="text" id="field7a${setCount}" name="field7a${setCount}" placeholder="ಹೆಸರು" required>
+<select type="text" id="field7c${setCount}" name="field7c${setCount}">
+                <option value="ಮೇಷ">ಮೇಷ</option>
+            <option value="ವೃಷಭ">ವೃಷಭ</option>
+            <option value="ಮಿಥುನ">ಮಿಥುನ</option>
+            <option value="ಕಟಕ">ಕಟಕ</option>
+            <option value="ಸಿಂಹ">ಸಿಂಹ</option>
+            <option value="ಕನ್ಯಾ">ಕನ್ಯಾ</option>
+            <option value="ತುಲಾ">ತುಲಾ</option>
+            <option value="ವೃಶ್ಚಿಕ">ವೃಶ್ಚಿಕ</option>
+            <option value="ಧನು">ಧನು</option>
+            <option value="ಮಕರ">ಮಕರ</option>
+            <option value="ಕುಂಭ">ಕುಂಭ</option>
+            <option value="ಮೀನ">ಮೀನ</option>
+        </select>
+                <select type="text" id="field7b${setCount}" name="field7b${setCount}">
+                <option value="ಅಶ್ವಿನಿ">ಅಶ್ವಿನಿ</option>
+            <option value="ಭರಣಿ">ಭರಣಿ</option>
+            <option value="ಕೃತಿಕಾ">ಕೃತಿಕಾ</option>
+            <option value="ರೋಹಿಣಿ">ರೋಹಿಣಿ</option>
+            <option value="ಮೃಗಶಿರ">ಮೃಗಶಿರ</option>
+            <option value="ಆರ್ದ್ರಾ">ಆರ್ದ್ರಾ (ಆರಿದ್ರಾ)</option>
+            <option value="ಪುನರ್ವಸು">ಪುನರ್ವಸು</option>
+            <option value="ಪುಷ್ಯ">ಪುಷ್ಯ</option>
+            <option value="ಆಶ್ಲೇಷ">ಆಶ್ಲೇಷ</option>
+            <option value="ಮಖ">ಮಖ</option>
+            <option value="ಪುಬ್ಬ">ಪುಬ್ಬ (ಪೂರ್ವ ಫಲ್ಗುಣಿ)</option>
+            <option value="ಉತ್ತರಾ">ಉತ್ತರಾ (ಉತ್ತರ ಫಲ್ಗುಣಿ)</option>
+            <option value="ಹಸ್ತ">ಹಸ್ತ</option>
+            <option value="ಚಿತ್ತಾ">ಚಿತ್ತಾ ನಕ್ಷತ್ರ</option>
+            <option value="ಸ್ವಾತಿ">ಸ್ವಾತಿ</option>
+            <option value="ವಿಶಾಖ">ವಿಶಾಖ</option>
+            <option value="ಅನುರಾಧ">ಅನುರಾಧ</option>
+            <option value="ಜ್ಯೇಷ್ಠ">ಜ್ಯೇಷ್ಠ</option>
+            <option value="ಮೂಲ">ಮೂಲ</option>
+            <option value="ಪೂರ್ವಾಷಾಡಾ">ಪೂರ್ವಾಷಾಡಾ</option>
+            <option value="ಉತ್ತರಾಷಾಡಾ">ಉತ್ತರಾಷ್ಟಾ</option>
+            <option value="ಶ್ರವಣ">ಶ್ರವಣ</option>
+            <option value="ಧನಿಷ್ಠ">ಧನಿಷ್ಠ</option>
+            <option value="ಶತಭಿಷ">ಶತಭಿಷ</option>
+            <option value="ಪೂರ್ವಭಾದ್ರ">ಪೂರ್ವಭಾದ್ರ</option>
+            <option value="ಉತ್ತರಭಾದ್ರ">ಉತ್ತರಭಾದ್ರ</option>
+            <option value="ರೇವತಿ">ರೇವತಿ</option>
+        </select>
             `;
             setContainer.appendChild(newSet);
-        }
-
-        // Function to collect the form data, convert to JSON, and send to GAS
-        function submitForm() {
-            let formData = {
-                name: document.getElementById('name').value,
-                mobile: document.getElementById('mobile').value,
-                email: document.getElementById('email').value,
-                seva_date: document.getElementById('seva_date').value,
-                address: document.getElementById('address').value,
-                payee_name: document.getElementById('payee_name').value,
-                field7: ""  // Will store the concatenated string for multiple sets of 3 items
-            };
-
-            // Collect the multiple sets of 3 items for field 7 and format as described
-            let sets = [];
-            for (let i = 1; i <= setCount; i++) {
-                let set = [
-                    document.getElementById(`field7a${i}`).value,
-                    document.getElementById(`field7b${i}`).value,
-                    document.getElementById(`field7c${i}`).value
-                ];
-                // Join the 3 items with a hyphen, and then join all sets with a comma
-                sets.push(set.join('-'));
-            }
-            formData.field7 = sets.join(',');
-
-            // Convert the form data object to JSON
-            let jsonData = JSON.stringify(formData);
-
-            // Define the GAS endpoint URL
-            let gasEndpoint = 'https://script.google.com/macros/s/AKfycbw4aEFStrHiNgamBBtOIsBda25QEVZkOnH13Zm_ouslFZ9qTesd9eOlRwAAITXTMhRDMg/exec';  // Replace with your GAS URL
-
-            // Send the POST request to GAS
-            fetch(gasEndpoint, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: jsonData
-            })
-            .then(response => response.json())
-            .then(data => {
-                console.log('Success:', data);
-                alert('Form submitted successfully!');
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                alert('Error submitting form');
-            });
         }
     </script>
 </head>
 <body>
     <h1>ದುರ್ಗಾಪರಮೇಶ್ವರಿ ಸೇವಾಟ್ರಸ್ಟ್, ವಿಶ್ವನಾಥಪುರ - ದೈನಂದಿನ ಪೂಜಾ ಸೇವೆ</h1>
-    <form id="myForm" onsubmit="event.preventDefault(); submitForm();">
-        <label for="name">ಹೆಸರು:</label><br>
-        <input type="text" id="name" name="name"><br><br>
+    <form action="https://script.google.com/macros/s/AKfycbybvfc8sXjjsqVRtJxv4AKPTeRkOA5G13JbmMGs7LnF_jThIC8BpjMLE2X3SNAqDT6E/exec" method="POST">
+        <label for="name">ಹೆಸರು:</label>
+        <input type="text" id="name" name="name"><br>
 
-        <label for="mobile">ಮೊಬೈಲ್:</label><br>
-        <input type="number" id="mobile" name="mobile"><br><br>
+        <label for="mobile">ಮೊಬೈಲ್:</label>
+        <input type="number" id="mobile" name="mobile"><br>
 
-        <label for="email">ಇಮೇಲ್ ವಿಳಾಸ:</label><br>
-        <input type="text" id="email" name="email"><br><br>
+        <label for="email">ಇಮೇಲ್ ವಿಳಾಸ:</label>
+        <input type="email" id="email" name="email"><br>
 
-        <label for="seva_date">ಸೇವಾ ದಿನಾಂಕ:</label><br>
-        <input type="date" id="seva_date" name="seva_date"><br><br>
+        <label for="seva_date">ಸೇವಾ ದಿನಾಂಕ:</label>
+        <input type="date" id="seva_date" name="seva_date"><br>
 
-        <label for="address">ಸೇವಾ ವಿಳಾಸ:</label><br>
-        <input type="text" id="address" name="address"><br><br>
+        <label for="address"> ವಿಳಾಸ:</label>
+        <input type="text" id="address" name="address" placeholder="ದಯವಿಟ್ಟು ನಿಮ್ಮ ಪೂರ್ಣ ಅಂಚೆ ವಿಳಾಸ ನಮೂದಿಸಿ.
+"><br>
 
-        <label for="payee_name">ಪಾವತಿ ಮಾಡಿರುವುದು:</label><br>
-        <input type="text" id="payee_name" name="payee_name"><br><br>
+        <label for="payee_name">ಪಾವತಿ ಮಾಡಿರುವುದು:</label>
+        <select type="text" id="payee_name" name="payee_name">
+        <option value="ಪಾಲಚಂದ್ರ">ಪಾಲಚಂದ್ರ</option>
+            <option value="ಕೃಷ್ಣಮೂರ್ತಿ">ಕೃಷ್ಣಮೂರ್ತಿ</option>
+            <option value="ಶೃಂಗೇಶ್ವರ">ಶೃಂಗೇಶ್ವರ</option>
+            <option value="ರಾಜು">ರಾಜು</option>
+        </select>
 
         <label>ಹೆಸರು, ರಾಶಿ, ನಕ್ಷತ್ರ :</label><br>
         <div id="field7Sets">
            
             <div class="set">
-                <input type="text" id="field7a1" name="field7a1" placeholder="ಹೆಸರು"><br><br>
+                <input type="text" id="field7a1" name="field7a1" placeholder="ಹೆಸರು" required>
+                <select type="text" id="field7c1" name="field7c1">
+                <option value="ಮೇಷ">ಮೇಷ</option>
+            <option value="ವೃಷಭ">ವೃಷಭ</option>
+            <option value="ಮಿಥುನ">ಮಿಥುನ</option>
+            <option value="ಕಟಕ">ಕಟಕ</option>
+            <option value="ಸಿಂಹ">ಸಿಂಹ</option>
+            <option value="ಕನ್ಯಾ">ಕನ್ಯಾ</option>
+            <option value="ತುಲಾ">ತುಲಾ</option>
+            <option value="ವೃಶ್ಚಿಕ">ವೃಶ್ಚಿಕ</option>
+            <option value="ಧನು">ಧನು</option>
+            <option value="ಮಕರ">ಮಕರ</option>
+            <option value="ಕುಂಭ">ಕುಂಭ</option>
+            <option value="ಮೀನ">ಮೀನ</option>
+        </select>
+                <select type="text" id="field7b1" name="field7b1">
+                <option value="ಅಶ್ವಿನಿ">ಅಶ್ವಿನಿ</option>
+            <option value="ಭರಣಿ">ಭರಣಿ</option>
+            <option value="ಕೃತಿಕಾ">ಕೃತಿಕಾ</option>
+            <option value="ರೋಹಿಣಿ">ರೋಹಿಣಿ</option>
+            <option value="ಮೃಗಶಿರ">ಮೃಗಶಿರ</option>
+            <option value="ಆರ್ದ್ರಾ">ಆರ್ದ್ರಾ (ಆರಿದ್ರಾ)</option>
+            <option value="ಪುನರ್ವಸು">ಪುನರ್ವಸು</option>
+            <option value="ಪುಷ್ಯ">ಪುಷ್ಯ</option>
+            <option value="ಆಶ್ಲೇಷ">ಆಶ್ಲೇಷ</option>
+            <option value="ಮಖ">ಮಖ</option>
+            <option value="ಪುಬ್ಬ">ಪುಬ್ಬ (ಪೂರ್ವ ಫಲ್ಗುಣಿ)</option>
+            <option value="ಉತ್ತರಾ">ಉತ್ತರಾ (ಉತ್ತರ ಫಲ್ಗುಣಿ)</option>
+            <option value="ಹಸ್ತ">ಹಸ್ತ</option>
+            <option value="ಚಿತ್ತಾ">ಚಿತ್ತಾ ನಕ್ಷತ್ರ</option>
+            <option value="ಸ್ವಾತಿ">ಸ್ವಾತಿ</option>
+            <option value="ವಿಶಾಖ">ವಿಶಾಖ</option>
+            <option value="ಅನುರಾಧ">ಅನುರಾಧ</option>
+            <option value="ಜ್ಯೇಷ್ಠ">ಜ್ಯೇಷ್ಠ</option>
+            <option value="ಮೂಲ">ಮೂಲ</option>
+            <option value="ಪೂರ್ವಾಷಾಡಾ">ಪೂರ್ವಾಷಾಡಾ</option>
+            <option value="ಉತ್ತರಾಷಾಡಾ">ಉತ್ತರಾಷ್ಟಾ</option>
+            <option value="ಶ್ರವಣ">ಶ್ರವಣ</option>
+            <option value="ಧನಿಷ್ಠ">ಧನಿಷ್ಠ</option>
+            <option value="ಶತಭಿಷ">ಶತಭಿಷ</option>
+            <option value="ಪೂರ್ವಭಾದ್ರ">ಪೂರ್ವಭಾದ್ರ</option>
+            <option value="ಉತ್ತರಭಾದ್ರ">ಉತ್ತರಭಾದ್ರ</option>
+            <option value="ರೇವತಿ">ರೇವತಿ</option>
+        </select>
 
-                <input type="text" id="field7b1" name="field7b1"><br><br>
-
-                <input type="text" id="field7c1" name="field7c1"><br><br>
             </div>
         </div>
-        <button type="button" onclick="addSet()">Add Another Set</button><br><br>
+        <button type="button" onclick="addSet()">Add</button><br><br>
 
         <input type="submit" value="Submit">
     </form>

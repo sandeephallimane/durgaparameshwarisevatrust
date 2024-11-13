@@ -12,6 +12,10 @@
             padding: 20px;
             background-color: #f7f7f7;
         }
+         h3,label {
+            font-family: Arial, sans-serif;
+            color: purple;
+        }
         img {
             display: block;
             margin-left: auto;
@@ -85,7 +89,7 @@
             const newSet = document.createElement('div');
             newSet.className = 'set';
             newSet.innerHTML = `
-                <input type="text" id="field7a${setCount}" name="field7a${setCount}" placeholder="ಹೆಸರು" required>
+                <input type="text" id="field7a${setCount}" name="field7a${setCount}" placeholder="ಹೆಸರು" oninput="validateKannadaInput(event)" required>
 <select type="text" id="field7c${setCount}" name="field7c${setCount}">
                 <option value="ಮೇಷ">ಮೇಷ</option>
             <option value="ವೃಷಭ">ವೃಷಭ</option>
@@ -132,14 +136,29 @@
             `;
             setContainer.appendChild(newSet);
         }
+         function validateKannadaInput(event) {
+            // Regex pattern for Kannada characters
+            const kannadaRegex = /^[\u0C80-\u0CFF\s]*$/;
+            const inputField = event.target;
+
+            // Get the current input value
+            const inputValue = inputField.value;
+
+            // Test if the input matches the Kannada character range
+            if (!kannadaRegex.test(inputValue)) {
+                // If it doesn't match, alert the user and remove the invalid character
+                alert("Please enter only Kannada characters.");
+                inputField.value = inputValue.replace(/[^ \u0C80-\u0CFF]/g, ''); // Remove non-Kannada characters
+            }
+        }
     </script>
 </head>
 <body>
     <img src="https://shivallibrahmins.com/wp-content/uploads/2011/08/Durgaparameshwari.jpg" style="width:150px;height:100px;"> 
     <h1>ದುರ್ಗಾಪರಮೇಶ್ವರಿ ಸೇವಾಟ್ರಸ್ಟ್, ವಿಶ್ವನಾಥಪುರ - ದೈನಂದಿನ ಪೂಜಾ ಸೇವೆ</h1>
-    <form action="https://script.google.com/macros/s/AKfycbzQXZTY9ah2C1BGuwmyfMf-pc1ZcKXMbD5CiTNq0tiGckEvRAWF44Z6o8HYNWKjRl9Owg/exec" method="POST">
+    <form action="https://script.google.com/macros/s/AKfycbwZyKQK9HcSZC17T3ADnOG8xpRpzpmRz-tVt_Ukpat1hHkjcSfznUEzgZ1vwQJYgedJTg/exec" method="POST">
         <label for="name">ಹೆಸರು:</label>
-        <input type="text" id="name" name="name"><br>
+        <input type="text" id="name" name="name" required><br>
 
         <label for="mobile">ಮೊಬೈಲ್:</label>
         <input type="number" id="mobile" name="mobile"><br>
@@ -162,11 +181,11 @@
             <option value="ರಾಜು">ರಾಜು</option>
         </select>
 
-        <label>ಹೆಸರು, ರಾಶಿ, ನಕ್ಷತ್ರ :</label><br>
+        <h3>ಹೆಸರು, ರಾಶಿ, ನಕ್ಷತ್ರ :</h3>
         <div id="field7Sets">
            
             <div class="set">
-                <input type="text" id="field7a1" name="field7a1" placeholder="ಹೆಸರು" required>
+                <input type="text" id="field7a1" name="field7a1" placeholder="ಹೆಸರು" oninput="validateKannadaInput(event)" required>
                 <select type="text" id="field7c1" name="field7c1">
                 <option value="ಮೇಷ">ಮೇಷ</option>
             <option value="ವೃಷಭ">ವೃಷಭ</option>

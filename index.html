@@ -12,7 +12,7 @@
             padding: 20px;
             background-color: #f7f7f7;
         }
-         h3,label {
+         h3,label,h4 {
             font-family: Arial, sans-serif;
             color: purple;
         }
@@ -185,6 +185,17 @@
             `;
             setContainer.appendChild(newSet);
         }
+        let setCnt = 1;
+        function adddt() {
+            setCnt++;
+            const setContainer = document.getElementById('dateset');
+            const newSet = document.createElement('div');
+            newSet.className = 'set';
+            newSet.innerHTML = `
+                <input type="date" id="date${setCnt}" name="date${setCnt}" required>
+             `;
+            setContainer.appendChild(newSet);
+        }    
          function validateKannadaInput(event) {
             // Regex pattern for Kannada characters
             const kannadaRegex = /^[\u0C80-\u0CFF\s]*$/;
@@ -214,14 +225,17 @@
 
         <label for="email">ಇಮೇಲ್ ವಿಳಾಸ:</label>
         <input type="email" id="email" name="email"><br>
-
-        <label for="seva_date">ಸೇವಾ ದಿನಾಂಕ:</label>
-        <input type="date" id="seva_date" name="seva_date"><br>
-
+        <h4>ಸೇವಾ ದಿನಾಂಕ:</h4>
+        <div id="dateset"> 
+         <div class="set">
+        <input type="date" id="date1" name="date1"><br>
+          </div> 
+         </div>
+         <button type="button" onclick="adddt()">Add</button><br><br>
         <label for="address"> ವಿಳಾಸ:</label>
         <input type="text" id="address" name="address" placeholder="ದಯವಿಟ್ಟು ನಿಮ್ಮ ಪೂರ್ಣ ಅಂಚೆ ವಿಳಾಸ ನಮೂದಿಸಿ.
 "><br>
-
+    
         <label for="payee_name">ಪಾವತಿ ಸ್ವೀಕರಿಸಿದವರು :</label>
         <select type="text" id="payee_name" name="payee_name">
         <option value="ಪಾಲಚಂದ್ರ">ಪಾಲಚಂದ್ರ</option>

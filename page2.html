@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form with Image Upload</title>
+</head>
+<body>
+    <h1>Submit Form</h1>
+    <form id="form">
+        <label for="field1">Field 1:</label>
+        <input type="text" id="field1" name="field1" required><br><br>
+
+        <label for="field2">Field 2:</label>
+        <input type="text" id="field2" name="field2" required><br><br>
+
+        <label for="field3">Field 3:</label>
+        <input type="text" id="field3" name="field3" required><br><br>
+
+        <label for="field4">Field 4:</label>
+        <input type="text" id="field4" name="field4" required><br><br>
+
+        <label for="field5">Field 5:</label>
+        <input type="text" id="field5" name="field5" required><br><br>
+
+        <label for="field6">Field 6:</label>
+        <input type="text" id="field6" name="field6" required><br><br>
+
+        <label for="image">Upload Image:</label>
+        <input type="file" id="image" name="image" accept="image/*" required><br><br>
+
+        <button type="submit">Submit</button>
+    </form>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script>
+        document.getElementById('form').addEventListener('submit', async function(e) {
+            e.preventDefault();
+
+            // Get form data
+            const formData = new FormData(this);
+            const fields = {
+                field1: formData.get('field1'),
+                field2: formData.get('field2'),
+                field3: formData.get('field3'),
+                field4: formData.get('field4'),
+                field5: formData.get('field5'),
+                field6: formData.get('field6')
+            };
+
+            // Get the image and convert it to base64
+            const imageFile = formData.get('image');
+            const imageBase64 = await convertImageToBase64(imageFile);
+
+            // Generate PDF (using jsPDF library)
+            const pdfBase64 = await generatePDF(fields, imageBase64);
+
+            // Send data to Google Apps Script Web App
+            await sendDataToGoogleAppScript(fields, pdfBase64);
+        });
+
+        // Convert image file to base64
+        function convertImageToBase64(file) {
+            return new Promise((resolve, reject) => {
+                const reader = new FileReader();
+                reader.onloadend = function() {
+                    resolve(reader.result.split(',')[1]); // Remove the data:image part
+                };
+                reader.onerror = reject;
+                reader.readAsDataURL(file);
+            });
+        }
+
+        // Generate a PDF from the form fields and image with custom template
+        function generatePDF(fields, imageBase64) {
+            return new Promise((resolve) => {
+                // Using the jsPDF object from the UMD module
+                const { jsPDF } = window.jspdf;
+                const doc = new jsPDF();
+
+                // Get image width and height for scaling (optional)
+                const img = new Image();
+                img.onload = function() {
+                    const imgWidth = 50; // Set the desired width of the image
+                    const imgHeight = 50 * (img.height / img.width); // Maintain aspect ratio
+
+                    // Align image to the right
+                    const pageWidth = doc.internal.pageSize.width;
+                    const imageX = pageWidth - imgWidth - 10; // 10px padding from right edge
+                    const imageY = 10; // Y-position for image
+
+                    doc.addImage(imageBase64, 'JPEG', imageX, imageY, imgWidth, imgHeight); // Right-aligned image
+
+                    // Add static text and dynamic fields (e.g., date, form fields)
+                    const todayDate = new Date().toLocaleDateString(); // Get today's date
+
+                    doc.setFontSize(18);
+                    doc.text('Vishwanatapura Seva Trust', 10, 70);
+                    doc.setFontSize(12);
+                    doc.text(`Shree, ${fields.field1} has joined trust on ${todayDate} by giving below details:`, 10, 80);
+
+                    // Add the details in a table format
+                    const tableData = [
+                        ['Name:', fields.field1],
+                        ['Name 2:', fields.field2],
+                        ['Name 3:', fields.field3],
+                        ['Name 4:', fields.field4],
+                        ['Name 5:', fields.field5],
+                    ];
+
+                    let yOffset = 90; // Starting Y position for table
+
+                    // Iterate over the tableData array to create rows
+                    tableData.forEach(([label, value]) => {
+                        doc.text(label, 10, yOffset);
+                        doc.text(value, 60, yOffset);
+                        yOffset += 10; // Increment Y position for next row
+                    });
+
+                    // Add closing text
+                    doc.text('Thank you', 10, yOffset + 20);
+
+                    // Output the PDF as base64 string
+                    const pdfBase64 = doc.output('datauristring'); 
+                    
+                    resolve(pdfBase64.split(',')[1]); // Remove the data:application/pdf part
+                };
+                img.src = 'data:image/jpeg;base64,' + imageBase64;
+            });
+        }
+
+        // Send data to Google Apps Script Web App
+        async function sendDataToGoogleAppScript(fields, pdfBase64) {
+            const url = 'https://script.google.com/macros/s/AKfycbxsPeI1sTYj83Y44wVFtVy4pphF-HxzrmDxBhumFtX4ke003li5soRLm7MfvvCW6Xm_/exec';
+            const payload = {
+                method: 'POST',
+                body: JSON.stringify({
+                    fields: fields,
+                    pdfBase64: pdfBase64
+                }),
+                headers: { 
+                    'Content-Type': 'application/json' 
+                }
+            };
+
+            try {
+                const response = await fetch(url, payload);
+                const data = await response.json();
+                console.log('Success:', data);
+            } catch (error) {
+                console.error('Error:', error);
+            }
+        }
+    </script>
+</body>
+</html>

@@ -11,7 +11,7 @@
             padding: 20px;
             background-color: #f7f7f7;
         }
-        h3, label, h4 {
+        h3, label, h4,h5 {
             font-family: Arial, sans-serif;
             color: purple;
         }
@@ -211,29 +211,60 @@
         <label for="mobile">ಮೊಬೈಲ್:</label>
         <input type="number" id="mobile" name="mobile" required><br>
 
-        <label for="email">ಇಮೇಲ್ ವಿಳಾಸ:</label>
+        <label for="email">ಇಮೇಲ್ ವಿಳಾಸ(ಕಡ್ಡಾಯವಿಲ್ಲ. ಆದರೆ ಸೇವೆ ರಶೀದಿ ಪಡೆಯಲು ಇದನ್ನು ಸೇರಿಸಲು ಶಿಫಾರಸ್ಸು ಮಾಡುತ್ತೇವೆ ):</label>
         <input type="email" id="email" name="email"><br>
-
-        <h4>ಸೇವಾ ದಿನಾಂಕ:</h4>
-        <div id="dateset">
-            <div class="set">
-                <input type="date" id="date1" name="date1"><br>
-            </div>
-        </div>
-        <button type="button" onclick="adddt()">Add</button><br><br>
+       <h5>ಸೇವೆಯ ದಿನ (ಈ ದಿನದಂದು ಪ್ರತಿ ವರ್ಷ ಪೂಜಾ ಸೇವೆ ನೆಡೆಯಲಿದೆ):</h5>
+     <select id="maasa" name="maasa">
+     <option value="ಚೈತ್ರ">ಚೈತ್ರ ಮಾಸ</option>
+    <option value="ವೈಶಾಖ">ವೈಶಾಖ ಮಾಸ</option>
+    <option value="ಜ್ಯೇಷ್ಠ">ಜ್ಯೇಷ್ಠ ಮಾಸ</option>
+    <option value="ಆಷಾಢ">ಆಷಾಢ ಮಾಸ</option>
+    <option value="ಶ್ರಾವಣ">ಶ್ರಾವಣ ಮಾಸ</option>
+    <option value="ಭಾದ್ರಪದ">ಭಾದ್ರಪದ ಮಾಸ</option>
+    <option value="ಅಶ್ವಿನ">ಅಶ್ವಿನ ಮಾಸ</option>
+    <option value="ಕಾರ್ತಿಕ">ಕಾರ್ತಿಕ ಮಾಸ</option>
+    <option value="ಮಾರ್ಗಶಿರ">ಮಾರ್ಗಶಿರ ಮಾಸ</option>
+    <option value="ಪುಷ್ಯ">ಪುಷ್ಯ ಮಾಸ</option>
+    <option value="ಮಾಘ">ಮಾಘ ಮಾಸ</option>
+    <option value="ಫಾಲ್ಗುಣ">ಫಾಲ್ಗುಣ ಮಾಸ</option>
+</select>
+     <select id="tithi" name="tithi">
+    <option value="ಪಾಡ್ಯ ಶುಕ್ಲ ಪಕ್ಷ ">ಪಾಡ್ಯ ಶುಕ್ಲ ಪಕ್ಷ </option>
+    <option value="ಬಿದಿಗೆ ಶುಕ್ಲ ಪಕ್ಷ ">ಬಿದಿಗೆ ಶುಕ್ಲ ಪಕ್ಷ </option>
+    <option value="ತದಿಗೆ ಶುಕ್ಲ ಪಕ್ಷ ">ತದಿಗೆ ಶುಕ್ಲ ಪಕ್ಷ </option>
+    <option value="ಚೌತಿ ಶುಕ್ಲ ಪಕ್ಷ ">ಚೌತಿ ಶುಕ್ಲ ಪಕ್ಷ </option>
+    <option value="ಪಂಚಮಿ ಶುಕ್ಲ ಪಕ್ಷ ">ಪಂಚಮಿ ಶುಕ್ಲ ಪಕ್ಷ </option>
+    <option value="ಷಷ್ಠಿ ಶುಕ್ಲ ಪಕ್ಷ ">ಷಷ್ಠಿ ಶುಕ್ಲ ಪಕ್ಷ </option>
+    <option value="ಸಪ್ತಮಿ ಶುಕ್ಲ ಪಕ್ಷ ">ಸಪ್ತಮಿ ಶುಕ್ಲ ಪಕ್ಷ </option>
+    <option value="ಅಷ್ಟಮಿ ಶುಕ್ಲ ಪಕ್ಷ ">ಅಷ್ಟಮಿ ಶುಕ್ಲ ಪಕ್ಷ </option>
+    <option value="ನವಮಿ ಶುಕ್ಲ ಪಕ್ಷ ">ನವಮಿ ಶುಕ್ಲ ಪಕ್ಷ </option>
+    <option value="ದಶಮಿ ಶುಕ್ಲ ಪಕ್ಷ ">ದಶಮಿ ಶುಕ್ಲ ಪಕ್ಷ </option>
+    <option value="ಏಕಾದಶಿ ಶುಕ್ಲ ಪಕ್ಷ ">ಏಕಾದಶಿ ಶುಕ್ಲ ಪಕ್ಷ </option>
+    <option value="ದ್ವಾದಶಿ ಶುಕ್ಲ ಪಕ್ಷ ">ದ್ವಾದಶಿ ಶುಕ್ಲ ಪಕ್ಷ </option>
+    <option value="ತ್ರಯೋದಶಿ ಶುಕ್ಲ ಪಕ್ಷ ">ತ್ರಯೋದಶಿ ಶುಕ್ಲ ಪಕ್ಷ </option>
+    <option value="ಚತುರ್ದಶಿ ಶುಕ್ಲ ಪಕ್ಷ ">ಚತುರ್ದಶಿ ಶುಕ್ಲ ಪಕ್ಷ </option>
+    <option value="ಪಾಡ್ಯ ಕೃಷ್ಣ ಪಕ್ಷ ">ಪಾಡ್ಯ ಕೃಷ್ಣ ಪಕ್ಷ </option>
+    <option value="ಬಿದಿಗೆ ಕೃಷ್ಣ ಪಕ್ಷ ">ಬಿದಿಗೆ ಕೃಷ್ಣ ಪಕ್ಷ </option>
+    <option value="ತದಿಗೆ ಕೃಷ್ಣ ಪಕ್ಷ ">ತದಿಗೆ ಕೃಷ್ಣ ಪಕ್ಷ </option>
+    <option value="ಚೌತಿ ಕೃಷ್ಣ ಪಕ್ಷ ">ಚೌತಿ ಕೃಷ್ಣ ಪಕ್ಷ </option>
+    <option value="ಪಂಚಮಿ ಕೃಷ್ಣ ಪಕ್ಷ ">ಪಂಚಮಿ ಕೃಷ್ಣ ಪಕ್ಷ </option>
+    <option value="ಷಷ್ಠಿ ಕೃಷ್ಣ ಪಕ್ಷ ">ಷಷ್ಠಿ ಕೃಷ್ಣ ಪಕ್ಷ </option>
+    <option value="ಸಪ್ತಮಿ ಕೃಷ್ಣ ಪಕ್ಷ ">ಸಪ್ತಮಿ ಕೃಷ್ಣ ಪಕ್ಷ </option>
+    <option value="ಅಷ್ಟಮಿ ಕೃಷ್ಣ ಪಕ್ಷ ">ಅಷ್ಟಮಿ ಕೃಷ್ಣ ಪಕ್ಷ </option>
+    <option value="ನವಮಿ ಕೃಷ್ಣ ಪಕ್ಷ ">ನವಮಿ ಕೃಷ್ಣ ಪಕ್ಷ </option>
+    <option value="ದಶಮಿ ಕೃಷ್ಣ ಪಕ್ಷ ">ದಶಮಿ ಕೃಷ್ಣ ಪಕ್ಷ </option>
+    <option value="ಏಕಾದಶಿ ಕೃಷ್ಣ ಪಕ್ಷ ">ಏಕಾದಶಿ ಕೃಷ್ಣ ಪಕ್ಷ </option>
+    <option value="ದ್ವಾದಶಿ ಕೃಷ್ಣ ಪಕ್ಷ ">ದ್ವಾದಶಿ ಕೃಷ್ಣ ಪಕ್ಷ </option>
+    <option value="ತ್ರಯೋದಶಿ ಕೃಷ್ಣ ಪಕ್ಷ ">ತ್ರಯೋದಶಿ ಕೃಷ್ಣ ಪಕ್ಷ </option>
+    <option value="ಚತುರ್ದಶಿ ಕೃಷ್ಣ ಪಕ್ಷ ">ಚತುರ್ದಶಿ ಕೃಷ್ಣ ಪಕ್ಷ </option>
+    <option value="ಹುಣ್ಣಿಮೆ">ಹುಣ್ಣಿಮೆ</option>
+    <option value="ಅಮಾವಾಸ್ಯೆ">ಅಮಾವಾಸ್ಯೆ</option>
+</select>
 
         <label for="address">ವಿಳಾಸ:</label>
         <input type="text" id="address" name="address" placeholder="ದಯವಿಟ್ಟು ನಿಮ್ಮ ಪೂರ್ಣ ಅಂಚೆ ವಿಳಾಸ ನಮೂದಿಸಿ."><br>
 
-        <label for="payee_name">ಪಾವತಿ ಸ್ವೀಕರಿಸಿದವರು:</label>
-        <select type="text" id="payee_name" name="payee_name">
-            <option value="ಪಾಲಚಂದ್ರ">ಪಾಲಚಂದ್ರ</option>
-            <option value="ಕೃಷ್ಣಮೂರ್ತಿ">ಕೃಷ್ಣಮೂರ್ತಿ</option>
-            <option value="ಶೃಂಗೇಶ್ವರ">ಶೃಂಗೇಶ್ವರ</option>
-            <option value="ರಾಜು">ರಾಜು</option>
-        </select>
-
-        <h3>ಹೆಸರು, ರಾಶಿ, ನಕ್ಷತ್ರ:</h3>
+        <h5>ಹೆಸರು, ರಾಶಿ, ನಕ್ಷತ್ರ:</h5>
         <div id="field7Sets">
             <div class="set">
                 <input type="text" id="field7a1" name="field7a1" placeholder="ಹೆಸರು" oninput="validateKannadaInput(event)" required>

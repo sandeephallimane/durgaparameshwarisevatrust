@@ -94,9 +94,7 @@
         #hp {
             display: block;
         }
-        #downloadForm {
-            display: none;
-        }
+     
         .form-container {
             display: none;
             margin-top: 20px;
@@ -187,33 +185,13 @@
             
             var myForm = document.getElementById("myForm");
             var hpForm = document.getElementById("hp");
-             var aForm = document.getElementById("downloadForm");
             
             if (myForm.style.display === "none" || myForm.style.display === "") {
                 myForm.style.display = "block"; 
                 hpForm.style.display = "none";
-                aForm.style.display = "none";  
             } else {
                 myForm.style.display = "none";  
                 hpForm.style.display = "block";
-                aForm.style.display = "none"; 
-            }
-        }
-        function toggleForms1(event) {
-            if (event) event.preventDefault();
-            
-            var myForm = document.getElementById("myForm");
-            var hpForm = document.getElementById("hp");
-             var aForm = document.getElementById("downloadForm");
-            
-            if (myForm.style.display === "none" || myForm.style.display === "") {
-                myForm.style.display = "none"; 
-                hpForm.style.display = "none";
-                aForm.style.display = "block";  
-            } else {
-                myForm.style.display = "none";  
-                hpForm.style.display = "none";
-                aForm.style.display = "block"; 
             }
         }
          function toggleForms(event) {
@@ -238,46 +216,14 @@
     <form id="hp">
         <h1 style="color:#001285;text-align:center;">ಶ್ರೀದುರ್ಗಾಪರಮೇಶ್ವರಿ ಸೇವಾಟ್ರಸ್ಟ್, ವಿಶ್ವನಾಥಪುರ(R)</h1>
         <p>
-            <button type="button" onclick="window.location.href='https://script.google.com/macros/s/AKfycbx0gPpHyoyGip0kAfNuliYSnr0Z6eqCo8G_PfXdn_2Lb2kctG9Cf0-J56dswDchw3_sjw/exec'">ಹೊಸ ಸದಸ್ಯತ್ವಕ್ಕೆ ಇಲ್ಲಿಒತ್ತಿರಿ</button>
+            <button type="button" onclick="window.location.href='https://script.google.com/macros/s/AKfycbwR-1LCI2fZxp8GFUnAAU7RB4OAx83k0Yb2gN3Om4EQWbgw7j_xKj21Q91VrEqvRYQ-Ug/exec?action=mf&nd='">ಹೊಸ ಸದಸ್ಯತ್ವಕ್ಕೆ ಇಲ್ಲಿಒತ್ತಿರಿ</button>
 
         </p>
     
         <p><button type="button" onclick="toggleForms(event)">ದೈನಂದಿನ ಸೇವೆಗಳಿಗಾಗಿ ಇಲ್ಲಿ ಒತ್ತಿರಿ</button></p>
-        <p><button type="button" onclick="toggleForms1(event)">ಅಡ್ಮಿನ್ ಇಲ್ಲಿ ಒತ್ತಿ </button></p>
 
     </form>
-    <form id="downloadForm" action="https://script.google.com/macros/s/AKfycbx0gPpHyoyGip0kAfNuliYSnr0Z6eqCo8G_PfXdn_2Lb2kctG9Cf0-J56dswDchw3_sjw/exec" method="POST">
-   <h2>Download Member or Seva List</h2>
-  <label for="adminID">Admin ID:</label>
-  <input type="text" id="adminID" name="adminID" required><br><br>
-
-  <label for="downloadOption">Select Data to Download:</label>
-  <select id="downloadOption" name="downloadOption" required>
-    <option value="allMembers">All Members List</option>
-    <option value="allSeva">All Seva List</option>
-    <option value="sevaByMaasa">Seva List by Maasa</option>
-  </select><br><br>
-
-  <div id="maasaInputDiv" style="display:none;">
-    <label for="maasa">Select Maasa:</label>
-    <select id="maasa" name="maasa">
-                  <option value="ಚೈತ್ರ">ಚೈತ್ರ ಮಾಸ</option>
-    <option value="ವೈಶಾಖ">ವೈಶಾಖ ಮಾಸ</option>
-    <option value="ಜ್ಯೇಷ್ಠ">ಜ್ಯೇಷ್ಠ ಮಾಸ</option>
-    <option value="ಆಷಾಢ">ಆಷಾಢ ಮಾಸ</option>
-    <option value="ಶ್ರಾವಣ">ಶ್ರಾವಣ ಮಾಸ</option>
-    <option value="ಭಾದ್ರಪದ">ಭಾದ್ರಪದ ಮಾಸ</option>
-    <option value="ಅಶ್ವಿನ">ಅಶ್ವಿನ ಮಾಸ</option>
-    <option value="ಕಾರ್ತಿಕ">ಕಾರ್ತಿಕ ಮಾಸ</option>
-    <option value="ಮಾರ್ಗಶಿರ">ಮಾರ್ಗಶಿರ ಮಾಸ</option>
-    <option value="ಪುಷ್ಯ">ಪುಷ್ಯ ಮಾಸ</option>
-    <option value="ಮಾಘ">ಮಾಘ ಮಾಸ</option>
-    <option value="ಫಾಲ್ಗುಣ">ಫಾಲ್ಗುಣ ಮಾಸ</option>
-</select><br><br>
-  </div>
-  <button type="submit">Download</button>
-</form>
-    <form id="myForm" action="https://script.google.com/macros/s/AKfycbx0gPpHyoyGip0kAfNuliYSnr0Z6eqCo8G_PfXdn_2Lb2kctG9Cf0-J56dswDchw3_sjw/exec" method="POST">
+    <form id="myForm" action="https://script.google.com/macros/s/AKfycbwR-1LCI2fZxp8GFUnAAU7RB4OAx83k0Yb2gN3Om4EQWbgw7j_xKj21Q91VrEqvRYQ-Ug/exec" method="POST">
         <img src="https://shivallibrahmins.com/wp-content/uploads/2011/08/Durgaparameshwari.jpg" style="width:150px;height:100px;">
         <h1>ಶ್ರೀದುರ್ಗಾಪರಮೇಶ್ವರಿ ಸೇವಾಟ್ರಸ್ಟ್, ವಿಶ್ವನಾಥಪುರ(R) - ದೈನಂದಿನ ಪೂಜಾ ಸೇವೆ</h1>
         

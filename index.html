@@ -196,21 +196,13 @@
                 aForm.style.display = "block";
         
         }
-          document.getElementById('downloadOption').addEventListener('change', function() {
-    var maasaSelectContainer = document.getElementById('maasaInputDiv');
-    if (this.value === 'sevaByMaasa') {
-      maasaSelectContainer.style.display = 'block';
-    } else {
-      maasaSelectContainer.style.display = 'none';
-    }
-  })
     </script>
 </head>
 <body>
     <form id="hp">
         <h1 style="color:#001285;text-align:center;">ಶ್ರೀದುರ್ಗಾಪರಮೇಶ್ವರಿ ಸೇವಾಟ್ರಸ್ಟ್, ವಿಶ್ವನಾಥಪುರ(R)</h1>
         <p>
-            <button type="button" onclick="window.location.href='https://script.google.com/macros/s/AKfycbx0AsIISif0ijgzN4iUxSgqyaKt8oi58lAd5rHXmt4-ooRi8eqaINBRgHKJMVMZNQc9PQ/exec?action=mf&nd='">ಹೊಸ ಸದಸ್ಯತ್ವಕ್ಕೆ ಇಲ್ಲಿಒತ್ತಿರಿ</button>
+            <button type="button" onclick="window.location.href='https://script.google.com/macros/s/AKfycbxL0TpK23-Ejq6cy4yobozNHak3NP-dfe0IntsQB0Iv2pMuXovnAKgtzhsZ4ATlxu8OWg/exec?action=mf&nd='">ಹೊಸ ಸದಸ್ಯತ್ವಕ್ಕೆ ಇಲ್ಲಿಒತ್ತಿರಿ</button>
 
         </p>
     
@@ -218,7 +210,7 @@
                 <p><button type="button" onclick="toggleForms1(event)">ಅಡ್ಮಿನ್ ಕಾರ್ಯಗಳಿಗಾಗಿ  ಇಲ್ಲಿ ಒತ್ತಿ</button></p>
     
     </form>
- <form id="downloadForm" action="https://script.google.com/macros/s/AKfycbx0AsIISif0ijgzN4iUxSgqyaKt8oi58lAd5rHXmt4-ooRi8eqaINBRgHKJMVMZNQc9PQ/exec" method="POST">
+ <form id="downloadForm" action="https://script.google.com/macros/s/AKfycbxL0TpK23-Ejq6cy4yobozNHak3NP-dfe0IntsQB0Iv2pMuXovnAKgtzhsZ4ATlxu8OWg/exec" method="POST">
 <h2>Download Member or Seva List</h2>
 <input type="hidden" name="action" value="download">
 <label for="adminID">Admin ID:</label>
@@ -226,34 +218,28 @@
 
   <label for="downloadOption">Select Data to Download:</label>
   <select id="downloadOption" name="downloadOption" required>
-    <option value="allMembersap">All Membership Approved List</option>
-    <option value="allSevaap">All Seva Approved List</option>
-    <option value="sevaByMaasa">Seva List by Maasa(Approved only)</option>
-    <option value="allMembersnap">Membership not approved list</option>
-    <option value="allSevanap">Seva not Approved list</option>
-  </select><br><br>
-
-  <div id="maasaInputDiv" style="display:block;">
-    <label for="maasa">Select Maasa:</label>
-    <select id="maasa" name="maasa">
-       <option value="ಚೈತ್ರ">ಚೈತ್ರ ಮಾಸ</option>
-       <option value="ವೈಶಾಖ">ವೈಶಾಖ ಮಾಸ</option>
-       <option value="ಜ್ಯೇಷ್ಠ">ಜ್ಯೇಷ್ಠ ಮಾಸ</option>
-       <option value="ಆಷಾಢ">ಆಷಾಢ ಮಾಸ</option>
-       <option value="ಶ್ರಾವಣ">ಶ್ರಾವಣ ಮಾಸ</option>
-       <option value="ಭಾದ್ರಪದ">ಭಾದ್ರಪದ ಮಾಸ</option>
-       <option value="ಅಶ್ವಿನ">ಅಶ್ವಿನ ಮಾಸ</option>
-       <option value="ಕಾರ್ತಿಕ">ಕಾರ್ತಿಕ ಮಾಸ</option>
-       <option value="ಮಾರ್ಗಶಿರ">ಮಾರ್ಗಶಿರ ಮಾಸ</option>
-       <option value="ಪುಷ್ಯ">ಪುಷ್ಯ ಮಾಸ</option>
-       <option value="ಮಾಘ">ಮಾಘ ಮಾಸ</option>
-       <option value="ಫಾಲ್ಗುಣ">ಫಾಲ್ಗುಣ ಮಾಸ</option>
-    </select><br><br>
-  </div>
-
-  <button type="submit">Download</button>
+    <option value="allMembersap,">All Membership Approved List</option>
+    <option value="allSevaap,">All Seva Approved List</option>
+    <option value="allMembersnap,">Membership not approved list</option>
+    <option value="allSevanap,">Seva not Approved list</option>
+    <optgroup label="Seva List by Maasa">
+        <option value="sevaByMaasa,ಚೈತ್ರ">ಚೈತ್ರ ಮಾಸ</option>
+        <option value="sevaByMaasa,ವೈಶಾಖ">ವೈಶಾಖ ಮಾಸ</option>
+        <option value="sevaByMaasa,ಜ್ಯೇಷ್ಠ">ಜ್ಯೇಷ್ಠ ಮಾಸ</option>
+        <option value="sevaByMaasa,ಆಷಾಢ">ಆಷಾಢ ಮಾಸ</option>
+        <option value="sevaByMaasa,ಶ್ರಾವಣ">ಶ್ರಾವಣ ಮಾಸ</option>
+        <option value="sevaByMaasa,ಭಾದ್ರಪದ">ಭಾದ್ರಪದ ಮಾಸ</option>
+        <option value="sevaByMaasa,ಅಶ್ವಿನ">ಅಶ್ವಿನ ಮಾಸ</option>
+        <option value="sevaByMaasa,ಕಾರ್ತಿಕ">ಕಾರ್ತಿಕ ಮಾಸ</option>
+        <option value="sevaByMaasa,ಮಾರ್ಗಶಿರ">ಮಾರ್ಗಶಿರ ಮಾಸ</option>
+        <option value="sevaByMaasa,ಪುಷ್ಯ">ಪುಷ್ಯ ಮಾಸ</option>
+        <option value="sevaByMaasa,ಮಾಘ">ಮಾಘ ಮಾಸ</option>
+        <option value="sevaByMaasa,ಫಾಲ್ಗುಣ">ಫಾಲ್ಗುಣ ಮಾಸ</option>
+    </optgroup>
+</select><br><br>
+  <button type="submit">Get Data</button>
 </form>
-    <form id="myForm" action="https://script.google.com/macros/s/AKfycbx0AsIISif0ijgzN4iUxSgqyaKt8oi58lAd5rHXmt4-ooRi8eqaINBRgHKJMVMZNQc9PQ/exec" method="POST">
+    <form id="myForm" action="https://script.google.com/macros/s/AKfycbxL0TpK23-Ejq6cy4yobozNHak3NP-dfe0IntsQB0Iv2pMuXovnAKgtzhsZ4ATlxu8OWg/exec" method="POST">
         <h1>ಶ್ರೀದುರ್ಗಾಪರಮೇಶ್ವರಿ ಸೇವಾಟ್ರಸ್ಟ್, ವಿಶ್ವನಾಥಪುರ(R) - ದೈನಂದಿನ ಪೂಜಾ ಸೇವೆ</h1>
         <input type="hidden" name="action" value="newseva">
         

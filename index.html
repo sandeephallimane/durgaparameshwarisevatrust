@@ -196,13 +196,21 @@
                 aForm.style.display = "block";
         
         }
+          document.getElementById('downloadOption').addEventListener('change', function() {
+    var maasaSelectContainer = document.getElementById('maasaInputDiv');
+    if (this.value === 'sevaByMaasa') {
+      maasaSelectContainer.style.display = 'block';
+    } else {
+      maasaSelectContainer.style.display = 'none';
+    }
+  })
     </script>
 </head>
 <body>
     <form id="hp">
         <h1 style="color:#001285;text-align:center;">ಶ್ರೀದುರ್ಗಾಪರಮೇಶ್ವರಿ ಸೇವಾಟ್ರಸ್ಟ್, ವಿಶ್ವನಾಥಪುರ(R)</h1>
         <p>
-            <button type="button" onclick="window.location.href='https://script.google.com/macros/s/AKfycbxNa4dHHCIkS763YZG_tJyuv9136gRu_LOsisEZIKXD9kF9lIAcUzHDFU3nf-BkfjFt0A/exec?action=mf&nd='">ಹೊಸ ಸದಸ್ಯತ್ವಕ್ಕೆ ಇಲ್ಲಿಒತ್ತಿರಿ</button>
+            <button type="button" onclick="window.location.href='https://script.google.com/macros/s/AKfycbzv0A0YuMyIAyaNBHu5fqQMgkx1a6LpES6OVMGJ9LuDZFEEoGi8GLJ32CMvbER6q7m9Bw/exec?action=mf&nd='">ಹೊಸ ಸದಸ್ಯತ್ವಕ್ಕೆ ಇಲ್ಲಿಒತ್ತಿರಿ</button>
 
         </p>
     
@@ -210,8 +218,9 @@
                 <p><button type="button" onclick="toggleForms1(event)">ಅಡ್ಮಿನ್ ಕಾರ್ಯಗಳಿಗಾಗಿ  ಇಲ್ಲಿ ಒತ್ತಿ</button></p>
     
     </form>
- <form id="downloadForm" action="https://script.google.com/macros/s/AKfycbxNa4dHHCIkS763YZG_tJyuv9136gRu_LOsisEZIKXD9kF9lIAcUzHDFU3nf-BkfjFt0A/exec" method="POST">
+ <form id="downloadForm" action="https://script.google.com/macros/s/AKfycbzv0A0YuMyIAyaNBHu5fqQMgkx1a6LpES6OVMGJ9LuDZFEEoGi8GLJ32CMvbER6q7m9Bw/exec" method="POST">
 <h2>Download Member or Seva List</h2>
+<input type="hidden" name="action" value="download">
 <label for="adminID">Admin ID:</label>
   <input type="text" id="adminID" name="adminID" required><br><br>
 
@@ -242,9 +251,9 @@
 
   <button type="submit">Download</button>
 </form>
-    <form id="myForm" action="https://script.google.com/macros/s/AKfycbxNa4dHHCIkS763YZG_tJyuv9136gRu_LOsisEZIKXD9kF9lIAcUzHDFU3nf-BkfjFt0A/exec" method="POST">
+    <form id="myForm" action="https://script.google.com/macros/s/AKfycbzv0A0YuMyIAyaNBHu5fqQMgkx1a6LpES6OVMGJ9LuDZFEEoGi8GLJ32CMvbER6q7m9Bw/exec" method="POST">
         <h1>ಶ್ರೀದುರ್ಗಾಪರಮೇಶ್ವರಿ ಸೇವಾಟ್ರಸ್ಟ್, ವಿಶ್ವನಾಥಪುರ(R) - ದೈನಂದಿನ ಪೂಜಾ ಸೇವೆ</h1>
-        
+        <input type="hidden" name="action" value="newseva">
         
         <label for="name">ಹೆಸರು:</label>
         <input type="text" id="name" name="name" required><br>

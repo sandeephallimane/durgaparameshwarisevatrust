@@ -179,34 +179,22 @@
             
             var myForm = document.getElementById("myForm");
             var hpForm = document.getElementById("hp");
-            var hpForm = document.getElementById("downloadOption");
-            
-            if (myForm.style.display === "none" || myForm.style.display === "") {
-                myForm.style.display = "block"; 
-                hpForm.style.display = "none";
-                aForm.style.display = "none";
-            } else {
-                myForm.style.display = "none";  
-                hpForm.style.display = "block";
-                aForm.style.display = "none";
-            }
+            var aForm = document.getElementById("downloadForm");
+            myForm.style.display = "block"; 
+            hpForm.style.display = "none";
+            aForm.style.display = "none";
         }
          function toggleForms1(event) {
             if (event) event.preventDefault();
             
             var myForm = document.getElementById("myForm");
             var hpForm = document.getElementById("hp");
-            var hpForm = document.getElementById("downloadOption");
+            var aForm = document.getElementById("downloadForm");
             
-            if (myForm.style.display === "none" || myForm.style.display === "") {
                 myForm.style.display = "none"; 
                 hpForm.style.display = "none";
                 aForm.style.display = "block";
-            } else {
-                myForm.style.display = "none";  
-                hpForm.style.display = "block";
-                aForm.style.display = "none";
-            }
+        
         }
     </script>
 </head>
@@ -220,7 +208,9 @@
     
         <p><button type="button" onclick="toggleForms(event)">ದೈನಂದಿನ ಸೇವೆಗಳಿಗಾಗಿ ಇಲ್ಲಿ ಒತ್ತಿರಿ</button></p>
                 <p><button type="button" onclick="toggleForms1(event)">ಅಡ್ಮಿನ್ ಕಾರ್ಯಗಳಿಗಾಗಿ  ಇಲ್ಲಿ ಒತ್ತಿ</button></p>
-    <form id="downloadForm" action="https://script.google.com/macros/s/AKfycbxNa4dHHCIkS763YZG_tJyuv9136gRu_LOsisEZIKXD9kF9lIAcUzHDFU3nf-BkfjFt0A/exec" method="POST">
+    
+    </form>
+ <form id="downloadForm" action="https://script.google.com/macros/s/AKfycbxNa4dHHCIkS763YZG_tJyuv9136gRu_LOsisEZIKXD9kF9lIAcUzHDFU3nf-BkfjFt0A/exec" method="POST">
 <h2>Download Member or Seva List</h2>
 <label for="adminID">Admin ID:</label>
   <input type="text" id="adminID" name="adminID" required><br><br>
@@ -252,7 +242,6 @@
 
   <button type="submit">Download</button>
 </form>
-    </form>
     <form id="myForm" action="https://script.google.com/macros/s/AKfycbxNa4dHHCIkS763YZG_tJyuv9136gRu_LOsisEZIKXD9kF9lIAcUzHDFU3nf-BkfjFt0A/exec" method="POST">
         <h1>ಶ್ರೀದುರ್ಗಾಪರಮೇಶ್ವರಿ ಸೇವಾಟ್ರಸ್ಟ್, ವಿಶ್ವನಾಥಪುರ(R) - ದೈನಂದಿನ ಪೂಜಾ ಸೇವೆ</h1>
         

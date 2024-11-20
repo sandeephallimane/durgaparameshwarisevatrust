@@ -216,9 +216,10 @@
                 aForm.style.display = "block";
         
         }
-         function disableSubmitButton() {
-    // Disable the submit button when the form is submitted
-    document.querySelector('input[type="submit"]').disabled = true;
+     function clearFormInputs() {
+    setTimeout(function() {
+      document.getElementById('downloadForm').reset();  
+    }, 10);
   }
     </script>
 </head>
@@ -234,7 +235,7 @@
                 <p><button type="button" onclick="toggleForms1(event)">ಅಡ್ಮಿನ್ ಕಾರ್ಯಗಳಿಗಾಗಿ  ಇಲ್ಲಿ ಒತ್ತಿ</button></p><br><br>
     <h6>ವಿಶೇಷ ಸೂಚನೆ: ಮೇಲೆ ನೀಡಿರುವ ಲಿಂಕ್ ಕಾರ್ಯನಿರ್ವಹಿಸದಿದ್ದರೆ ದಯವಿಟ್ಟು "Incognito  mode" ನಲ್ಲಿ ತೆರೆಯಿರಿ.</h6>
     </form>
- <form id="downloadForm" action="https://script.google.com/macros/s/AKfycbwoobJGUV_YzcOc6ad5KI_lEEPxlebNqGEoPG4gPrtqnaBxXE3W25sSLEhmvAmGN85H/exec" method="POST">
+ <form id="downloadForm" action="https://script.google.com/macros/s/AKfycbwoobJGUV_YzcOc6ad5KI_lEEPxlebNqGEoPG4gPrtqnaBxXE3W25sSLEhmvAmGN85H/exec" method="POST" onsubmit="clearFormInputs()">
 <h2>Download Member or Seva List</h2>
 <input type="hidden" name="action" value="download">
 <label for="adminID">Admin ID:</label>
@@ -263,7 +264,7 @@
 </select><br><br>
   <button type="submit">Get Data</button>
 </form>
-    <form id="myForm" action="https://script.google.com/macros/s/AKfycbwoobJGUV_YzcOc6ad5KI_lEEPxlebNqGEoPG4gPrtqnaBxXE3W25sSLEhmvAmGN85H/exec" method="POST">
+    <form id="myForm" action="https://script.google.com/macros/s/AKfycbwoobJGUV_YzcOc6ad5KI_lEEPxlebNqGEoPG4gPrtqnaBxXE3W25sSLEhmvAmGN85H/exec" method="POST" onsubmit="clearFormInputs()">
         <h1>ಶ್ರೀದುರ್ಗಾಪರಮೇಶ್ವರಿ ಸೇವಾಟ್ರಸ್ಟ್, ವಿಶ್ವನಾಥಪುರ(R) - ದೈನಂದಿನ ಪೂಜಾ ಸೇವೆ</h1>
         <input type="hidden" name="action" value="newseva">
         

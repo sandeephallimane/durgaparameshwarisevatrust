@@ -171,13 +171,14 @@
   }
 function clearFormInputs1() {
     setTimeout(function() {
-      document.getElementById('myForm').reset();  
+      document.getElementById('myForm').reset();
+      document.getElementById('downloadForm').reset();
     }, 10);
   }
     </script>
 </head>
 <body>
- <form id="downloadForm" action="https://script.google.com/macros/s/AKfycbwoobJGUV_YzcOc6ad5KI_lEEPxlebNqGEoPG4gPrtqnaBxXE3W25sSLEhmvAmGN85H/exec" method="POST" onsubmit="clearFormInputs()">
+ <form id="downloadForm" action="https://script.google.com/macros/s/AKfycbxL2wGs46NCL4i4e41CY8tUqsrm00htLj089gQZKMXFZ9_ZU34z6xfhOdCGqrDIqEPW/exec" method="POST" onsubmit="clearFormInputs1()">
 <h2>Download Member or Seva List</h2>
 <input type="hidden" name="action" value="download">
 <label for="adminID">Admin ID:</label>

@@ -64,11 +64,6 @@
   animation-iteration-count: infinite;
   animation-direction: alternate;
 }
-        @keyframes example {
-  0%   {background-color:green; left:0px; top:0px;}
-  50%  {background-color:green; left:300px; top:0px;}
-  
-}
         img {
             display: block;
             margin-left: auto;
@@ -153,15 +148,6 @@
             border-radius: 4px;
             cursor: pointer;
         }
-        #myForm {
-            display: none;
-        }
-        #hp {
-            display: block;
-        }
-        #downloadForm {
-            display: none;
-        }
         .form-container {
             display: none;
             margin-top: 20px;
@@ -172,109 +158,16 @@
         }
     </style>
     <script>
-        let setCount = 1;
-        function addSet() {
-            setCount++;
-            const setContainer = document.getElementById('field7Sets');
-            const newSet = document.createElement('div');
-            newSet.className = 'set';
-            newSet.innerHTML = `
-                <input type="text" id="field7a${setCount}" name="field7a${setCount}" placeholder="ಹೆಸರು" oninput="validateKannadaInput(event)" required>
-                <select type="text" id="field7c${setCount}" name="field7c${setCount}">
-                    <option value="ಮೇಷ">ಮೇಷ</option>
-                    <option value="ವೃಷಭ">ವೃಷಭ</option>
-                    <option value="ಮಿಥುನ">ಮಿಥುನ</option>
-                    <option value="ಕಟಕ">ಕಟಕ</option>
-                    <option value="ಸಿಂಹ">ಸಿಂಹ</option>
-                    <option value="ಕನ್ಯಾ">ಕನ್ಯಾ</option>
-                    <option value="ತುಲಾ">ತುಲಾ</option>
-                    <option value="ವೃಶ್ಚಿಕ">ವೃಶ್ಚಿಕ</option>
-                    <option value="ಧನು">ಧನು</option>
-                    <option value="ಮಕರ">ಮಕರ</option>
-                    <option value="ಕುಂಭ">ಕುಂಭ</option>
-                    <option value="ಮೀನ">ಮೀನ</option>
-                </select>
-                <select type="text" id="field7b${setCount}" name="field7b${setCount}">
-                    <option value="ಅಶ್ವಿನಿ">ಅಶ್ವಿನಿ</option>
-                    <option value="ಭರಣಿ">ಭರಣಿ</option>
-                    <option value="ಕೃತಿಕಾ">ಕೃತಿಕಾ</option>
-                    <option value="ರೋಹಿಣಿ">ರೋಹಿಣಿ</option>
-                    <option value="ಮೃಗಶಿರ">ಮೃಗಶಿರ</option>
-                    <option value="ಆರ್ದ್ರಾ">ಆರ್ದ್ರಾ (ಆರಿದ್ರಾ)</option>
-                    <option value="ಪುನರ್ವಸು">ಪುನರ್ವಸು</option>
-                    <option value="ಪುಷ್ಯ">ಪುಷ್ಯ</option>
-                    <option value="ಆಶ್ಲೇಷ">ಆಶ್ಲೇಷ</option>
-                    <option value="ಮಖ">ಮಖ</option>
-                    <option value="ಪುಬ್ಬ">ಪುಬ್ಬ (ಪೂರ್ವ ಫಲ್ಗುಣಿ)</option>
-                    <option value="ಉತ್ತರಾ">ಉತ್ತರಾ (ಉತ್ತರ ಫಲ್ಗುಣಿ)</option>
-                    <option value="ಹಸ್ತ">ಹಸ್ತ</option>
-                    <option value="ಚಿತ್ತಾ">ಚಿತ್ತಾ ನಕ್ಷತ್ರ</option>
-                    <option value="ಸ್ವಾತಿ">ಸ್ವಾತಿ</option>
-                    <option value="ವಿಶಾಖ">ವಿಶಾಖ</option>
-                    <option value="ಅನುರಾಧ">ಅನುರಾಧ</option>
-                    <option value="ಜ್ಯೇಷ್ಠ">ಜ್ಯೇಷ್ಠ</option>
-                    <option value="ಮೂಲ">ಮೂಲ</option>
-                    <option value="ಪೂರ್ವಾಷಾಡಾ">ಪೂರ್ವಾಷಾಡಾ</option>
-                    <option value="ಉತ್ತರಾಷಾಡಾ">ಉತ್ತರಾಷ್ಟಾ</option>
-                    <option value="ಶ್ರವಣ">ಶ್ರವಣ</option>
-                    <option value="ಧನಿಷ್ಠ">ಧನಿಷ್ಠ</option>
-                    <option value="ಶತಭಿಷ">ಶತಭಿಷ</option>
-                    <option value="ಪೂರ್ವಭಾದ್ರ">ಪೂರ್ವಭಾದ್ರ</option>
-                    <option value="ಉತ್ತರಭಾದ್ರ">ಉತ್ತರಭಾದ್ರ</option>
-                    <option value="ರೇವತಿ">ರೇವತಿ</option>
-                </select>
-            `;
-            setContainer.appendChild(newSet);
-        }
-
-        function validateKannadaInput(event) {
-            const kannadaRegex = /^[\u0C80-\u0CFF\s]*$/;
-            const inputField = event.target;
-
-            const inputValue = inputField.value;
-
-            if (!kannadaRegex.test(inputValue)) {
-                alert("Please enter only Kannada characters.");
-                inputField.value = inputValue.replace(/[^ \u0C80-\u0CFF]/g, ''); 
-            }
-        }
-
-        function toggleForms(event) {
-            if (event) event.preventDefault();
-            
-            var myForm = document.getElementById("myForm");
-            var hpForm = document.getElementById("hp");
-            var aForm = document.getElementById("downloadForm");
-            myForm.style.display = "block"; 
-            hpForm.style.display = "none";
-            aForm.style.display = "none";
-        }
-         function toggleForms1(event) {
-            if (event) event.preventDefault();
-            
-            var myForm = document.getElementById("myForm");
-            var hpForm = document.getElementById("hp");
-            var aForm = document.getElementById("downloadForm");
-            
-                myForm.style.display = "none"; 
-                hpForm.style.display = "none";
-                aForm.style.display = "block";
-        
-        }
-     function clearFormInputs() {
+function clearFormInputs() {
     setTimeout(function() {
-      document.getElementById('downloadForm').reset();  
-    }, 10);
-  }
-function clearFormInputs1() {
-    setTimeout(function() {
-      document.getElementById('myForm').reset();  
+      document.getElementById('myForm').reset(); 
+      document.getElementById('downloadForm').reset();
     }, 10);
   }
     </script>
 </head>
 <body>
-    <form id="hp">
+    
     <div class="topnav">
    <a class="active" href="#home">Home</a>
   <button type="button" onclick="window.location.href='https://script.google.com/macros/s/AKfycbwoobJGUV_YzcOc6ad5KI_lEEPxlebNqGEoPG4gPrtqnaBxXE3W25sSLEhmvAmGN85H/exec?action=mf&nd='">ಹೊಸ ಸದಸ್ಯತ್ವ</button>
@@ -299,159 +192,5 @@ function clearFormInputs1() {
     <p><strong>ವಿಶೇಷ ಸೂಚನೆ:</strong> ಮೇಲೆ ನೀಡಿರುವ ಲಿಂಕ್ ಕಾರ್ಯನಿರ್ವಹಿಸದಿದ್ದರೆ ದಯವಿಟ್ಟು "Incognito mode" ನಲ್ಲಿ ತೆರೆಯಿರಿ.</p>
   </details><br><br>
 </div>
-
-
-    </form>
- <form id="downloadForm" action="https://script.google.com/macros/s/AKfycbwoobJGUV_YzcOc6ad5KI_lEEPxlebNqGEoPG4gPrtqnaBxXE3W25sSLEhmvAmGN85H/exec" method="POST" onsubmit="clearFormInputs()">
-<h2>Download Member or Seva List</h2>
-<input type="hidden" name="action" value="download">
-<label for="adminID">Admin ID:</label>
-  <input type="text" id="adminID" name="adminID" required><br><br>
-
-  <label for="downloadOption">Select Data to Download:</label>
-  <select id="downloadOption" name="downloadOption" required>
-    <option value="allMembersap,">All Membership Approved List</option>
-    <option value="allSevaap,">All Seva Approved List</option>
-    <option value="allMembersnap,">Membership not approved list</option>
-    <option value="allSevanap,">Seva not Approved list</option>
-    <optgroup label="Seva List by Maasa">
-        <option value="sevaByMaasa,ಚೈತ್ರ">ಚೈತ್ರ ಮಾಸ</option>
-        <option value="sevaByMaasa,ವೈಶಾಖ">ವೈಶಾಖ ಮಾಸ</option>
-        <option value="sevaByMaasa,ಜ್ಯೇಷ್ಠ">ಜ್ಯೇಷ್ಠ ಮಾಸ</option>
-        <option value="sevaByMaasa,ಆಷಾಢ">ಆಷಾಢ ಮಾಸ</option>
-        <option value="sevaByMaasa,ಶ್ರಾವಣ">ಶ್ರಾವಣ ಮಾಸ</option>
-        <option value="sevaByMaasa,ಭಾದ್ರಪದ">ಭಾದ್ರಪದ ಮಾಸ</option>
-        <option value="sevaByMaasa,ಅಶ್ವಿನ">ಅಶ್ವಿನ ಮಾಸ</option>
-        <option value="sevaByMaasa,ಕಾರ್ತಿಕ">ಕಾರ್ತಿಕ ಮಾಸ</option>
-        <option value="sevaByMaasa,ಮಾರ್ಗಶಿರ">ಮಾರ್ಗಶಿರ ಮಾಸ</option>
-        <option value="sevaByMaasa,ಪುಷ್ಯ">ಪುಷ್ಯ ಮಾಸ</option>
-        <option value="sevaByMaasa,ಮಾಘ">ಮಾಘ ಮಾಸ</option>
-        <option value="sevaByMaasa,ಫಾಲ್ಗುಣ">ಫಾಲ್ಗುಣ ಮಾಸ</option>
-    </optgroup>
-</select><br><br>
-  <button type="submit">Get Data</button>
-</form>
-    <form id="myForm" action="https://script.google.com/macros/s/AKfycbwoobJGUV_YzcOc6ad5KI_lEEPxlebNqGEoPG4gPrtqnaBxXE3W25sSLEhmvAmGN85H/exec" method="POST" onsubmit="clearFormInputs1()">
-        <h1>ಶ್ರೀದುರ್ಗಾಪರಮೇಶ್ವರಿ ಸೇವಾಟ್ರಸ್ಟ್, ವಿಶ್ವನಾಥಪುರ(R) - ದೈನಂದಿನ ಪೂಜಾ ಸೇವೆ</h1>
-        <details>
-        <summary>ದೈನಂದಿಕ ಪೂಜೆ ಸೇವೆಯ ಬಗ್ಗೆ</summary>
-    <p>ದೈನಂದಿನ ಪೂಜೆ ಸೇವೆಗೆ ತಮ್ಮ ಹೆಸರನ್ನು ನೋಂದಾಯಿಸಲು ಇಚ್ಛಿಸುವವರು ರೂ. 500ನ್ನು ಕಾರ್ಯದರ್ಶಿ ಅವರಿಗೆ ಪಾವತಿಸಿ ನಂತರ ಇಲ್ಲಿ ಅರ್ಜಿ ಸಲ್ಲಿಸಬೇಕು. ಅವರು ಆಯ್ದ ವರ್ಷದಲ್ಲಿ, ಪ್ರತಿವರ್ಷದ ಆ ದಿನ, ರಾಶಿ ಮತ್ತು ನಕ್ಷತ್ರ ಪ್ರಕಾರ ಅವರ ಹೆಸರಿನಲ್ಲಿ ಪೂಜೆ ನೆರವೇರಿಸಲಾಗುತ್ತದೆ ಮತ್ತು ಪ್ರಸಾದ ಕಳಿಸಿಕೊಡಲಾಗುತ್ತದೆ. ದಯವಿಟ್ಟು ನಿಮ್ಮ ಪೂರ್ಣ ಅಂಚೆ ವಿಳಾಸವನ್ನು, ಪಿನ್ ಕೋಡ್ ಸಹಿತ, ನಮೂದಿಸಿ.
-</p>
-  </details><br><br>
-        <input type="hidden" name="action" value="newseva">
-        
-        <label for="name">ಹೆಸರು:</label>
-        <input type="text" id="name" name="name" required><br>
-
-        <label for="mobile">ಮೊಬೈಲ್:</label>
-        <input type="number" id="mobile" name="mobile" required><br>
-
-        <label for="email">ಇಮೇಲ್ ವಿಳಾಸ(ಕಡ್ಡಾಯವಿಲ್ಲ. ಆದರೆ ಸೇವೆ ರಶೀದಿ ಪಡೆಯಲು ಇದನ್ನು ಸೇರಿಸಲು ಶಿಫಾರಸ್ಸು ಮಾಡುತ್ತೇವೆ ):</label>
-        <input type="email" id="email" name="email"><br>
-       <h5>ಸೇವೆಯ ದಿನ (ಈ ದಿನದಂದು ಪ್ರತಿ ವರ್ಷ ಪೂಜಾ ಸೇವೆ ನೆಡೆಯಲಿದೆ):</h5>
-     <select id="maasa" name="maasa">
-     <option value="ಚೈತ್ರ">ಚೈತ್ರ ಮಾಸ</option>
-    <option value="ವೈಶಾಖ">ವೈಶಾಖ ಮಾಸ</option>
-    <option value="ಜ್ಯೇಷ್ಠ">ಜ್ಯೇಷ್ಠ ಮಾಸ</option>
-    <option value="ಆಷಾಢ">ಆಷಾಢ ಮಾಸ</option>
-    <option value="ಶ್ರಾವಣ">ಶ್ರಾವಣ ಮಾಸ</option>
-    <option value="ಭಾದ್ರಪದ">ಭಾದ್ರಪದ ಮಾಸ</option>
-    <option value="ಅಶ್ವಿನ">ಅಶ್ವಿನ ಮಾಸ</option>
-    <option value="ಕಾರ್ತಿಕ">ಕಾರ್ತಿಕ ಮಾಸ</option>
-    <option value="ಮಾರ್ಗಶಿರ">ಮಾರ್ಗಶಿರ ಮಾಸ</option>
-    <option value="ಪುಷ್ಯ">ಪುಷ್ಯ ಮಾಸ</option>
-    <option value="ಮಾಘ">ಮಾಘ ಮಾಸ</option>
-    <option value="ಫಾಲ್ಗುಣ">ಫಾಲ್ಗುಣ ಮಾಸ</option>
-</select>
-     <select id="tithi" name="tithi">
-    <option value="ಪಾಡ್ಯ ಶುಕ್ಲ ಪಕ್ಷ ">ಪಾಡ್ಯ ಶುಕ್ಲ ಪಕ್ಷ </option>
-    <option value="ಬಿದಿಗೆ ಶುಕ್ಲ ಪಕ್ಷ ">ಬಿದಿಗೆ ಶುಕ್ಲ ಪಕ್ಷ </option>
-    <option value="ತದಿಗೆ ಶುಕ್ಲ ಪಕ್ಷ ">ತದಿಗೆ ಶುಕ್ಲ ಪಕ್ಷ </option>
-    <option value="ಚೌತಿ ಶುಕ್ಲ ಪಕ್ಷ ">ಚೌತಿ ಶುಕ್ಲ ಪಕ್ಷ </option>
-    <option value="ಪಂಚಮಿ ಶುಕ್ಲ ಪಕ್ಷ ">ಪಂಚಮಿ ಶುಕ್ಲ ಪಕ್ಷ </option>
-    <option value="ಷಷ್ಠಿ ಶುಕ್ಲ ಪಕ್ಷ ">ಷಷ್ಠಿ ಶುಕ್ಲ ಪಕ್ಷ </option>
-    <option value="ಸಪ್ತಮಿ ಶುಕ್ಲ ಪಕ್ಷ ">ಸಪ್ತಮಿ ಶುಕ್ಲ ಪಕ್ಷ </option>
-    <option value="ಅಷ್ಟಮಿ ಶುಕ್ಲ ಪಕ್ಷ ">ಅಷ್ಟಮಿ ಶುಕ್ಲ ಪಕ್ಷ </option>
-    <option value="ನವಮಿ ಶುಕ್ಲ ಪಕ್ಷ ">ನವಮಿ ಶುಕ್ಲ ಪಕ್ಷ </option>
-    <option value="ದಶಮಿ ಶುಕ್ಲ ಪಕ್ಷ ">ದಶಮಿ ಶುಕ್ಲ ಪಕ್ಷ </option>
-    <option value="ಏಕಾದಶಿ ಶುಕ್ಲ ಪಕ್ಷ ">ಏಕಾದಶಿ ಶುಕ್ಲ ಪಕ್ಷ </option>
-    <option value="ದ್ವಾದಶಿ ಶುಕ್ಲ ಪಕ್ಷ ">ದ್ವಾದಶಿ ಶುಕ್ಲ ಪಕ್ಷ </option>
-    <option value="ತ್ರಯೋದಶಿ ಶುಕ್ಲ ಪಕ್ಷ ">ತ್ರಯೋದಶಿ ಶುಕ್ಲ ಪಕ್ಷ </option>
-    <option value="ಚತುರ್ದಶಿ ಶುಕ್ಲ ಪಕ್ಷ ">ಚತುರ್ದಶಿ ಶುಕ್ಲ ಪಕ್ಷ </option>
-    <option value="ಪಾಡ್ಯ ಕೃಷ್ಣ ಪಕ್ಷ ">ಪಾಡ್ಯ ಕೃಷ್ಣ ಪಕ್ಷ </option>
-    <option value="ಬಿದಿಗೆ ಕೃಷ್ಣ ಪಕ್ಷ ">ಬಿದಿಗೆ ಕೃಷ್ಣ ಪಕ್ಷ </option>
-    <option value="ತದಿಗೆ ಕೃಷ್ಣ ಪಕ್ಷ ">ತದಿಗೆ ಕೃಷ್ಣ ಪಕ್ಷ </option>
-    <option value="ಚೌತಿ ಕೃಷ್ಣ ಪಕ್ಷ ">ಚೌತಿ ಕೃಷ್ಣ ಪಕ್ಷ </option>
-    <option value="ಪಂಚಮಿ ಕೃಷ್ಣ ಪಕ್ಷ ">ಪಂಚಮಿ ಕೃಷ್ಣ ಪಕ್ಷ </option>
-    <option value="ಷಷ್ಠಿ ಕೃಷ್ಣ ಪಕ್ಷ ">ಷಷ್ಠಿ ಕೃಷ್ಣ ಪಕ್ಷ </option>
-    <option value="ಸಪ್ತಮಿ ಕೃಷ್ಣ ಪಕ್ಷ ">ಸಪ್ತಮಿ ಕೃಷ್ಣ ಪಕ್ಷ </option>
-    <option value="ಅಷ್ಟಮಿ ಕೃಷ್ಣ ಪಕ್ಷ ">ಅಷ್ಟಮಿ ಕೃಷ್ಣ ಪಕ್ಷ </option>
-    <option value="ನವಮಿ ಕೃಷ್ಣ ಪಕ್ಷ ">ನವಮಿ ಕೃಷ್ಣ ಪಕ್ಷ </option>
-    <option value="ದಶಮಿ ಕೃಷ್ಣ ಪಕ್ಷ ">ದಶಮಿ ಕೃಷ್ಣ ಪಕ್ಷ </option>
-    <option value="ಏಕಾದಶಿ ಕೃಷ್ಣ ಪಕ್ಷ ">ಏಕಾದಶಿ ಕೃಷ್ಣ ಪಕ್ಷ </option>
-    <option value="ದ್ವಾದಶಿ ಕೃಷ್ಣ ಪಕ್ಷ ">ದ್ವಾದಶಿ ಕೃಷ್ಣ ಪಕ್ಷ </option>
-    <option value="ತ್ರಯೋದಶಿ ಕೃಷ್ಣ ಪಕ್ಷ ">ತ್ರಯೋದಶಿ ಕೃಷ್ಣ ಪಕ್ಷ </option>
-    <option value="ಚತುರ್ದಶಿ ಕೃಷ್ಣ ಪಕ್ಷ ">ಚತುರ್ದಶಿ ಕೃಷ್ಣ ಪಕ್ಷ </option>
-    <option value="ಹುಣ್ಣಿಮೆ">ಹುಣ್ಣಿಮೆ</option>
-    <option value="ಅಮಾವಾಸ್ಯೆ">ಅಮಾವಾಸ್ಯೆ</option>
-</select>
-
-        <label for="address">ವಿಳಾಸ:</label>
-        <input type="text" id="address" name="address" placeholder="ದಯವಿಟ್ಟು ನಿಮ್ಮ ಪೂರ್ಣ ಅಂಚೆ ವಿಳಾಸ ನಮೂದಿಸಿ."><br>
-
-        <h5>ಹೆಸರು, ರಾಶಿ, ನಕ್ಷತ್ರ:</h5>
-        <div id="field7Sets">
-            <div class="set">
-                <input type="text" id="field7a1" name="field7a1" placeholder="ಹೆಸರು" oninput="validateKannadaInput(event)" required>
-                <select type="text" id="field7c1" name="field7c1">
-                    <option value="ಮೇಷ">ಮೇಷ</option>
-                    <option value="ವೃಷಭ">ವೃಷಭ</option>
-                    <option value="ಮಿಥುನ">ಮಿಥುನ</option>
-                    <option value="ಕಟಕ">ಕಟಕ</option>
-                    <option value="ಸಿಂಹ">ಸಿಂಹ</option>
-                    <option value="ಕನ್ಯಾ">ಕನ್ಯಾ</option>
-                    <option value="ತುಲಾ">ತುಲಾ</option>
-                    <option value="ವೃಶ್ಚಿಕ">ವೃಶ್ಚಿಕ</option>
-                    <option value="ಧನು">ಧನು</option>
-                    <option value="ಮಕರ">ಮಕರ</option>
-                    <option value="ಕುಂಭ">ಕುಂಭ</option>
-                    <option value="ಮೀನ">ಮೀನ</option>
-                </select>
-                <select type="text" id="field7b1" name="field7b1">
-                    <option value="ಅಶ್ವಿನಿ">ಅಶ್ವಿನಿ</option>
-                    <option value="ಭರಣಿ">ಭರಣಿ</option>
-                    <option value="ಕೃತಿಕಾ">ಕೃತಿಕಾ</option>
-                    <option value="ರೋಹಿಣಿ">ರೋಹಿಣಿ</option>
-                    <option value="ಮೃಗಶಿರ">ಮೃಗಶಿರ</option>
-                    <option value="ಆರ್ದ್ರಾ">ಆರ್ದ್ರಾ (ಆರಿದ್ರಾ)</option>
-                    <option value="ಪುನರ್ವಸು">ಪುನರ್ವಸು</option>
-                    <option value="ಪುಷ್ಯ">ಪುಷ್ಯ</option>
-                    <option value="ಆಶ್ಲೇಷ">ಆಶ್ಲೇಷ</option>
-                    <option value="ಮಖ">ಮಖ</option>
-                    <option value="ಪುಬ್ಬ">ಪುಬ್ಬ (ಪೂರ್ವ ಫಲ್ಗುಣಿ)</option>
-                    <option value="ಉತ್ತರಾ">ಉತ್ತರಾ (ಉತ್ತರ ಫಲ್ಗುಣಿ)</option>
-                    <option value="ಹಸ್ತ">ಹಸ್ತ</option>
-                    <option value="ಚಿತ್ತಾ">ಚಿತ್ತಾ ನಕ್ಷತ್ರ</option>
-                    <option value="ಸ್ವಾತಿ">ಸ್ವಾತಿ</option>
-                    <option value="ವಿಶಾಖ">ವಿಶಾಖ</option>
-                    <option value="ಅನುರಾಧ">ಅನುರಾಧ</option>
-                    <option value="ಜ್ಯೇಷ್ಠ">ಜ್ಯೇಷ್ಠ</option>
-                    <option value="ಮೂಲ">ಮೂಲ</option>
-                    <option value="ಪೂರ್ವಾಷಾಡಾ">ಪೂರ್ವಾಷಾಡಾ</option>
-                    <option value="ಉತ್ತರಾಷಾಡಾ">ಉತ್ತರಾಷ್ಟಾ</option>
-                    <option value="ಶ್ರವಣ">ಶ್ರವಣ</option>
-                    <option value="ಧನಿಷ್ಠ">ಧನಿಷ್ಠ</option>
-                    <option value="ಶತಭಿಷ">ಶತಭಿಷ</option>
-                    <option value="ಪೂರ್ವಭಾದ್ರ">ಪೂರ್ವಭಾದ್ರ</option>
-                    <option value="ಉತ್ತರಭಾದ್ರ">ಉತ್ತರಭಾದ್ರ</option>
-                    <option value="ರೇವತಿ">ರೇವತಿ</option>
-                </select>
-            </div>
-        </div>
-        <button type="button" onclick="addSet()">ಇನ್ನೊಂದು ಹೆಸರು, ರಾಶಿ, ನಕ್ಷತ್ರ ಸೇರಿಸಿ 
-</button><br><br>
-
-        <input type="submit" value="Submit">
-    </form>
 </body>
 </html>

@@ -230,7 +230,32 @@
             }
         }
          
-     
+ function populateYearOptions() {
+            var currentYear = new Date().getFullYear();
+            var yearSelect = document.getElementById('yearOption');
+            yearSelect.innerHTML = ''; 
+
+            for (var i = 0; i <= 5; i++) {
+                var year = currentYear + i;
+                var option = document.createElement('option');
+                option.value = year;
+                option.textContent = year;
+                yearSelect.appendChild(option); // Add the option to the select
+            }
+        }
+
+        function handleSelectChange() {
+            var selectElement = document.getElementById('svt');
+            var selectedValue = selectElement.value;
+            var additionalOptionDiv = document.getElementById('additionalOption');
+            
+            if (selectedValue === 'ಒಂದು ದಿನದ ಸೇವೆ,500') {
+                additionalOptionDiv.style.display = 'block'; 
+                populateYearOptions(); 
+            } else {
+                additionalOptionDiv.style.display = 'none'; 
+            }
+        }
 function clearFormInputs() {
     setTimeout(function() {
       document.getElementById('myForm').reset();  
@@ -243,7 +268,7 @@ function clearFormInputs() {
         <h1>ಶ್ರೀದುರ್ಗಾಪರಮೇಶ್ವರಿ ಸೇವಾಟ್ರಸ್ಟ್, ವಿಶ್ವನಾಥಪುರ(R) - ದೈನಂದಿನ ಪೂಜಾ ಸೇವೆ</h1>
         <details>
         <summary>ದೈನಂದಿಕ ಪೂಜೆ ಸೇವೆಯ ಬಗ್ಗೆ</summary>
-    <p>ದೈನಂದಿನ ಪೂಜೆ ಸೇವೆಗೆ ತಮ್ಮ ಹೆಸರನ್ನು ನೋಂದಾಯಿಸಲು ಇಚ್ಛಿಸುವವರು ರೂ. 500ನ್ನು ಕಾರ್ಯದರ್ಶಿ ಅವರಿಗೆ ಪಾವತಿಸಿ ನಂತರ ಇಲ್ಲಿ ಅರ್ಜಿ ಸಲ್ಲಿಸಬೇಕು. ಅವರು ಆಯ್ದ ವರ್ಷದಲ್ಲಿ, ಪ್ರತಿವರ್ಷದ ಆ ದಿನ, ರಾಶಿ ಮತ್ತು ನಕ್ಷತ್ರ ಪ್ರಕಾರ ಅವರ ಹೆಸರಿನಲ್ಲಿ ಪೂಜೆ ನೆರವೇರಿಸಲಾಗುತ್ತದೆ ಮತ್ತು ಪ್ರಸಾದ ಕಳಿಸಿಕೊಡಲಾಗುತ್ತದೆ. ದಯವಿಟ್ಟು ನಿಮ್ಮ ಪೂರ್ಣ ಅಂಚೆ ವಿಳಾಸವನ್ನು, ಪಿನ್ ಕೋಡ್ ಸಹಿತ, ನಮೂದಿಸಿ.
+    <p>ದೈನಂದಿನ ಪೂಜೆ ಸೇವೆಗೆ ತಮ್ಮ ಹೆಸರನ್ನು ನೋಂದಾಯಿಸಲು ಇಚ್ಛಿಸುವವರು ರೂ. 500ನ್ನು/5000/- ಕಾರ್ಯದರ್ಶಿ ಅವರಿಗೆ ಪಾವತಿಸಿ ನಂತರ ಇಲ್ಲಿ ಅರ್ಜಿ ಸಲ್ಲಿಸಬೇಕು. ಅವರು ಆಯ್ದ ವರ್ಷದಲ್ಲಿ, ಪ್ರತಿವರ್ಷದ ಆ ದಿನ, ರಾಶಿ ಮತ್ತು ನಕ್ಷತ್ರ ಪ್ರಕಾರ ಅವರ ಹೆಸರಿನಲ್ಲಿ ಪೂಜೆ ನೆರವೇರಿಸಲಾಗುತ್ತದೆ ಮತ್ತು ಪ್ರಸಾದ ಕಳಿಸಿಕೊಡಲಾಗುತ್ತದೆ. ದಯವಿಟ್ಟು ನಿಮ್ಮ ಪೂರ್ಣ ಅಂಚೆ ವಿಳಾಸವನ್ನು, ಪಿನ್ ಕೋಡ್ ಸಹಿತ, ನಮೂದಿಸಿ.
 </p>
   </details><br><br>
         <input type="hidden" name="action" value="newseva">
@@ -256,7 +281,20 @@ function clearFormInputs() {
 
         <label for="email">ಇಮೇಲ್ ವಿಳಾಸ(ಕಡ್ಡಾಯವಿಲ್ಲ. ಆದರೆ ಸೇವೆ ರಶೀದಿ ಪಡೆಯಲು ಇದನ್ನು ಸೇರಿಸಲು ಶಿಫಾರಸ್ಸು ಮಾಡುತ್ತೇವೆ ):</label>
         <input type="email" id="email" name="email"><br>
-       <h5>ಸೇವೆಯ ದಿನ (ಈ ದಿನದಂದು ಪ್ರತಿ ವರ್ಷ ಪೂಜಾ ಸೇವೆ ನೆಡೆಯಲಿದೆ):</h5>
+      <label for="svt">ಸೇವೆಯ ವಿಭಾಗ:</label>
+       <select id="svt" name="svt" onchange="handleSelectChange()">
+       <option value="ಪ್ರತಿವರ್ಷ,5000">ಪ್ರತಿವರ್ಷ (ರೂ 5000/-)</option>
+    
+   
+        <option value="ಒಂದು ದಿನದ ಸೇವೆ,500">ಒಂದು ದಿನದ ಸೇವೆ (ರೂ 500/-)</option></select>
+       <br>
+
+    <div id="additionalOption" style="display:none;">
+        <label for="yearOption">ವರ್ಷ :</label>
+        <select id="yearOption" name="yearOption">
+        </select>
+    </div><br>
+       <h5>ಸೇವೆಯ ದಿನ :</h5>
      <select id="maasa" name="maasa">
      <option value="ಚೈತ್ರ">ಚೈತ್ರ ಮಾಸ</option>
     <option value="ವೈಶಾಖ">ವೈಶಾಖ ಮಾಸ</option>

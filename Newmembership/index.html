@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Proceed Confirmation</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+  
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Roboto', sans-serif;
+      background-color: #f4f7fa;
+      color: #333;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      padding: 20px;
+    }
+
+    .container {
+      background-color: #fff;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      max-width: 400px;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 24px;
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    .question {
+      margin-bottom: 20px;
+      font-size: 18px;
+      font-weight: 500;
+      color: #555;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    label {
+      margin-right: 20px;
+      font-size: 16px;
+      color: #666;
+      cursor: pointer;
+    }
+
+    input[type="radio"] {
+      margin-right: 8px;
+    }
+
+    .button {
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      padding: 12px 20px;
+      font-size: 16px;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .button:hover {
+      background-color: #0056b3;
+    }
+
+    .message {
+      margin-top: 20px;
+      font-size: 18px;
+      font-weight: 500;
+      color: #ff6b6b;
+      display: none;
+    }
+
+    @media (max-width: 500px) {
+      .container {
+        padding: 20px;
+      }
+
+      h1 {
+        font-size: 20px;
+      }
+
+      .button {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>ಶ್ರೀದುರ್ಗಾಪರಮೇಶ್ವರಿ ಸೇವಾ ಟ್ರಸ್ಟ್ ಹೊಸ ಸದಸ್ಯತ್ವ 
+</h1>
+    <p class="question">ನೀವು ವಿಶ್ವನಾಥಪುರ ಕುಟುಂಬದ ಸದಸ್ಯರೇ? 
+</p>
+    
+    <form id="confirmationForm" onsubmit="return checkAnswer(event)">
+      <div class="form-group">
+        <label>
+          <input type="radio" name="answer" value="yes"> ಹೌದು 
+        </label>
+        <label>
+          <input type="radio" name="answer" value="no"> ಅಲ್ಲ 
+        </label>
+      </div>
+      
+      <button type="submit" class="button">Submit</button>
+    </form>
+
+    <p id="message" class="message">ಕ್ಷಮೆ ಇರಲಿ. ಸದಸ್ಯತ್ವ ಸದ್ಯಕ್ಕೆ ವಿಶ್ವನಾಥಪುರ ಕುಟುಂಬ ಸದಸ್ಯರಿಗೆ ಮಾತ್ರ ಸೀಮಿತವಾಗಿದೆ. </p>
+  </div>
+
+  <script>
+    function checkAnswer(event) {
+      event.preventDefault();
+
+      const answer = document.querySelector('input[name="answer"]:checked');
+
+      if (answer) {
+        if (answer.value === 'yes') {
+          window.location.href = "https://example.com"; 
+        } else {
+          document.getElementById('message').style.display = 'block'; // 
+        }
+      } else {
+        alert('Please select an answer.');
+      }
+    }
+  </script>
+
+</body>
+</html>

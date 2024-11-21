@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ಶ್ರೀದುರ್ಗಾಪರಮೇಶ್ವರಿ ಸೇವಾಟ್ರಸ್ಟ್, ವಿಶ್ವನಾಥಪುರ(R)</title>
+    <title>Modern Summary Design</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <style>
@@ -88,9 +88,10 @@ h2 {
     margin-bottom: 1rem;
     font-size: 1.75rem;
 }
-p{
-font-size:12px;
-color: purple
+
+p {
+    font-size: 12px;
+    color: black;
 }
 
 details {
@@ -101,10 +102,31 @@ summary {
     cursor: pointer;
     font-weight: bold;
     font-size: 1.2rem;
+    padding: 10px 20px;
+    background-color: #2980b9;
+    color: #fff;
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: background-color 0.3s ease;
+    width: 100%;
+    max-width: 900px;
 }
 
-summary::marker {
-    color: #2980b9;
+summary:hover {
+    background-color: #3498db; /* Darken the background on hover */
+}
+
+summary::after {
+    content: '▼';
+    font-size: 1.2rem;
+    margin-left: 10px;
+    transition: transform 0.3s ease;
+}
+
+details[open] summary::after {
+    transform: rotate(180deg); /* Rotate the chevron when expanded */
 }
 
 footer {
@@ -137,6 +159,24 @@ footer {
         font-size: 1.5rem;
     }
 }
+.about .image-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.about .image-gallery img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease-in-out;
+}
+
+.about .image-gallery img:hover {
+    transform: scale(1.05); /* Slight zoom effect on hover */
+}
 
 @media (max-width: 480px) {
     .hero h1 {
@@ -165,23 +205,35 @@ footer {
             <h3>ಶ್ರೀದುರ್ಗಾಪರಮೇಶ್ವರಿ ಸೇವಾಟ್ರಸ್ಟ್(R), ವಿಶ್ವನಾಥಪುರ</h3>
         </section>
         <section class="about">
-            <h3>ನಮ್ಮ ಬಗ್ಗೆ</h3>
+            <h4>ನಮ್ಮ ಬಗ್ಗೆ</h4><br>
             <details>
-                <summary>Overview</summary>
-                <p>ಶ್ರೀ ದುರ್ಗಾಪರಮೇಶ್ವರಿ ಸೇವಾ ಟ್ರಸ್ಟ್ ಒಂದು ಸರ್ಕಾರದಿಂದ ಮಾನ್ಯತೆ ಪಡೆದ ರಿಜಿಸ್ಟರ್ಡ್ ಟ್ರಸ್ಟ್ ಆಗಿದ್ದು, ಇದರ ಮುಖ್ಯ ಉದ್ದೇಶವು ವಿಶ್ವನಾಥಪುರ ಅಗ್ರಹಾರ ದೇವರ ಪೂಜೆಯನ್ನು ಇಂದಿನ ಪೀಳಿಗೆಯಿಂದ ಆರಂಭಿಸಿ ಮುಂದಿನ ಪೀಳಿಗೆಗಳಿಗೆ ನಿರಂತರವಾಗಿ ಮುಂದುವರಿಸುವುದಾಗಿದೆ. ಈ ಟ್ರಸ್ಟ್ ದೇವಾಲಯದ ಪೂಜಾ ಸೇವೆಗಳನ್ನು ಸಮರ್ಪಕವಾಗಿ ನಿರ್ವಹಿಸಲು, ಆಚಾರ-ವಿಚಾರಗಳನ್ನು ಸ್ಥಾಪಿಸಲು ಮತ್ತು ದೇವರ ಸೇವೆಯನ್ನು ಶ್ರದ್ಧೆ ಹಾಗೂ ಸಮರ್ಪಣೆಯೊಂದಿಗೆ ಮುಂದುವರಿಸಲು ಬದ್ಧವಾಗಿದೆ. ಜೊತೆಗೆ, ಈ ಟ್ರಸ್ಟ್ ನುಡಿಸುವ ಪೂಜಾ ಕ್ರಮಗಳು ಮತ್ತು ಸೇವೆಗಳು ಮುಂದಿನ ಪೀಳಿಗೆಗಳಿಗೆ ಶ್ರದ್ಧೆ ಮತ್ತು ಗೌರವದೊಂದಿಗೆ ಹಸ್ತಾಂತರವಾಗುವಂತೆ ಖಚಿತಪಡಿಸಿಕೊಳ್ಳುತ್ತದೆ</p>
-            </details>
+                <summary>ಟ್ರಸ್ಟ್ ನ ಬಗ್ಗೆ</summary><br>
+                <p>ಶ್ರೀ ದುರ್ಗಾಪರಮೇಶ್ವರಿ ಸೇವಾ ಟ್ರಸ್ಟ್ ಒಂದು ಸರ್ಕಾರದಿಂದ ಮಾನ್ಯತೆ ಪಡೆದ ರಿಜಿಸ್ಟರ್ಡ್ ಟ್ರಸ್ಟ್(Reg ID: KPP-4-00034-2024-25) ಆಗಿದ್ದು, ಇದರ ಮುಖ್ಯ ಉದ್ದೇಶವು ವಿಶ್ವನಾಥಪುರ ಅಗ್ರಹಾರ ದೇವರ ಪೂಜೆಯನ್ನು ಇಂದಿನ ಪೀಳಿಗೆಯಿಂದ ಆರಂಭಿಸಿ ಮುಂದಿನ ಪೀಳಿಗೆಗಳಿಗೆ ನಿರಂತರವಾಗಿ ಮುಂದುವರಿಸುವುದಾಗಿದೆ. ಈ ಟ್ರಸ್ಟ್ ದೇವಾಲಯದ ಪೂಜಾ ಸೇವೆಗಳನ್ನು ಸಮರ್ಪಕವಾಗಿ ನಿರ್ವಹಿಸಲು, ಆಚಾರ-ವಿಚಾರಗಳನ್ನು ಸ್ಥಾಪಿಸಲು ಮತ್ತು ದೇವರ ಸೇವೆಯನ್ನು ಶ್ರದ್ಧೆ ಹಾಗೂ ಸಮರ್ಪಣೆಯೊಂದಿಗೆ ಮುಂದುವರಿಸಲು ಬದ್ಧವಾಗಿದೆ. ಜೊತೆಗೆ, ಈ ಟ್ರಸ್ಟ್ ನುಡಿಸುವ ಪೂಜಾ ಕ್ರಮಗಳು ಮತ್ತು ಸೇವೆಗಳು ಮುಂದಿನ ಪೀಳಿಗೆಗಳಿಗೆ ಶ್ರದ್ಧೆ ಮತ್ತು ಗೌರವದೊಂದಿಗೆ ಹಸ್ತಾಂತರವಾಗುವಂತೆ ಖಚಿತಪಡಿಸಿಕೊಳ್ಳುತ್ತದೆ</p>
+            </details> <details> <summary>ವಿಶ್ವನಾಥಪುರ ಅಗ್ರಹಾರ</summary><br>
+            <div class="image-gallery">
+                <img src="https://lh3.googleusercontent.com/p/AF1QipNApckmGY88t00ShhURQJ9qvgfPmoa2Y-WtrhGD=s680-w680-h510" alt="Vishwanathapura Agrahara 1">
+                <img src="https://lh3.googleusercontent.com/p/AF1QipM7yQ_fPfy67CHAEEx0aMCO0Op9JNkHYGigMRhM=s680-w680-h510" alt="Vishwanathapura Agrahara 2">
+                <img src="https://lh3.googleusercontent.com/p/AF1QipPMuCU_DDIj14AR3xTQRRg-VN_IqLyTTGOZ_j8B=s680-w680-h510" alt="Vishwanathapura Agrahara 3">
+                <img src="https://lh3.googleusercontent.com/p/AF1QipPHJ_QLT3L9aYCI1m6VzOMTtbq7TkdPWomeDkA1=s680-w680-h510" alt="Vishwanathapura Agrahara 4">
+                <img src="https://lh3.googleusercontent.com/p/AF1QipM7yQ_fPfy67CHAEEx0aMCO0Op9JNkHYGigMRhM=s680-w680-h510" alt="Vishwanathapura Agrahara 5">
+            </div> </details>
         </section>
         <section class="membership">
-            <h3>ಸದಸ್ಯತ್ವದ ಬಗ್ಗೆ</h3>
+            <h4>ಸದಸ್ಯತ್ವದ ಬಗ್ಗೆ</h4><br>
             <details>
-                <summary>Membership</summary>
+                <summary>Membership</summary><br>
                 <p>ಟ್ರಸ್ಟ್ ನ ಸದಸ್ಯತ್ವ ವಿಶ್ವನಾಥಪುರ ಕುಟುಂಬದ ಸದಸ್ಯರಿಗೆ ಮಾತ್ರ ಮೀಸಲಾಗಿದೆ. ಕುಟುಂಬದ ಯಾವುದೇ ಸದಸ್ಯ ರೂ ೧೦೦೦ ಪಾವತಿಸಿ ಅಜೀವ ಸದಸ್ಯರಾಗಬಹುದು</p>
             </details>
         </section>
         <section class="help">
-            <h3>ಸಹಾಯ</h3>
+            <h4>ಸಹಾಯ</h4><br>
             <details>
-                <summary>Help</summary>
+                <summary>ವಿಳಾಸ </summary><br>
+                <p>F828+XC8,ವಿಶ್ವನಾಥಪುರ,ಕೊಪ್ಪ ತಾಲೂಕು, ಚಿಕ್ಕಮಗಳೂರು ಜಿಲ್ಲೆ - 577126 </p>
+            </details>
+        
+            <details>
+                <summary>Help</summary><br>
                 <p><strong>ವಿಶೇಷ ಸೂಚನೆ:</strong> ಮೇಲೆ ನೀಡಿರುವ ಲಿಂಕ್ ಕಾರ್ಯನಿರ್ವಹಿಸದಿದ್ದರೆ ದಯವಿಟ್ಟು "Incognito mode" ನಲ್ಲಿ ತೆರೆಯಿರಿ.</p>
             </details>
         </section>

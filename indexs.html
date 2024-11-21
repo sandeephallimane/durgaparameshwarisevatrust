@@ -3,154 +3,455 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Form with Image Upload</title>
-</head>
-<body>
-    <h1>Submit Form</h1>
-    <form id="form">
-        <label for="field1">Field 1:</label>
-        <input type="text" id="field1" name="field1" required><br><br>
+    <title>ಶ್ರೀದುರ್ಗಾಪರಮೇಶ್ವರಿ ಸೇವಾಟ್ರಸ್ಟ್, ವಿಶ್ವನಾಥಪುರ(R) - ದೈನಂದಿನ ಪೂಜಾ ಸೇವೆ ಫಾರ್ಮ್</title>
+    <style>
+    .topnav {
+      overflow: hidden;
+      background-color: #a38200;
+    }
 
-        <label for="field2">Field 2:</label>
-        <input type="text" id="field2" name="field2" required><br><br>
+    .topnav a, .topnav button {
+      float: left;
+      color: #f2f2f2;
+      text-align: center;
+      padding: 12px;
+      text-decoration: none;
+      font-size: 15px;
+      border: none;
+      background-color: transparent;
+      cursor: pointer;
+    }
 
-        <label for="field3">Field 3:</label>
-        <input type="text" id="field3" name="field3" required><br><br>
+    .topnav a:hover, .topnav button:hover {
+      background-color: #ddd;
+      color: black;
+    }
 
-        <label for="field4">Field 4:</label>
-        <input type="text" id="field4" name="field4" required><br><br>
+    .topnav a.active {
+      background-color: #04AA6D;
+      color: white;
+    }
 
-        <label for="field5">Field 5:</label>
-        <input type="text" id="field5" name="field5" required><br><br>
+    .topnav button {
+      font-size: 16px;
+    }
 
-        <label for="field6">Field 6:</label>
-        <input type="text" id="field6" name="field6" required><br><br>
-
-        <label for="image">Upload Image:</label>
-        <input type="file" id="image" name="image" accept="image/*" required><br><br>
-
-        <button type="submit">Submit</button>
-    </form>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    .topnav a, .topnav button {
+      transition: background-color 0.3s ease;
+    }
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 20px;
+            background-color: #f7f7f7;
+        }
+        h3, label, h4,h5 {
+            font-family: Arial, sans-serif;
+            color: purple;
+        }
+        h6 {
+  width: 300px;
+  height: 40px;
+  background-color: green;
+  text-align: center;
+  color:white;
+  position: relative;
+  padding: 10px;
+  animation-name: example;
+  animation-duration: 12s;
+  animation-timing-function: linear;
+  animation-delay: 2s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+        @keyframes example {
+  0%   {background-color:green; left:0px; top:0px;}
+  50%  {background-color:green; left:300px; top:0px;}
+  
+}
+        img {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            width: 100%;
+            max-width: 600px;
+            margin: auto;
+        }
+        h2 {
+            text-align: center;
+        }
+        label {
+            font-size: 16px;
+            margin-bottom: 8px;
+            display: block;
+        }
+        input, select {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 12px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+        }
+        button {
+            background-color: #00a2c3;
+            color: white;
+            padding: 10px ;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        summary {
+            background-color: #bb00be;
+            color: white;
+            padding: 10px;
+            border: none;
+            font-size: 12px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        p {
+            color: #002585;
+            font-size: 12px;
+        }
+          a {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .input-group {
+            margin-bottom: 15px;
+        }
+        .remove-row {
+            background-color: #f44336;
+            color: white;
+            padding: 5px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        .remove-row:hover {
+            background-color: #d32f2f;
+        }
+        .add-row {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        #myForm {
+            display: none;
+        }
+        #hp {
+            display: block;
+        }
+        #downloadForm {
+            display: none;
+        }
+        .form-container {
+            display: none;
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #f2f2f2;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+    </style>
     <script>
-        document.getElementById('form').addEventListener('submit', async function(e) {
-            e.preventDefault();
-
-            // Get form data
-            const formData = new FormData(this);
-            const fields = {
-                field1: formData.get('field1'),
-                field2: formData.get('field2'),
-                field3: formData.get('field3'),
-                field4: formData.get('field4'),
-                field5: formData.get('field5'),
-                field6: formData.get('field6')
-            };
-
-            // Get the image and convert it to base64
-            const imageFile = formData.get('image');
-            const imageBase64 = await convertImageToBase64(imageFile);
-
-            // Generate PDF (using jsPDF library)
-            const pdfBase64 = await generatePDF(fields, imageBase64);
-
-            // Send data to Google Apps Script Web App
-            await sendDataToGoogleAppScript(fields, pdfBase64);
-        });
-
-        // Convert image file to base64
-        function convertImageToBase64(file) {
-            return new Promise((resolve, reject) => {
-                const reader = new FileReader();
-                reader.onloadend = function() {
-                    resolve(reader.result.split(',')[1]); // Remove the data:image part
-                };
-                reader.onerror = reject;
-                reader.readAsDataURL(file);
-            });
+        let setCount = 1;
+        function addSet() {
+            setCount++;
+            const setContainer = document.getElementById('field7Sets');
+            const newSet = document.createElement('div');
+            newSet.className = 'set';
+            newSet.innerHTML = `
+                <input type="text" id="field7a${setCount}" name="field7a${setCount}" placeholder="ಹೆಸರು" oninput="validateKannadaInput(event)" required>
+                <select type="text" id="field7c${setCount}" name="field7c${setCount}">
+                    <option value="ಮೇಷ">ಮೇಷ</option>
+                    <option value="ವೃಷಭ">ವೃಷಭ</option>
+                    <option value="ಮಿಥುನ">ಮಿಥುನ</option>
+                    <option value="ಕಟಕ">ಕಟಕ</option>
+                    <option value="ಸಿಂಹ">ಸಿಂಹ</option>
+                    <option value="ಕನ್ಯಾ">ಕನ್ಯಾ</option>
+                    <option value="ತುಲಾ">ತುಲಾ</option>
+                    <option value="ವೃಶ್ಚಿಕ">ವೃಶ್ಚಿಕ</option>
+                    <option value="ಧನು">ಧನು</option>
+                    <option value="ಮಕರ">ಮಕರ</option>
+                    <option value="ಕುಂಭ">ಕುಂಭ</option>
+                    <option value="ಮೀನ">ಮೀನ</option>
+                </select>
+                <select type="text" id="field7b${setCount}" name="field7b${setCount}">
+                    <option value="ಅಶ್ವಿನಿ">ಅಶ್ವಿನಿ</option>
+                    <option value="ಭರಣಿ">ಭರಣಿ</option>
+                    <option value="ಕೃತಿಕಾ">ಕೃತಿಕಾ</option>
+                    <option value="ರೋಹಿಣಿ">ರೋಹಿಣಿ</option>
+                    <option value="ಮೃಗಶಿರ">ಮೃಗಶಿರ</option>
+                    <option value="ಆರ್ದ್ರಾ">ಆರ್ದ್ರಾ (ಆರಿದ್ರಾ)</option>
+                    <option value="ಪುನರ್ವಸು">ಪುನರ್ವಸು</option>
+                    <option value="ಪುಷ್ಯ">ಪುಷ್ಯ</option>
+                    <option value="ಆಶ್ಲೇಷ">ಆಶ್ಲೇಷ</option>
+                    <option value="ಮಖ">ಮಖ</option>
+                    <option value="ಪುಬ್ಬ">ಪುಬ್ಬ (ಪೂರ್ವ ಫಲ್ಗುಣಿ)</option>
+                    <option value="ಉತ್ತರಾ">ಉತ್ತರಾ (ಉತ್ತರ ಫಲ್ಗುಣಿ)</option>
+                    <option value="ಹಸ್ತ">ಹಸ್ತ</option>
+                    <option value="ಚಿತ್ತಾ">ಚಿತ್ತಾ ನಕ್ಷತ್ರ</option>
+                    <option value="ಸ್ವಾತಿ">ಸ್ವಾತಿ</option>
+                    <option value="ವಿಶಾಖ">ವಿಶಾಖ</option>
+                    <option value="ಅನುರಾಧ">ಅನುರಾಧ</option>
+                    <option value="ಜ್ಯೇಷ್ಠ">ಜ್ಯೇಷ್ಠ</option>
+                    <option value="ಮೂಲ">ಮೂಲ</option>
+                    <option value="ಪೂರ್ವಾಷಾಡಾ">ಪೂರ್ವಾಷಾಡಾ</option>
+                    <option value="ಉತ್ತರಾಷಾಡಾ">ಉತ್ತರಾಷ್ಟಾ</option>
+                    <option value="ಶ್ರವಣ">ಶ್ರವಣ</option>
+                    <option value="ಧನಿಷ್ಠ">ಧನಿಷ್ಠ</option>
+                    <option value="ಶತಭಿಷ">ಶತಭಿಷ</option>
+                    <option value="ಪೂರ್ವಭಾದ್ರ">ಪೂರ್ವಭಾದ್ರ</option>
+                    <option value="ಉತ್ತರಭಾದ್ರ">ಉತ್ತರಭಾದ್ರ</option>
+                    <option value="ರೇವತಿ">ರೇವತಿ</option>
+                </select>
+            `;
+            setContainer.appendChild(newSet);
         }
 
-        // Generate a PDF from the form fields and image with custom template
-        function generatePDF(fields, imageBase64) {
-            return new Promise((resolve) => {
-                // Using the jsPDF object from the UMD module
-                const { jsPDF } = window.jspdf;
-                const doc = new jsPDF();
+        function validateKannadaInput(event) {
+            const kannadaRegex = /^[\u0C80-\u0CFF\s]*$/;
+            const inputField = event.target;
 
-                // Get image width and height for scaling (optional)
-                const img = new Image();
-                img.onload = function() {
-                    const imgWidth = 50; // Set the desired width of the image
-                    const imgHeight = 50 * (img.height / img.width); // Maintain aspect ratio
+            const inputValue = inputField.value;
 
-                    // Align image to the right
-                    const pageWidth = doc.internal.pageSize.width;
-                    const imageX = pageWidth - imgWidth - 10; // 10px padding from right edge
-                    const imageY = 10; // Y-position for image
-
-                    doc.addImage(imageBase64, 'JPEG', imageX, imageY, imgWidth, imgHeight); // Right-aligned image
-
-                    // Add static text and dynamic fields (e.g., date, form fields)
-                    const todayDate = new Date().toLocaleDateString(); // Get today's date
-
-                    doc.setFontSize(18);
-                    doc.text('Vishwanatapura Seva Trust', 10, 70);
-                    doc.setFontSize(12);
-                    doc.text(`Shree, ${fields.field1} has joined trust on ${todayDate} by giving below details:`, 10, 80);
-
-                    // Add the details in a table format
-                    const tableData = [
-                        ['Name:', fields.field1],
-                        ['Name 2:', fields.field2],
-                        ['Name 3:', fields.field3],
-                        ['Name 4:', fields.field4],
-                        ['Name 5:', fields.field5],
-                    ];
-
-                    let yOffset = 90; // Starting Y position for table
-
-                    // Iterate over the tableData array to create rows
-                    tableData.forEach(([label, value]) => {
-                        doc.text(label, 10, yOffset);
-                        doc.text(value, 60, yOffset);
-                        yOffset += 10; // Increment Y position for next row
-                    });
-
-                    // Add closing text
-                    doc.text('Thank you', 10, yOffset + 20);
-
-                    // Output the PDF as base64 string
-                    const pdfBase64 = doc.output('datauristring'); 
-                    
-                    resolve(pdfBase64.split(',')[1]); // Remove the data:application/pdf part
-                };
-                img.src = 'data:image/jpeg;base64,' + imageBase64;
-            });
-        }
-
-        // Send data to Google Apps Script Web App
-        async function sendDataToGoogleAppScript(fields, pdfBase64) {
-            const url = 'https://script.google.com/macros/s/AKfycbxsPeI1sTYj83Y44wVFtVy4pphF-HxzrmDxBhumFtX4ke003li5soRLm7MfvvCW6Xm_/exec';
-            const payload = {
-                method: 'POST',
-                body: JSON.stringify({
-                    fields: fields,
-                    pdfBase64: pdfBase64
-                }),
-                headers: { 
-                    'Content-Type': 'application/json' 
-                }
-            };
-
-            try {
-                const response = await fetch(url, payload);
-                const data = await response.json();
-                console.log('Success:', data);
-            } catch (error) {
-                console.error('Error:', error);
+            if (!kannadaRegex.test(inputValue)) {
+                alert("Please enter only Kannada characters.");
+                inputField.value = inputValue.replace(/[^ \u0C80-\u0CFF]/g, ''); 
             }
         }
+
+        function toggleForms(event) {
+            if (event) event.preventDefault();
+            
+            var myForm = document.getElementById("myForm");
+            var hpForm = document.getElementById("hp");
+            var aForm = document.getElementById("downloadForm");
+            myForm.style.display = "block"; 
+            hpForm.style.display = "none";
+            aForm.style.display = "none";
+        }
+         function toggleForms1(event) {
+            if (event) event.preventDefault();
+            
+            var myForm = document.getElementById("myForm");
+            var hpForm = document.getElementById("hp");
+            var aForm = document.getElementById("downloadForm");
+            
+                myForm.style.display = "none"; 
+                hpForm.style.display = "none";
+                aForm.style.display = "block";
+        
+        }
+     function clearFormInputs() {
+    setTimeout(function() {
+      document.getElementById('downloadForm').reset();  
+    }, 10);
+  }
+function clearFormInputs1() {
+    setTimeout(function() {
+      document.getElementById('myForm').reset();  
+    }, 10);
+  }
     </script>
+</head>
+<body>
+    <form id="hp">
+    <div class="topnav">
+   <a class="active" href="#home">Home</a>
+  <button type="button" onclick="window.location.href='https://script.google.com/macros/s/AKfycbwoobJGUV_YzcOc6ad5KI_lEEPxlebNqGEoPG4gPrtqnaBxXE3W25sSLEhmvAmGN85H/exec?action=mf&nd='">ಹೊಸ ಸದಸ್ಯತ್ವ</button>
+  <button type="button" onclick="toggleForms(event)">ದೈನಂದಿನ ಸೇವೆ</button>
+  <button type="button" onclick="toggleForms1(event)">ಅಡ್ಮಿನ್ Menu</button>
+</div>
+
+<div style="padding-left:16px">
+  <h3 style="color:#001285;text-align:center;"><u>ಶ್ರೀದುರ್ಗಾಪರಮೇಶ್ವರಿ ಸೇವಾಟ್ರಸ್ಟ್, ವಿಶ್ವನಾಥಪುರ(R)</u></h3><br><br>
+  <details>
+    <summary>ನಮ್ಮ ಬಗ್ಗೆ</summary>
+    <p>ಶ್ರೀ ದುರ್ಗಾಪರಮೇಶ್ವರಿ ಸೇವಾ ಟ್ರಸ್ಟ್ ಒಂದು ಸರ್ಕಾರದಿಂದ ಮಾನ್ಯತೆ ಪಡೆದ ರಿಜಿಸ್ಟರ್ಡ್ ಟ್ರಸ್ಟ್ ಆಗಿದ್ದು, ಇದರ ಮುಖ್ಯ ಉದ್ದೇಶವು ವಿಶ್ವನಾಥಪುರ ಅಗ್ರಹಾರ ದೇವರ ಪೂಜೆಯನ್ನು ಇಂದಿನ ಪೀಳಿಗೆಯಿಂದ ಆರಂಭಿಸಿ ಮುಂದಿನ ಪೀಳಿಗೆಗಳಿಗೆ ನಿರಂತರವಾಗಿ ಮುಂದುವರಿಸುವುದಾಗಿದೆ. ಈ ಟ್ರಸ್ಟ್ ದೇವಾಲಯದ ಪೂಜಾ ಸೇವೆಗಳನ್ನು ಸಮರ್ಪಕವಾಗಿ ನಿರ್ವಹಿಸಲು, ಆಚಾರ-ವಿಚಾರಗಳನ್ನು ಸ್ಥಾಪಿಸಲು ಮತ್ತು ದೇವರ ಸೇವೆಯನ್ನು ಶ್ರದ್ಧೆ ಹಾಗೂ ಸಮರ್ಪಣೆಯೊಂದಿಗೆ ಮುಂದುವರಿಸಲು ಬದ್ಧವಾಗಿದೆ. ಜೊತೆಗೆ, ಈ ಟ್ರಸ್ಟ್ ನುಡಿಸುವ ಪೂಜಾ ಕ್ರಮಗಳು ಮತ್ತು ಸೇವೆಗಳು ಮುಂದಿನ ಪೀಳಿಗೆಗಳಿಗೆ ಶ್ರದ್ಧೆ ಮತ್ತು ಗೌರವದೊಂದಿಗೆ ಹಸ್ತಾಂತರವಾಗುವಂತೆ ಖಚಿತಪಡಿಸಿಕೊಳ್ಳುತ್ತದೆ</p>
+  </details>
+  
+    
+  <details>
+    <summary>ಸದಸ್ಯತ್ವದ ಬಗ್ಗೆ</summary>
+    <p>ಟ್ರಸ್ಟ್ ನ ಸದಸ್ಯತ್ವ ವಿಶ್ವನಾಥಪುರ ಕುಟುಂಬದ ಸದಸ್ಯರಿಗೆ ಮಾತ್ರ ಮೀಸಲಾಗಿದೆ. ಕುಟುಂಬದ ಯಾವುದೇ ಸದಸ್ಯ ರೂ ೧೦೦೦ ಪಾವತಿಸಿ ಅಜೀವ ಸದಸ್ಯರಾಗಬಹುದು.</p>
+  </details>
+  <details>
+    <summary>ಸಹಾಯ </summary>
+    <p><strong>ವಿಶೇಷ ಸೂಚನೆ:</strong> ಮೇಲೆ ನೀಡಿರುವ ಲಿಂಕ್ ಕಾರ್ಯನಿರ್ವಹಿಸದಿದ್ದರೆ ದಯವಿಟ್ಟು "Incognito mode" ನಲ್ಲಿ ತೆರೆಯಿರಿ.</p>
+  </details><br><br>
+</div>
+
+
+    </form>
+ <form id="downloadForm" action="https://script.google.com/macros/s/AKfycbwoobJGUV_YzcOc6ad5KI_lEEPxlebNqGEoPG4gPrtqnaBxXE3W25sSLEhmvAmGN85H/exec" method="POST" onsubmit="clearFormInputs()">
+<h2>Download Member or Seva List</h2>
+<input type="hidden" name="action" value="download">
+<label for="adminID">Admin ID:</label>
+  <input type="text" id="adminID" name="adminID" required><br><br>
+
+  <label for="downloadOption">Select Data to Download:</label>
+  <select id="downloadOption" name="downloadOption" required>
+    <option value="allMembersap,">All Membership Approved List</option>
+    <option value="allSevaap,">All Seva Approved List</option>
+    <option value="allMembersnap,">Membership not approved list</option>
+    <option value="allSevanap,">Seva not Approved list</option>
+    <optgroup label="Seva List by Maasa">
+        <option value="sevaByMaasa,ಚೈತ್ರ">ಚೈತ್ರ ಮಾಸ</option>
+        <option value="sevaByMaasa,ವೈಶಾಖ">ವೈಶಾಖ ಮಾಸ</option>
+        <option value="sevaByMaasa,ಜ್ಯೇಷ್ಠ">ಜ್ಯೇಷ್ಠ ಮಾಸ</option>
+        <option value="sevaByMaasa,ಆಷಾಢ">ಆಷಾಢ ಮಾಸ</option>
+        <option value="sevaByMaasa,ಶ್ರಾವಣ">ಶ್ರಾವಣ ಮಾಸ</option>
+        <option value="sevaByMaasa,ಭಾದ್ರಪದ">ಭಾದ್ರಪದ ಮಾಸ</option>
+        <option value="sevaByMaasa,ಅಶ್ವಿನ">ಅಶ್ವಿನ ಮಾಸ</option>
+        <option value="sevaByMaasa,ಕಾರ್ತಿಕ">ಕಾರ್ತಿಕ ಮಾಸ</option>
+        <option value="sevaByMaasa,ಮಾರ್ಗಶಿರ">ಮಾರ್ಗಶಿರ ಮಾಸ</option>
+        <option value="sevaByMaasa,ಪುಷ್ಯ">ಪುಷ್ಯ ಮಾಸ</option>
+        <option value="sevaByMaasa,ಮಾಘ">ಮಾಘ ಮಾಸ</option>
+        <option value="sevaByMaasa,ಫಾಲ್ಗುಣ">ಫಾಲ್ಗುಣ ಮಾಸ</option>
+    </optgroup>
+</select><br><br>
+  <button type="submit">Get Data</button>
+</form>
+    <form id="myForm" action="https://script.google.com/macros/s/AKfycbwoobJGUV_YzcOc6ad5KI_lEEPxlebNqGEoPG4gPrtqnaBxXE3W25sSLEhmvAmGN85H/exec" method="POST" onsubmit="clearFormInputs1()">
+        <h1>ಶ್ರೀದುರ್ಗಾಪರಮೇಶ್ವರಿ ಸೇವಾಟ್ರಸ್ಟ್, ವಿಶ್ವನಾಥಪುರ(R) - ದೈನಂದಿನ ಪೂಜಾ ಸೇವೆ</h1>
+        <details>
+        <summary>ದೈನಂದಿಕ ಪೂಜೆ ಸೇವೆಯ ಬಗ್ಗೆ</summary>
+    <p>ದೈನಂದಿನ ಪೂಜೆ ಸೇವೆಗೆ ತಮ್ಮ ಹೆಸರನ್ನು ನೋಂದಾಯಿಸಲು ಇಚ್ಛಿಸುವವರು ರೂ. 500ನ್ನು ಕಾರ್ಯದರ್ಶಿ ಅವರಿಗೆ ಪಾವತಿಸಿ ನಂತರ ಇಲ್ಲಿ ಅರ್ಜಿ ಸಲ್ಲಿಸಬೇಕು. ಅವರು ಆಯ್ದ ವರ್ಷದಲ್ಲಿ, ಪ್ರತಿವರ್ಷದ ಆ ದಿನ, ರಾಶಿ ಮತ್ತು ನಕ್ಷತ್ರ ಪ್ರಕಾರ ಅವರ ಹೆಸರಿನಲ್ಲಿ ಪೂಜೆ ನೆರವೇರಿಸಲಾಗುತ್ತದೆ ಮತ್ತು ಪ್ರಸಾದ ಕಳಿಸಿಕೊಡಲಾಗುತ್ತದೆ. ದಯವಿಟ್ಟು ನಿಮ್ಮ ಪೂರ್ಣ ಅಂಚೆ ವಿಳಾಸವನ್ನು, ಪಿನ್ ಕೋಡ್ ಸಹಿತ, ನಮೂದಿಸಿ.
+</p>
+  </details><br><br>
+        <input type="hidden" name="action" value="newseva">
+        
+        <label for="name">ಹೆಸರು:</label>
+        <input type="text" id="name" name="name" required><br>
+
+        <label for="mobile">ಮೊಬೈಲ್:</label>
+        <input type="number" id="mobile" name="mobile" required><br>
+
+        <label for="email">ಇಮೇಲ್ ವಿಳಾಸ(ಕಡ್ಡಾಯವಿಲ್ಲ. ಆದರೆ ಸೇವೆ ರಶೀದಿ ಪಡೆಯಲು ಇದನ್ನು ಸೇರಿಸಲು ಶಿಫಾರಸ್ಸು ಮಾಡುತ್ತೇವೆ ):</label>
+        <input type="email" id="email" name="email"><br>
+       <h5>ಸೇವೆಯ ದಿನ (ಈ ದಿನದಂದು ಪ್ರತಿ ವರ್ಷ ಪೂಜಾ ಸೇವೆ ನೆಡೆಯಲಿದೆ):</h5>
+     <select id="maasa" name="maasa">
+     <option value="ಚೈತ್ರ">ಚೈತ್ರ ಮಾಸ</option>
+    <option value="ವೈಶಾಖ">ವೈಶಾಖ ಮಾಸ</option>
+    <option value="ಜ್ಯೇಷ್ಠ">ಜ್ಯೇಷ್ಠ ಮಾಸ</option>
+    <option value="ಆಷಾಢ">ಆಷಾಢ ಮಾಸ</option>
+    <option value="ಶ್ರಾವಣ">ಶ್ರಾವಣ ಮಾಸ</option>
+    <option value="ಭಾದ್ರಪದ">ಭಾದ್ರಪದ ಮಾಸ</option>
+    <option value="ಅಶ್ವಿನ">ಅಶ್ವಿನ ಮಾಸ</option>
+    <option value="ಕಾರ್ತಿಕ">ಕಾರ್ತಿಕ ಮಾಸ</option>
+    <option value="ಮಾರ್ಗಶಿರ">ಮಾರ್ಗಶಿರ ಮಾಸ</option>
+    <option value="ಪುಷ್ಯ">ಪುಷ್ಯ ಮಾಸ</option>
+    <option value="ಮಾಘ">ಮಾಘ ಮಾಸ</option>
+    <option value="ಫಾಲ್ಗುಣ">ಫಾಲ್ಗುಣ ಮಾಸ</option>
+</select>
+     <select id="tithi" name="tithi">
+    <option value="ಪಾಡ್ಯ ಶುಕ್ಲ ಪಕ್ಷ ">ಪಾಡ್ಯ ಶುಕ್ಲ ಪಕ್ಷ </option>
+    <option value="ಬಿದಿಗೆ ಶುಕ್ಲ ಪಕ್ಷ ">ಬಿದಿಗೆ ಶುಕ್ಲ ಪಕ್ಷ </option>
+    <option value="ತದಿಗೆ ಶುಕ್ಲ ಪಕ್ಷ ">ತದಿಗೆ ಶುಕ್ಲ ಪಕ್ಷ </option>
+    <option value="ಚೌತಿ ಶುಕ್ಲ ಪಕ್ಷ ">ಚೌತಿ ಶುಕ್ಲ ಪಕ್ಷ </option>
+    <option value="ಪಂಚಮಿ ಶುಕ್ಲ ಪಕ್ಷ ">ಪಂಚಮಿ ಶುಕ್ಲ ಪಕ್ಷ </option>
+    <option value="ಷಷ್ಠಿ ಶುಕ್ಲ ಪಕ್ಷ ">ಷಷ್ಠಿ ಶುಕ್ಲ ಪಕ್ಷ </option>
+    <option value="ಸಪ್ತಮಿ ಶುಕ್ಲ ಪಕ್ಷ ">ಸಪ್ತಮಿ ಶುಕ್ಲ ಪಕ್ಷ </option>
+    <option value="ಅಷ್ಟಮಿ ಶುಕ್ಲ ಪಕ್ಷ ">ಅಷ್ಟಮಿ ಶುಕ್ಲ ಪಕ್ಷ </option>
+    <option value="ನವಮಿ ಶುಕ್ಲ ಪಕ್ಷ ">ನವಮಿ ಶುಕ್ಲ ಪಕ್ಷ </option>
+    <option value="ದಶಮಿ ಶುಕ್ಲ ಪಕ್ಷ ">ದಶಮಿ ಶುಕ್ಲ ಪಕ್ಷ </option>
+    <option value="ಏಕಾದಶಿ ಶುಕ್ಲ ಪಕ್ಷ ">ಏಕಾದಶಿ ಶುಕ್ಲ ಪಕ್ಷ </option>
+    <option value="ದ್ವಾದಶಿ ಶುಕ್ಲ ಪಕ್ಷ ">ದ್ವಾದಶಿ ಶುಕ್ಲ ಪಕ್ಷ </option>
+    <option value="ತ್ರಯೋದಶಿ ಶುಕ್ಲ ಪಕ್ಷ ">ತ್ರಯೋದಶಿ ಶುಕ್ಲ ಪಕ್ಷ </option>
+    <option value="ಚತುರ್ದಶಿ ಶುಕ್ಲ ಪಕ್ಷ ">ಚತುರ್ದಶಿ ಶುಕ್ಲ ಪಕ್ಷ </option>
+    <option value="ಪಾಡ್ಯ ಕೃಷ್ಣ ಪಕ್ಷ ">ಪಾಡ್ಯ ಕೃಷ್ಣ ಪಕ್ಷ </option>
+    <option value="ಬಿದಿಗೆ ಕೃಷ್ಣ ಪಕ್ಷ ">ಬಿದಿಗೆ ಕೃಷ್ಣ ಪಕ್ಷ </option>
+    <option value="ತದಿಗೆ ಕೃಷ್ಣ ಪಕ್ಷ ">ತದಿಗೆ ಕೃಷ್ಣ ಪಕ್ಷ </option>
+    <option value="ಚೌತಿ ಕೃಷ್ಣ ಪಕ್ಷ ">ಚೌತಿ ಕೃಷ್ಣ ಪಕ್ಷ </option>
+    <option value="ಪಂಚಮಿ ಕೃಷ್ಣ ಪಕ್ಷ ">ಪಂಚಮಿ ಕೃಷ್ಣ ಪಕ್ಷ </option>
+    <option value="ಷಷ್ಠಿ ಕೃಷ್ಣ ಪಕ್ಷ ">ಷಷ್ಠಿ ಕೃಷ್ಣ ಪಕ್ಷ </option>
+    <option value="ಸಪ್ತಮಿ ಕೃಷ್ಣ ಪಕ್ಷ ">ಸಪ್ತಮಿ ಕೃಷ್ಣ ಪಕ್ಷ </option>
+    <option value="ಅಷ್ಟಮಿ ಕೃಷ್ಣ ಪಕ್ಷ ">ಅಷ್ಟಮಿ ಕೃಷ್ಣ ಪಕ್ಷ </option>
+    <option value="ನವಮಿ ಕೃಷ್ಣ ಪಕ್ಷ ">ನವಮಿ ಕೃಷ್ಣ ಪಕ್ಷ </option>
+    <option value="ದಶಮಿ ಕೃಷ್ಣ ಪಕ್ಷ ">ದಶಮಿ ಕೃಷ್ಣ ಪಕ್ಷ </option>
+    <option value="ಏಕಾದಶಿ ಕೃಷ್ಣ ಪಕ್ಷ ">ಏಕಾದಶಿ ಕೃಷ್ಣ ಪಕ್ಷ </option>
+    <option value="ದ್ವಾದಶಿ ಕೃಷ್ಣ ಪಕ್ಷ ">ದ್ವಾದಶಿ ಕೃಷ್ಣ ಪಕ್ಷ </option>
+    <option value="ತ್ರಯೋದಶಿ ಕೃಷ್ಣ ಪಕ್ಷ ">ತ್ರಯೋದಶಿ ಕೃಷ್ಣ ಪಕ್ಷ </option>
+    <option value="ಚತುರ್ದಶಿ ಕೃಷ್ಣ ಪಕ್ಷ ">ಚತುರ್ದಶಿ ಕೃಷ್ಣ ಪಕ್ಷ </option>
+    <option value="ಹುಣ್ಣಿಮೆ">ಹುಣ್ಣಿಮೆ</option>
+    <option value="ಅಮಾವಾಸ್ಯೆ">ಅಮಾವಾಸ್ಯೆ</option>
+</select>
+
+        <label for="address">ವಿಳಾಸ:</label>
+        <input type="text" id="address" name="address" placeholder="ದಯವಿಟ್ಟು ನಿಮ್ಮ ಪೂರ್ಣ ಅಂಚೆ ವಿಳಾಸ ನಮೂದಿಸಿ."><br>
+
+        <h5>ಹೆಸರು, ರಾಶಿ, ನಕ್ಷತ್ರ:</h5>
+        <div id="field7Sets">
+            <div class="set">
+                <input type="text" id="field7a1" name="field7a1" placeholder="ಹೆಸರು" oninput="validateKannadaInput(event)" required>
+                <select type="text" id="field7c1" name="field7c1">
+                    <option value="ಮೇಷ">ಮೇಷ</option>
+                    <option value="ವೃಷಭ">ವೃಷಭ</option>
+                    <option value="ಮಿಥುನ">ಮಿಥುನ</option>
+                    <option value="ಕಟಕ">ಕಟಕ</option>
+                    <option value="ಸಿಂಹ">ಸಿಂಹ</option>
+                    <option value="ಕನ್ಯಾ">ಕನ್ಯಾ</option>
+                    <option value="ತುಲಾ">ತುಲಾ</option>
+                    <option value="ವೃಶ್ಚಿಕ">ವೃಶ್ಚಿಕ</option>
+                    <option value="ಧನು">ಧನು</option>
+                    <option value="ಮಕರ">ಮಕರ</option>
+                    <option value="ಕುಂಭ">ಕುಂಭ</option>
+                    <option value="ಮೀನ">ಮೀನ</option>
+                </select>
+                <select type="text" id="field7b1" name="field7b1">
+                    <option value="ಅಶ್ವಿನಿ">ಅಶ್ವಿನಿ</option>
+                    <option value="ಭರಣಿ">ಭರಣಿ</option>
+                    <option value="ಕೃತಿಕಾ">ಕೃತಿಕಾ</option>
+                    <option value="ರೋಹಿಣಿ">ರೋಹಿಣಿ</option>
+                    <option value="ಮೃಗಶಿರ">ಮೃಗಶಿರ</option>
+                    <option value="ಆರ್ದ್ರಾ">ಆರ್ದ್ರಾ (ಆರಿದ್ರಾ)</option>
+                    <option value="ಪುನರ್ವಸು">ಪುನರ್ವಸು</option>
+                    <option value="ಪುಷ್ಯ">ಪುಷ್ಯ</option>
+                    <option value="ಆಶ್ಲೇಷ">ಆಶ್ಲೇಷ</option>
+                    <option value="ಮಖ">ಮಖ</option>
+                    <option value="ಪುಬ್ಬ">ಪುಬ್ಬ (ಪೂರ್ವ ಫಲ್ಗುಣಿ)</option>
+                    <option value="ಉತ್ತರಾ">ಉತ್ತರಾ (ಉತ್ತರ ಫಲ್ಗುಣಿ)</option>
+                    <option value="ಹಸ್ತ">ಹಸ್ತ</option>
+                    <option value="ಚಿತ್ತಾ">ಚಿತ್ತಾ ನಕ್ಷತ್ರ</option>
+                    <option value="ಸ್ವಾತಿ">ಸ್ವಾತಿ</option>
+                    <option value="ವಿಶಾಖ">ವಿಶಾಖ</option>
+                    <option value="ಅನುರಾಧ">ಅನುರಾಧ</option>
+                    <option value="ಜ್ಯೇಷ್ಠ">ಜ್ಯೇಷ್ಠ</option>
+                    <option value="ಮೂಲ">ಮೂಲ</option>
+                    <option value="ಪೂರ್ವಾಷಾಡಾ">ಪೂರ್ವಾಷಾಡಾ</option>
+                    <option value="ಉತ್ತರಾಷಾಡಾ">ಉತ್ತರಾಷ್ಟಾ</option>
+                    <option value="ಶ್ರವಣ">ಶ್ರವಣ</option>
+                    <option value="ಧನಿಷ್ಠ">ಧನಿಷ್ಠ</option>
+                    <option value="ಶತಭಿಷ">ಶತಭಿಷ</option>
+                    <option value="ಪೂರ್ವಭಾದ್ರ">ಪೂರ್ವಭಾದ್ರ</option>
+                    <option value="ಉತ್ತರಭಾದ್ರ">ಉತ್ತರಭಾದ್ರ</option>
+                    <option value="ರೇವತಿ">ರೇವತಿ</option>
+                </select>
+            </div>
+        </div>
+        <button type="button" onclick="addSet()">ಇನ್ನೊಂದು ಹೆಸರು, ರಾಶಿ, ನಕ್ಷತ್ರ ಸೇರಿಸಿ 
+</button><br><br>
+
+        <input type="submit" value="Submit">
+    </form>
 </body>
 </html>

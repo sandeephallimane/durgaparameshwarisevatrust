@@ -235,7 +235,7 @@
             var yearSelect = document.getElementById('yearOption');
             yearSelect.innerHTML = ''; 
 
-            for (var i = 0; i <= 5; i++) {
+            for (var i = 0; i <= 1; i++) {
                 var year = currentYear + i;
                 var option = document.createElement('option');
                 option.value = year;
@@ -249,7 +249,7 @@
             var selectedValue = selectElement.value;
             var additionalOptionDiv = document.getElementById('additionalOption');
             
-            if (selectedValue === 'ಒಂದು ದಿನದ ಸೇವೆ,500') {
+            if (selectedValue === 'ಒಂದು ದಿನದ ಪೂಜಾ ಸೇವೆ,500') {
                 additionalOptionDiv.style.display = 'block'; 
                 populateYearOptions(); 
             } else {
@@ -264,7 +264,7 @@ function clearFormInputs() {
     </script>
 </head>
 <body>
-  <form id="myForm" action="https://script.google.com/macros/s/AKfycbxC_1aIDRMSJMcSRjg45m2uQH7p-Bws2KPmODtmj0m2WL8TTZriqANVDb4Vi3ndcH3BcQ/exec" method="POST" onsubmit="clearFormInputs()">
+  <form id="myForm" action="https://script.google.com/macros/s/AKfycbz9-Kj1qqsITFREmxj-Fj3_61M5gm7OggKpxHLlGg4p30UIgaxK8M7ILkyWLBu003jvaA/exec" method="POST" onsubmit="clearFormInputs()">
         <h1>ಶ್ರೀದುರ್ಗಾಪರಮೇಶ್ವರಿ ಸೇವಾಟ್ರಸ್ಟ್, ವಿಶ್ವನಾಥಪುರ(R) - ದೈನಂದಿನ ಪೂಜಾ ಸೇವೆ</h1>
         <details>
         <summary>ದೈನಂದಿಕ ಪೂಜೆ ಸೇವೆಯ ಬಗ್ಗೆ</summary>
@@ -283,8 +283,8 @@ function clearFormInputs() {
         <input type="email" id="email" name="email"><br>
       <label for="svt">ಸೇವೆಯ ವಿಭಾಗ:</label>
        <select id="svt" name="svt" onchange="handleSelectChange()">
-       <option value="ಪ್ರತಿವರ್ಷ,5000">ಪ್ರತಿವರ್ಷ (ರೂ 5000/-)</option>
-        <option value="ಒಂದು ದಿನದ ಸೇವೆ,500">ಒಂದು ದಿನದ ಸೇವೆ (ರೂ 500/-)</option></select>
+       <option value="ವಾರ್ಷಿಕ ಪೂಜಾ ಸೇವೆ,5000">ಪ್ರತಿವರ್ಷ (ರೂ 5000/-)</option>
+        <option value="ಒಂದು ದಿನದ ಪೂಜಾ ಸೇವೆ,500">ಒಂದು ದಿನದ ಸೇವೆ (ರೂ 500/-)</option></select>
        <br>
 
     <div id="additionalOption" style="display:none;">

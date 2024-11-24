@@ -12,12 +12,12 @@
       const param2 = urlParams.get('param2');
       const param3 = urlParams.get('param3');
 
-      document.getElementById('readonly1').value = param1 || '';
-      document.getElementById('readonly2').value = param2 || '';
-      document.getElementById('readonly3').value = param3 || '';
+      document.getElementById('readonly1').value = param1 || 'Not provided';
+      document.getElementById('readonly2').value = param2 || 'Not provided';
+      document.getElementById('readonly3').value = param3 || 'Not provided';
     }
 
-
+  window.onload = populateForm;
   </script>
 </head>
 <body>

@@ -1,1 +1,59 @@
+<form id="downloadForm" onsubmit="submitForm(event)">
+    <h2>ಸೇವೆ ಅಥವಾ ಸದಸ್ಯತ್ವ ವಿವರ - ವೀಕ್ಷಿಸಿ/ಡೌನ್ಲೋಡ್ ಮಾಡಿ </h2>
+    <input type="hidden" name="action" value="download">
+
+    <label for="adminID">Admin ID:</label>
+    <input type="text" id="adminID" name="adminID" required><br><br>
+
+    <label for="downloadOption">ಬೇಕಾಗಿರುವ ವಿವರ ಆಯ್ಕೆ ಮಾಡಿಕೊಳ್ಳಿ:</label>
+    <select id="downloadOption" name="downloadOption" required onchange="toggleYearDropdown()">
+        <option value="membership">ಸದಸ್ಯತ್ವ ಲಿಸ್ಟ್</option>
+        <option value="seva">ಸೇವೆ ವಿನಂತಿ</option>
+    </select><br><br>
+
+    <label for="ca">ವಿಭಾಗ :</label>
+    <select id="ca" name="ca" required>
+        <option value="Approved">ಅನುಮೋದಿಸಿರುವ ಪಟ್ಟಿ(Approved List)</option>
+        <option value="Not Approved">ಅನುಮೋದಿಸಲಾಗಿಲ್ಲದ ಪಟ್ಟಿ 
+(Not Approved List)</option>
+    </select><br><br>
+
+    <div id="sbo">
+        <label for="sob">ವಿಂಗಡಣೆ ಪ್ರಕಾರ :</label>
+        <select id="sob" name="sob" required>
+            <option value="bdb">ಜನ್ಮ ದಿನಾಂಕ  </option>
+            <option value="bks">ಕುಟುಂಬ ಸ್ಥಳ 
+            </option>
+        </select><br><br>
+    </div>
+
+    <div id="yearDropdown">
+        <label for="year">ವರ್ಷ:</label>
+        <select id="year" name="year" required>
+        </select><br><br>
+    </div>
+
+    <button type="submit">Get Data</button>
+</form>
+
+<div id="result"></div>
+
+<script>
+    const gasUrl = 'https://script.google.com/macros/s/AKfycbw2Xvi21V30uZ5ITITNGgVBpbIgx6e50fJkTGcdM0it-TT66IexhgjC0yzbMBWsviUUmQ/exec';
+
+    async function submitForm(event) {
+        event.preventDefault();
+        
+        const form = document.getElementById('downloadForm');
+        const formData = new FormData(form);
+        
+        const response = await fetch(gasUrl, {
+            method: 'POST',
+            body: formData
+        });
+
+        const result = await response.text();
+        document.getElementById('result').innerHTML = result;  
+    }
+</script>
 

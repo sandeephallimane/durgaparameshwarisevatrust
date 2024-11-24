@@ -103,10 +103,8 @@
 <body>
 
   <div class="container">
-    <h1>ಶ್ರೀದುರ್ಗಾಪರಮೇಶ್ವರಿ ಸೇವಾ ಟ್ರಸ್ಟ್ ಹೊಸ ಸದಸ್ಯತ್ವ 
-</h1>
-    <p class="question">ನೀವು ವಿಶ್ವನಾಥಪುರ ಕುಟುಂಬದ ಸದಸ್ಯರೇ? 
-</p>
+    <h1>ಶ್ರೀದುರ್ಗಾಪರಮೇಶ್ವರಿ ಸೇವಾ ಟ್ರಸ್ಟ್ ಹೊಸ ಸದಸ್ಯತ್ವ</h1>
+    <p class="question">ನೀವು ವಿಶ್ವನಾಥಪುರ ಕುಟುಂಬದ ಸದಸ್ಯರೇ?</p>
     
     <form id="confirmationForm" onsubmit="return checkAnswer(event)">
       <div class="form-group">
@@ -121,10 +119,21 @@
       <button type="submit" class="button">Submit</button>
     </form>
 
-    <p id="message" class="message">ಕ್ಷಮಿಸಿ!. ಸದಸ್ಯತ್ವ ಸದ್ಯಕ್ಕೆ ವಿಶ್ವನಾಥಪುರ ಕುಟುಂಬ ಸದಸ್ಯರಿಗೆ ಮಾತ್ರ ಸೀಮಿತವಾಗಿದೆ. </p>
+    <p id="message" class="message">ಕ್ಷಮಿಸಿ!. ಸದಸ್ಯತ್ವ ಸದ್ಯಕ್ಕೆ ವಿಶ್ವನಾಥಪುರ ಕುಟುಂಬ ಸದಸ್ಯರಿಗೆ ಮಾತ್ರ ಸೀಮಿತವಾಗಿದೆ.</p>
   </div>
 
   <script>
+    async function loadConfig() {
+      try {
+        const response = await fetch('config.json');
+        const config = await response.json();
+
+        window.googleScriptUrl = config.googleScriptUrl;
+      } catch (error) {
+        console.error("Failed to load config.json:", error);
+      }
+    }
+
     function checkAnswer(event) {
       event.preventDefault();
 
@@ -132,14 +141,20 @@
 
       if (answer) {
         if (answer.value === 'yes') {
-          window.location.href = "https://script.google.com/macros/s/AKfycbyhkQkdhxj8GsM70dwELotqcKDtzRH7wx3FnyfpLje3umt_JRNpzBGdkwnIn9AjsTqitA/exec?action=mf&nd="; 
+          if (window.googleScriptUrl) {
+            window.location.href = window.googleScriptUrl + '?action=mf&nd=';
+          } else {
+            alert("The URL is not loaded yet.");
+          }
         } else {
-          document.getElementById('message').style.display = 'block'; // 
+          document.getElementById('message').style.display = 'block';
         }
       } else {
         alert('Please select an answer.');
       }
     }
+
+    window.onload = loadConfig;
   </script>
 
 </body>

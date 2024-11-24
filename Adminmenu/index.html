@@ -123,11 +123,19 @@
                 document.getElementById('downloadForm').reset();
             }, 10);
         }
+
+     async function loadConfig() {
+      const response = await fetch('config.json');
+      const config = await response.json();
+      document.getElementById('downloadForm').action = config.googleScriptUrl;
+    }
+
+    window.onload = loadConfig;
     </script>
 </head>
 <body>
 
-<form id="downloadForm" action="{{GOOGLE_SCRIPT_URL}}" method="POST" onsubmit="clearFormInputs()">
+<form id="downloadForm" action="" method="POST" onsubmit="clearFormInputs()">
     <h2>ಸೇವೆ ಅಥವಾ ಸದಸ್ಯತ್ವ ವಿವರ - ವೀಕ್ಷಿಸಿ/ಡೌನ್ಲೋಡ್ ಮಾಡಿ </h2>
     <input type="hidden" name="action" value="download">
 

@@ -1,0 +1,29 @@
+name: Deploy HTML to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main  
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js 
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'  
+
+      - name: Replace Google Script URL in HTML
+        run: |
+          echo "Replacing Google Script URL..."
+          sed -i 's|{{GOOGLE_SCRIPT_URL}}|'"${{ secrets.GOOGLE_SCRIPT_URL }}"'|g' index.html
+
+      - name: Deploy to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          branch: gh-pages
+          folder: . 

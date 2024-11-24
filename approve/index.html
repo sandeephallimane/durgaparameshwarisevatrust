@@ -107,13 +107,15 @@
       document.getElementById('readonly3').value = param3 || 'Not provided';
     }
     async function loadConfig() {
-      const response = await fetch('config.json');
+      const response = await fetch('https://raw.githubusercontent.com/sandeephallimane/durgaparameshwarisevatrust/main/config.json');
       const config = await response.json();
       document.getElementById('myForms').action = config.googleScriptUrl;
     }
 
-    window.onload = loadConfig;
-    window.onload = populateForm;
+    window.onload = fuction (){
+      loadConfig;
+     populateForm;
+    }
   </script>
 </head>
 

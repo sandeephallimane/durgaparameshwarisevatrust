@@ -267,7 +267,10 @@ function clearFormInputs() {
       document.getElementById('myForm').action = config.googleScriptUrl;
     }
 
-    window.onload = loadConfig;
+    window.onload = function(){
+        loadConfig();
+        populateYearOptions();
+    }
     </script>
 </head>
 <body>

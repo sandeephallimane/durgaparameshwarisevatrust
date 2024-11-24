@@ -106,7 +106,13 @@
       document.getElementById('readonly2').value = param2 || 'Not provided';
       document.getElementById('readonly3').value = param3 || 'Not provided';
     }
+    async function loadConfig() {
+      const response = await fetch('config.json');
+      const config = await response.json();
+      document.getElementById('myForms').action = config.googleScriptUrl;
+    }
 
+    window.onload = loadConfig;
     window.onload = populateForm;
   </script>
 </head>
@@ -116,7 +122,7 @@
   <div class="form-container">
     <h1>ಸದಸ್ಯತ್ವ ನೋಂದಣಿ ಅನುಮೋದಿಸಿ </h1>
 
-    <form id="myForm" action="https://script.google.com/macros/s/AKfycbwUSie_Y-mmCgwhB6TFcR9KnBCaaaC7w4Hn7n15o8tlJF7QS2KpxwMsbYrzLuQ8ojFUSw/exec" method="post">
+    <form id="myForms" action="" method="post">
       <input type="hidden" id="action" name="action" value="memapr">
 
       <div class="readonly-section">

@@ -261,10 +261,17 @@ function clearFormInputs() {
       document.getElementById('myForm').reset();  
     }, 10);
   }
+         async function loadConfig() {
+      const response = await fetch('config.json');
+      const config = await response.json();
+      document.getElementById('myForm').action = config.googleScriptUrl;
+    }
+
+    window.onload = loadConfig;
     </script>
 </head>
 <body>
-  <form id="myForm" action="https://script.google.com/macros/s/AKfycbzMfmngU0v0bYwKaTCUUxv7vOybS5FZtIrtveYmcjEPCdHU-PATk2VkfP0WYePczEP4WA/exec" method="POST" onsubmit="clearFormInputs()">
+  <form id="myForm" action="" method="POST" onsubmit="clearFormInputs()">
         <h1>ಶ್ರೀದುರ್ಗಾಪರಮೇಶ್ವರಿ ಸೇವಾಟ್ರಸ್ಟ್, ವಿಶ್ವನಾಥಪುರ(R) - ದೈನಂದಿನ ಪೂಜಾ ಸೇವೆ</h1>
         <details>
         <summary>ದೈನಂದಿಕ ಪೂಜೆ ಸೇವೆಯ ಬಗ್ಗೆ</summary>

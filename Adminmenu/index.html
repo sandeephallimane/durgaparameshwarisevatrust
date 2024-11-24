@@ -114,9 +114,7 @@
             yearSelect.appendChild(option3);
         }
 
-        window.onload = function() {
-            generateYearOptions();
-        };
+       
 
         function clearFormInputs() {
             setTimeout(function() {
@@ -129,8 +127,10 @@
       const config = await response.json();
       document.getElementById('downloadForm').action = config.googleScriptUrl;
     }
-
-    window.onload = loadConfig;
+    window.onload = function() {
+            generateYearOptions();
+            loadConfig();
+        };
     </script>
 </head>
 <body>

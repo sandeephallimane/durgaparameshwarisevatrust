@@ -1,4 +1,96 @@
-<form id="downloadForm" onsubmit="submitForm(event)">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ಶ್ರೀದುರ್ಗಾಪರಮेश್ವರಿ ಸೇವಾಟ್ರಸ್ಟ್, ವಿಶ್ವನಾಥಪುರ(R) - Admin Menu</title>
+    <style>
+        /* Your existing styles */
+    </style>
+    <script>
+        function toggleYearDropdown() {
+            var downloadOption = document.getElementById('downloadOption').value;
+            var yearDropdown = document.getElementById('yearDropdown');
+            var msl = document.getElementById('maasalist');
+            var sl = document.getElementById('sbo');
+
+            if (downloadOption === 'seva') {
+                yearDropdown.style.display = 'block'; 
+                msl.style.display = 'block';
+                sl.style.display = 'none';
+            } else {
+                yearDropdown.style.display = 'none'; 
+                msl.style.display = 'none';
+                sl.style.display = 'block';
+            }
+        }
+
+        function generateYearOptions() {
+            var currentYear = new Date().getFullYear();  // Get current year
+            var lastYear = currentYear - 1;
+            var nextYear = currentYear + 1;
+            
+            var yearSelect = document.getElementById('year');
+            
+            yearSelect.innerHTML = "";
+
+            var option1 = document.createElement("option");
+            option1.value = lastYear;
+            option1.text = lastYear;
+            yearSelect.appendChild(option1);
+
+            var option2 = document.createElement("option");
+            option2.value = currentYear;
+            option2.text = currentYear;
+            yearSelect.appendChild(option2);
+
+            var option3 = document.createElement("option");
+            option3.value = nextYear;
+            option3.text = nextYear;
+            yearSelect.appendChild(option3);
+        }
+
+        window.onload = function() {
+            generateYearOptions();
+        };
+
+        function clearFormInputs() {
+            setTimeout(function() {
+                document.getElementById('downloadForm').reset();
+            }, 10);
+        }
+
+        // Handle the form submission using fetch
+        async function handleSubmit(event) {
+            event.preventDefault(); // Prevent default form submission
+            
+            const form = document.getElementById('downloadForm');
+            const formData = new FormData(form);
+            
+            // Send the data to the Google Apps Script via fetch
+            try {
+                const response = await fetch(form.action, {
+                    method: 'POST',
+                    body: formData
+                });
+
+                if (response.ok) {
+                    // Get the HTML response from GAS
+                    const htmlContent = await response.text();
+                    // Insert the response HTML into the page
+                    document.getElementById('responseContainer').innerHTML = htmlContent;
+                } else {
+                    console.error('Request failed with status: ' + response.status);
+                }
+            } catch (error) {
+                console.error('Error during fetch:', error);
+            }
+        }
+    </script>
+</head>
+<body>
+
+<form id="downloadForm" action="https://script.google.com/macros/s/AKfycbzMfmngU0v0bYwKaTCUUxv7vOybS5FZtIrtveYmcjEPCdHU-PATk2VkfP0WYePczEP4WA/exec" method="POST" onsubmit="handleSubmit(event)">
     <h2>ಸೇವೆ ಅಥವಾ ಸದಸ್ಯತ್ವ ವಿವರ - ವೀಕ್ಷಿಸಿ/ಡೌನ್ಲೋಡ್ ಮಾಡಿ </h2>
     <input type="hidden" name="action" value="download">
 
@@ -17,43 +109,42 @@
         <option value="Not Approved">ಅನುಮೋದಿಸಲಾಗಿಲ್ಲದ ಪಟ್ಟಿ 
 (Not Approved List)</option>
     </select><br><br>
-
     <div id="sbo">
         <label for="sob">ವಿಂಗಡಣೆ ಪ್ರಕಾರ :</label>
         <select id="sob" name="sob" required>
-            <option value="bdb">ಜನ್ಮ ದಿನಾಂಕ  </option>
-            <option value="bks">ಕುಟುಂಬ ಸ್ಥಳ 
-            </option>
+        <option value="bdb">ಜನ್ಮ ದಿನಾಂಕ  </option>
+        <option value="bks">ಕುಟುಂಬ ಸ್ಥಳ 
+</option>
         </select><br><br>
     </div>
-
     <div id="yearDropdown">
         <label for="year">ವರ್ಷ:</label>
-        <select id="year" name="year" >
+        <select id="year" name="year" required>
         </select><br><br>
     </div>
-
+    <div id="maasalist">
+        <label for="maasa">ಮಾಸ:</label>
+        <select id="maasa" name="maasa" required>
+        <option value="ಎಲ್ಲಾ">ಎಲ್ಲಾ ಮಾಸ</option>
+        <option value="ಚೈತ್ರ">ಚೈತ್ರ ಮಾಸ</option>
+    <option value="ವೈಶಾಖ">ವೈಶಾಖ ಮಾಸ</option>
+    <option value="ಜ್ಯೇಷ್ಠ">ಜ್ಯೇಷ್ಠ ಮಾಸ</option>
+    <option value="ಆಷಾಢ">ಆಷಾಢ ಮಾಸ</option>
+    <option value="ಶ್ರಾವಣ">ಶ್ರಾವಣ ಮಾಸ</option>
+    <option value="ಭಾದ್ರಪದ">ಭಾದ್ರಪದ ಮಾಸ</option>
+    <option value="ಅಶ್ವಿನ">ಅಶ್ವಿನ ಮಾಸ</option>
+    <option value="ಕಾರ್ತಿಕ">ಕಾರ್ತಿಕ ಮಾಸ</option>
+    <option value="ಮಾರ್ಗಶಿರ">ಮಾರ್ಗಶಿರ ಮಾಸ</option>
+    <option value="ಪುಷ್ಯ">ಪುಷ್ಯ ಮಾಸ</option>
+    <option value="ಮಾಘ">ಮಾಘ ಮಾಸ</option>
+    <option value="ಫಾಲ್ಗುಣ">ಫಾಲ್ಗುಣ ಮಾಸ</option>
+        </select><br><br>
+    </div>
     <button type="submit">Get Data</button>
 </form>
 
-<div id="result"></div>
+<!-- This is where the HTML response will be injected -->
+<div id="responseContainer"></div>
 
-<script>
-    const gasUrl = 'https://script.google.com/macros/s/AKfycbxjF6SR0RMSr_q-lurYdmxtz1EiqjzuG9E9aYWVk-zrdykzl1u0g9sp77iWO1vDmbw6-w/exec';
-
-    async function submitForm(event) {
-        event.preventDefault();
-        
-        const form = document.getElementById('downloadForm');
-        const formData = new FormData(form);
-        
-        const response = await fetch(gasUrl, {
-            method: 'POST',
-            body: formData
-        });
-
-        const result = await response.text();
-        document.getElementById('result').innerHTML = result;  
-    }
-</script>
-
+</body>
+</html>

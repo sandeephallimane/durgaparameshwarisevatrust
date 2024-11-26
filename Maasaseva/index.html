@@ -380,30 +380,7 @@
       const config = await response.json();
       document.getElementById('maasaForm').action = config.googleScriptUrl;
     }
-
-
-           document.getElementById("maasaForm").addEventListener("submit", async function(event) {
-            event.preventDefault();
-
-            let form = event.target;
-            let formData = new FormData(form);
-
-            try {
-                let response = await fetch();
-
-                if (response.ok) {
-                    let data = await response.json();
-
-                    window.location.href = data.redirectUrl;
-                } else {
-                    alert("There was an issue with the form submission.");
-                }
-            } catch (error) {
-                console.error('Error:', error);
-                alert('Failed to submit the form.');
-            }
-        });
-       function validateKannadaInput(event) {
+     function validateKannadaInput(event) {
             const kannadaRegex = /^[\u0C80-\u0CFF\s]*$/;
             const inputField = event.target;
 

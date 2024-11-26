@@ -32,10 +32,9 @@
   </style>
 </head>
 <body>
-  <h1>ಧನ್ಯವಾದಗಳು</h1>
+  <h1>ಧನ್ಯವಾದಗಳು <strong id="name"></strong></h1>
   <div class="message">
-    <!-- Dynamic registration number will be inserted here -->
-    ನಿಮ್ಮ ವಿವರಗಳು ನೋಂದಣಿಯಾಗಿದೆ. ನಿಮ್ಮ ನೋಂದಣಿ ಸಂಖ್ಯೆ <strong id="registration-number"></strong><br><br>
+    ನಿಮ್ಮ ವಿವರಗಳು ನೋಂದಣಿಯಾಗಿದೆ. ನಿಮ್ಮ ನೋಂದಣಿ ಸಂಖ್ಯೆ <strong id="req"></strong><br><br>
     <p>ಎಲ್ಲ ಮಾಹಿತಿ ಸರಿ ಇದ್ದಲ್ಲಿ ನೋಂದಾಯಿತ ಇಮೇಲ್ ವಿಳಾಸಕ್ಕೆ ಎರಡು ದಿನದ ಒಳಗಾಗಿ ನಮ್ಮ ಕಡೆಯಿಂದ ರಶೀದಿ ಕಳಿಸಿ ಕೊಡಲಾಗುವುದು. ಇಮೇಲ್ ವಿಳಾಸ ಕೊಡದಿದ್ದಲ್ಲಿ ಕಾರ್ಯದರ್ಶಿಗಳನ್ನು ಸಂಪರ್ಕಿಸಿ.</p><br><br>
     <p>ಇತರ ಮಾಹಿತಿಗಾಗಿ ಮತ್ತು ದೂರುಗಳಿಗಾಗಿ ಮೊಬೈಲ್ ಸಂಖ್ಯೆ 9448645301 ಸಂಪರ್ಕಿಸಿ . </p><br><br><br>
   </div>
@@ -51,11 +50,16 @@
 
     const registrationNumber = getQueryParam('req');
     if (registrationNumber) {
-      document.getElementById('registration-number').textContent = registrationNumber;
+      document.getElementById('req').textContent = registrationNumber;
     } else {
-      document.getElementById('registration-number').textContent = "Not Available";
+      document.getElementById('req').textContent = "Not Available";
     }
-
+  const nm = getQueryParam('name');
+    if (nm) {
+      document.getElementById('name').textContent = nm;
+    } else {
+      document.getElementById('name').textContent = "";
+    }
     window.addEventListener('keydown', function(e) {
       if (e.key === 'F5' || (e.ctrlKey && e.key === 'r') || (e.metaKey && e.key === 'r')) {
         e.preventDefault();
@@ -66,7 +70,6 @@
       e.preventDefault();
     });
 
-    // Function for the "Back" button (to change the page and update the URL)
     function goBack() {
       window.history.pushState({}, '', "https://sandeephallimane.github.io/durgaparameshwarisevatrust/");
       window.location.href = "https://sandeephallimane.github.io/durgaparameshwarisevatrust/";

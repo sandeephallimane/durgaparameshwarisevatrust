@@ -115,9 +115,9 @@
             border-radius: 4px;
             cursor: pointer;
         }
-        p {
+        p,li {
             color: #002585;
-            font-size: 12px;
+            font-size: 10px;
         }
           a {
             background-color: #4CAF50;
@@ -251,7 +251,6 @@
             
             if (selectedValue === 'ಒಂದು ದಿನದ ಪೂಜಾ ಸೇವೆ,500') {
                 additionalOptionDiv.style.display = 'block'; 
-                populateYearOptions(); 
             } else {
                 additionalOptionDiv.style.display = 'none'; 
             }
@@ -269,7 +268,6 @@ function clearFormInputs() {
 
     window.onload = function(){
         loadConfig();
-        populateYearOptions();
     }
     </script>
 </head>
@@ -278,7 +276,10 @@ function clearFormInputs() {
         <h1>ಶ್ರೀದುರ್ಗಾಪರಮೇಶ್ವರಿ ಸೇವಾಟ್ರಸ್ಟ್, ವಿಶ್ವನಾಥಪುರ(R) - ದೈನಂದಿನ ಪೂಜಾ ಸೇವೆ</h1>
         <details>
         <summary>ದೈನಂದಿಕ ಪೂಜೆ ಸೇವೆಯ ಬಗ್ಗೆ</summary>
-    <p>ದೈನಂದಿನ ಪೂಜೆ ಸೇವೆಗೆ ತಮ್ಮ ಹೆಸರನ್ನು ನೋಂದಾಯಿಸಲು ಇಚ್ಛಿಸುವವರು ರೂ. 500ನ್ನು/5000/- ಕಾರ್ಯದರ್ಶಿ ಅವರಿಗೆ ಪಾವತಿಸಿ ನಂತರ ಇಲ್ಲಿ ಅರ್ಜಿ ಸಲ್ಲಿಸಬೇಕು. ಅವರು ಆಯ್ದ ವರ್ಷದಲ್ಲಿ, ಪ್ರತಿವರ್ಷದ ಆ ದಿನ, ರಾಶಿ ಮತ್ತು ನಕ್ಷತ್ರ ಪ್ರಕಾರ ಅವರ ಹೆಸರಿನಲ್ಲಿ ಪೂಜೆ ನೆರವೇರಿಸಲಾಗುತ್ತದೆ ಮತ್ತು ಪ್ರಸಾದ ಕಳಿಸಿಕೊಡಲಾಗುತ್ತದೆ. ದಯವಿಟ್ಟು ನಿಮ್ಮ ಪೂರ್ಣ ಅಂಚೆ ವಿಳಾಸವನ್ನು, ಪಿನ್ ಕೋಡ್ ಸಹಿತ, ನಮೂದಿಸಿ.
+   <p> ಎರಡು ಬಗೆಯ ದೈನಂದಿಕ ಸೇವೆಗಳಿವೆ</p>
+<li> ಒಂದು ದಿನದ ಸೇವೆ -  ನೋಂದಾಯಿಸಿದ ಸಂವತ್ಸರದ ಮಾಸ ತಿಥಿ ಪ್ರಕಾರ ಪೂಜಾ ಸೇವೆ ನೆಡೆಸಿ ಪ್ರಸಾದ ಕಳುಹಿಸಿಕೊಡಲಾಗುವುದು. ಇದರ ಶುಲ್ಕ ರೂ 500/- </li>
+<li>ಪ್ರತಿವರ್ಷ - ಪ್ರತಿವರ್ಷ ನೋಂದಾಯಿಸಿದ ಮಾಸ ತಿಥಿ ಪ್ರಕಾರ ಪೂಜಾ ಸೇವೆ ನೆಡೆಸಿ ಪ್ರಸಾದ ಕಳುಹಿಸಿಕೊಡಲಾಗುವುದು. ಇದರ ಶುಲ್ಕ ರೂ 5000/-</li>
+<p>ವಿಶೇಷ ಸೂಚನೆ: ಈ ಎರಡೂ ಪೂಜಾ ಸೇವೆಗಳಲ್ಲಿ ಪ್ರಸಾದವನ್ನು ನೋಂದಾಯಿತ ವಿಳಾಸಕ್ಕೆ ಕಳುಹಿಸಲಾಗುವುದು. ಆದ್ಧರಿಂದ ದಯವಿಟ್ಟು ತಮ್ಮ ಪೂರ್ಣ ಅಂಚೆ ವಿಳಾಸ ನಮೂದಿಸಲು ಕೋರಿದೆ.
 </p>
   </details><br><br>
         <input type="hidden" name="action" value="newseva">
@@ -297,12 +298,71 @@ function clearFormInputs() {
         <option value="ಒಂದು ದಿನದ ಪೂಜಾ ಸೇವೆ,500">ಒಂದು ದಿನದ ಸೇವೆ (ರೂ 500/-)</option></select>
        <br>
 
-    <div id="additionalOption" style="display:none;">
-        <label for="yearOption">ವರ್ಷ :</label>
-        <select id="yearOption" name="yearOption">
-        </select>
-    </div><br>
        <h5>ಸೇವೆಯ ದಿನ :</h5>
+       <div id="additionalOption" style="display:none;">
+        <select id="yearOption" name="yearOption">
+            <option value="ಕ್ರೋಧಿ">ಕ್ರೋಧಿ</option>
+    <option value="ವಿಶ್ವಾವಸು">ವಿಶ್ವಾವಸು</option>
+    <option value="ಪರಾಭವ">ಪರಾಭವ</option>
+    <option value="ಪ್ಲವಂಗ">ಪ್ಲವಂಗ</option>
+    <option value="ಕೀಲಕ">ಕೀಲಕ</option>
+    <option value="ಸೌಮ್ಯ">ಸೌಮ್ಯ</option>
+    <option value="ಸಾಧಾರಣ">ಸಾಧಾರಣ</option>
+    <option value="ವಿರೋಧಿಕೃತ್">ವಿರೋಧಿಕೃತ್</option>
+    <option value="ಪರೀಧಾವಿ">ಪರೀಧಾವಿ</option>
+    <option value="ಪ್ರಮಾದೀಚ">ಪ್ರಮಾದೀಚ</option>
+    <option value="ಆನಂದ">ಆನಂದ</option>
+    <option value="ರಾಕ್ಷಸ">ರಾಕ್ಷಸ</option>
+    <option value="ನಳ">ನಳ</option>
+    <option value="ಪೈಂಗಳ">ಪೈಗಳ</option>
+    <option value="ಕಾಳಯುಕ್ತಿ">ಕಾಳಯುಕ್ತಿ</option>
+    <option value="ಸಿದ್ಧಾರ್ಥಿ">ಸಿದ್ಧಾರ್ಥಿ</option>
+    <option value="ರುದ್ರ / ರೌದ್ರಿ">ರುದ್ರ / ರೌದ್ರಿ</option>
+    <option value="ದುರ್ಮತಿ">ದುರ್ಮತಿ</option>
+    <option value="ದುಂದುಭಿ">ದುಂದುಭಿ</option>
+    <option value="ರುಧಿರೋದ್ಗಾರಿ">ರುಧಿರೋದ್ಗಾರಿ</option>
+    <option value="ರಕ್ತಾಕ್ಷಿ">ರಕ್ತಾಕ್ಷಿ</option>
+    <option value="ಕ್ರೋಧನ">ಕ್ರೋಧನ</option>
+    <option value="ಅಕ್ಷಯ/ಕ್ಷಯ">ಅಕ್ಷಯ/ಕ್ಷಯ</option>
+    <option value="ಪ್ರಭವ">ಪ್ರಭವ</option>
+    <option value="ವಿಭವ">ವಿಭವ</option>
+    <option value="ಶುಕ್ಲ">ಶುಕ್ಲ</option>
+    <option value="ಪ್ರಮೋದೂತ">ಪ್ರಮೋದೂತ</option>
+    <option value="ಪ್ರಜೋತ್ಪತ್ತಿ">ಪ್ರಜೋತ್ಪತ್ತಿ</option>
+    <option value="ಅಂಗಿರಸ">ಅಂಗಿರಸ</option>
+    <option value="ಶ್ರೀಮುಖ">ಶ್ರೀಮುಖ</option>
+    <option value="ಭಾವ">ಭಾವ</option>
+    <option value="ಯುವ">ಯುವ</option>
+    <option value="ಧಾತು">ಧಾತು</option>
+    <option value="ಈಶ್ವರ">ಈಶ್ವರ</option>
+    <option value="ಬಹುಧಾನ್ಯ">ಬಹುಧಾನ್ಯ</option>
+    <option value="ಪ್ರಮಾಥಿ">ಪ್ರಮಾಥಿ</option>
+    <option value="ವಿಕ್ರಮ">ವಿಕ್ರಮ</option>
+    <option value="ವೃಷ/ವಿಷು">ವೃಷ/ವಿಷು</option>
+    <option value="ಚಿತ್ರಭಾನು">ಚಿತ್ರಭಾನು</option>
+    <option value="ಸ್ವಭಾನು">ಸ್ವಭಾನು</option>
+    <option value="ತಾರಣ">ತಾರಣ</option>
+    <option value="ಪಾರ್ಥಿವ">ಪಾರ್ಥಿವ</option>
+    <option value="ವ್ಯಯ">ವ್ಯಯ</option>
+    <option value="ಸರ್ವಜಿತ್">ಸರ್ವಜಿತ್</option>
+    <option value="ಸರ್ವಧಾರಿ">ಸರ್ವಧಾರಿ</option>
+    <option value="ವಿರೋಧಿ">ವಿರೋಧಿ</option>
+    <option value="ವಿಕೃತಿ">ವಿಕೃತಿ</option>
+    <option value="ಖರ">ಖರ</option>
+    <option value="ನಂದನ">ನಂದನ</option>
+    <option value="ವಿಜಯ">ವಿಜಯ</option>
+    <option value="ಜಯ">ಜಯ</option>
+    <option value="ಮನ್ಮಥ">ಮನ್ಮಥ</option>
+    <option value="ದುರ್ಮುಖಿ">ದುರ್ಮುಖಿ</option>
+    <option value="ಹೇವಿಳಂಬಿ">ಹೇವಿಳಂಬಿ</option>
+    <option value="ವಿಳಂಬಿ">ವಿಳಂಬಿ</option>
+    <option value="ವಿಕಾರಿ">ವಿಕಾರಿ</option>
+    <option value="ಶಾರ್ವರಿ">ಶಾರ್ವರಿ</option>
+    <option value="ಪ್ಲವ">ಪ್ಲವ</option>
+    <option value="ಶುಭಕೃತ್">ಶುಭಕೃತ್</option>
+    <option value="ಶೋಭಕೃತ್">ಶೋಭಕೃತ್</option>
+        </select>
+    </div>
      <select id="maasa" name="maasa">
      <option value="ಚೈತ್ರ">ಚೈತ್ರ ಮಾಸ</option>
     <option value="ವೈಶಾಖ">ವೈಶಾಖ ಮಾಸ</option>

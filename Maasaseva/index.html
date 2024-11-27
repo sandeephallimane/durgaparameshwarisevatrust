@@ -167,7 +167,7 @@
 
     <h2>ಶ್ರೀದುರ್ಗಾಪರಮೇಶ್ವರಿ ಸೇವಾಟ್ರಸ್ಟ್, ವಿಶ್ವನಾಥಪುರ(R) - ಮಾಸಿಕ ಪೂಜಾ ಸೇವೆ </h2>
     
-    <form id="maasaForm" action="" method="POST" onsubmit="clearFormInputs()" >
+    <form id="maasaForm" action="" method="POST" onsubmit="clearFormInputs()">
          <input type="hidden" name="action" value="maasaseva">
         <label for="name">ಹೆಸರು:</label>
         <input type="text" id="name" name="name" required><br><br>
@@ -391,8 +391,7 @@
                 inputField.value = inputValue.replace(/[^ \u0C80-\u0CFF]/g, ''); 
             }
         }
-
-  document.getElementById('maasaForm').addEventListener('submit', handleFormSubmit);
+         
          window.onload = function(){
         loadConfig();
         }

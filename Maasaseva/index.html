@@ -167,7 +167,7 @@
 
     <h2>ಶ್ರೀದುರ್ಗಾಪರಮೇಶ್ವರಿ ಸೇವಾಟ್ರಸ್ಟ್, ವಿಶ್ವನಾಥಪುರ(R) - ಮಾಸಿಕ ಪೂಜಾ ಸೇವೆ </h2>
     
-    <form id="maasaForm" action="" method="POST" onsubmit="clearFormInputs()">
+    <form id="maasaForm" >
          <input type="hidden" name="action" value="maasaseva">
         <label for="name">ಹೆಸರು:</label>
         <input type="text" id="name" name="name" required><br><br>
@@ -391,7 +391,40 @@
                 inputField.value = inputValue.replace(/[^ \u0C80-\u0CFF]/g, ''); 
             }
         }
-         
+         async function handleFormSubmit(event) {
+    event.preventDefault();  // Prevent default form submission
+
+    // Collect form data into a JSON object
+    const formData = new FormData(event.target);
+    const formObject = {};
+
+    formData.forEach((value, key) => {
+      formObject[key] = value;
+    });
+
+    try {
+      const response = await fetch('https://script.google.com/macros/s/AKfycbypvUvjLjBA5iKDO05JDDe4IOBOmdSB1vmGnjxzg43KdAN7mhXO3eDNZy1rMNAwycfLrQ/exec', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json', 
+        },
+        body: JSON.stringify(formObject)  
+      });
+
+      const data = await response.json();
+
+      if (data.redirectUrl) {
+        window.location.href = data.redirectUrl;
+      } else {
+        console.error('No redirect URL in response');
+      }
+
+    } catch (error) {
+      console.error('Error during form submission:', error);
+    }
+  }
+
+  document.getElementById('maasaForm').addEventListener('submit', handleFormSubmit);
          window.onload = function(){
         loadConfig();
         }

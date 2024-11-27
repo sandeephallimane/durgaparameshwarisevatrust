@@ -63,7 +63,7 @@
         .input-group {
             margin-bottom: 15px;
         }
-        #yearDropdown,#maasalist {
+        #samvatsaralist,#maasalist {
             display: none;
         }
          #sbo {
@@ -73,18 +73,18 @@
     <script>
         function toggleYearDropdown() {
             var downloadOption = document.getElementById('downloadOption').value;
-            var yearDropdown = document.getElementById('yearDropdown');
             var msl = document.getElementById('maasalist');
+            var ssl = document.getElementById('samvatsaralist');
             var sl = document.getElementById('sbo');
 
-            if (downloadOption === 'seva') {
-                yearDropdown.style.display = 'block'; 
+            if (downloadOption === 'seva' || downloadOption === 'mseva' ){
                 msl.style.display = 'block';
                 sl.style.display = 'none';
+                ssl.style.display = 'block';
             } else {
-                yearDropdown.style.display = 'none'; 
                  msl.style.display = 'none';
                  sl.style.display = 'block';
+                 ssl.style.display = 'none';
             }
         }
 
@@ -128,7 +128,6 @@
       document.getElementById('downloadForm').action = config.googleScriptUrl;
     }
     window.onload = function() {
-            generateYearOptions();
             loadConfig();
         };
     </script>
@@ -145,7 +144,8 @@
     <label for="downloadOption">ಬೇಕಾಗಿರುವ ವಿವರ ಆಯ್ಕೆ ಮಾಡಿಕೊಳ್ಳಿ:</label>
     <select id="downloadOption" name="downloadOption" required onchange="toggleYearDropdown()">
         <option value="membership">ಸದಸ್ಯತ್ವ ಲಿಸ್ಟ್</option>
-        <option value="seva">ಸೇವೆ ವಿನಂತಿ</option>
+        <option value="seva">ದೈನಂದಿಕ ಪೂಜಾ ಸೇವೆ </option>
+        <option value="mseva">ಮಾಸಿಕ ಪೂಜಾ ಸೇವೆ </option>
     </select><br><br>
 
     <label for="ca">ವಿಭಾಗ :</label>
@@ -162,11 +162,7 @@
 </option>
         </select><br><br>
     </div>
-    <div id="yearDropdown">
-        <label for="year">ವರ್ಷ:</label>
-        <select id="year" name="year" required>
-        </select><br><br>
-    </div>
+  
     <div id="maasalist">
         <label for="maasa">ಮಾಸ:</label>
         <select id="maasa" name="maasa" required>
@@ -183,6 +179,71 @@
     <option value="ಪುಷ್ಯ">ಪುಷ್ಯ ಮಾಸ</option>
     <option value="ಮಾಘ">ಮಾಘ ಮಾಸ</option>
     <option value="ಫಾಲ್ಗುಣ">ಫಾಲ್ಗುಣ ಮಾಸ</option>
+        </select><br><br>
+    </div>
+    <div id="samvatsaralist">
+        <label for="samvatsara">ಸಂವತ್ಸರ:</label>
+        <select id="samvatsara" name="samvatsara" required>
+         <option value="ಕ್ರೋಧಿ">ಕ್ರೋಧಿ</option>
+    <option value="ವಿಶ್ವಾವಸು">ವಿಶ್ವಾವಸು</option>
+    <option value="ಪರಾಭವ">ಪರಾಭವ</option>
+    <option value="ಪ್ಲವಂಗ">ಪ್ಲವಂಗ</option>
+    <option value="ಕೀಲಕ">ಕೀಲಕ</option>
+    <option value="ಸೌಮ್ಯ">ಸೌಮ್ಯ</option>
+    <option value="ಸಾಧಾರಣ">ಸಾಧಾರಣ</option>
+    <option value="ವಿರೋಧಿಕೃತ್">ವಿರೋಧಿಕೃತ್</option>
+    <option value="ಪರೀಧಾವಿ">ಪರೀಧಾವಿ</option>
+    <option value="ಪ್ರಮಾದೀಚ">ಪ್ರಮಾದೀಚ</option>
+    <option value="ಆನಂದ">ಆನಂದ</option>
+    <option value="ರಾಕ್ಷಸ">ರಾಕ್ಷಸ</option>
+    <option value="ನಳ">ನಳ</option>
+    <option value="ಪೈಂಗಳ">ಪೈಗಳ</option>
+    <option value="ಕಾಳಯುಕ್ತಿ">ಕಾಳಯುಕ್ತಿ</option>
+    <option value="ಸಿದ್ಧಾರ್ಥಿ">ಸಿದ್ಧಾರ್ಥಿ</option>
+    <option value="ರುದ್ರ / ರೌದ್ರಿ">ರುದ್ರ / ರೌದ್ರಿ</option>
+    <option value="ದುರ್ಮತಿ">ದುರ್ಮತಿ</option>
+    <option value="ದುಂದುಭಿ">ದುಂದುಭಿ</option>
+    <option value="ರುಧಿರೋದ್ಗಾರಿ">ರುಧಿರೋದ್ಗಾರಿ</option>
+    <option value="ರಕ್ತಾಕ್ಷಿ">ರಕ್ತಾಕ್ಷಿ</option>
+    <option value="ಕ್ರೋಧನ">ಕ್ರೋಧನ</option>
+    <option value="ಅಕ್ಷಯ/ಕ್ಷಯ">ಅಕ್ಷಯ/ಕ್ಷಯ</option>
+    <option value="ಪ್ರಭವ">ಪ್ರಭವ</option>
+    <option value="ವಿಭವ">ವಿಭವ</option>
+    <option value="ಶುಕ್ಲ">ಶುಕ್ಲ</option>
+    <option value="ಪ್ರಮೋದೂತ">ಪ್ರಮೋದೂತ</option>
+    <option value="ಪ್ರಜೋತ್ಪತ್ತಿ">ಪ್ರಜೋತ್ಪತ್ತಿ</option>
+    <option value="ಅಂಗಿರಸ">ಅಂಗಿರಸ</option>
+    <option value="ಶ್ರೀಮುಖ">ಶ್ರೀಮುಖ</option>
+    <option value="ಭಾವ">ಭಾವ</option>
+    <option value="ಯುವ">ಯುವ</option>
+    <option value="ಧಾತು">ಧಾತು</option>
+    <option value="ಈಶ್ವರ">ಈಶ್ವರ</option>
+    <option value="ಬಹುಧಾನ್ಯ">ಬಹುಧಾನ್ಯ</option>
+    <option value="ಪ್ರಮಾಥಿ">ಪ್ರಮಾಥಿ</option>
+    <option value="ವಿಕ್ರಮ">ವಿಕ್ರಮ</option>
+    <option value="ವೃಷ/ವಿಷು">ವೃಷ/ವಿಷು</option>
+    <option value="ಚಿತ್ರಭಾನು">ಚಿತ್ರಭಾನು</option>
+    <option value="ಸ್ವಭಾನು">ಸ್ವಭಾನು</option>
+    <option value="ತಾರಣ">ತಾರಣ</option>
+    <option value="ಪಾರ್ಥಿವ">ಪಾರ್ಥಿವ</option>
+    <option value="ವ್ಯಯ">ವ್ಯಯ</option>
+    <option value="ಸರ್ವಜಿತ್">ಸರ್ವಜಿತ್</option>
+    <option value="ಸರ್ವಧಾರಿ">ಸರ್ವಧಾರಿ</option>
+    <option value="ವಿರೋಧಿ">ವಿರೋಧಿ</option>
+    <option value="ವಿಕೃತಿ">ವಿಕೃತಿ</option>
+    <option value="ಖರ">ಖರ</option>
+    <option value="ನಂದನ">ನಂದನ</option>
+    <option value="ವಿಜಯ">ವಿಜಯ</option>
+    <option value="ಜಯ">ಜಯ</option>
+    <option value="ಮನ್ಮಥ">ಮನ್ಮಥ</option>
+    <option value="ದುರ್ಮುಖಿ">ದುರ್ಮುಖಿ</option>
+    <option value="ಹೇವಿಳಂಬಿ">ಹೇವಿಳಂಬಿ</option>
+    <option value="ವಿಳಂಬಿ">ವಿಳಂಬಿ</option>
+    <option value="ವಿಕಾರಿ">ವಿಕಾರಿ</option>
+    <option value="ಶಾರ್ವರಿ">ಶಾರ್ವರಿ</option>
+    <option value="ಪ್ಲವ">ಪ್ಲವ</option>
+    <option value="ಶುಭಕೃತ್">ಶುಭಕೃತ್</option>
+    <option value="ಶೋಭಕೃತ್">ಶೋಭಕೃತ್</option>
         </select><br><br>
     </div>
     <button type="submit">Get Data</button>

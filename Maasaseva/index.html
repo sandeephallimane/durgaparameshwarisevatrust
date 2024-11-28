@@ -181,8 +181,10 @@
          <label for="address">ವಿಳಾಸ:</label>
         <input type="text" id="address" name="address" placeholder="ದಯವಿಟ್ಟು ನಿಮ್ಮ ಪೂರ್ಣ ಅಂಚೆ ವಿಳಾಸ ನಮೂದಿಸಿ."><br><br>
         
-        <label for="samvatsara">ಸೇವಾ ಸಂವತ್ಸರ:</label>
-        <select type="text" id="samvatsara" name="samvatsara" required>
+        <h5>ಸೇವಾ ಸಂವತ್ಸರ, ಮಾಸ  <details><summary>ಎಷ್ಟು ಮಾಸದ /ಸಂವತ್ಸರ ಸೇವೆ ನೋಂದಾಯಿಸಿದ್ದೀರೋ ಅಷ್ಟನ್ನು ಆರಿಸಿ</summary> ಉದಾಹರಣೆಗೆ ನೀವು ೨ ವರ್ಷದ ಸೇವೆ ನೋಂದಾಯಿಸಿದ್ದಾರೆ ೨ ಸಂವತ್ಸರ,ಮಾಸ ಆಯ್ದುಕೊಳ್ಳಿ. ಒಂದೇ ವರ್ಷದಲ್ಲಿ ೨ ಮಾಸದ ಸೇವೆ ನೀಡಿದಲ್ಲಿ ಒಂದೇ ಸಂವತ್ಸರದ ಅಡಿಯಲ್ಲಿ ಎರಡು ಮಾಸ ನೋಂದಾಯಿಸಿ </details> </h5>
+        <div id="smm">
+            <div class="sets">
+        <select type="text" id="sm1" name="sm1" required>
     <option value="ಕ್ರೋಧಿ">ಕ್ರೋಧಿ</option>
     <option value="ವಿಶ್ವಾವಸು">ವಿಶ್ವಾವಸು</option>
     <option value="ಪರಾಭವ">ಪರಾಭವ</option>
@@ -244,10 +246,9 @@
     <option value="ಶುಭಕೃತ್">ಶುಭಕೃತ್</option>
     <option value="ಶೋಭಕೃತ್">ಶೋಭಕೃತ್</option>
 </select>
-<br><br>
-        
-        <label for="maasa">ಸೇವಾ ಮಾಸ:</label>
- <select id="maasa" name="maasa">
+<br>
+       
+ <select id="ms1" name="ms1">
      <option value="ಚೈತ್ರ">ಚೈತ್ರ ಮಾಸ</option>
     <option value="ವೈಶಾಖ">ವೈಶಾಖ ಮಾಸ</option>
     <option value="ಜ್ಯೇಷ್ಠ">ಜ್ಯೇಷ್ಠ ಮಾಸ</option>
@@ -260,7 +261,9 @@
     <option value="ಪುಷ್ಯ">ಪುಷ್ಯ ಮಾಸ</option>
     <option value="ಮಾಘ">ಮಾಘ ಮಾಸ</option>
     <option value="ಫಾಲ್ಗುಣ">ಫಾಲ್ಗುಣ ಮಾಸ</option>
-</select>
+</select></div></div>
+ <button type="button" onclick="addSets()">ಇನ್ನೊಂದು ಸೇವಾ ಸಂವತ್ಸರ, ಮಾಸ ಸೇರಿಸಿ 
+</button><br><br>
         <h5>ಹೆಸರು, ರಾಶಿ, ನಕ್ಷತ್ರ:</h5>
         <div id="field7Sets">
             <div class="set">
@@ -370,6 +373,92 @@
             setContainer.appendChild(newSet);
         }
         
+        let setCounts = 1;
+        function addSets() {
+            setCounts++;
+            const setsContainer = document.getElementById('smm');
+            const newSets = document.createElement('div');
+            newSets.className = 'sets';
+            newSets.innerHTML = `
+                <select type="text" id="sm${setCounts}" name="sm${setCounts}">
+                    <option value="ಕ್ರೋಧಿ">ಕ್ರೋಧಿ</option>
+    <option value="ವಿಶ್ವಾವಸು">ವಿಶ್ವಾವಸು</option>
+    <option value="ಪರಾಭವ">ಪರಾಭವ</option>
+    <option value="ಪ್ಲವಂಗ">ಪ್ಲವಂಗ</option>
+    <option value="ಕೀಲಕ">ಕೀಲಕ</option>
+    <option value="ಸೌಮ್ಯ">ಸೌಮ್ಯ</option>
+    <option value="ಸಾಧಾರಣ">ಸಾಧಾರಣ</option>
+    <option value="ವಿರೋಧಿಕೃತ್">ವಿರೋಧಿಕೃತ್</option>
+    <option value="ಪರೀಧಾವಿ">ಪರೀಧಾವಿ</option>
+    <option value="ಪ್ರಮಾದೀಚ">ಪ್ರಮಾದೀಚ</option>
+    <option value="ಆನಂದ">ಆನಂದ</option>
+    <option value="ರಾಕ್ಷಸ">ರಾಕ್ಷಸ</option>
+    <option value="ನಳ">ನಳ</option>
+    <option value="ಪೈಂಗಳ">ಪೈಗಳ</option>
+    <option value="ಕಾಳಯುಕ್ತಿ">ಕಾಳಯುಕ್ತಿ</option>
+    <option value="ಸಿದ್ಧಾರ್ಥಿ">ಸಿದ್ಧಾರ್ಥಿ</option>
+    <option value="ರುದ್ರ / ರೌದ್ರಿ">ರುದ್ರ / ರೌದ್ರಿ</option>
+    <option value="ದುರ್ಮತಿ">ದುರ್ಮತಿ</option>
+    <option value="ದುಂದುಭಿ">ದುಂದುಭಿ</option>
+    <option value="ರುಧಿರೋದ್ಗಾರಿ">ರುಧಿರೋದ್ಗಾರಿ</option>
+    <option value="ರಕ್ತಾಕ್ಷಿ">ರಕ್ತಾಕ್ಷಿ</option>
+    <option value="ಕ್ರೋಧನ">ಕ್ರೋಧನ</option>
+    <option value="ಅಕ್ಷಯ/ಕ್ಷಯ">ಅಕ್ಷಯ/ಕ್ಷಯ</option>
+    <option value="ಪ್ರಭವ">ಪ್ರಭವ</option>
+    <option value="ವಿಭವ">ವಿಭವ</option>
+    <option value="ಶುಕ್ಲ">ಶುಕ್ಲ</option>
+    <option value="ಪ್ರಮೋದೂತ">ಪ್ರಮೋದೂತ</option>
+    <option value="ಪ್ರಜೋತ್ಪತ್ತಿ">ಪ್ರಜೋತ್ಪತ್ತಿ</option>
+    <option value="ಅಂಗಿರಸ">ಅಂಗಿರಸ</option>
+    <option value="ಶ್ರೀಮುಖ">ಶ್ರೀಮುಖ</option>
+    <option value="ಭಾವ">ಭಾವ</option>
+    <option value="ಯುವ">ಯುವ</option>
+    <option value="ಧಾತು">ಧಾತು</option>
+    <option value="ಈಶ್ವರ">ಈಶ್ವರ</option>
+    <option value="ಬಹುಧಾನ್ಯ">ಬಹುಧಾನ್ಯ</option>
+    <option value="ಪ್ರಮಾಥಿ">ಪ್ರಮಾಥಿ</option>
+    <option value="ವಿಕ್ರಮ">ವಿಕ್ರಮ</option>
+    <option value="ವೃಷ/ವಿಷು">ವೃಷ/ವಿಷು</option>
+    <option value="ಚಿತ್ರಭಾನು">ಚಿತ್ರಭಾನು</option>
+    <option value="ಸ್ವಭಾನು">ಸ್ವಭಾನು</option>
+    <option value="ತಾರಣ">ತಾರಣ</option>
+    <option value="ಪಾರ್ಥಿವ">ಪಾರ್ಥಿವ</option>
+    <option value="ವ್ಯಯ">ವ್ಯಯ</option>
+    <option value="ಸರ್ವಜಿತ್">ಸರ್ವಜಿತ್</option>
+    <option value="ಸರ್ವಧಾರಿ">ಸರ್ವಧಾರಿ</option>
+    <option value="ವಿರೋಧಿ">ವಿರೋಧಿ</option>
+    <option value="ವಿಕೃತಿ">ವಿಕೃತಿ</option>
+    <option value="ಖರ">ಖರ</option>
+    <option value="ನಂದನ">ನಂದನ</option>
+    <option value="ವಿಜಯ">ವಿಜಯ</option>
+    <option value="ಜಯ">ಜಯ</option>
+    <option value="ಮನ್ಮಥ">ಮನ್ಮಥ</option>
+    <option value="ದುರ್ಮುಖಿ">ದುರ್ಮುಖಿ</option>
+    <option value="ಹೇವಿಳಂಬಿ">ಹೇವಿಳಂಬಿ</option>
+    <option value="ವಿಳಂಬಿ">ವಿಳಂಬಿ</option>
+    <option value="ವಿಕಾರಿ">ವಿಕಾರಿ</option>
+    <option value="ಶಾರ್ವರಿ">ಶಾರ್ವರಿ</option>
+    <option value="ಪ್ಲವ">ಪ್ಲವ</option>
+    <option value="ಶುಭಕೃತ್">ಶುಭಕೃತ್</option>
+    <option value="ಶೋಭಕೃತ್">ಶೋಭಕೃತ್</option>
+                </select>
+                <select type="text" id="ms${setCounts}" name="ms${setCounts}">
+                   <option value="ಚೈತ್ರ">ಚೈತ್ರ ಮಾಸ</option>
+    <option value="ವೈಶಾಖ">ವೈಶಾಖ ಮಾಸ</option>
+    <option value="ಜ್ಯೇಷ್ಠ">ಜ್ಯೇಷ್ಠ ಮಾಸ</option>
+    <option value="ಆಷಾಢ">ಆಷಾಢ ಮಾಸ</option>
+    <option value="ಶ್ರಾವಣ">ಶ್ರಾವಣ ಮಾಸ</option>
+    <option value="ಭಾದ್ರಪದ">ಭಾದ್ರಪದ ಮಾಸ</option>
+    <option value="ಅಶ್ವಿನ">ಅಶ್ವಿನ ಮಾಸ</option>
+    <option value="ಕಾರ್ತಿಕ">ಕಾರ್ತಿಕ ಮಾಸ</option>
+    <option value="ಮಾರ್ಗಶಿರ">ಮಾರ್ಗಶಿರ ಮಾಸ</option>
+    <option value="ಪುಷ್ಯ">ಪುಷ್ಯ ಮಾಸ</option>
+    <option value="ಮಾಘ">ಮಾಘ ಮಾಸ</option>
+    <option value="ಫಾಲ್ಗುಣ">ಫಾಲ್ಗುಣ ಮಾಸ</option>
+                </select>
+            `;
+            setsContainer.appendChild(newSets);
+        }
        function clearFormInputs() {
     setTimeout(function() {
       document.getElementById('maasaForm').reset();  

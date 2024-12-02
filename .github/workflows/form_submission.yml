@@ -1,0 +1,35 @@
+name: Process Form Data and Send to GAS
+
+on:
+  repository_dispatch:
+    types: [form-submission]
+
+jobs:
+  process_form_data:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Get form data
+        id: form_data
+        run: |
+          echo "Form data received: ${{ github.event.client_payload }}"
+          FORM_DATA=${{ toJson(github.event.client_payload) }}
+          echo "::set-output name=form_data::${FORM_DATA}"
+
+      - name: Send data to Google Apps Script (GAS)
+        id: send_to_gas
+        run: |
+          FORM_DATA="${{ steps.form_data.outputs.form_data }}"
+          RESPONSE=$(curl -X POST "https://script.google.com/macros/s/AKfycbznW0dKlHn_4sgn2jJgyrEJm7-JVRhCPCAtugSbkF-he--HJmNUDAXe-0WGlWIXaW9Gig/exec" \
+            -d "formData=${FORM_DATA}")
+          echo "Response from GAS: $RESPONSE"
+          echo "::set-output name=gas_response::${RESPONSE}"
+
+      - name: Process response and send link back to frontend
+        id: process_response
+        run: |
+          LINK="${{ steps.send_to_gas.outputs.gas_response }}"
+          echo "::set-output name=link::${LINK}"

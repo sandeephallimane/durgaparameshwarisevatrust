@@ -1,4 +1,4 @@
-name: Submit Dynamic Form Data to GAS
+name: Submit Dynamic Form Data to GAS script
 
 on:
   repository_dispatch:

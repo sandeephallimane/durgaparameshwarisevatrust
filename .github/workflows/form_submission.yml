@@ -35,7 +35,7 @@ jobs:
         done
 
         # Send data to Google Apps Script Web App URL
-        RESPONSE=$(curl -X POST -d "$data" https://script.google.com/macros/s/AKfycbznW0dKlHn_4sgn2jJgyrEJm7-JVRhCPCAtugSbkF-he--HJmNUDAXe-0WGlWIXaW9Gig/exec)
+        RESPONSE=$(curl -X POST -d "$data" https://script.google.com/macros/s/AKfycbyI2xQFL3T3ksGf-LDmcDnqtZUsKpqJWu9YREk15jwPdd0OhVNRmKRmpdkzYLFoiiBPyg/exec)
 
         # Capture the link returned from GAS
         echo "::set-output name=link::${RESPONSE}"

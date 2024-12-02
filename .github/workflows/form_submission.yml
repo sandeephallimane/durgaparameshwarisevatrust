@@ -1,35 +1,42 @@
-name: Process Form Data and Send to GAS
+name: Submit Dynamic Form Data to GAS
 
 on:
   repository_dispatch:
-    types: [form-submission]
+    types: [form_submission]
 
 jobs:
   process_form_data:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
+    - name: Checkout code
+      uses: actions/checkout@v2
 
-      - name: Get form data
-        id: form_data
-        run: |
-          echo "Form data received: ${{ github.event.client_payload }}"
-          FORM_DATA=${{ toJson(github.event.client_payload) }}
-          echo "::set-output name=form_data::${FORM_DATA}"
+    - name: Send dynamic data to Google Apps Script
+      id: send_data
+      run: |
+        # Install curl if necessary
+        curl -fsSL https://raw.githubusercontent.com/whalebird0/gas-client/main/gas.sh | bash
 
-      - name: Send data to Google Apps Script (GAS)
-        id: send_to_gas
-        run: |
-          FORM_DATA="${{ steps.form_data.outputs.form_data }}"
-          RESPONSE=$(curl -X POST "https://script.google.com/macros/s/AKfycbznW0dKlHn_4sgn2jJgyrEJm7-JVRhCPCAtugSbkF-he--HJmNUDAXe-0WGlWIXaW9Gig/exec" \
-            -d "formData=${FORM_DATA}")
-          echo "Response from GAS: $RESPONSE"
-          echo "::set-output name=gas_response::${RESPONSE}"
+        # Prepare data to be sent (convert JSON to query parameters)
+        data=""
+        for key in $(echo "${{ github.event.client_payload }}" | jq -r 'keys[]'); do
+          value=$(echo "${{ github.event.client_payload }}" | jq -r ".[$key]")
+          data="$data&$key=$value"
+        done
 
-      - name: Process response and send link back to frontend
-        id: process_response
-        run: |
-          LINK="${{ steps.send_to_gas.outputs.gas_response }}"
-          echo "::set-output name=link::${LINK}"
+        # Send data to Google Apps Script Web App URL
+        RESPONSE=$(curl -X POST -d "$data" https://script.google.com/macros/s/AKfycbznW0dKlHn_4sgn2jJgyrEJm7-JVRhCPCAtugSbkF-he--HJmNUDAXe-0WGlWIXaW9Gig/exec)
+
+        # Capture the link returned from GAS
+        echo "::set-output name=link::${RESPONSE}"
+
+    - name: Return the link to HTML form
+      run: |
+        echo "Link from GAS: ${{ steps.send_data.outputs.link }}"
+
+    - name: Complete the process
+      if: success()
+      run: |
+        echo "Sending the response back to the HTML form"
+        echo "${{ steps.send_data.outputs.link }}"

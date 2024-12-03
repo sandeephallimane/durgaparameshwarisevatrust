@@ -477,28 +477,34 @@
         }
          
 document.getElementById('maasaForm1').addEventListener('submit', async function(event) {
-  event.preventDefault(); // Prevent default form submission
+  event.preventDefault(); // Prevent the default form submission
   
   const formData = new FormData(event.target); // Collect form data
   
   try {
     const response = await fetch(event.target.action, {
-      method: event.target.method,
-      body: formData,
+      method: event.target.method, 
+      body: event.target.method === 'POST' ? formData : undefined, 
     });
-    
-    const result = await response.json();
-    
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+
+    const result = await response.json(); // Parse the server's JSON response
+    console.log(result);
+
     if (result.link) {
-      window.location.href = result.link; // Redirect to the link
+      window.location.href = result.link; // Redirect if a link is provided
     } else {
-      alert('No link received from the server.');
+      alert('No link received.');
     }
   } catch (error) {
     console.error('Error:', error);
-    alert('An error occurred. Please try again.');
+    alert('An error occurred. Check the console for details.');
   }
 });
+
 
     </script>
 

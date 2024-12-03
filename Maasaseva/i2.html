@@ -166,9 +166,8 @@
 <body>
 
     <h2>ಶ್ರೀದುರ್ಗಾಪರಮೇಶ್ವರಿ ಸೇವಾಟ್ರಸ್ಟ್(R), ವಿಶ್ವನಾಥಪುರ - ಮಾಸಿಕ ಪೂಜಾ ಸೇವೆ </h2>
-      <iframe id="responseFrame" name="responseFrame" style="display:none;"></iframe>
 
-    <form id="maasaForm1" action="https://script.google.com/macros/s/AKfycbwGdTcO2-VW4j4Paue6_d2ekP19tjz6YJxSH41kMPfrUg4QhJDQGAofR9b-NTRTOFLLcQ/exec" method="POST" target="responseFrame"> 
+    <form id="maasaForm1" action="https://script.google.com/macros/s/AKfycbwbUVqRwgR2ok48jEN7Y19dEW6dXdp7YK3uPI24JX93Vf97FnZGBcM4hUWGxnb_QtA02g/exec" method="POST" > 
          <input type="hidden" name="action" value="maasasevatest">
         <label for="name">ಹೆಸರು:</label>
         <input type="text" id="name" name="name" required><br><br>
@@ -317,6 +316,7 @@
 </button><br><br>
         <button type="submit">Submit</button>
     </form>
+  <div id="status">Waiting for result...</div>
 
     <script>
     let setCount = 1;
@@ -477,30 +477,25 @@
             }
         }
          
-window.addEventListener('message', function(event) {
-    // Log the event for debugging
-    console.log('Received message:', event);
-
-    // Validate the origin of the message
-    if (!event.origin.includes('.googleusercontent.com')) {
-        console.warn('Message from unexpected origin:', event.origin);
-        return; // Ignore messages from unknown origins
+ function checkResultLink() {
+      fetch('https://sandeephallimane.github.io/durgaparameshwarisevatrust/resultLink.json') 
+        .then(response => response.json())
+        .then(data => {
+          if (data.resultLink) {
+            window.location.href = data.resultLink; 
+          } else {
+            console.log('Result not ready yet. Retrying...');
+            setTimeout(checkResultLink, 3000);
+          }
+        })
+        .catch(error => console.error('Error checking result link:', error));
     }
 
-    try {
-        const result = event.data; // Access the data sent via postMessage
-        console.log('Processed result:', result);
-
-        // Redirect or handle the received link
-        if (result.link) {
-            window.location.href = result.link;
-        } else {
-            alert('No link provided in response.');
-        }
-    } catch (error) {
-        console.error('Error processing message:', error);
-    }
-});
+    document.getElementById('userForm').addEventListener('submit', function (event) {
+      event.preventDefault(); // Prevent default form submission
+      document.getElementById('status').textContent = 'Form submitted. Waiting for result...';
+      checkResultLink();
+    });
 
     </script>
 

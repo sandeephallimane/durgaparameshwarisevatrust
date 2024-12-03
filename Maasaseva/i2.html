@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Input Form</title>
+</head>
+ <style>
+    .topnav {
+      overflow: hidden;
+      background-color: #a38200;
+    }
+
+    .topnav a, .topnav button {
+      float: left;
+      color: #f2f2f2;
+      text-align: center;
+      padding: 12px;
+      text-decoration: none;
+      font-size: 15px;
+      border: none;
+      background-color: transparent;
+      cursor: pointer;
+    }
+
+    .topnav a:hover, .topnav button:hover {
+      background-color: #ddd;
+      color: black;
+    }
+
+    .topnav a.active {
+      background-color: #04AA6D;
+      color: white;
+    }
+
+    .topnav button {
+      font-size: 16px;
+    }
+
+    .topnav a, .topnav button {
+      transition: background-color 0.3s ease;
+    }
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 20px;
+            background-color: #f7f7f7;
+        }
+        h3, label, h4,h5 {
+            font-family: Arial, sans-serif;
+            color: purple;
+        }
+        h6 {
+  width: 300px;
+  height: 40px;
+  background-color: green;
+  text-align: center;
+  color:white;
+  position: relative;
+  padding: 10px;
+  animation-name: example;
+  animation-duration: 12s;
+  animation-timing-function: linear;
+  animation-delay: 2s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+        @keyframes example {
+  0%   {background-color:green; left:0px; top:0px;}
+  50%  {background-color:green; left:300px; top:0px;}
+  
+}
+        img {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            width: 100%;
+            max-width: 600px;
+            margin: auto;
+        }
+        h2 {
+            text-align: center;
+        }
+        label {
+            font-size: 16px;
+            margin-bottom: 8px;
+            display: block;
+        }
+        input, select {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 12px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+        }
+        button {
+            background-color: #00a2c3;
+            color: white;
+            padding: 10px ;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        summary {
+            background-color: #bb00be;
+            color: white;
+            padding: 10px;
+            border: none;
+            font-size: 12px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        p {
+            color: #002585;
+            font-size: 12px;
+        }
+          a {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .input-group {
+            margin-bottom: 15px;
+        }
+        .remove-row {
+            background-color: #f44336;
+            color: white;
+            padding: 5px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        .remove-row:hover {
+            background-color: #d32f2f;
+        }
+        .add-row {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .form-container {
+            display: none;
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #f2f2f2;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+    </style>
+<body>
+
+    <h2>ಶ್ರೀದುರ್ಗಾಪರಮೇಶ್ವರಿ ಸೇವಾಟ್ರಸ್ಟ್(R), ವಿಶ್ವನಾಥಪುರ - ಮಾಸಿಕ ಪೂಜಾ ಸೇವೆ </h2>
+    
+    <form id="maasaForm" action="https://script.google.com/macros/s/AKfycbwIgoS59cOEXWMRfEcCBldJxS9sXqrCEhusTa5a0HHl-ZejHOcXGgLh19YgGhvnrZKb5A/exec" method="POST" >
+         <input type="hidden" name="action" value="maasasevatest">
+        <label for="name">ಹೆಸರು:</label>
+        <input type="text" id="name" name="name" required><br><br>
+        
+        <label for="mobile">ಮೊಬೈಲ್ ಸಂಖ್ಯೆ:</label>
+        <input type="text" id="mobile" name="mobile" pattern="[0-9]{10}" required><br><br>
+        
+        <label for="email">ಇಮೇಲ್ ವಿಳಾಸ:</label>
+        <input type="email" id="email" name="email" ><br><br>
+        
+         <label for="address">ವಿಳಾಸ:</label>
+        <input type="text" id="address" name="address" placeholder="ದಯವಿಟ್ಟು ನಿಮ್ಮ ಪೂರ್ಣ ಅಂಚೆ ವಿಳಾಸ ನಮೂದಿಸಿ."><br><br>
+        
+        <h5>ಸೇವಾ ಸಂವತ್ಸರ, ಮಾಸ  <details><summary>ಎಷ್ಟು ಮಾಸದ /ಸಂವತ್ಸರ ಸೇವೆ ನೋಂದಾಯಿಸಿದ್ದೀರೋ ಅಷ್ಟನ್ನು ಆರಿಸಿ</summary> ಉದಾಹರಣೆಗೆ ನೀವು ೨ ವರ್ಷದ ಸೇವೆ ನೋಂದಾಯಿಸಿದ್ದಾರೆ ೨ ಸಂವತ್ಸರ,ಮಾಸ ಆಯ್ದುಕೊಳ್ಳಿ. ಒಂದೇ ವರ್ಷದಲ್ಲಿ ೨ ಮಾಸದ ಸೇವೆ ನೀಡಿದಲ್ಲಿ ಒಂದೇ ಸಂವತ್ಸರದ ಅಡಿಯಲ್ಲಿ ಎರಡು ಮಾಸ ನೋಂದಾಯಿಸಿ </details> </h5>
+        <div id="smm">
+            <div class="sets">
+        <select type="text" id="sm1" name="sm1" required>
+    <option value="ಕ್ರೋಧಿ">ಕ್ರೋಧಿ</option>
+    <option value="ವಿಶ್ವಾವಸು">ವಿಶ್ವಾವಸು</option>
+    <option value="ಪರಾಭವ">ಪರಾಭವ</option>
+    <option value="ಪ್ಲವಂಗ">ಪ್ಲವಂಗ</option>
+    <option value="ಕೀಲಕ">ಕೀಲಕ</option>
+    <option value="ಸೌಮ್ಯ">ಸೌಮ್ಯ</option>
+    <option value="ಸಾಧಾರಣ">ಸಾಧಾರಣ</option>
+    <option value="ವಿರೋಧಿಕೃತ್">ವಿರೋಧಿಕೃತ್</option>
+    <option value="ಪರೀಧಾವಿ">ಪರೀಧಾವಿ</option>
+    <option value="ಪ್ರಮಾದೀಚ">ಪ್ರಮಾದೀಚ</option>
+    <option value="ಆನಂದ">ಆನಂದ</option>
+    <option value="ರಾಕ್ಷಸ">ರಾಕ್ಷಸ</option>
+    <option value="ನಳ">ನಳ</option>
+    <option value="ಪೈಂಗಳ">ಪೈಗಳ</option>
+    <option value="ಕಾಳಯುಕ್ತಿ">ಕಾಳಯುಕ್ತಿ</option>
+    <option value="ಸಿದ್ಧಾರ್ಥಿ">ಸಿದ್ಧಾರ್ಥಿ</option>
+    <option value="ರುದ್ರ / ರೌದ್ರಿ">ರುದ್ರ / ರೌದ್ರಿ</option>
+    <option value="ದುರ್ಮತಿ">ದುರ್ಮತಿ</option>
+    <option value="ದುಂದುಭಿ">ದುಂದುಭಿ</option>
+    <option value="ರುಧಿರೋದ್ಗಾರಿ">ರುಧಿರೋದ್ಗಾರಿ</option>
+    <option value="ರಕ್ತಾಕ್ಷಿ">ರಕ್ತಾಕ್ಷಿ</option>
+    <option value="ಕ್ರೋಧನ">ಕ್ರೋಧನ</option>
+    <option value="ಅಕ್ಷಯ/ಕ್ಷಯ">ಅಕ್ಷಯ/ಕ್ಷಯ</option>
+    <option value="ಪ್ರಭವ">ಪ್ರಭವ</option>
+    <option value="ವಿಭವ">ವಿಭವ</option>
+    <option value="ಶುಕ್ಲ">ಶುಕ್ಲ</option>
+    <option value="ಪ್ರಮೋದೂತ">ಪ್ರಮೋದೂತ</option>
+    <option value="ಪ್ರಜೋತ್ಪತ್ತಿ">ಪ್ರಜೋತ್ಪತ್ತಿ</option>
+    <option value="ಅಂಗಿರಸ">ಅಂಗಿರಸ</option>
+    <option value="ಶ್ರೀಮುಖ">ಶ್ರೀಮುಖ</option>
+    <option value="ಭಾವ">ಭಾವ</option>
+    <option value="ಯುವ">ಯುವ</option>
+    <option value="ಧಾತು">ಧಾತು</option>
+    <option value="ಈಶ್ವರ">ಈಶ್ವರ</option>
+    <option value="ಬಹುಧಾನ್ಯ">ಬಹುಧಾನ್ಯ</option>
+    <option value="ಪ್ರಮಾಥಿ">ಪ್ರಮಾಥಿ</option>
+    <option value="ವಿಕ್ರಮ">ವಿಕ್ರಮ</option>
+    <option value="ವೃಷ/ವಿಷು">ವೃಷ/ವಿಷು</option>
+    <option value="ಚಿತ್ರಭಾನು">ಚಿತ್ರಭಾನು</option>
+    <option value="ಸ್ವಭಾನು">ಸ್ವಭಾನು</option>
+    <option value="ತಾರಣ">ತಾರಣ</option>
+    <option value="ಪಾರ್ಥಿವ">ಪಾರ್ಥಿವ</option>
+    <option value="ವ್ಯಯ">ವ್ಯಯ</option>
+    <option value="ಸರ್ವಜಿತ್">ಸರ್ವಜಿತ್</option>
+    <option value="ಸರ್ವಧಾರಿ">ಸರ್ವಧಾರಿ</option>
+    <option value="ವಿರೋಧಿ">ವಿರೋಧಿ</option>
+    <option value="ವಿಕೃತಿ">ವಿಕೃತಿ</option>
+    <option value="ಖರ">ಖರ</option>
+    <option value="ನಂದನ">ನಂದನ</option>
+    <option value="ವಿಜಯ">ವಿಜಯ</option>
+    <option value="ಜಯ">ಜಯ</option>
+    <option value="ಮನ್ಮಥ">ಮನ್ಮಥ</option>
+    <option value="ದುರ್ಮುಖಿ">ದುರ್ಮುಖಿ</option>
+    <option value="ಹೇವಿಳಂಬಿ">ಹೇವಿಳಂಬಿ</option>
+    <option value="ವಿಳಂಬಿ">ವಿಳಂಬಿ</option>
+    <option value="ವಿಕಾರಿ">ವಿಕಾರಿ</option>
+    <option value="ಶಾರ್ವರಿ">ಶಾರ್ವರಿ</option>
+    <option value="ಪ್ಲವ">ಪ್ಲವ</option>
+    <option value="ಶುಭಕೃತ್">ಶುಭಕೃತ್</option>
+    <option value="ಶೋಭಕೃತ್">ಶೋಭಕೃತ್</option>
+</select>
+<br>
+       
+ <select id="ms1" name="ms1">
+     <option value="ಚೈತ್ರ">ಚೈತ್ರ ಮಾಸ</option>
+    <option value="ವೈಶಾಖ">ವೈಶಾಖ ಮಾಸ</option>
+    <option value="ಜ್ಯೇಷ್ಠ">ಜ್ಯೇಷ್ಠ ಮಾಸ</option>
+    <option value="ಆಷಾಢ">ಆಷಾಢ ಮಾಸ</option>
+    <option value="ಶ್ರಾವಣ">ಶ್ರಾವಣ ಮಾಸ</option>
+    <option value="ಭಾದ್ರಪದ">ಭಾದ್ರಪದ ಮಾಸ</option>
+    <option value="ಅಶ್ವಿನ">ಅಶ್ವಿನ ಮಾಸ</option>
+    <option value="ಕಾರ್ತಿಕ">ಕಾರ್ತಿಕ ಮಾಸ</option>
+    <option value="ಮಾರ್ಗಶಿರ">ಮಾರ್ಗಶಿರ ಮಾಸ</option>
+    <option value="ಪುಷ್ಯ">ಪುಷ್ಯ ಮಾಸ</option>
+    <option value="ಮಾಘ">ಮಾಘ ಮಾಸ</option>
+    <option value="ಫಾಲ್ಗುಣ">ಫಾಲ್ಗುಣ ಮಾಸ</option>
+</select></div></div>
+ <button type="button" onclick="addSets()">ಇನ್ನೊಂದು ಸೇವಾ ಸಂವತ್ಸರ, ಮಾಸ ಸೇರಿಸಿ 
+</button><br><br>
+        <h5>ಹೆಸರು, ರಾಶಿ, ನಕ್ಷತ್ರ:</h5>
+        <div id="field7Sets">
+            <div class="set">
+                <input type="text" id="field7a1" name="field7a1" placeholder="ಹೆಸರು" oninput="validateKannadaInput(event)" required>
+                <select type="text" id="field7c1" name="field7c1">
+                    <option value="ಮೇಷ">ಮೇಷ</option>
+                    <option value="ವೃಷಭ">ವೃಷಭ</option>
+                    <option value="ಮಿಥುನ">ಮಿಥುನ</option>
+                    <option value="ಕಟಕ">ಕಟಕ</option>
+                    <option value="ಸಿಂಹ">ಸಿಂಹ</option>
+                    <option value="ಕನ್ಯಾ">ಕನ್ಯಾ</option>
+                    <option value="ತುಲಾ">ತುಲಾ</option>
+                    <option value="ವೃಶ್ಚಿಕ">ವೃಶ್ಚಿಕ</option>
+                    <option value="ಧನು">ಧನು</option>
+                    <option value="ಮಕರ">ಮಕರ</option>
+                    <option value="ಕುಂಭ">ಕುಂಭ</option>
+                    <option value="ಮೀನ">ಮೀನ</option>
+                </select>
+                <select type="text" id="field7b1" name="field7b1">
+                    <option value="ಅಶ್ವಿನಿ">ಅಶ್ವಿನಿ</option>
+                    <option value="ಭರಣಿ">ಭರಣಿ</option>
+                    <option value="ಕೃತಿಕಾ">ಕೃತಿಕಾ</option>
+                    <option value="ರೋಹಿಣಿ">ರೋಹಿಣಿ</option>
+                    <option value="ಮೃಗಶಿರ">ಮೃಗಶಿರ</option>
+                    <option value="ಆರ್ದ್ರಾ">ಆರ್ದ್ರಾ (ಆರಿದ್ರಾ)</option>
+                    <option value="ಪುನರ್ವಸು">ಪುನರ್ವಸು</option>
+                    <option value="ಪುಷ್ಯ">ಪುಷ್ಯ</option>
+                    <option value="ಆಶ್ಲೇಷ">ಆಶ್ಲೇಷ</option>
+                    <option value="ಮಖ">ಮಖ</option>
+                    <option value="ಪುಬ್ಬ">ಪುಬ್ಬ (ಪೂರ್ವ ಫಲ್ಗುಣಿ)</option>
+                    <option value="ಉತ್ತರಾ">ಉತ್ತರಾ (ಉತ್ತರ ಫಲ್ಗುಣಿ)</option>
+                    <option value="ಹಸ್ತ">ಹಸ್ತ</option>
+                    <option value="ಚಿತ್ತಾ">ಚಿತ್ತಾ ನಕ್ಷತ್ರ</option>
+                    <option value="ಸ್ವಾತಿ">ಸ್ವಾತಿ</option>
+                    <option value="ವಿಶಾಖ">ವಿಶಾಖ</option>
+                    <option value="ಅನುರಾಧ">ಅನುರಾಧ</option>
+                    <option value="ಜ್ಯೇಷ್ಠ">ಜ್ಯೇಷ್ಠ</option>
+                    <option value="ಮೂಲ">ಮೂಲ</option>
+                    <option value="ಪೂರ್ವಾಷಾಡಾ">ಪೂರ್ವಾಷಾಡಾ</option>
+                    <option value="ಉತ್ತರಾಷಾಡಾ">ಉತ್ತರಾಷ್ಟಾ</option>
+                    <option value="ಶ್ರವಣ">ಶ್ರವಣ</option>
+                    <option value="ಧನಿಷ್ಠ">ಧನಿಷ್ಠ</option>
+                    <option value="ಶತಭಿಷ">ಶತಭಿಷ</option>
+                    <option value="ಪೂರ್ವಭಾದ್ರ">ಪೂರ್ವಭಾದ್ರ</option>
+                    <option value="ಉತ್ತರಭಾದ್ರ">ಉತ್ತರಭಾದ್ರ</option>
+                    <option value="ರೇವತಿ">ರೇವತಿ</option>
+                </select></div>
+        </div>
+        <button type="button" onclick="addSet()">ಇನ್ನೊಂದು ಹೆಸರು, ರಾಶಿ, ನಕ್ಷತ್ರ ಸೇರಿಸಿ 
+</button><br><br>
+        <button type="submit">Submit</button>
+    </form>
+
+    <script>
+    let setCount = 1;
+        function addSet() {
+            setCount++;
+            const setContainer = document.getElementById('field7Sets');
+            const newSet = document.createElement('div');
+            newSet.className = 'set';
+            newSet.innerHTML = `
+                <input type="text" id="field7a${setCount}" name="field7a${setCount}" placeholder="ಹೆಸರು" oninput="validateKannadaInput(event)" required>
+                <select type="text" id="field7c${setCount}" name="field7c${setCount}">
+                    <option value="ಮೇಷ">ಮೇಷ</option>
+                    <option value="ವೃಷಭ">ವೃಷಭ</option>
+                    <option value="ಮಿಥುನ">ಮಿಥುನ</option>
+                    <option value="ಕಟಕ">ಕಟಕ</option>
+                    <option value="ಸಿಂಹ">ಸಿಂಹ</option>
+                    <option value="ಕನ್ಯಾ">ಕನ್ಯಾ</option>
+                    <option value="ತುಲಾ">ತುಲಾ</option>
+                    <option value="ವೃಶ್ಚಿಕ">ವೃಶ್ಚಿಕ</option>
+                    <option value="ಧನು">ಧನು</option>
+                    <option value="ಮಕರ">ಮಕರ</option>
+                    <option value="ಕುಂಭ">ಕುಂಭ</option>
+                    <option value="ಮೀನ">ಮೀನ</option>
+                </select>
+                <select type="text" id="field7b${setCount}" name="field7b${setCount}">
+                    <option value="ಅಶ್ವಿನಿ">ಅಶ್ವಿನಿ</option>
+                    <option value="ಭರಣಿ">ಭರಣಿ</option>
+                    <option value="ಕೃತಿಕಾ">ಕೃತಿಕಾ</option>
+                    <option value="ರೋಹಿಣಿ">ರೋಹಿಣಿ</option>
+                    <option value="ಮೃಗಶಿರ">ಮೃಗಶಿರ</option>
+                    <option value="ಆರ್ದ್ರಾ">ಆರ್ದ್ರಾ (ಆರಿದ್ರಾ)</option>
+                    <option value="ಪುನರ್ವಸು">ಪುನರ್ವಸು</option>
+                    <option value="ಪುಷ್ಯ">ಪುಷ್ಯ</option>
+                    <option value="ಆಶ್ಲೇಷ">ಆಶ್ಲೇಷ</option>
+                    <option value="ಮಖ">ಮಖ</option>
+                    <option value="ಪುಬ್ಬ">ಪುಬ್ಬ (ಪೂರ್ವ ಫಲ್ಗುಣಿ)</option>
+                    <option value="ಉತ್ತರಾ">ಉತ್ತರಾ (ಉತ್ತರ ಫಲ್ಗುಣಿ)</option>
+                    <option value="ಹಸ್ತ">ಹಸ್ತ</option>
+                    <option value="ಚಿತ್ತಾ">ಚಿತ್ತಾ ನಕ್ಷತ್ರ</option>
+                    <option value="ಸ್ವಾತಿ">ಸ್ವಾತಿ</option>
+                    <option value="ವಿಶಾಖ">ವಿಶಾಖ</option>
+                    <option value="ಅನುರಾಧ">ಅನುರಾಧ</option>
+                    <option value="ಜ್ಯೇಷ್ಠ">ಜ್ಯೇಷ್ಠ</option>
+                    <option value="ಮೂಲ">ಮೂಲ</option>
+                    <option value="ಪೂರ್ವಾಷಾಡಾ">ಪೂರ್ವಾಷಾಡಾ</option>
+                    <option value="ಉತ್ತರಾಷಾಡಾ">ಉತ್ತರಾಷ್ಟಾ</option>
+                    <option value="ಶ್ರವಣ">ಶ್ರವಣ</option>
+                    <option value="ಧನಿಷ್ಠ">ಧನಿಷ್ಠ</option>
+                    <option value="ಶತಭಿಷ">ಶತಭಿಷ</option>
+                    <option value="ಪೂರ್ವಭಾದ್ರ">ಪೂರ್ವಭಾದ್ರ</option>
+                    <option value="ಉತ್ತರಭಾದ್ರ">ಉತ್ತರಭಾದ್ರ</option>
+                    <option value="ರೇವತಿ">ರೇವತಿ</option>
+                </select>
+            `;
+            setContainer.appendChild(newSet);
+        }
+        
+        let setCounts = 1;
+        function addSets() {
+            setCounts++;
+            const setsContainer = document.getElementById('smm');
+            const newSets = document.createElement('div');
+            newSets.className = 'sets';
+            newSets.innerHTML = `
+                <select type="text" id="sm${setCounts}" name="sm${setCounts}">
+                    <option value="ಕ್ರೋಧಿ">ಕ್ರೋಧಿ</option>
+    <option value="ವಿಶ್ವಾವಸು">ವಿಶ್ವಾವಸು</option>
+    <option value="ಪರಾಭವ">ಪರಾಭವ</option>
+    <option value="ಪ್ಲವಂಗ">ಪ್ಲವಂಗ</option>
+    <option value="ಕೀಲಕ">ಕೀಲಕ</option>
+    <option value="ಸೌಮ್ಯ">ಸೌಮ್ಯ</option>
+    <option value="ಸಾಧಾರಣ">ಸಾಧಾರಣ</option>
+    <option value="ವಿರೋಧಿಕೃತ್">ವಿರೋಧಿಕೃತ್</option>
+    <option value="ಪರೀಧಾವಿ">ಪರೀಧಾವಿ</option>
+    <option value="ಪ್ರಮಾದೀಚ">ಪ್ರಮಾದೀಚ</option>
+    <option value="ಆನಂದ">ಆನಂದ</option>
+    <option value="ರಾಕ್ಷಸ">ರಾಕ್ಷಸ</option>
+    <option value="ನಳ">ನಳ</option>
+    <option value="ಪೈಂಗಳ">ಪೈಗಳ</option>
+    <option value="ಕಾಳಯುಕ್ತಿ">ಕಾಳಯುಕ್ತಿ</option>
+    <option value="ಸಿದ್ಧಾರ್ಥಿ">ಸಿದ್ಧಾರ್ಥಿ</option>
+    <option value="ರುದ್ರ / ರೌದ್ರಿ">ರುದ್ರ / ರೌದ್ರಿ</option>
+    <option value="ದುರ್ಮತಿ">ದುರ್ಮತಿ</option>
+    <option value="ದುಂದುಭಿ">ದುಂದುಭಿ</option>
+    <option value="ರುಧಿರೋದ್ಗಾರಿ">ರುಧಿರೋದ್ಗಾರಿ</option>
+    <option value="ರಕ್ತಾಕ್ಷಿ">ರಕ್ತಾಕ್ಷಿ</option>
+    <option value="ಕ್ರೋಧನ">ಕ್ರೋಧನ</option>
+    <option value="ಅಕ್ಷಯ/ಕ್ಷಯ">ಅಕ್ಷಯ/ಕ್ಷಯ</option>
+    <option value="ಪ್ರಭವ">ಪ್ರಭವ</option>
+    <option value="ವಿಭವ">ವಿಭವ</option>
+    <option value="ಶುಕ್ಲ">ಶುಕ್ಲ</option>
+    <option value="ಪ್ರಮೋದೂತ">ಪ್ರಮೋದೂತ</option>
+    <option value="ಪ್ರಜೋತ್ಪತ್ತಿ">ಪ್ರಜೋತ್ಪತ್ತಿ</option>
+    <option value="ಅಂಗಿರಸ">ಅಂಗಿರಸ</option>
+    <option value="ಶ್ರೀಮುಖ">ಶ್ರೀಮುಖ</option>
+    <option value="ಭಾವ">ಭಾವ</option>
+    <option value="ಯುವ">ಯುವ</option>
+    <option value="ಧಾತು">ಧಾತು</option>
+    <option value="ಈಶ್ವರ">ಈಶ್ವರ</option>
+    <option value="ಬಹುಧಾನ್ಯ">ಬಹುಧಾನ್ಯ</option>
+    <option value="ಪ್ರಮಾಥಿ">ಪ್ರಮಾಥಿ</option>
+    <option value="ವಿಕ್ರಮ">ವಿಕ್ರಮ</option>
+    <option value="ವೃಷ/ವಿಷು">ವೃಷ/ವಿಷು</option>
+    <option value="ಚಿತ್ರಭಾನು">ಚಿತ್ರಭಾನು</option>
+    <option value="ಸ್ವಭಾನು">ಸ್ವಭಾನು</option>
+    <option value="ತಾರಣ">ತಾರಣ</option>
+    <option value="ಪಾರ್ಥಿವ">ಪಾರ್ಥಿವ</option>
+    <option value="ವ್ಯಯ">ವ್ಯಯ</option>
+    <option value="ಸರ್ವಜಿತ್">ಸರ್ವಜಿತ್</option>
+    <option value="ಸರ್ವಧಾರಿ">ಸರ್ವಧಾರಿ</option>
+    <option value="ವಿರೋಧಿ">ವಿರೋಧಿ</option>
+    <option value="ವಿಕೃತಿ">ವಿಕೃತಿ</option>
+    <option value="ಖರ">ಖರ</option>
+    <option value="ನಂದನ">ನಂದನ</option>
+    <option value="ವಿಜಯ">ವಿಜಯ</option>
+    <option value="ಜಯ">ಜಯ</option>
+    <option value="ಮನ್ಮಥ">ಮನ್ಮಥ</option>
+    <option value="ದುರ್ಮುಖಿ">ದುರ್ಮುಖಿ</option>
+    <option value="ಹೇವಿಳಂಬಿ">ಹೇವಿಳಂಬಿ</option>
+    <option value="ವಿಳಂಬಿ">ವಿಳಂಬಿ</option>
+    <option value="ವಿಕಾರಿ">ವಿಕಾರಿ</option>
+    <option value="ಶಾರ್ವರಿ">ಶಾರ್ವರಿ</option>
+    <option value="ಪ್ಲವ">ಪ್ಲವ</option>
+    <option value="ಶುಭಕೃತ್">ಶುಭಕೃತ್</option>
+    <option value="ಶೋಭಕೃತ್">ಶೋಭಕೃತ್</option>
+                </select>
+                <select type="text" id="ms${setCounts}" name="ms${setCounts}">
+                   <option value="ಚೈತ್ರ">ಚೈತ್ರ ಮಾಸ</option>
+    <option value="ವೈಶಾಖ">ವೈಶಾಖ ಮಾಸ</option>
+    <option value="ಜ್ಯೇಷ್ಠ">ಜ್ಯೇಷ್ಠ ಮಾಸ</option>
+    <option value="ಆಷಾಢ">ಆಷಾಢ ಮಾಸ</option>
+    <option value="ಶ್ರಾವಣ">ಶ್ರಾವಣ ಮಾಸ</option>
+    <option value="ಭಾದ್ರಪದ">ಭಾದ್ರಪದ ಮಾಸ</option>
+    <option value="ಅಶ್ವಿನ">ಅಶ್ವಿನ ಮಾಸ</option>
+    <option value="ಕಾರ್ತಿಕ">ಕಾರ್ತಿಕ ಮಾಸ</option>
+    <option value="ಮಾರ್ಗಶಿರ">ಮಾರ್ಗಶಿರ ಮಾಸ</option>
+    <option value="ಪುಷ್ಯ">ಪುಷ್ಯ ಮಾಸ</option>
+    <option value="ಮಾಘ">ಮಾಘ ಮಾಸ</option>
+    <option value="ಫಾಲ್ಗುಣ">ಫಾಲ್ಗುಣ ಮಾಸ</option>
+                </select>
+            `;
+            setsContainer.appendChild(newSets);
+        }
+       function clearFormInputs() {
+    setTimeout(function() {
+      document.getElementById('maasaForm').reset();  
+    }, 10);
+  }
+         async function loadConfig() {
+      const response = await fetch('https://raw.githubusercontent.com/sandeephallimane/durgaparameshwarisevatrust/main/config.json');
+      const config = await response.json();
+      document.getElementById('maasaForm').action = config.googleScriptUrl;
+    }
+     function validateKannadaInput(event) {
+            const kannadaRegex = /^[\u0C80-\u0CFF\s]*$/;
+            const inputField = event.target;
+
+            const inputValue = inputField.value;
+
+            if (!kannadaRegex.test(inputValue)) {
+                alert("Please enter only Kannada characters.");
+                inputField.value = inputValue.replace(/[^ \u0C80-\u0CFF]/g, ''); 
+            }
+        }
+         
+   document.getElementById('maasaForm').addEventListener('submit', async function(event) {
+      event.preventDefault(); // Prevent default form submission
+
+      // Collect form data
+      const formData = new FormData(event.target);
+
+      // Send data via fetch
+      const response = await fetch(event.target.action, {
+        method: event.target.method,
+        body: formData
+      });
+
+      const result = await response.json();
+
+      // Open the link from the response
+      if (result.link) {
+        window.location.href = result.link; // Redirect to the link
+      } else {
+        alert("No link received from server.");
+      }
+    });
+    </script>
+
+</body>
+</html>

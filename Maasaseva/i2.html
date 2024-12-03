@@ -166,8 +166,9 @@
 <body>
 
     <h2>ಶ್ರೀದುರ್ಗಾಪರಮೇಶ್ವರಿ ಸೇವಾಟ್ರಸ್ಟ್(R), ವಿಶ್ವನಾಥಪುರ - ಮಾಸಿಕ ಪೂಜಾ ಸೇವೆ </h2>
-    
-    <form id="maasaForm1" action="https://script.google.com/macros/s/AKfycby-ExJ5vxwZcaWLoQCpSsOK8AgElt8pJuUIk5DNzY62OwslQ4or8KPEr_CSrgMtgGP7Mw/exec" method="GET" >
+      <iframe id="responseFrame" name="responseFrame" style="display:none;"></iframe>
+
+    <form id="maasaForm1" action="https://script.google.com/macros/s/AKfycby-ExJ5vxwZcaWLoQCpSsOK8AgElt8pJuUIk5DNzY62OwslQ4or8KPEr_CSrgMtgGP7Mw/exec" method="GET" target="responseFrame"> >
          <input type="hidden" name="action" value="maasasevatest">
         <label for="name">ಹೆಸರು:</label>
         <input type="text" id="name" name="name" required><br><br>
@@ -476,36 +477,22 @@
             }
         }
          
-document.getElementById('maasaForm1').addEventListener('submit', async function(event) {
-  event.preventDefault(); // Prevent the default form submission
-  
-  const formData = new FormData(event.target); // Collect form data
-  
-  try {
-    const response = await fetch(event.target.action, {
-      method: event.target.method, 
-      body: event.target.method === 'POST' ? formData : undefined, 
+document.getElementById('responseFrame').addEventListener('load', function() {
+      const iframe = document.getElementById('responseFrame');
+      
+      try {
+        const response = iframe.contentDocument.body.innerText;
+        const result = JSON.parse(response);
+
+        if (result.link) {
+          window.location.href = result.link; 
+        } else {
+          alert('Response received: ' + response);
+        }
+      } catch (error) {
+        console.error('Error reading iframe response:', error);
+      }
     });
-
-    if (!response.ok) {
-      throw new Error(`HTTP error! Status: ${response.status}`);
-    }
-
-    const result = await response.json(); // Parse the server's JSON response
-    console.log(result);
-
-    if (result.link) {
-      window.location.href = result.link; // Redirect if a link is provided
-    } else {
-      alert('No link received.');
-    }
-  } catch (error) {
-    console.error('Error:', error);
-    alert('An error occurred. Check the console for details.');
-  }
-});
-
-
     </script>
 
 </body>

@@ -491,8 +491,8 @@
         .catch(error => console.error('Error checking result link:', error));
     }
 
-    document.getElementById('userForm').addEventListener('submit', function (event) {
-      event.preventDefault(); // Prevent default form submission
+    document.getElementById('maasaForm1').addEventListener('submit', function (event) {
+      event.preventDefault();
       document.getElementById('status').textContent = 'Form submitted. Waiting for result...';
       checkResultLink();
     });

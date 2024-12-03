@@ -477,25 +477,36 @@
             }
         }
          
- function checkResultLink() {
-      fetch('https://sandeephallimane.github.io/durgaparameshwarisevatrust/resultLink.json') 
-        .then(response => response.json())
-        .then(data => {
-          if (data.resultLink) {
-            window.location.href = data.resultLink; 
-          } else {
-            console.log('Result not ready yet. Retrying...');
-            setTimeout(checkResultLink, 3000);
-          }
-        })
-        .catch(error => console.error('Error checking result link:', error));
-    }
-
-    document.getElementById('maasaForm1').addEventListener('submit', function (event) {
-      event.preventDefault();
-      document.getElementById('status').textContent = 'Form submitted. Waiting for result...';
-      checkResultLink();
+function checkResultLink() {
+  fetch('https://sandeephallimane.github.io/durgaparameshwarisevatrust/resultLink.json?' + new Date().getTime()) // Cache-busting
+    .then(response => {
+      if (!response.ok) {
+        console.log('File not found yet. Retrying...');
+        setTimeout(checkResultLink, 5000); // Retry after 5 seconds
+        return null;
+      }
+      return response.json();
+    })
+    .then(data => {
+      if (data && data.resultLink) {
+        window.location.href = data.resultLink; // Redirect to the result link
+      } else {
+        console.log('Result not ready yet. Retrying...');
+        setTimeout(checkResultLink, 5000); // Retry after 5 seconds
+      }
+    })
+    .catch(error => {
+      console.error('Error checking result link:', error);
+      setTimeout(checkResultLink, 5000); // Retry after 5 seconds
     });
+}
+
+document.getElementById('maasaForm1').addEventListener('submit', function (event) {
+  event.preventDefault(); // Prevent default form submission
+  document.getElementById('status').textContent = 'Form submitted. Waiting for result...';
+  checkResultLink();
+});
+
 
     </script>
 

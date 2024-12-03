@@ -477,18 +477,31 @@
             }
         }
          
-window.addEventListener('message', function (event) {
-    if (event.origin !== "https://script.google.com") {
-        console.warn('Ignoring message from unexpected origin:', event.origin);
-        return;
+window.addEventListener('message', function(event) {
+    // Log the event for debugging
+    console.log('Received message:', event);
+
+    // Validate the origin of the message
+    if (!event.origin.includes('.googleusercontent.com')) {
+        console.warn('Message from unexpected origin:', event.origin);
+        return; // Ignore messages from unknown origins
     }
-    const result = event.data;
-    if (result.link) {
-        window.location.href = result.link; // Redirect to the provided link
-    } else {
-        alert('No link provided.');
+
+    try {
+        const result = event.data; // Access the data sent via postMessage
+        console.log('Processed result:', result);
+
+        // Redirect or handle the received link
+        if (result.link) {
+            window.location.href = result.link;
+        } else {
+            alert('No link provided in response.');
+        }
+    } catch (error) {
+        console.error('Error processing message:', error);
     }
 });
+
     </script>
 
 </body>

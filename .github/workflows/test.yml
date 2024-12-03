@@ -1,0 +1,44 @@
+name: Update and Cleanup Result Link
+
+on:
+  workflow_dispatch:
+    inputs:
+      result_link:
+        description: "The result link to process"
+        required: true
+        type: string
+
+jobs:
+  update_and_cleanup:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Use RESULT_LINK passed from GAS
+        run: |
+          RESULT_LINK="${{ github.event.inputs.result_link }}"
+          echo "Using RESULT_LINK: $RESULT_LINK"
+
+      - name: Update resultLink.json
+        run: |
+          RESULT_LINK="${{ github.event.inputs.result_link }}"
+          echo "{\"resultLink\": \"$RESULT_LINK\"}" > resultLink.json
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
+          git add resultLink.json
+          git commit -m "Update result link"
+          git push
+
+      - name: Wait 1 minute before cleanup
+        run: sleep 60  # Wait for 60 seconds
+
+      - name: Cleanup resultLink.json
+        run: |
+          rm resultLink.json
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
+          git add resultLink.json
+          git commit -m "Remove temporary result link"
+          git push

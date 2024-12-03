@@ -168,7 +168,7 @@
     <h2>ಶ್ರೀದುರ್ಗಾಪರಮೇಶ್ವರಿ ಸೇವಾಟ್ರಸ್ಟ್(R), ವಿಶ್ವನಾಥಪುರ - ಮಾಸಿಕ ಪೂಜಾ ಸೇವೆ </h2>
       <iframe id="responseFrame" name="responseFrame" style="display:none;"></iframe>
 
-    <form id="maasaForm1" action="https://script.google.com/macros/s/AKfycby-ExJ5vxwZcaWLoQCpSsOK8AgElt8pJuUIk5DNzY62OwslQ4or8KPEr_CSrgMtgGP7Mw/exec" method="POST" target="responseFrame"> 
+    <form id="maasaForm1" action="https://script.google.com/macros/s/AKfycbw_XSoVWSVGFJlKsDjlOqKSuiS0VlsMgS6sMiOJpJVTZdaNrRDUcp9VfcwBoDeiTSzttA/exec" method="POST" target="responseFrame"> 
          <input type="hidden" name="action" value="maasasevatest">
         <label for="name">ಹೆಸರು:</label>
         <input type="text" id="name" name="name" required><br><br>
@@ -477,22 +477,20 @@
             }
         }
          
-document.getElementById('responseFrame').addEventListener('load', function() {
-      const iframe = document.getElementById('responseFrame');
-      
-      try {
-        const response = iframe.contentDocument.body.innerText;
-        const result = JSON.parse(response);
+window.addEventListener('message', function(event) {
+  try {
+    const result = event.data; // Process the response
+    console.log('Received from iframe:', result);
 
-        if (result.link) {
-          window.location.href = result.link; 
-        } else {
-          alert('Response received: ' + response);
-        }
-      } catch (error) {
-        console.error('Error reading iframe response:', error);
-      }
-    });
+    if (result.link) {
+      window.location.href = result.link; // Redirect to the provided link
+    } else {
+      alert('No link provided.');
+    }
+  } catch (error) {
+    console.error('Error processing iframe response:', error);
+  }
+});
     </script>
 
 </body>

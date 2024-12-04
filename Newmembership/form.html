@@ -226,7 +226,7 @@
     </form>
   </div>
 
-  <div class="preview-container hidden" id="previewContainer">
+  <div class="preview-container hidden" id="previewContainer" style="color:#5d1000">
     <h2>Form Preview</h2>
     <form id="previewForm" action="" method="POST">
       <p><strong>ಹೆಸರು:</strong> <span id="previewName"></span></p>
@@ -238,7 +238,7 @@
       <p><strong>ನಕ್ಷತ್ರ:</strong> <span id="previewNakshtra"></span></p>
       <p><strong>ಜನ್ಮ ದಿನಾಂಕ:</strong> <span id="previewDOB"></span></p>
       <p><strong>ಕುಟುಂಬ ಸ್ಥಳ:</strong> <span id="previewKutumbaStala"></span></p>
-      <p><strong>ಸದಸ್ಯತ್ವ ಶುಲ್ಕ: 1000</strong> <span id="previewmembershipamount"></span></p>
+      <p><strong>ಸದಸ್ಯತ್ವ ಶುಲ್ಕ:</strong> 1000 <span id="previewmembershipamount"></span></p>
        <input type="hidden" name="action" value="newmbrshp">
       <input type="hidden" name="pname" id="pname">
       <input type="hidden" name="paddress" id="paddress">
@@ -300,8 +300,8 @@ document.getElementById("previewName").innerText = form.name.value;
             const canvas = document.createElement("canvas");
             const ctx = canvas.getContext("2d");
 
-            canvas.width = 200; 
-            canvas.height = 200;
+            canvas.width = 300; 
+            canvas.height = 300;
 
             ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
             const compressedData = canvas.toDataURL("image/jpeg", 0.2);

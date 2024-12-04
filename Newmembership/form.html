@@ -239,6 +239,16 @@
       <p><strong>ಜನ್ಮ ದಿನಾಂಕ:</strong> <span id="previewDOB"></span></p>
       <p><strong>ಕುಟುಂಬ ಸ್ಥಳ:</strong> <span id="previewKutumbaStala"></span></p>
       <p><strong>ಸದಸ್ಯತ್ವ ಶುಲ್ಕ: 1000</strong> <span id="previewmembershipamount"></span></p>
+       <input type="hidden" name="action" value="newmbrshp">
+      <input type="hidden" name="pname" id="pname">
+      <input type="hidden" name="paddress" id="paddress">
+     <input type="hidden" name="pemail" id="pemail">
+       <input type="hidden" name="pmobile" id="pmobile">
+        <input type="hidden" name="pgotra" id="pgotra">
+    <input type="hidden" name="pks" id="pks">
+<input type="hidden" name="praashi" id="praashi">
+<input type="hidden" name="pnakshatra" id="pnakshatra">
+<input type="hidden" name="pdob" id="pdob">
       <p><strong>Photo:</strong></p>
       <img id="previewPhoto" alt="Compressed Photo">
       <input type="hidden" name="photo" id="compressedPhotoData">
@@ -256,16 +266,30 @@
     previewButton.addEventListener("click", () => {
       const form = document.getElementById("detailsForm");
 
-      // Update preview text
-      document.getElementById("previewName").innerText = form.name.value;
+document.getElementById("previewName").innerText = form.name.value;
+            document.getElementById("pname").value = form.name.value;
+
       document.getElementById("previewEmail").innerText = form.email.value;
+            document.getElementById("pemail").value = form.email.value;
+
       document.getElementById("previewAddress").innerText = form.address.value;
+      document.getElementById("paddress").value = form.address.value;
       document.getElementById("previewRaashi").innerText = form.raashi.value;
+      document.getElementById("praashi").value = form.raashi.value;
       document.getElementById("previewNakshtra").innerText = form.nakshatra.value;
+       document.getElementById("pnakshatra").value = form.nakshatra.value;
       document.getElementById("previewDOB").innerText = form.dob.value;
+            document.getElementById("pdob").value = form.dob.value;
+
       document.getElementById("previewGotra").innerText = form.gotra.value;
+            document.getElementById("pgotra").value = form.gotra.value;
+
       document.getElementById("previewKutumbaStala").innerText = form.ks.value;
+            document.getElementById("pks").value = form.ks.value;
+
       document.getElementById("previewMobile").innerText = form.mobile.value;
+            document.getElementById("pmobile").value = form.mobile.value;
+
 
       const file = photoInput.files[0];
       if (file) {

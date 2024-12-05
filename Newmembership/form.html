@@ -268,27 +268,31 @@
       let isValid = true;
       const name = document.getElementById('name').value;
   if (!name) {
-    alert("Name is required.");
+    alert("ಹೆಸರು ನಮೂದಿಸಿ!");
     isValid = false;
   }
   
 
   const address = document.getElementById('address').value;
   if (!address) {
-    alert("Address is required.");
+    alert("ವಿಳಾಸ ನಮೂದಿಸಿ!");
     isValid = false;
   }
 
   const mobile = document.getElementById('mobile').value;
   if (!mobile) {
-    alert("Mobile number is required.");
+    alert("ಮೊಬೈಲ್ ಸಂಖ್ಯೆ ನಮೂದಿಸಿ!");
     isValid = false;
   }
-
+const dob = document.getElementById('dob').value;
+  if (!dob) {
+    alert("ಜನ್ಮ ದಿನಾಂಕ ನಮೂದಿಸಿ!");
+    isValid = false;
+  }
   
   const photo = document.getElementById('photoInput').files.length;
   if (photo === 0) {
-    alert("Please upload a photo.");
+    alert("ಭಾವಚಿತ್ರ ಸೇರಿಸಿ!");
     isValid = false;
   }
 

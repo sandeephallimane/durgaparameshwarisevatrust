@@ -264,6 +264,7 @@
     const previewContainer = document.getElementById("previewContainer");
 
     previewButton.addEventListener("click", () => {
+      event.preventDefault();
       const name = document.getElementById('name').value;
   if (!name) {
     alert("Name is required.");
@@ -290,12 +291,9 @@
     isValid = false;
   }
 
-  // Prevent form submission if any validation fails
-  if (!isValid) {
-    event.preventDefault();
-  }
-  else if  (isValid) {
-      const form = document.getElementById("detailsForm");
+  if (!isValid) return;
+
+ const form = document.getElementById("detailsForm");
 
 document.getElementById("previewName").innerText = form.name.value;
             document.getElementById("pname").value = form.name.value;
@@ -348,7 +346,7 @@ document.getElementById("previewName").innerText = form.name.value;
 
       detailsFormContainer.classList.add("hidden");
       previewContainer.classList.remove("hidden");
-    }});
+    });
     
      async function loadConfig() {
       const response = await fetch('https://raw.githubusercontent.com/sandeephallimane/durgaparameshwarisevatrust/main/config.json');

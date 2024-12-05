@@ -264,6 +264,36 @@
     const previewContainer = document.getElementById("previewContainer");
 
     previewButton.addEventListener("click", () => {
+      const name = document.getElementById('name').value;
+  if (!name) {
+    alert("Name is required.");
+    isValid = false;
+  }
+  
+
+  const address = document.getElementById('address').value;
+  if (!address) {
+    alert("Address is required.");
+    isValid = false;
+  }
+
+  const mobile = document.getElementById('mobile').value;
+  if (!mobile) {
+    alert("Mobile number is required.");
+    isValid = false;
+  }
+
+  
+  const photo = document.getElementById('photoInput').files.length;
+  if (photo === 0) {
+    alert("Please upload a photo.");
+    isValid = false;
+  }
+
+  // Prevent form submission if any validation fails
+  if (!isValid) {
+    event.preventDefault();
+  }
       const form = document.getElementById("detailsForm");
 
 document.getElementById("previewName").innerText = form.name.value;

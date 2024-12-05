@@ -265,6 +265,7 @@
 
     previewButton.addEventListener("click", () => {
       event.preventDefault();
+      let isValid = true;
       const name = document.getElementById('name').value;
   if (!name) {
     alert("Name is required.");

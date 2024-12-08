@@ -228,7 +228,7 @@
 
   <div class="preview-container hidden" id="previewContainer" style="color:#5d1000">
     <h2>Form Preview</h2>
-    <form id="previewForm" action="" method="POST" onsubmit="disableSubmitButton()">
+    <form id="previewForm" action="" method="POST" onsubmit="disableSubmitButton(event)">
       <p><strong>ಹೆಸರು:</strong> <span id="previewName"></span></p>
       <p><strong>ಮೊಬೈಲ್ ಸಂಖ್ಯೆ:</strong> <span id="previewMobile"></span></p>
       <p><strong>ಇಮೇಲ್ ವಿಳಾಸ:</strong> <span id="previewEmail"></span></p>
@@ -359,8 +359,10 @@ document.getElementById("previewName").innerText = form.name.value;
       document.getElementById('previewForm').action = config.googleScriptUrl;
     }
 
-    function disableSubmitButton() {
+    function disableSubmitButton(event) {
             document.getElementById('submitButton').disabled = true;
+            event.target.reset();
+            event.preventDefault();
         }
 
     window.onload = function(){

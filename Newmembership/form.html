@@ -228,7 +228,7 @@
 
   <div class="preview-container hidden" id="previewContainer" style="color:#5d1000">
     <h2>Form Preview</h2>
-    <form id="previewForm" action="" method="POST">
+    <form id="previewForm" action="" method="POST" onsubmit="disableSubmitButton()">
       <p><strong>ಹೆಸರು:</strong> <span id="previewName"></span></p>
       <p><strong>ಮೊಬೈಲ್ ಸಂಖ್ಯೆ:</strong> <span id="previewMobile"></span></p>
       <p><strong>ಇಮೇಲ್ ವಿಳಾಸ:</strong> <span id="previewEmail"></span></p>
@@ -253,7 +253,7 @@
       <img id="previewPhoto" alt="Compressed Photo">
       <input type="hidden" name="photo" id="compressedPhotoData">
       <br><br>
-      <button type="submit">Submit</button>
+      <button type="submit" id="submitButton">Submit</button>
     </form>
   </div>
 
@@ -358,6 +358,10 @@ document.getElementById("previewName").innerText = form.name.value;
       const config = await response.json();
       document.getElementById('previewForm').action = config.googleScriptUrl;
     }
+
+    function disableSubmitButton() {
+            document.getElementById('submitButton').disabled = true;
+        }
 
     window.onload = function(){
         loadConfig();

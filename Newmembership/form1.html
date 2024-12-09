@@ -374,17 +374,16 @@ document.getElementById("previewForm").addEventListener("submit", function(event
     data[key] = value;
   });
 
-  fetch('https://script.google.com/macros/s/AKfycbzaTDeziyRsoGp-bv7lLfq8op4QzAK5udirTNqRgYN1Aeqtqo79eHna6pRwHFn1RiTQ/exec', {
+  fetch('/api/proxy', { 
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify(data)
+    body: JSON.stringify(data) 
   })
   .then(response => response.json())
   .then(result => {
     if (result.redirectUrl) {
-      // Redirect to the URL received in the response
       window.location.href = result.redirectUrl;
     }
   })

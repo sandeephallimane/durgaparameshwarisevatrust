@@ -364,41 +364,33 @@ document.getElementById("previewName").innerText = form.name.value;
             event.target.reset();
             event.preventDefault();
         }
-document.getElementById('previewForm').addEventListener('submit', async function(event) {
+document.getElementById("previewForm").addEventListener("submit", function(event) {
   event.preventDefault();
+  
+  const formData = new FormData(this);
+  const data = {};
 
-  const formData = {
-    name: document.getElementById('pname').value,
-    mobile: document.getElementById('pmobile').value,
-    email: document.getElementById('pemail').value,
-    address: document.getElementById('paddress').value,
-    gotra: document.getElementById('pgotra').value,
-    ks: document.getElementById('pks').value,
-    raashi: document.getElementById('praashi').value,
-    nakshatra: document.getElementById('pnakshatra').value,
-    dob: document.getElementById('pdob').value,
-    photo: document.getElementById('compressedPhotoData').value,
-  };
+  formData.forEach((value, key) => {
+    data[key] = value;
+  });
 
-  try {
-    const response = await fetch('https://script.google.com/macros/s/AKfycbzio2-zeQqXaMdENpD5hFfpEaRduLKNuhs_E2knx7WIt_5S70o-bux2V8_69sdrqNua/exec', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(formData),
-    });
-
-    const result = await response.json();
-    if (result.status === 'success') {
-      alert('Form submitted successfully!');
-    } else {
-      alert('Error: ' + result.message);
+  fetch('https://script.google.com/macros/s/AKfycbxtI0XgBvN0TlU3VwFZGV60-VXCWzB1HRvZpH8OFjaIk6ubKfLdmMvHo5OGx6QAMweT/exec', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(data)
+  })
+  .then(response => response.json())  // Assuming the response is in JSON format
+  .then(result => {
+    if (result.redirectUrl) {
+      // Redirect to the URL received in the response
+      window.location.href = result.redirectUrl;
     }
-  } catch (error) {
+  })
+  .catch(error => {
     console.error('Error:', error);
-    alert('Failed to submit the form. Please try again.');
-  }
+  });
 });
 
     window.onload = function(){

@@ -374,14 +374,14 @@ document.getElementById("previewForm").addEventListener("submit", function(event
     data[key] = value;
   });
 
-  fetch('https://script.google.com/macros/s/AKfycbxtI0XgBvN0TlU3VwFZGV60-VXCWzB1HRvZpH8OFjaIk6ubKfLdmMvHo5OGx6QAMweT/exec', {
+  fetch('https://script.google.com/macros/s/AKfycbwQqPL0sTTVxRjFvCsQBqqI5UFMTKttz7fVXNnaMd9eESDUuJaO74d_rIri3PGdltT1/exec', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
     },
     body: JSON.stringify(data)
   })
-  .then(response => response.json())  // Assuming the response is in JSON format
+  .then(response => response.json())
   .then(result => {
     if (result.redirectUrl) {
       // Redirect to the URL received in the response
@@ -392,6 +392,7 @@ document.getElementById("previewForm").addEventListener("submit", function(event
     console.error('Error:', error);
   });
 });
+
 
     window.onload = function(){
         loadConfig();

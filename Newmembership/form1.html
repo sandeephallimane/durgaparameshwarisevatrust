@@ -382,10 +382,14 @@ document.getElementById("previewName").innerText = form.name.value;
         }
 
         const result1 = await res.json();
-        responseParagraph.textContent = `Received Link: ${result1.link}`;
-      } catch (error) {
-        responseParagraph.textContent = `Error: ${error.message}`;
-      }
+       if (result1.link) {
+    window.location.href = result1.link; // Redirects the browser to the received link
+  } else {
+    responseParagraph.textContent = 'No link received in the response.';
+  }
+} catch (error) {
+  responseParagraph.textContent = `Error: ${error.message}`;
+}
     });
     window.onload = function(){
         loadConfig();

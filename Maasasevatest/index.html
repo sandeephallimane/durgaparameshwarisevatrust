@@ -316,7 +316,7 @@
 </button><br><br>
         <button type="submit">Submit</button>
     </form>
-
+    <p id="response"></p>
     <script>
     let setCount = 1;
         function addSet() {
@@ -465,48 +465,36 @@
     }, 10);
   }
      
-        async function sendData(event) {
-      event.preventDefault(); // Prevent form submission
-      
-      const form = event.target;
-      const formData = new FormData(form);
-      const data = {};
+           const form1 = document.getElementById('maasaForm');
+    const responseParagraph = document.getElementById('response');
 
-      // Convert FormData to a JavaScript object
-      formData.forEach((value, key) => {
-        if (!data[key]) {
-          data[key] = value;
-        } else if (Array.isArray(data[key])) {
-          data[key].push(value);
-        } else {
-          data[key] = [data[key], value];
-        }
-      });
+    form1.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const formData1 = new FormData(form1);
+      const data1 = Object.fromEntries(formData1.entries());
 
       try {
-        // Send data to the GAS WebApp
-        const response = await fetch("https://script.google.com/macros/s/AKfycbwb8_cikEc_nmjFQabG6keSWVkJFi7dVHynM8wF5U5_tmh8Eeg0pGk20G_tGbVUHstBnw/exec", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(data),
+        const res = await fetch('/api/proxy', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ data1 })
         });
 
-        if (!response.ok) {
-          throw new Error("Failed to send data");
+        if (!res.ok) {
+          throw new Error('Error submitting data');
         }
 
-        const result = await response.json();
-        const link = result.link;
-
-        // Open the link in the same page or a new tab
-        window.open(link, "_self"); 
-      } catch (error) {
-        console.error("Error:", error);
-        alert("Failed to send form data.");
-      }
-    }
+        const result1 = await res.json();
+       if (result1.link) {
+    window.location.href = result1.link; // Redirects the browser to the received link
+  } else {
+    responseParagraph.textContent = 'No link received in the response.';
+  }
+} catch (error) {
+  responseParagraph.textContent = `Error: ${error.message}`;
+}
+    });
     </script>
 
 </body>

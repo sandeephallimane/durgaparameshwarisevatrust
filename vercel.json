@@ -1,8 +1,15 @@
 {
-  "version": 3,
-  "functions": {
-    "api/submit.js": {
-      "runtime": "nodejs16.x"
+  "version": 2,
+  "builds": [
+    {
+      "src": "api/submit.js",
+      "use": "@vercel/node"
     }
-  }
+  ],
+  "routes": [
+    {
+      "src": "/api/proxy",
+      "dest": "api/submit.js"
+    }
+  ]
 }

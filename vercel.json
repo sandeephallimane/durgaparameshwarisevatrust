@@ -1,15 +1,8 @@
 {
   "version": 2,
   "functions": {
-    "api/proxy.js": {
-      "memory": 1024,
-      "maxDuration": 10
+    "api/submit.js": {
+      "runtime": "nodejs16.x"
     }
-  },
-  "builds": [
-    {
-      "src": "api/proxy.js",
-      "use": "@vercel/node"
-    }
-  ]
+  }
 }

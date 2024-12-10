@@ -1,7 +1,6 @@
-const fetch = require('node-fetch'); 
+const fetch = require('node-fetch');
 
 module.exports = async (req, res) => {
-  // Check the request method (only handle POST for now)
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Only POST requests are allowed' });
   }
@@ -12,14 +11,19 @@ module.exports = async (req, res) => {
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(req.body), // Forward the request data from frontend
+      body: JSON.stringify(req.body),
     });
 
-    const data = await response.json();
+    // Check if the response status is OK (2xx)
+    if (!response.ok) {
+      console.error(`External service returned error: ${response.status} ${response.statusText}`);
+      return res.status(response.status).json({ error: `External service error: ${response.statusText}` });
+    }
 
+    const data = await response.json();
     res.status(200).json(data);
   } catch (error) {
-    console.error(error);
+    console.error('Error during forwarding:', error);
     res.status(500).json({ error: 'Failed to forward the request' });
   }
 };

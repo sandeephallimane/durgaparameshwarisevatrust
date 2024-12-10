@@ -1,5 +1,5 @@
 export default async (req, res) => {
-  const GAS_URL = 'https://script.google.com/macros/s/AKfycbzimeHZGpy_w-lwT55dvYKSMOBtCRSnKDNIdwHH3RzGwQSDH_79ggN5lM0tgUyk5LNuvw/exec';
+  const GAS_URL = 'https://script.google.com/macros/s/AKfycbyTFCDeHH6NVcNx578V3lRDFhBNdm-p2e-G1IOvtL-uVkkrROPt7pAHgH5JzRfvWLbTYw/exec';
 
   if (req.method === 'OPTIONS') {
     res.setHeader('Access-Control-Allow-Origin', '*');
@@ -28,7 +28,7 @@ export default async (req, res) => {
     } catch (error) {
       console.error('Error communicating with GAS:', error.message);
       res.setHeader('Access-Control-Allow-Origin', '*');
-      res.status(500).json({ error: 'Error communicating with GAS', details: error.message });
+      res.status(500).json({ error: 'Error communicating with GAS', details: error });
     }
   } else {
     res.setHeader('Access-Control-Allow-Origin', '*');

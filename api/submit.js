@@ -1,27 +1,32 @@
 const axios = require('axios');
 
 export default async (req, res) => {
+  const GAS_URL = 'https://script.google.com/macros/s/AKfycbzhV9KhuO7juYI2I7t2mmu-X7pkZWlmDwMVeATfFrNK8tpsggycK_GnT3hD0v-kQzTj/exec';
+
   if (req.method === 'OPTIONS') {
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
     res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
-    res.status(204).end();
+    res.status(204).end(); // No Content
     return;
   }
 
-  // Handle POST requests
   if (req.method === 'POST') {
     try {
-      const { data } = req.body;
+      const response = await axios.post(GAS_URL, req.body, {
+        headers: {
+          'Content-Type': 'application/json', 
+        },
+      });
 
-      const GAS_URL = 'https://script.google.com/macros/s/AKfycbzrIGIaNYEaoqU6qvXKeEwbucWTVksNNfuaICIGKMEHfq5i13f9L0apHC4HnOBfj_o3/exec';
-
-      const response = await axios.post(GAS_URL, data);
-
-      res.setHeader('Access-Control-Allow-Origin', '*'); 
+      res.setHeader('Access-Control-Allow-Origin', '*');
       res.status(200).json(response.data);
     } catch (error) {
-      console.error(error.message);
+      console.error('Error communicating with GAS:', error.message);
+      if (error.response) {
+        console.error('GAS Error Response:', error.response.data);
+      }
+      res.setHeader('Access-Control-Allow-Origin', '*');
       res.status(500).json({ error: 'Error communicating with GAS' });
     }
   } else {

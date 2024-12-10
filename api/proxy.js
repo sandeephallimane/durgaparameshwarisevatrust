@@ -13,11 +13,15 @@ export default async (req, res) => {
 
   if (req.method === 'POST') {
     try {
+      console.log('Request body:', req.body);
+
       const response = await axios.post(GAS_URL, req.body, {
         headers: {
-          'Content-Type': 'application/json', 
+          'Content-Type': 'application/json', // Ensure JSON format is used
         },
       });
+
+      console.log('Response from GAS:', response.data);
 
       res.setHeader('Access-Control-Allow-Origin', '*');
       res.status(200).json(response.data);
@@ -27,7 +31,7 @@ export default async (req, res) => {
         console.error('GAS Error Response:', error.response.data);
       }
       res.setHeader('Access-Control-Allow-Origin', '*');
-      res.status(500).json({ error: 'Error communicating with GAS' });
+      res.status(500).json({ error: 'Error communicating with GAS', details: error.message });
     }
   } else {
     res.setHeader('Access-Control-Allow-Origin', '*');

@@ -14,7 +14,7 @@ export default async (req, res) => {
     try {
       const { data } = req.body;
 
-      const GAS_URL = 'https://script.google.com/macros/s/AKfycbwiH5SsvdffCNqOR4kb9dlhFor_Ps7jLTahHbm4qMBn_o5nZcD3QaDXQh-GejOiQd_I/exec';
+      const GAS_URL = 'https://script.google.com/macros/s/AKfycbzrIGIaNYEaoqU6qvXKeEwbucWTVksNNfuaICIGKMEHfq5i13f9L0apHC4HnOBfj_o3/exec';
 
       const response = await axios.post(GAS_URL, data);
 

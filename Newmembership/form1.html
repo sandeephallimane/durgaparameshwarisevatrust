@@ -371,7 +371,7 @@ document.getElementById("previewName").innerText = form.name.value;
       const data1 = Object.fromEntries(formData1.entries());
 
       try {
-        const res = await fetch('/api/submit', {
+        const res = await fetch('/api/proxy', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ data1 })

@@ -2,7 +2,6 @@
   "name": "vercel-proxy",
   "version": "1.0.0",
   "description": "Proxy function for Google Apps Script integration",
-  "main": "api/proxy.js",
   "dependencies": {
     "axios": "^1.5.0"
   }

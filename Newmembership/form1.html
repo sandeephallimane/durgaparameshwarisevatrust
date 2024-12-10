@@ -228,7 +228,7 @@
 
   <div class="preview-container hidden" id="previewContainer" style="color:#5d1000">
     <h2>Form Preview</h2>
-    <form id="previewForm" onsubmit="disableSubmitButton(event)">
+    <form id="previewForm">
       <p><strong>ಹೆಸರು:</strong> <span id="previewName"></span></p>
       <p><strong>ಮೊಬೈಲ್ ಸಂಖ್ಯೆ:</strong> <span id="previewMobile"></span></p>
       <p><strong>ಇಮೇಲ್ ವಿಳಾಸ:</strong> <span id="previewEmail"></span></p>
@@ -255,6 +255,8 @@
       <br><br>
       <button type="submit" id="submitButton">Submit</button>
     </form>
+      <p id="response"></p>
+
   </div>
 
   <script>
@@ -359,40 +361,32 @@ document.getElementById("previewName").innerText = form.name.value;
       document.getElementById('previewForm').action = config.googleScriptUrl;
     }
 
-    function disableSubmitButton(event) {
-            document.getElementById('submitButton').disabled = true;
-            event.target.reset();
-            event.preventDefault();
+    const form1 = document.getElementById('previewForm');
+    const responseParagraph = document.getElementById('response');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const formData1 = new FormData(form1);
+      const data1 = Object.fromEntries(formData1.entries());
+
+      try {
+        const res = await fetch('/api/submit', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ data1 })
+        });
+
+        if (!res.ok) {
+          throw new Error('Error submitting data');
         }
-document.getElementById("previewForm").addEventListener("submit", function(event) {
-  event.preventDefault();
-  
-  const formData = new FormData(this);
-  const data = {};
 
-  formData.forEach((value, key) => {
-    data[key] = value;
-  });
-
-  fetch('/api/proxy', { 
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(data) 
-  })
-  .then(response => response.json())
-  .then(result => {
-    if (result.redirectUrl) {
-      window.location.href = result.redirectUrl;
-    }
-  })
-  .catch(error => {
-    console.error('Error:', error);
-  });
-});
-
-
+        const result1 = await res.json();
+        responseParagraph.textContent = `Received Link: ${result1.link}`;
+      } catch (error) {
+        responseParagraph.textContent = `Error: ${error.message}`;
+      }
+    });
     window.onload = function(){
         loadConfig();
     }

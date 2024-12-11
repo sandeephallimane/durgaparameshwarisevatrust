@@ -616,29 +616,52 @@
       const data1 = Object.fromEntries(formData1.entries());
 
       try {
-        const res = await fetch('/api/proxy', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ data1 })
-        });
+  const res = await fetch('/api/proxy', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ data1 })
+  });
 
-        if (!res.ok) {
-          throw new Error('Error submitting data');
-        }
-
-        const result1 = await res.json();
-       if (result1.link) {
-    window.location.href = result1.link; // Redirects the browser to the received link
-  } else {
-    responseParagraph.textContent = 'No link received in the response.';
-    ld.classList.add("hidden");
-    rp.classList.remove("hidden"); 
+  if (!res.ok) {
+    throw new Error('Error submitting data');
   }
+
+  // Check the response's content type
+  const contentType = res.headers.get('Content-Type');
+
+  // If the response is JSON, parse it as JSON
+  if (contentType && contentType.includes('application/json')) {
+    const result1 = await res.json();
+
+    if (result1.link) {
+      window.location.href = result1.link; // Redirects the browser to the received link
+    } else {
+      responseParagraph.textContent = 'No link received in the response.';
+      ld.classList.add("hidden");
+      rp.classList.remove("hidden");
+    }
+  }
+  // If the response is HTML, handle it as text (HTML content)
+  else if (contentType && contentType.includes('text/html')) {
+    const htmlContent = await res.text();
+
+    // If the response is HTML, you could redirect or display the content in a specific way
+    // For example, you can inject the HTML content into a specific element on the page:
+    document.body.innerHTML = htmlContent;  // Or another method of displaying the HTML
+
+    // If you just want to show the HTML in a specific container
+    responseParagraph.innerHTML = htmlContent;  // If you want to display HTML in a specific div
+    ld.classList.add("hidden");
+    rp.classList.remove("hidden");
+  } else {
+    throw new Error('Unsupported response format from the server');
+  }
+
 } catch (error) {
   responseParagraph.textContent = `Error: ${error.message}`;
   ld.classList.add("hidden");
-    rp.classList.remove("hidden"); 
-}
+  rp.classList.remove("hidden");
+      }
     });
     </script>
 

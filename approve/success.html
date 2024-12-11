@@ -35,7 +35,7 @@
   <div class="message">
       <h1>ಧನ್ಯವಾದಗಳು <strong id="name"></strong></h1><br>
     ನಿಮ್ಮ ವಿವರಗಳು ನೋಂದಣಿಯಾಗಿದೆ. ನಿಮ್ಮ ನೋಂದಣಿ ಸಂಖ್ಯೆ <strong id="req"></strong><br><br>
-    <p>ಎಲ್ಲ ಮಾಹಿತಿ ಸರಿ ಇದ್ದಲ್ಲಿ ನೋಂದಾಯಿತ ಇಮೇಲ್ ವಿಳಾಸಕ್ಕೆ ಎರಡು ದಿನದ ಒಳಗಾಗಿ ನಮ್ಮ ಕಡೆಯಿಂದ ರಶೀದಿ ಕಳಿಸಿ ಕೊಡಲಾಗುವುದು. ಇಮೇಲ್ ವಿಳಾಸ ಕೊಡದಿದ್ದಲ್ಲಿ ಕಾರ್ಯದರ್ಶಿಗಳನ್ನು ಸಂಪರ್ಕಿಸಿ.</p><br><br>
+    <p>ಎಲ್ಲ ಮಾಹಿತಿ ಸರಿ ಇದ್ದಲ್ಲಿ ನೋಂದಾಯಿತ ಇಮೇಲ್ ವಿಳಾಸಕ್ಕೆ ಎರಡು ದಿನದ ಒಳಗಾಗಿ ನಮ್ಮ ಕಡೆಯಿಂದ <l id="mr"></l> ಕಳಿಸಿ ಕೊಡಲಾಗುವುದು. ಇಮೇಲ್ ವಿಳಾಸ ಕೊಡದಿದ್ದಲ್ಲಿ ಕಾರ್ಯದರ್ಶಿಗಳನ್ನು ಸಂಪರ್ಕಿಸಿ.</p><br><br>
     <p>ಇತರ ಮಾಹಿತಿಗಾಗಿ ಮತ್ತು ದೂರುಗಳಿಗಾಗಿ ಮೊಬೈಲ್ ಸಂಖ್ಯೆ 9448645301 ಸಂಪರ್ಕಿಸಿ . </p><br><br><br>
   </div>
 
@@ -53,6 +53,17 @@
       document.getElementById('req').textContent = registrationNumber;
     } else {
       document.getElementById('req').textContent = "Not Available";
+    }
+   const rt = getQueryParam('rpt');
+    if (rt) {
+      if(rt === 'mem'){
+      document.getElementById('mr').textContent = "ಸದಸ್ಯತ್ವ ಕಾರ್ಡನ್ನು";
+      } else if ((rt === 'rec'){ 
+              document.getElementById('mr').textContent = "ರಶೀದಿಯನ್ನು";
+
+      }
+    } else {
+      document.getElementById('mr').textContent = "";
     }
   const nm = getQueryParam('name');
     if (nm) {

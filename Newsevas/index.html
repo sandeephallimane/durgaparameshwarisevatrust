@@ -134,6 +134,22 @@
       font-weight: 500;
       animation: fadeInOut 2s infinite;
     }
+ * {
+	border: 0;
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+
+}
+:root {
+	--bg: #e3e4e8;
+	--fg: #2e3138;
+	--primary: #255ff4;
+	font-size: calc(16px + (24 - 16) * (100vw - 320px) / (1280 - 320));
+}
+ #loading {
+        place-items: center;
+}
     .topnav a:hover, .topnav button:hover {
       background-color: #ddd;
       color: black;
@@ -369,24 +385,25 @@
         }
 function clearFormInputs() {
     setTimeout(function() {
-      document.getElementById('nsf').reset();  
+      document.getElementById('sevaForm').reset();  
     }, 10);
   }
          async function loadConfig() {
       const response = await fetch('https://raw.githubusercontent.com/sandeephallimane/durgaparameshwarisevatrust/main/config.json');
       const config = await response.json();
-      document.getElementById('myForm').action = config.googleScriptUrl;
+      document.getElementById('sevaForm').action = config.googleScriptUrl;
     }
-   const form1 = document.getElementById('nsf');
+  const form1 = document.getElementById('sevaForm');
     const responseParagraph = document.getElementById('response');
 
-    async function pd(e) {
+    form1.addEventListener('submit', async (e) => {
       e.preventDefault();
-     const pc = document.getElementById("fc");
+       const pc = document.getElementById("fc");
        const ld = document.getElementById("loading");
         const rp = document.getElementById("rp");
-        pc.classList.add("hidden");
-      ld.classList.remove("hidden"); 
+
+      pc.classList.add("hidden");
+      ld.classList.remove("hidden");
       const formData1 = new FormData(form1);
       const data1 = Object.fromEntries(formData1.entries());
 
@@ -403,7 +420,7 @@ function clearFormInputs() {
 
         const result1 = await res.json();
        if (result1.link) {
-    window.location.href = result1.link; 
+    window.location.href = result1.link; // Redirects the browser to the received link
   } else {
     responseParagraph.textContent = 'No link received in the response.';
     ld.classList.add("hidden");
@@ -412,15 +429,15 @@ function clearFormInputs() {
 } catch (error) {
   responseParagraph.textContent = `Error: ${error.message}`;
   ld.classList.add("hidden");
-  rp.classList.remove("hidden"); 
+    rp.classList.remove("hidden"); 
 }
-    }
+    });
     </script>
 </head>
 <body>
     <div class="fc " id="fc">
-  <form id='nsf'  onsubmit="pd(event)" >
-        <h1>ಶ್ರೀದುರ್ಗಾಪರಮೇಶ್ವರಿ ಸೇವಾಟ್ರಸ್ಟ್(R), ವಿಶ್ವನಾಥಪುರ - ದೈನಂದಿನ ಪೂಜಾ ಸೇವೆ</h1>
+<form id="sevaForm" >
+	<h1>ಶ್ರೀದುರ್ಗಾಪರಮೇಶ್ವರಿ ಸೇವಾಟ್ರಸ್ಟ್(R), ವಿಶ್ವನಾಥಪುರ - ದೈನಂದಿನ ಪೂಜಾ ಸೇವೆ</h1>
         <details>
         <summary>ದೈನಂದಿಕ ಪೂಜೆ ಸೇವೆಯ ಬಗ್ಗೆ</summary>
    <p> ಎರಡು ಬಗೆಯ ದೈನಂದಿಕ ಸೇವೆಗಳಿವೆ</p>

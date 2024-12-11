@@ -268,7 +268,7 @@ function clearFormInputs() {
    const form1 = document.getElementById('myForm');
     const responseParagraph = document.getElementById('response');
 
-    form1.addEventListener('submit', async (e) => {
+    function pd(e) {
       e.preventDefault();
      const pc = document.getElementById("fc");
        const ld = document.getElementById("loading");
@@ -302,12 +302,12 @@ function clearFormInputs() {
   ld.classList.add("hidden");
   rp.classList.remove("hidden"); 
 }
-    });
+    }
     </script>
 </head>
 <body>
     <div class="fc " id="fc">
-  <form id='myForm' >
+  <form id='myForm'  onsubmit="pd(e)" >
         <h1>ಶ್ರೀದುರ್ಗಾಪರಮೇಶ್ವರಿ ಸೇವಾಟ್ರಸ್ಟ್(R), ವಿಶ್ವನಾಥಪುರ - ದೈನಂದಿನ ಪೂಜಾ ಸೇವೆ</h1>
         <details>
         <summary>ದೈನಂದಿಕ ಪೂಜೆ ಸೇವೆಯ ಬಗ್ಗೆ</summary>

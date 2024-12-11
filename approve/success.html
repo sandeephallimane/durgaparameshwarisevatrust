@@ -5,42 +5,123 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Confirmation</title>
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      padding: 20px;
+    /* Reset basic styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f0f4f7;
+      color: #333;
+      padding: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      flex-direction: column;
+      animation: fadeIn 1.5s ease-in;
+    }
+
     h1 {
       color: #2c3e50;
+      font-size: 2rem;
+      margin-bottom: 10px;
     }
+
     .message {
-      margin-top: 20px;
-      font-size: 16px;
+      background-color: #ffffff;
+      border-radius: 10px;
+      padding: 30px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      max-width: 600px;
+      text-align: center;
+      animation: slideUp 1.5s ease-in-out;
     }
+
+    .message p {
+      font-size: 1rem;
+      line-height: 1.6;
+      color: #555;
+      margin-bottom: 20px;
+    }
+
     .button {
+      display: inline-block;
+      padding: 12px 25px;
       margin-top: 20px;
-      padding: 10px 20px;
-      font-size: 16px;
+      font-size: 1rem;
+      font-weight: 600;
       cursor: pointer;
       background-color: #3498db;
       color: white;
       border: none;
-      border-radius: 5px;
+      border-radius: 30px;
+      text-transform: uppercase;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      transition: background-color 0.3s ease, transform 0.3s ease;
     }
+
     .button:hover {
       background-color: #2980b9;
+      transform: translateY(-2px);
+    }
+
+    .button:active {
+      transform: translateY(1px);
+    }
+
+    .button:focus {
+      outline: none;
+    }
+
+    /* Animation for fade-in */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+
+    /* Slide-up animation */
+    @keyframes slideUp {
+      from {
+        transform: translateY(20px);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .message {
+        padding: 20px;
+      }
+
+      h1 {
+        font-size: 1.5rem;
+      }
     }
   </style>
 </head>
 <body>
   <div class="message">
-      <h1>ಧನ್ಯವಾದಗಳು <strong id="name"></strong></h1><br>
-    ನಿಮ್ಮ ವಿವರಗಳು ನೋಂದಣಿಯಾಗಿದೆ. ನಿಮ್ಮ ನೋಂದಣಿ ಸಂಖ್ಯೆ <strong id="req"></strong><br><br>
-    <p>ಎಲ್ಲ ಮಾಹಿತಿ ಸರಿ ಇದ್ದಲ್ಲಿ ನೋಂದಾಯಿತ ಇಮೇಲ್ ವಿಳಾಸಕ್ಕೆ ಎರಡು ದಿನದ ಒಳಗಾಗಿ ನಮ್ಮ ಕಡೆಯಿಂದ <l id="mr"></l> ಕಳಿಸಿ ಕೊಡಲಾಗುವುದು. ಇಮೇಲ್ ವಿಳಾಸ ಕೊಡದಿದ್ದಲ್ಲಿ ಕಾರ್ಯದರ್ಶಿಗಳನ್ನು ಸಂಪರ್ಕಿಸಿ.</p><br><br>
-    <p>ಇತರ ಮಾಹಿತಿಗಾಗಿ ಮತ್ತು ದೂರುಗಳಿಗಾಗಿ ಮೊಬೈಲ್ ಸಂಖ್ಯೆ 9448645301 ಸಂಪರ್ಕಿಸಿ . </p><br><br><br>
+    <h1>ಧನ್ಯವಾದಗಳು <strong id="name"></strong></h1>
+    <p>ನಿಮ್ಮ ವಿವರಗಳು ನೋಂದಣಿಯಾಗಿದೆ. ನಿಮ್ಮ ನೋಂದಣಿ ಸಂಖ್ಯೆ <strong id="req"></strong></p>
+    <p>ಎಲ್ಲ ಮಾಹಿತಿ ಸರಿ ಇದ್ದಲ್ಲಿ ನೋಂದಾಯಿತ ಇಮೇಲ್ ವಿಳಾಸಕ್ಕೆ ಎರಡು ದಿನದ ಒಳಗಾಗಿ ನಮ್ಮ ಕಡೆಯಿಂದ <span id="mr"></span> ಕಳಿಸಿ ಕೊಡಲಾಗುವುದು. ಇಮೇಲ್ ವಿಳಾಸ ಕೊಡದಿದ್ದಲ್ಲಿ ಕಾರ್ಯದರ್ಶಿಗಳನ್ನು ಸಂಪರ್ಕಿಸಿ.</p>
+    <p>ಇತರ ಮಾಹಿತಿಗಾಗಿ ಮತ್ತು ದೂರುಗಳಿಗಾಗಿ ಮೊಬೈಲ್ ಸಂಖ್ಯೆ 9448645301 ಸಂಪರ್ಕಿಸಿ .</p>
+    <div>
+      <button class="button" onclick="goBack()">Back</button>
+      <button class="button" onclick="window.print()">Print</button>
+    </div>
   </div>
-
-  <button class="button" onclick="goBack()">Back</button>
-  <button class="button" onclick="window.print()">Print</button>
 
   <script>
     function getQueryParam(name) {
@@ -54,23 +135,25 @@
     } else {
       document.getElementById('req').textContent = "Not Available";
     }
-   const rt = getQueryParam('rpt');
-    if (rt) {
-      if(rt === 'mem'){
-      document.getElementById('mr').textContent = "ಸದಸ್ಯತ್ವ ಕಾರ್ಡನ್ನು";
-      } else if (rt === 'rec'){ 
-              document.getElementById('mr').textContent = "ರಶೀದಿಯನ್ನು";
 
+    const rt = getQueryParam('rpt');
+    if (rt) {
+      if (rt === 'mem') {
+        document.getElementById('mr').textContent = "ಸದಸ್ಯತ್ವ ಕಾರ್ಡನ್ನು";
+      } else if (rt === 'rec') {
+        document.getElementById('mr').textContent = "ರಶೀದಿಯನ್ನು";
       }
     } else {
       document.getElementById('mr').textContent = "";
     }
-  const nm = getQueryParam('name');
+
+    const nm = getQueryParam('name');
     if (nm) {
       document.getElementById('name').textContent = nm;
     } else {
       document.getElementById('name').textContent = "";
     }
+
     window.addEventListener('keydown', function(e) {
       if (e.key === 'F5' || (e.ctrlKey && e.key === 'r') || (e.metaKey && e.key === 'r')) {
         e.preventDefault();
@@ -82,8 +165,8 @@
     });
 
     function goBack() {
-      window.history.pushState({}, '', "https://sandeephallimane.github.io/durgaparameshwarisevatrust/");
-      window.location.href = "https://sandeephallimane.github.io/durgaparameshwarisevatrust/";
+      window.history.pushState({}, '', "https://durgaparameshwarisevatrust.vercel.app/");
+      window.location.href = "https://durgaparameshwarisevatrust.vercel.app/";
     }
   </script>
 </body>

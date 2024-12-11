@@ -127,14 +127,12 @@
       const config = await response.json();
       document.getElementById('downloadForm').action = config.googleScriptUrl;
     }
-    window.onload = function() {
-            loadConfig();
-        };
+  
     </script>
 </head>
 <body>
 
-<form id="downloadForm" action="" method="POST" onsubmit="clearFormInputs()">
+<form id="downloadForm" action="https://script.google.com/macros/s/AKfycbxl3Ls5l5VuIxVzAzm1WPbBHHNDAGLWVsPUogAZsZBnzOMslSroqNoVaJPKL7PDuDGuQw/exec" method="POST" onsubmit="clearFormInputs()">
     <h2>ಸೇವೆ ಅಥವಾ ಸದಸ್ಯತ್ವ ವಿವರ - ವೀಕ್ಷಿಸಿ/ಡೌನ್ಲೋಡ್ ಮಾಡಿ </h2>
     <input type="hidden" name="action" value="download">
 

@@ -507,7 +507,7 @@ form1.addEventListener('submit', async (e) => {
       }
       // Handle a Base64 HTML response
       else if (result1.base64html) {
-        const decodedHTML = atob(result1.base64html.split(",")[1]); // Decode Base64 HTML
+        const decodedHTML = atob(result1.base64html);
         responseParagraph.innerHTML = decodedHTML;
         ld.classList.add("hidden");
         rp.classList.remove("hidden");

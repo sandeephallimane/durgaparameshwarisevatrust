@@ -19,9 +19,7 @@ if (req.method === 'POST') {
       body: JSON.stringify(req.body),
     });
 
-    // Log response metadata
     console.log('Response status:', response.status, response.statusText);
-    console.log('Response headers:', response.headers.raw());
 
     const contentType = response.headers.get('Content-Type');
 

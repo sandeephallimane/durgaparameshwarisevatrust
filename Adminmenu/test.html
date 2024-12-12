@@ -201,116 +201,7 @@
             display: block;
         }
     </style>
-    <script>
-        function toggleYearDropdown() {
-            var downloadOption = document.getElementById('downloadOption').value;
-            var msl = document.getElementById('maasalist');
-            var ssl = document.getElementById('samvatsaralist');
-            var sl = document.getElementById('sbo');
-
-            if (downloadOption === 'seva' || downloadOption === 'mseva' ){
-                msl.style.display = 'block';
-                sl.style.display = 'none';
-                ssl.style.display = 'block';
-            } else {
-                 msl.style.display = 'none';
-                 sl.style.display = 'block';
-                 ssl.style.display = 'none';
-            }
-        }
-
-       
-        function generateYearOptions() {
-            var currentYear = new Date().getFullYear();  
-            var lastYear = currentYear - 1;
-            var nextYear = currentYear + 1;
-            
-            var yearSelect = document.getElementById('year');
-            
-            yearSelect.innerHTML = "";
-
-            var option1 = document.createElement("option");
-            option1.value = lastYear;
-            option1.text = lastYear;
-            yearSelect.appendChild(option1);
-
-            var option2 = document.createElement("option");
-            option2.value = currentYear;
-            option2.text = currentYear;
-            yearSelect.appendChild(option2);
-
-            var option3 = document.createElement("option");
-            option3.value = nextYear;
-            option3.text = nextYear;
-            yearSelect.appendChild(option3);
-        }
-
-       
-
-        function clearFormInputs() {
-            setTimeout(function() {
-                document.getElementById('downloadForm').reset();
-            }, 10);
-        }
-
-         const form1 = document.getElementById('downloadForm');
-    const responseParagraph = document.getElementById('response');
-
-    form1.addEventListener('submit', async (e) => {
-      e.preventDefault();
-       clearFormInputs();
-       const pc = document.getElementById("fc");
-       const ld = document.getElementById("loading");
-        const rp = document.getElementById("rp");
-
-      pc.classList.add("hidden");
-      ld.classList.remove("hidden");
-      const formData1 = new FormData(form1);
-      const data1 = Object.fromEntries(formData1.entries());
-
-      try {
-  const res = await fetch('/api/test', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ data1 })
-  });
-
-  if (!res.ok) {
-    throw new Error('Error submitting data');
-  }
-
-  // Check the response's content type
-  const contentType = res.headers.get('Content-Type');
-
-  // If the response is JSON, parse it as JSON
-  if (contentType && contentType.includes('application/json')) {
-    const result1 = await res.json();
-
-    if (result1.link) {
-      window.location.href = result1.link; 
-    } else {
-      responseParagraph.textContent = 'No link received in the response.';
-      ld.classList.add("hidden");
-      rp.classList.remove("hidden");
-    }
-  }
-  else if (contentType && contentType.includes('text/html')) {
-    const htmlContent = await res.text();
-    responseParagraph.innerHTML = htmlContent; 
-    ld.classList.add("hidden");
-    rp.classList.remove("hidden");
-  } else {
-    throw new Error('Unsupported response format from the server');
-  }
-
-} catch (error) {
-  responseParagraph.textContent = `Error: ${error.message}`;
-  ld.classList.add("hidden");
-  rp.classList.remove("hidden");
-      }
-    });
-
-    </script>
+    
 </head>
 <body>
 <div class="fc " id="fc">
@@ -436,5 +327,114 @@
   <div class="rp hidden" id="rp">
  <p id="response"></p>
     </div>
+<script>
+        function toggleYearDropdown() {
+            var downloadOption = document.getElementById('downloadOption').value;
+            var msl = document.getElementById('maasalist');
+            var ssl = document.getElementById('samvatsaralist');
+            var sl = document.getElementById('sbo');
+
+            if (downloadOption === 'seva' || downloadOption === 'mseva' ){
+                msl.style.display = 'block';
+                sl.style.display = 'none';
+                ssl.style.display = 'block';
+            } else {
+                 msl.style.display = 'none';
+                 sl.style.display = 'block';
+                 ssl.style.display = 'none';
+            }
+        }
+
+       
+        function generateYearOptions() {
+            var currentYear = new Date().getFullYear();  
+            var lastYear = currentYear - 1;
+            var nextYear = currentYear + 1;
+            
+            var yearSelect = document.getElementById('year');
+            
+            yearSelect.innerHTML = "";
+
+            var option1 = document.createElement("option");
+            option1.value = lastYear;
+            option1.text = lastYear;
+            yearSelect.appendChild(option1);
+
+            var option2 = document.createElement("option");
+            option2.value = currentYear;
+            option2.text = currentYear;
+            yearSelect.appendChild(option2);
+
+            var option3 = document.createElement("option");
+            option3.value = nextYear;
+            option3.text = nextYear;
+            yearSelect.appendChild(option3);
+        }
+
+       
+
+        function clearFormInputs() {
+            setTimeout(function() {
+                document.getElementById('downloadForm').reset();
+            }, 10);
+        }
+
+         const form1 = document.getElementById('downloadForm');
+    const responseParagraph = document.getElementById('response');
+
+    form1.addEventListener('submit', async (e) => {
+      e.preventDefault();
+       const pc = document.getElementById("fc");
+       const ld = document.getElementById("loading");
+        const rp = document.getElementById("rp");
+
+      pc.classList.add("hidden");
+      ld.classList.remove("hidden");
+      const formData1 = new FormData(form1);
+      const data1 = Object.fromEntries(formData1.entries());
+        clearFormInputs();
+      try {
+  const res = await fetch('/api/test', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ data1 })
+  });
+
+  if (!res.ok) {
+    throw new Error('Error submitting data');
+  }
+
+  // Check the response's content type
+  const contentType = res.headers.get('Content-Type');
+
+  // If the response is JSON, parse it as JSON
+  if (contentType && contentType.includes('application/json')) {
+    const result1 = await res.json();
+
+    if (result1.link) {
+      window.location.href = result1.link; 
+    } else {
+      responseParagraph.textContent = 'No link received in the response.';
+      ld.classList.add("hidden");
+      rp.classList.remove("hidden");
+    }
+  }
+  else if (contentType && contentType.includes('text/html')) {
+    const htmlContent = await res.text();
+    responseParagraph.innerHTML = htmlContent; 
+    ld.classList.add("hidden");
+    rp.classList.remove("hidden");
+  } else {
+    throw new Error('Unsupported response format from the server');
+  }
+
+} catch (error) {
+  responseParagraph.textContent = `Error: ${error.message}`;
+  ld.classList.add("hidden");
+  rp.classList.remove("hidden");
+      }
+    });
+
+    </script>
 </body>
 </html>

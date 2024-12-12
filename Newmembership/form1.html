@@ -490,7 +490,11 @@ document.getElementById("previewName").innerText = form.name.value;
       previewContainer.classList.remove("hidden");
     });
     
-
+   function clearFormInputs() {
+            setTimeout(function() {
+                document.getElementById('previewForm').reset();
+            }, 10);
+        }
    function base64EncodeUnicode(text) {
   return btoa(unescape(encodeURIComponent(text)));
 }

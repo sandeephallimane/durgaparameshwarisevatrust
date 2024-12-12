@@ -1,5 +1,5 @@
 export default async (req, res) => {
-  const GAS_URL = 'https://script.google.com/macros/s/AKfycbzzP-xevvlKILSI5ieBKnwzNb1A0zCRrfcT7gmJl5TDsWtV5HM1-mrnXLX7DjLsBwoeuw/exec';
+  const GAS_URL = 'https://script.google.com/macros/s/AKfycbyhTXwklnV3SpAHguBEArck5UaBPED7XfptiAUNnKL_HmA7-qiz0ihYe-6i275J8SEBhw/exec';
 
   if (req.method === 'OPTIONS') {
     res.setHeader('Access-Control-Allow-Origin', '*');
@@ -9,50 +9,61 @@ export default async (req, res) => {
     return;
   }
 
-  if (req.method === 'POST') {
-    try {
-      console.log('Request body:', req.body);
+if (req.method === 'POST') {
+  try {
+    console.log('Request body:', req.body);
 
-      const response = await fetch(GAS_URL, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(req.body),
-      });
+    const response = await fetch(GAS_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(req.body),
+    });
 
-      // Check the Content-Type of the response from GAS
-      const contentType = response.headers.get('Content-Type');
+    // Log response metadata
+    console.log('Response status:', response.status, response.statusText);
+    console.log('Response headers:', response.headers.raw());
 
-      let data;
-      if (contentType && contentType.includes('application/json')) {
-        // Handle JSON response
-        data = await response.json();
-        console.log('Response from GAS (JSON):', data);
-      } else if (contentType && contentType.includes('text/html')) {
-        // Handle HTML response
-        data = await response.text();
-        console.log('Response from GAS (HTML):', data);
+    const contentType = response.headers.get('Content-Type');
+
+    let data;
+    if (contentType && contentType.includes('application/json')) {
+      // Parse JSON response
+      data = await response.json();
+      console.log('Response from GAS (JSON):', data);
+
+      // Handle specific JSON structures
+      if (data.link) {
+        res.setHeader('Access-Control-Allow-Origin', '*');
+        return res.status(200).json({ link: data.link });
+      } else if (data.base64html) {
+        // Pass the base64html as-is without decoding
+        res.setHeader('Access-Control-Allow-Origin', '*');
+        return res.status(200).json({ base64html: data.base64html });
       } else {
-        throw new Error('Unexpected content type from GAS');
+        throw new Error('JSON response does not contain expected keys (link or base64html)');
       }
-
+    } else if (contentType && contentType.includes('text/html')) {
+      // Handle plain HTML response
+      data = await response.text();
+      console.log('Response from GAS (HTML):', data);
       res.setHeader('Access-Control-Allow-Origin', '*');
-
-      // If the response is JSON, return it as JSON. Otherwise, return it as plain text.
-      if (contentType.includes('application/json')) {
-        res.status(200).json(data);
-      } else if (contentType.includes('text/html')) {
-        res.status(200).send(data);
-      } else {
-        res.status(500).json({ error: 'Unsupported response format from GAS' });
-      }
-
-    } catch (error) {
-      console.error('Error communicating with GAS:', error.message);
-      res.setHeader('Access-Control-Allow-Origin', '*');
-      res.status(500).json({ error: 'Error communicating with GAS', details: error });
+      return res.status(200).send(data);
+    } else {
+      throw new Error(`Unexpected content type from GAS: ${contentType}`);
     }
-  } else {
+  } catch (error) {
+    console.error('Error communicating with GAS:', error.message);
     res.setHeader('Access-Control-Allow-Origin', '*');
-    res.status(405).json({ error: 'Method Not Allowed' });
+    return res.status(500).json({
+      error: 'Error communicating with GAS',
+      details: error.message,
+    });
   }
+} else {
+  // Handle unsupported HTTP methods
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'POST');
+  res.status(405).json({ error: 'Method Not Allowed' });
+}
+
 };

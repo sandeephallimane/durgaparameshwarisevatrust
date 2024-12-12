@@ -381,60 +381,69 @@
 
          const form1 = document.getElementById('downloadForm');
     const responseParagraph = document.getElementById('response');
+form1.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const pc = document.getElementById("fc");
+  const ld = document.getElementById("loading");
+  const rp = document.getElementById("rp");
+  const responseParagraph = document.getElementById("responseParagraph"); // Ensure this element exists in your HTML
 
-    form1.addEventListener('submit', async (e) => {
-      e.preventDefault();
-       const pc = document.getElementById("fc");
-       const ld = document.getElementById("loading");
-        const rp = document.getElementById("rp");
+  pc.classList.add("hidden");
+  ld.classList.remove("hidden");
+  const formData1 = new FormData(form1);
+  const data1 = Object.fromEntries(formData1.entries());
+  clearFormInputs();
 
-      pc.classList.add("hidden");
-      ld.classList.remove("hidden");
-      const formData1 = new FormData(form1);
-      const data1 = Object.fromEntries(formData1.entries());
-        clearFormInputs();
-      try {
-  const res = await fetch('/api/test', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ data1 })
-  });
-
-  if (!res.ok) {
-    throw new Error('Error submitting data');
-  }
-
-  // Check the response's content type
-  const contentType = res.headers.get('Content-Type');
-
-  // If the response is JSON, parse it as JSON
-  if (contentType && contentType.includes('application/json')) {
-    const result1 = await res.json();
-
-    if (result1.link) {
-      window.location.href = result1.link; 
-    } else {
-      responseParagraph.textContent = 'No link received in the response.';
-      ld.classList.add("hidden");
-      rp.classList.remove("hidden");
-    }
-  }
-  else if (contentType && contentType.includes('text/html')) {
-    const htmlContent = await res.text();
-    responseParagraph.innerHTML = htmlContent; 
-    ld.classList.add("hidden");
-    rp.classList.remove("hidden");
-  } else {
-    throw new Error('Unsupported response format from the server');
-  }
-
-} catch (error) {
-  responseParagraph.textContent = `Error: ${error.message}`;
-  ld.classList.add("hidden");
-  rp.classList.remove("hidden");
-      }
+  try {
+    const res = await fetch('/api/test', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ data1 }),
     });
 
+    if (!res.ok) {
+      throw new Error('Error submitting data');
+    }
+
+    // Check the response's content type
+    const contentType = res.headers.get('Content-Type');
+
+    if (contentType && contentType.includes('application/json')) {
+      const result1 = await res.json();
+
+      // Handle a link response
+      if (result1.link) {
+        window.location.href = result1.link; // Redirect to the link
+      }
+      // Handle a Base64 HTML response
+      else if (result1.base64html) {
+        const decodedHTML = atob(result1.base64html.split(",")[1]); // Decode Base64 HTML
+        responseParagraph.innerHTML = decodedHTML;
+        ld.classList.add("hidden");
+        rp.classList.remove("hidden");
+      }
+      // Handle unexpected JSON structure
+      else {
+        responseParagraph.textContent = 'No valid data received in the response.';
+        ld.classList.add("hidden");
+        rp.classList.remove("hidden");
+      }
+    } 
+    else if (contentType && contentType.includes('text/html')) {
+      const htmlContent = await res.text();
+      responseParagraph.innerHTML = htmlContent; // Display raw HTML content
+      ld.classList.add("hidden");
+      rp.classList.remove("hidden");
+    } 
+    else {
+      throw new Error('Unsupported response format from the server');
+    }
+  } catch (error) {
+    responseParagraph.textContent = `Error: ${error.message}`;
+    ld.classList.add("hidden");
+    rp.classList.remove("hidden");
+  }
+});
     </script>
 </body>
 </html>

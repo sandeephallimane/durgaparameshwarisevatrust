@@ -469,6 +469,13 @@
                 document.getElementById('downloadForm').reset();
             }, 10);
         }
+function base64EncodeUnicode(text) {
+  return btoa(unescape(encodeURIComponent(text)));
+}
+
+function base64DecodeUnicode(base64) {
+  return decodeURIComponent(escape(atob(base64)));
+}
 
       const form1 = document.getElementById('downloadForm');
     const responseParagraph = document.getElementById('response');
@@ -507,7 +514,7 @@ form1.addEventListener('submit', async (e) => {
       }
       // Handle a Base64 HTML response
       else if (result1.base64html) {
-        const decodedHTML = atob(result1.base64html);
+        const decodedHTML =  base64DecodeUnicode(result1.base64html);
         responseParagraph.innerHTML = decodedHTML;
         ld.classList.add("hidden");
         rp.classList.remove("hidden");

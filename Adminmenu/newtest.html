@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ಶ್ರೀದುರ್ಗಾಪರಮೇಶ್ವರಿ ಸೇವಾಟ್ರಸ್ಟ್, ವಿಶ್ವನಾಥಪುರ(R) - Admin Menu</title>
+    <style>
+    :root {
+        --bg-color: #ffffff;
+        --primary-color: #4caf50; /* Modern green */
+        --secondary-color: #8bc34a;
+        --text-color: #333333;
+        --hover-bg: #f1f1f1;
+        --hover-text: #000000;
+        --button-bg: #4caf50;
+        --button-hover-bg: #45a049;
+        --input-border: #ccc;
+        --input-focus: #4caf50;
+    }
+     .hidden { display: none; } 
+
+    body {
+        font-family: "Roboto", Arial, sans-serif;
+        margin: 20px;
+        background-color: var(--bg-color);
+        color: var(--text-color);
+    }
+
+    h2 {
+        color: var(--primary-color);
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: 500;
+    }
+
+    input, select {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 20px;
+        border: 1px solid var(--input-border);
+        border-radius: 4px;
+        font-size: 16px;
+    }
+
+    input:focus, select:focus {
+        outline: none;
+        border-color: var(--input-focus);
+    }
+
+    button {
+        width: 100%;
+        background-color: var(--button-bg);
+        color: #ffffff;
+        padding: 10px 15px;
+        border: none;
+        border-radius: 4px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+        background-color: var(--button-hover-bg);
+    }
+
+    .topnav {
+        display: flex;
+        background-color: var(--primary-color);
+        padding: 10px;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .topnav a, .topnav button {
+        color: #ffffff;
+        text-decoration: none;
+        padding: 10px;
+        transition: background-color 0.3s ease;
+    }
+
+    .topnav a:hover, .topnav button:hover {
+        background-color: var(--secondary-color);
+        color: var(--hover-text);
+    }
+
+    .loading.hidden, .rp.hidden {
+        display: none;
+    }
+
+    .loading-text {
+        margin-top: 20px;
+        font-size: 18px;
+        font-weight: 500;
+        animation: fadeInOut 2s infinite;
+        text-align: center;
+        color: var(--primary-color);
+    }
+
+    @keyframes fadeInOut {
+        0%, 100% {
+            opacity: 1;
+        }
+        50% {
+            opacity: 0.5;
+        }
+    }
+
+    @media (max-width: 768px) {
+        button {
+            width: 100%;
+        }
+    }
+
+  #loadingMessage {
+      display: none;
+      text-align: center;
+      margin-top: 20px;
+      font-size: 16px;
+      color: green;
+    }
+    .hourglass, .hourglass:before, .hourglass:after {
+	animation-duration: 4s;
+	animation-iteration-count: infinite;
+}
+.hourglass {
+	--polygonH: polygon(0% 0%,100% 0%,100% 5.55%,95% 5.55%,95% 28%,60% 46%,60% 54%,95% 72%,95% 94.45%,100% 94.45%,100% 100%,0% 100%,0% 94.45%,5% 94.45%,5% 72%,40% 54%,40% 46%,5% 28%,5% 5.55%,0% 5.55%);
+	animation-name: flip;
+	animation-timing-function: ease-in-out;
+	background-image: linear-gradient(var(--primary) 0.5em,#737a8c55 0.5em 8.5em,var(--primary) 8.5em);
+	clip-path: var(--polygonH);
+	-webkit-clip-path: var(--polygonH);
+	overflow: hidden;
+	position: relative;
+	width: 5em;
+	height: 9em;
+	z-index: 0;
+}
+.hourglass:before, .hourglass:after {
+	animation-timing-function: linear;
+	content: "";
+	display: block;
+	position: absolute;
+}
+.hourglass:before {
+	--polygonB1: polygon(0% 0%,100% 0%,100% 24%,50% 47%,50% 47%,50% 47%,50% 47%,50% 47%,50% 47%,50% 47%,50% 47%,0% 24%);
+	--polygonB2: polygon(0% 4%,100% 4%,100% 24%,55% 45%,55% 100%,55% 100%,55% 100%,45% 100%,45% 100%,45% 100%,45% 45%,0% 24%);
+	--polygonB3: polygon(0% 24%,100% 24%,100% 24%,55% 45%,55% 80%,100% 100%,100% 100%,0% 100%,0% 100%,45% 80%,45% 45%,0% 24%);
+	--polygonB4: polygon(45% 45%,55% 45%,55% 45%,55% 45%,55% 58%,100% 76%,100% 100%,0% 100%,0% 76%,45% 58%,45% 45%,45% 45%);
+	--polygonB5: polygon(50% 53%,50% 53%,50% 53%,50% 53%,50% 53%,100% 76%,100% 100%,0% 100%,0% 76%,50% 53%,50% 53%,50% 53%);
+	animation-name: fill;
+	background-color: var(--fg);
+	background-size: 100% 3.6em;
+	clip-path: var(--polygonB1);
+	-webkit-clip-path: var(--polygonB1);
+	top: 0.5em;
+	left: 0.5em;
+	width: 4em;
+	height: 8em;
+	z-index: 1;
+}
+.hourglass:after {
+	animation-name: glare;
+	background:
+		linear-gradient(90deg,#0000 0.5em,#0003 0.5em 1.5em,#0000 1.5em 3.5em,#fff3 3.5em 4.5em,#fff0 4.5em 6.5em,#0003 6.5em 7.5em,#0000 7.5em) 0 0 / 100% 0.5em,
+		linear-gradient(90deg,#0000 0.75em,#0003 0.75em 1.25em,#0000 1.25em 3.75em,#fff3 3.75em 4.25em,#fff0 4.25em 6.75em,#0003 6.75em 7.25em,#0000 7.25em) 0 0.5em / 100% 8em,
+		linear-gradient(90deg,#0000 0.5em,#0003 0.5em 1.5em,#0000 1.5em 3.5em,#fff3 3.5em 4.5em,#fff0 4.5em 6.5em,#0003 6.5em 7.5em,#0000 7.5em) 0 100% / 100% 0.5em;
+	background-repeat: repeat-x;
+	top: 0;
+	left: -3em;
+	width: 200%;
+	height: 100%;
+	z-index: 2;
+}
+/* Animations */
+@keyframes fill {
+	from {
+		clip-path: var(--polygonB1);
+		-webkit-clip-path: var(--polygonB1);
+	}
+	10% {
+		clip-path: var(--polygonB2);
+		-webkit-clip-path: var(--polygonB2);
+	}
+	45% {
+		clip-path: var(--polygonB3);
+		-webkit-clip-path: var(--polygonB3);
+	}
+	80% {
+		clip-path: var(--polygonB4);
+		-webkit-clip-path: var(--polygonB4);
+	}
+	85%, to {
+		clip-path: var(--polygonB5);
+		-webkit-clip-path: var(--polygonB5);
+	}
+}
+@keyframes glare {
+	from, 90% {
+		transform: translateX(0);
+	}
+	to {
+		transform: translateX(3em);
+	}
+}
+@keyframes flip {
+	from, 90% {
+		transform: rotate(0);
+	}
+	to {
+		transform: rotate(180deg);
+	}
+}
+/* Dark mode */
+@media (prefers-color-scheme: dark) {
+	:root {
+		--bg: #17181c;
+		--fg: #c7cad1;
+	}
+}
+@keyframes fadeInOut {
+      0%, 100% {
+        opacity: 1;
+      }
+      50% {
+        opacity: 0.5;
+      }
+    }
+.loading-text {
+      margin-top: 20px;
+      font-size: 18px;
+      font-weight: 500;
+      animation: fadeInOut 2s infinite;
+      text-align: center;
+      color: darkgreen;
+    }
+    img { max-width: 100%; height: auto; margin-top: 10px; }
+     body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      padding: 20px;
+      background-color: #f7f7f7;
+    }
+    h3, label, h4 {
+      font-family: Arial, sans-serif;
+      color: purple;
+    }
+    * {
+	border: 0;
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+
+}
+:root {
+	--bg: #e3e4e8;
+	--fg: #2e3138;
+	--primary: #255ff4;
+	font-size: calc(16px + (24 - 16) * (100vw - 320px) / (1280 - 320));
+}
+.loading-text {
+      margin-top: 20px;
+      font-size: 18px;
+      font-weight: 500;
+      animation: fadeInOut 2s infinite;
+    }
+ #loading {
+        place-items: center;
+}
+        button {
+            background-color: #00a2c3;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .input-group {
+            margin-bottom: 15px;
+        }
+        #samvatsaralist,#maasalist {
+            display: none;
+        }
+         #sbo {
+            display: block;
+        }
+    </style>
+    
+</head>
+<body>
+<div class="fc" id="fc">
+<form id="downloadForm" >
+    <h2>ಸೇವೆ ಅಥವಾ ಸದಸ್ಯತ್ವ ವಿವರ - ವೀಕ್ಷಿಸಿ/ಡೌನ್ಲೋಡ್ ಮಾಡಿ </h2>
+    <input type="hidden" name="action" value="downloadt">
+
+    <label for="adminID">Admin ID:</label>
+    <input type="text" id="adminID" name="adminID" required><br><br>
+
+    <label for="downloadOption">ಬೇಕಾಗಿರುವ ವಿವರ ಆಯ್ಕೆ ಮಾಡಿಕೊಳ್ಳಿ:</label>
+    <select id="downloadOption" name="downloadOption" required onchange="toggleYearDropdown()">
+        <option value="membership">ಸದಸ್ಯತ್ವ ಲಿಸ್ಟ್</option>
+        <option value="seva">ದೈನಂದಿಕ ಪೂಜಾ ಸೇವೆ </option>
+        <option value="mseva">ಮಾಸಿಕ ಪೂಜಾ ಸೇವೆ </option>
+    </select><br><br>
+
+    <label for="ca">ವಿಭಾಗ :</label>
+    <select id="ca" name="ca" required>
+        <option value="Approved">ಅನುಮೋದಿಸಿರುವ ಪಟ್ಟಿ(Approved List)</option>
+        <option value="Not Approved">ಅನುಮೋದಿಸಲಾಗಿಲ್ಲದ ಪಟ್ಟಿ 
+(Not Approved List)</option>
+    </select><br><br>
+<div id="sbo">
+        <label for="sob">ವಿಂಗಡಣೆ ಪ್ರಕಾರ :</label>
+        <select id="sob" name="sob" required>
+        <option value="bdb">ಜನ್ಮ ದಿನಾಂಕ  </option>
+        <option value="bks">ಕುಟುಂಬ ಸ್ಥಳ 
+</option>
+        </select><br><br>
+    </div>
+  
+    <div id="maasalist">
+        <label for="maasa">ಮಾಸ:</label>
+        <select id="maasa" name="maasa" required>
+        <option value="ಎಲ್ಲಾ">ಎಲ್ಲಾ ಮಾಸ</option>
+        <option value="ಚೈತ್ರ">ಚೈತ್ರ ಮಾಸ</option>
+    <option value="ವೈಶಾಖ">ವೈಶಾಖ ಮಾಸ</option>
+    <option value="ಜ್ಯೇಷ್ಠ">ಜ್ಯೇಷ್ಠ ಮಾಸ</option>
+    <option value="ಆಷಾಢ">ಆಷಾಢ ಮಾಸ</option>
+    <option value="ಶ್ರಾವಣ">ಶ್ರಾವಣ ಮಾಸ</option>
+    <option value="ಭಾದ್ರಪದ">ಭಾದ್ರಪದ ಮಾಸ</option>
+    <option value="ಅಶ್ವಿನ">ಅಶ್ವಿನ ಮಾಸ</option>
+    <option value="ಕಾರ್ತಿಕ">ಕಾರ್ತಿಕ ಮಾಸ</option>
+    <option value="ಮಾರ್ಗಶಿರ">ಮಾರ್ಗಶಿರ ಮಾಸ</option>
+    <option value="ಪುಷ್ಯ">ಪುಷ್ಯ ಮಾಸ</option>
+    <option value="ಮಾಘ">ಮಾಘ ಮಾಸ</option>
+    <option value="ಫಾಲ್ಗುಣ">ಫಾಲ್ಗುಣ ಮಾಸ</option>
+        </select><br><br>
+    </div>
+    <div id="samvatsaralist">
+        <label for="samvatsara">ಸಂವತ್ಸರ:</label>
+        <select id="samvatsara" name="samvatsara" required>
+         <option value="ಕ್ರೋಧಿ">ಕ್ರೋಧಿ</option>
+    <option value="ವಿಶ್ವಾವಸು">ವಿಶ್ವಾವಸು</option>
+    <option value="ಪರಾಭವ">ಪರಾಭವ</option>
+    <option value="ಪ್ಲವಂಗ">ಪ್ಲವಂಗ</option>
+    <option value="ಕೀಲಕ">ಕೀಲಕ</option>
+    <option value="ಸೌಮ್ಯ">ಸೌಮ್ಯ</option>
+    <option value="ಸಾಧಾರಣ">ಸಾಧಾರಣ</option>
+    <option value="ವಿರೋಧಿಕೃತ್">ವಿರೋಧಿಕೃತ್</option>
+    <option value="ಪರೀಧಾವಿ">ಪರೀಧಾವಿ</option>
+    <option value="ಪ್ರಮಾದೀಚ">ಪ್ರಮಾದೀಚ</option>
+    <option value="ಆನಂದ">ಆನಂದ</option>
+    <option value="ರಾಕ್ಷಸ">ರಾಕ್ಷಸ</option>
+    <option value="ನಳ">ನಳ</option>
+    <option value="ಪೈಂಗಳ">ಪೈಗಳ</option>
+    <option value="ಕಾಳಯುಕ್ತಿ">ಕಾಳಯುಕ್ತಿ</option>
+    <option value="ಸಿದ್ಧಾರ್ಥಿ">ಸಿದ್ಧಾರ್ಥಿ</option>
+    <option value="ರುದ್ರ / ರೌದ್ರಿ">ರುದ್ರ / ರೌದ್ರಿ</option>
+    <option value="ದುರ್ಮತಿ">ದುರ್ಮತಿ</option>
+    <option value="ದುಂದುಭಿ">ದುಂದುಭಿ</option>
+    <option value="ರುಧಿರೋದ್ಗಾರಿ">ರುಧಿರೋದ್ಗಾರಿ</option>
+    <option value="ರಕ್ತಾಕ್ಷಿ">ರಕ್ತಾಕ್ಷಿ</option>
+    <option value="ಕ್ರೋಧನ">ಕ್ರೋಧನ</option>
+    <option value="ಅಕ್ಷಯ/ಕ್ಷಯ">ಅಕ್ಷಯ/ಕ್ಷಯ</option>
+    <option value="ಪ್ರಭವ">ಪ್ರಭವ</option>
+    <option value="ವಿಭವ">ವಿಭವ</option>
+    <option value="ಶುಕ್ಲ">ಶುಕ್ಲ</option>
+    <option value="ಪ್ರಮೋದೂತ">ಪ್ರಮೋದೂತ</option>
+    <option value="ಪ್ರಜೋತ್ಪತ್ತಿ">ಪ್ರಜೋತ್ಪತ್ತಿ</option>
+    <option value="ಅಂಗಿರಸ">ಅಂಗಿರಸ</option>
+    <option value="ಶ್ರೀಮುಖ">ಶ್ರೀಮುಖ</option>
+    <option value="ಭಾವ">ಭಾವ</option>
+    <option value="ಯುವ">ಯುವ</option>
+    <option value="ಧಾತು">ಧಾತು</option>
+    <option value="ಈಶ್ವರ">ಈಶ್ವರ</option>
+    <option value="ಬಹುಧಾನ್ಯ">ಬಹುಧಾನ್ಯ</option>
+    <option value="ಪ್ರಮಾಥಿ">ಪ್ರಮಾಥಿ</option>
+    <option value="ವಿಕ್ರಮ">ವಿಕ್ರಮ</option>
+    <option value="ವೃಷ/ವಿಷು">ವೃಷ/ವಿಷು</option>
+    <option value="ಚಿತ್ರಭಾನು">ಚಿತ್ರಭಾನು</option>
+    <option value="ಸ್ವಭಾನು">ಸ್ವಭಾನು</option>
+    <option value="ತಾರಣ">ತಾರಣ</option>
+    <option value="ಪಾರ್ಥಿವ">ಪಾರ್ಥಿವ</option>
+    <option value="ವ್ಯಯ">ವ್ಯಯ</option>
+    <option value="ಸರ್ವಜಿತ್">ಸರ್ವಜಿತ್</option>
+    <option value="ಸರ್ವಧಾರಿ">ಸರ್ವಧಾರಿ</option>
+    <option value="ವಿರೋಧಿ">ವಿರೋಧಿ</option>
+    <option value="ವಿಕೃತಿ">ವಿಕೃತಿ</option>
+    <option value="ಖರ">ಖರ</option>
+    <option value="ನಂದನ">ನಂದನ</option>
+    <option value="ವಿಜಯ">ವಿಜಯ</option>
+    <option value="ಜಯ">ಜಯ</option>
+    <option value="ಮನ್ಮಥ">ಮನ್ಮಥ</option>
+    <option value="ದುರ್ಮುಖಿ">ದುರ್ಮುಖಿ</option>
+    <option value="ಹೇವಿಳಂಬಿ">ಹೇವಿಳಂಬಿ</option>
+    <option value="ವಿಳಂಬಿ">ವಿಳಂಬಿ</option>
+    <option value="ವಿಕಾರಿ">ವಿಕಾರಿ</option>
+    <option value="ಶಾರ್ವರಿ">ಶಾರ್ವರಿ</option>
+    <option value="ಪ್ಲವ">ಪ್ಲವ</option>
+    <option value="ಶುಭಕೃತ್">ಶುಭಕೃತ್</option>
+    <option value="ಶೋಭಕೃತ್">ಶೋಭಕೃತ್</option>
+        </select><br><br>
+    </div>
+    <button type="submit">Get Data</button>
+</form>
+</div>
+  <div class="loading hidden" id="loading">
+    <p class="hourglass"></p>
+ <p class="loading-text">ದಯವಿಟ್ಟು ನಿರೀಕ್ಷಿಸಿ, ನಾವು ನಿಮ್ಮ ವಿನಂತಿಯನ್ನು ಪ್ರಕ್ರಿಯೆಗೊಳಿಸುತ್ತಿದ್ದೇವೆ.</p>
+    </div>
+  <div class="rp hidden" id="rp">
+ <p id="response"></p>
+    </div>
+<script>
+        function toggleYearDropdown() {
+            var downloadOption = document.getElementById('downloadOption').value;
+            var msl = document.getElementById('maasalist');
+            var ssl = document.getElementById('samvatsaralist');
+            var sl = document.getElementById('sbo');
+
+            if (downloadOption === 'seva' || downloadOption === 'mseva' ){
+                msl.style.display = 'block';
+                sl.style.display = 'none';
+                ssl.style.display = 'block';
+            } else {
+                 msl.style.display = 'none';
+                 sl.style.display = 'block';
+                 ssl.style.display = 'none';
+            }
+        }
+
+       
+        function generateYearOptions() {
+            var currentYear = new Date().getFullYear();  
+            var lastYear = currentYear - 1;
+            var nextYear = currentYear + 1;
+            
+            var yearSelect = document.getElementById('year');
+            
+            yearSelect.innerHTML = "";
+
+            var option1 = document.createElement("option");
+            option1.value = lastYear;
+            option1.text = lastYear;
+            yearSelect.appendChild(option1);
+
+            var option2 = document.createElement("option");
+            option2.value = currentYear;
+            option2.text = currentYear;
+            yearSelect.appendChild(option2);
+
+            var option3 = document.createElement("option");
+            option3.value = nextYear;
+            option3.text = nextYear;
+            yearSelect.appendChild(option3);
+        }
+
+       
+
+        function clearFormInputs() {
+            setTimeout(function() {
+                document.getElementById('downloadForm').reset();
+            }, 10);
+        }
+
+         const form1 = document.getElementById('downloadForm');
+    const responseParagraph = document.getElementById('response');
+
+    form1.addEventListener('submit', async (e) => {
+      e.preventDefault();
+       const pc = document.getElementById("fc");
+       const ld = document.getElementById("loading");
+        const rp = document.getElementById("rp");
+
+      pc.classList.add("hidden");
+      ld.classList.remove("hidden");
+      const formData1 = new FormData(form1);
+      const data1 = Object.fromEntries(formData1.entries());
+        clearFormInputs();
+      try {
+  const res = await fetch('/api/test', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ data1 })
+  });
+
+  if (!res.ok) {
+    throw new Error('Error submitting data');
+  }
+
+  // Check the response's content type
+  const contentType = res.headers.get('Content-Type');
+
+  // If the response is JSON, parse it as JSON
+  if (contentType && contentType.includes('application/json')) {
+    const result1 = await res.json();
+
+    if (result1.link) {
+      window.location.href = result1.link; 
+    } else {
+      responseParagraph.textContent = 'No link received in the response.';
+      ld.classList.add("hidden");
+      rp.classList.remove("hidden");
+    }
+  }
+  else if (contentType && contentType.includes('text/html')) {
+    const htmlContent = await res.text();
+    responseParagraph.innerHTML = htmlContent; 
+    ld.classList.add("hidden");
+    rp.classList.remove("hidden");
+  } else {
+    throw new Error('Unsupported response format from the server');
+  }
+
+} catch (error) {
+  responseParagraph.textContent = `Error: ${error.message}`;
+  ld.classList.add("hidden");
+  rp.classList.remove("hidden");
+      }
+    });
+
+    </script>
+</body>
+</html>

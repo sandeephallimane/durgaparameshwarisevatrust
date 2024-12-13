@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Page Title</title>
-</head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
 * {
 	border: 0;
@@ -123,25 +122,27 @@ body {
 		--fg: #c7cad1;
 	}
 }
-@keyframes fadeInOut {
-      0%, 100% {
-        opacity: 1;
-      }
-      50% {
-        opacity: 0.5;
-      }
-    }
 .loading-text {
-      margin-top: 20px;
-      font-size: 18px;
-      font-weight: 500;
-      animation: fadeInOut 2s infinite;
-    }
+  font-size: 18px;
+  font-weight: 500;
+  text-align: center;
+  animation: fadeInOut 2s infinite;
+}
+@keyframes fadeInOut {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
 </style>
+</head>
 <body>
 
-<div class="hourglass"></div>
- <p class="loading-text">Please wait, we are processing your request...</p>
+<p class="hourglass"></p>
+<l class="loading-text">ದಯವಿಟ್ಟು ನಿರೀಕ್ಷಿಸಿ, ನಾವು ನಿಮ್ಮ ವಿನಂತಿಯನ್ನು ಪ್ರಕ್ರಿಯೆಗೊಳಿಸುತ್ತಿದ್ದೇವೆ...</l>
 
 </body>
 </html>

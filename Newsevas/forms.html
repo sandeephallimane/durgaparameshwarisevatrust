@@ -3,10 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Input Form</title>
-</head>
- <style>
-/* Basic body styling */
+    <title>ಶ್ರೀದುರ್ಗಾಪರಮೇಶ್ವರಿ ಸೇವಾಟ್ರಸ್ಟ್, ವಿಶ್ವನಾಥಪುರ(R) - ದೈನಂದಿನ ಪೂಜಾ ಸೇವೆ ಫಾರ್ಮ್</title>
+    <style>
 body {
     font-family: 'Arial', sans-serif;
     background-color: #f4f7fb;
@@ -200,29 +198,40 @@ summary:hover {
 }
 
     </style>
+   
+</head>
 <body>
-
-    
-    <div class="fc " id="fc">
-    <h3>ಶ್ರೀದುರ್ಗಾಪರಮೇಶ್ವರಿ ಸೇವಾಟ್ರಸ್ಟ್(R), ವಿಶ್ವನಾಥಪುರ - ಮಾಸಿಕ ಪೂಜಾ ಸೇವೆ </h3><br>
-    <form id="maasaForm" >
+    <div class="fc" id="fc">
+<form id="sevaForm" >
+	<h1>ಶ್ರೀದುರ್ಗಾಪರಮೇಶ್ವರಿ ಸೇವಾಟ್ರಸ್ಟ್(R), ವಿಶ್ವನಾಥಪುರ - ದೈನಂದಿನ ಪೂಜಾ ಸೇವೆ</h1>
+        <details>
+        <summary>ದೈನಂದಿಕ ಪೂಜೆ ಸೇವೆಯ ಬಗ್ಗೆ</summary>
+   <p> ಎರಡು ಬಗೆಯ ದೈನಂದಿಕ ಸೇವೆಗಳಿವೆ</p>
+<li> ಒಂದು ದಿನದ ಸೇವೆ -  ನೋಂದಾಯಿಸಿದ ಸಂವತ್ಸರದ ಮಾಸ ತಿಥಿ ಪ್ರಕಾರ ಪೂಜಾ ಸೇವೆ ನೆಡೆಸಿ ಪ್ರಸಾದ ಕಳುಹಿಸಿಕೊಡಲಾಗುವುದು. ಇದರ ಶುಲ್ಕ ರೂ 500/- </li>
+<li>ಪ್ರತಿವರ್ಷ - ಪ್ರತಿವರ್ಷ ನೋಂದಾಯಿಸಿದ ಮಾಸ ತಿಥಿ ಪ್ರಕಾರ ಪೂಜಾ ಸೇವೆ ನೆಡೆಸಿ ಪ್ರಸಾದ ಕಳುಹಿಸಿಕೊಡಲಾಗುವುದು. ಇದರ ಶುಲ್ಕ ರೂ 5000/-</li>
+<p>ವಿಶೇಷ ಸೂಚನೆ: ಈ ಎರಡೂ ಪೂಜಾ ಸೇವೆಗಳಲ್ಲಿ ಪ್ರಸಾದವನ್ನು ನೋಂದಾಯಿತ ವಿಳಾಸಕ್ಕೆ ಕಳುಹಿಸಲಾಗುವುದು. ಆದ್ಧರಿಂದ ದಯವಿಟ್ಟು ತಮ್ಮ ಪೂರ್ಣ ಅಂಚೆ ವಿಳಾಸ ನಮೂದಿಸಲು ಕೋರಿದೆ.
+</p>
+  </details><br><br>
+        <input type="hidden" name="action" value="newsevatest">
+        
         <label for="name">ಹೆಸರು:</label>
-        <input type="text" id="name" name="name" required><br><br>
-        
-        <label for="mobile">ಮೊಬೈಲ್ ಸಂಖ್ಯೆ:</label>
-        <input type="text" id="mobile" name="mobile" pattern="[0-9]{10}" required><br><br>
-        
-        <label for="email">ಇಮೇಲ್ ವಿಳಾಸ:</label>
-        <input type="email" id="email" name="email" ><br><br>
-        
-         <label for="address">ವಿಳಾಸ:</label>
-        <input type="text" id="address" name="address" placeholder="ದಯವಿಟ್ಟು ನಿಮ್ಮ ಪೂರ್ಣ ಅಂಚೆ ವಿಳಾಸ ನಮೂದಿಸಿ."><br><br>
-        
-        <h5>ಸೇವಾ ಸಂವತ್ಸರ, ಮಾಸ </h5> <details><summary>ಎಷ್ಟು ಮಾಸದ /ಸಂವತ್ಸರ ಸೇವೆ ನೋಂದಾಯಿಸಿದ್ದೀರೋ ಅಷ್ಟನ್ನು ಆರಿಸಿ</summary> ಉದಾಹರಣೆಗೆ ನೀವು ೨ ವರ್ಷದ ಸೇವೆ ನೋಂದಾಯಿಸಿದ್ದಾರೆ ೨ ಸಂವತ್ಸರ,ಮಾಸ ಆಯ್ದುಕೊಳ್ಳಿ. ಒಂದೇ ವರ್ಷದಲ್ಲಿ ೨ ಮಾಸದ ಸೇವೆ ನೀಡಿದಲ್ಲಿ ಒಂದೇ ಸಂವತ್ಸರದ ಅಡಿಯಲ್ಲಿ ಎರಡು ಮಾಸ ನೋಂದಾಯಿಸಿ </details> <br>
-        <div id="smm">
-            <div class="sets">
-        <select type="text" id="sm1" name="sm1" required>
-    <option value="ಕ್ರೋಧಿ">ಕ್ರೋಧಿ</option>
+        <input type="text" id="name" name="name" required><br>
+
+        <label for="mobile">ಮೊಬೈಲ್:</label>
+        <input type="text" id="mobile" name="mobile" pattern="[0-9]{10}" required><br>
+
+        <label for="email">ಇಮೇಲ್ ವಿಳಾಸ(ಕಡ್ಡಾಯವಿಲ್ಲ. ಆದರೆ ಸೇವೆ ರಶೀದಿ ಪಡೆಯಲು ಇದನ್ನು ಸೇರಿಸಲು ಶಿಫಾರಸ್ಸು ಮಾಡುತ್ತೇವೆ ):</label>
+        <input type="email" id="email" name="email"><br>
+      <label for="svt">ಸೇವೆಯ ವಿಭಾಗ:</label>
+       <select id="svt" name="svt" onchange="handleSelectChange()">
+       <option value="ವಾರ್ಷಿಕ ಪೂಜಾ ಸೇವೆ,5000">ನಿರಂತರ ಸೇವೆ - ವರ್ಷದಲ್ಲಿ ಒಂದು ದಿನ (ರೂ 5000/-)</option>
+        <option value="ಒಂದು ದಿನದ ಪೂಜಾ ಸೇವೆ,500">ಒಂದು ದಿನದ ಸೇವೆ (ರೂ 500/-)</option></select>
+       <br>
+
+       <h5>ಸೇವೆಯ ದಿನ :</h5>
+       <div id="additionalOption" style="display:none;">
+        <select id="yearOption" name="yearOption">
+            <option value="ಕ್ರೋಧಿ">ಕ್ರೋಧಿ</option>
     <option value="ವಿಶ್ವಾವಸು">ವಿಶ್ವಾವಸು</option>
     <option value="ಪರಾಭವ">ಪರಾಭವ</option>
     <option value="ಪ್ಲವಂಗ">ಪ್ಲವಂಗ</option>
@@ -282,29 +291,62 @@ summary:hover {
     <option value="ಪ್ಲವ">ಪ್ಲವ</option>
     <option value="ಶುಭಕೃತ್">ಶುಭಕೃತ್</option>
     <option value="ಶೋಭಕೃತ್">ಶೋಭಕೃತ್</option>
-</select>
-<br>
-       
- <select id="ms1" name="ms1">
+        </select>
+    </div>
+     <select id="maasa" name="maasa">
      <option value="ಚೈತ್ರ">ಚೈತ್ರ ಮಾಸ</option>
     <option value="ವೈಶಾಖ">ವೈಶಾಖ ಮಾಸ</option>
     <option value="ಜ್ಯೇಷ್ಠ">ಜ್ಯೇಷ್ಠ ಮಾಸ</option>
     <option value="ಆಷಾಢ">ಆಷಾಢ ಮಾಸ</option>
     <option value="ಶ್ರಾವಣ">ಶ್ರಾವಣ ಮಾಸ</option>
     <option value="ಭಾದ್ರಪದ">ಭಾದ್ರಪದ ಮಾಸ</option>
-    <option value="ಆಶ್ವಯುಜ">ಆಶ್ವಯುಜ ಮಾಸ</option>
+    <option value="ಅಶ್ವಿನ">ಅಶ್ವಿನ ಮಾಸ</option>
     <option value="ಕಾರ್ತಿಕ">ಕಾರ್ತಿಕ ಮಾಸ</option>
     <option value="ಮಾರ್ಗಶಿರ">ಮಾರ್ಗಶಿರ ಮಾಸ</option>
     <option value="ಪುಷ್ಯ">ಪುಷ್ಯ ಮಾಸ</option>
     <option value="ಮಾಘ">ಮಾಘ ಮಾಸ</option>
     <option value="ಫಾಲ್ಗುಣ">ಫಾಲ್ಗುಣ ಮಾಸ</option>
-</select></div></div>
- <button type="button" onclick="addSets()">ಇನ್ನೊಂದು ಸೇವಾ ಸಂವತ್ಸರ, ಮಾಸ ಸೇರಿಸಿ 
-</button><br><br>
+</select>
+     <select id="tithi" name="tithi">
+    <option value="ಪಾಡ್ಯ ಶುಕ್ಲ ಪಕ್ಷ ">ಪಾಡ್ಯ ಶುಕ್ಲ ಪಕ್ಷ </option>
+    <option value="ಬಿದಿಗೆ ಶುಕ್ಲ ಪಕ್ಷ ">ಬಿದಿಗೆ ಶುಕ್ಲ ಪಕ್ಷ </option>
+    <option value="ತದಿಗೆ ಶುಕ್ಲ ಪಕ್ಷ ">ತದಿಗೆ ಶುಕ್ಲ ಪಕ್ಷ </option>
+    <option value="ಚೌತಿ ಶುಕ್ಲ ಪಕ್ಷ ">ಚೌತಿ ಶುಕ್ಲ ಪಕ್ಷ </option>
+    <option value="ಪಂಚಮಿ ಶುಕ್ಲ ಪಕ್ಷ ">ಪಂಚಮಿ ಶುಕ್ಲ ಪಕ್ಷ </option>
+    <option value="ಷಷ್ಠಿ ಶುಕ್ಲ ಪಕ್ಷ ">ಷಷ್ಠಿ ಶುಕ್ಲ ಪಕ್ಷ </option>
+    <option value="ಸಪ್ತಮಿ ಶುಕ್ಲ ಪಕ್ಷ ">ಸಪ್ತಮಿ ಶುಕ್ಲ ಪಕ್ಷ </option>
+    <option value="ಅಷ್ಟಮಿ ಶುಕ್ಲ ಪಕ್ಷ ">ಅಷ್ಟಮಿ ಶುಕ್ಲ ಪಕ್ಷ </option>
+    <option value="ನವಮಿ ಶುಕ್ಲ ಪಕ್ಷ ">ನವಮಿ ಶುಕ್ಲ ಪಕ್ಷ </option>
+    <option value="ದಶಮಿ ಶುಕ್ಲ ಪಕ್ಷ ">ದಶಮಿ ಶುಕ್ಲ ಪಕ್ಷ </option>
+    <option value="ಏಕಾದಶಿ ಶುಕ್ಲ ಪಕ್ಷ ">ಏಕಾದಶಿ ಶುಕ್ಲ ಪಕ್ಷ </option>
+    <option value="ದ್ವಾದಶಿ ಶುಕ್ಲ ಪಕ್ಷ ">ದ್ವಾದಶಿ ಶುಕ್ಲ ಪಕ್ಷ </option>
+    <option value="ತ್ರಯೋದಶಿ ಶುಕ್ಲ ಪಕ್ಷ ">ತ್ರಯೋದಶಿ ಶುಕ್ಲ ಪಕ್ಷ </option>
+    <option value="ಚತುರ್ದಶಿ ಶುಕ್ಲ ಪಕ್ಷ ">ಚತುರ್ದಶಿ ಶುಕ್ಲ ಪಕ್ಷ </option>
+    <option value="ಪಾಡ್ಯ ಕೃಷ್ಣ ಪಕ್ಷ ">ಪಾಡ್ಯ ಕೃಷ್ಣ ಪಕ್ಷ </option>
+    <option value="ಬಿದಿಗೆ ಕೃಷ್ಣ ಪಕ್ಷ ">ಬಿದಿಗೆ ಕೃಷ್ಣ ಪಕ್ಷ </option>
+    <option value="ತದಿಗೆ ಕೃಷ್ಣ ಪಕ್ಷ ">ತದಿಗೆ ಕೃಷ್ಣ ಪಕ್ಷ </option>
+    <option value="ಚೌತಿ ಕೃಷ್ಣ ಪಕ್ಷ ">ಚೌತಿ ಕೃಷ್ಣ ಪಕ್ಷ </option>
+    <option value="ಪಂಚಮಿ ಕೃಷ್ಣ ಪಕ್ಷ ">ಪಂಚಮಿ ಕೃಷ್ಣ ಪಕ್ಷ </option>
+    <option value="ಷಷ್ಠಿ ಕೃಷ್ಣ ಪಕ್ಷ ">ಷಷ್ಠಿ ಕೃಷ್ಣ ಪಕ್ಷ </option>
+    <option value="ಸಪ್ತಮಿ ಕೃಷ್ಣ ಪಕ್ಷ ">ಸಪ್ತಮಿ ಕೃಷ್ಣ ಪಕ್ಷ </option>
+    <option value="ಅಷ್ಟಮಿ ಕೃಷ್ಣ ಪಕ್ಷ ">ಅಷ್ಟಮಿ ಕೃಷ್ಣ ಪಕ್ಷ </option>
+    <option value="ನವಮಿ ಕೃಷ್ಣ ಪಕ್ಷ ">ನವಮಿ ಕೃಷ್ಣ ಪಕ್ಷ </option>
+    <option value="ದಶಮಿ ಕೃಷ್ಣ ಪಕ್ಷ ">ದಶಮಿ ಕೃಷ್ಣ ಪಕ್ಷ </option>
+    <option value="ಏಕಾದಶಿ ಕೃಷ್ಣ ಪಕ್ಷ ">ಏಕಾದಶಿ ಕೃಷ್ಣ ಪಕ್ಷ </option>
+    <option value="ದ್ವಾದಶಿ ಕೃಷ್ಣ ಪಕ್ಷ ">ದ್ವಾದಶಿ ಕೃಷ್ಣ ಪಕ್ಷ </option>
+    <option value="ತ್ರಯೋದಶಿ ಕೃಷ್ಣ ಪಕ್ಷ ">ತ್ರಯೋದಶಿ ಕೃಷ್ಣ ಪಕ್ಷ </option>
+    <option value="ಚತುರ್ದಶಿ ಕೃಷ್ಣ ಪಕ್ಷ ">ಚತುರ್ದಶಿ ಕೃಷ್ಣ ಪಕ್ಷ </option>
+    <option value="ಹುಣ್ಣಿಮೆ">ಹುಣ್ಣಿಮೆ</option>
+    <option value="ಅಮಾವಾಸ್ಯೆ">ಅಮಾವಾಸ್ಯೆ</option>
+</select>
+
+        <label for="address">ವಿಳಾಸ:</label>
+        <input type="text" id="address" name="address" placeholder="ದಯವಿಟ್ಟು ನಿಮ್ಮ ಪೂರ್ಣ ಅಂಚೆ ವಿಳಾಸ ನಮೂದಿಸಿ."><br>
+
         <h5>ಹೆಸರು, ರಾಶಿ, ನಕ್ಷತ್ರ:</h5>
         <div id="field7Sets">
             <div class="set">
-                <input type="text" id="field7a1" name="field7a1" placeholder="ಹೆಸರು" required>
+                <input type="text" id="field7a1" name="field7a1" placeholder="ಹೆಸರು" oninput="validateKannadaInput(event)" required>
                 <select type="text" id="field7c1" name="field7c1">
                     <option value="ಮೇಷ">ಮೇಷ</option>
                     <option value="ವೃಷಭ">ವೃಷಭ</option>
@@ -347,45 +389,57 @@ summary:hover {
                     <option value="ಪೂರ್ವಭಾದ್ರ">ಪೂರ್ವಭಾದ್ರ</option>
                     <option value="ಉತ್ತರಭಾದ್ರ">ಉತ್ತರಭಾದ್ರ</option>
                     <option value="ರೇವತಿ">ರೇವತಿ</option>
-                </select></div>
+                </select>
+            </div>
         </div>
         <button type="button" onclick="addSet()">ಇನ್ನೊಂದು ಹೆಸರು, ರಾಶಿ, ನಕ್ಷತ್ರ ಸೇರಿಸಿ 
 </button><br><br>
+
 <button type="button" id="previewButton">Preview</button>
-    </form>
-</div>
- <div class="preview-container hidden" id="previewContainer" style="color:#5d1000">
+  </form>
+       </div>
+        <div class="preview-container hidden" id="previewContainer" style="color:#5d1000">
     <h2>Form Preview</h2>
     <form id="previewForm">
       <p><strong>ಹೆಸರು :</strong> <span id="previewName"></span></p>
       <p><strong>ಮೊಬೈಲ್ ಸಂಖ್ಯೆ :</strong> <span id="previewMobile"></span></p>
       <p><strong>ಇಮೇಲ್ ವಿಳಾಸ :</strong> <span id="previewEmail"></span></p>
       <p><strong>ವಿಳಾಸ :</strong> <span id="previewAddress"></span></p>
-      <p><strong> ಸೇವಾ ಮಾಸ-ಸಂವತ್ಸರ :</strong> <span id="previewsms"></span></p>
-      <p><strong> ಹೆಸರು-ನಕ್ಷತ್ರ-ರಾಶಿ :  </strong> <span id="previewhrn"></span></p>
+       <p><strong> ಸೇವಾ ವಿಭಾಗ :</strong> <span id="previewv"></span></p>
+       <p><strong> ಸೇವಾ ಸಂವತ್ಸರ :</strong> <span id="previews"></span></p>
+      <p><strong> ಸೇವಾ ಮಾಸ :</strong> <span id="previewm"></span></p>
+      <p><strong> ಸೇವಾ ತಿಥಿ :</strong> <span id="previewt"></span></p>
+      <p><strong>  ಸೇವಾ ಹೆಸರು-ನಕ್ಷತ್ರ-ರಾಶಿ :  </strong> <span id="previewhrn"></span></p>
             <p><strong> ಸೇವಾ ಮೊತ್ತ :  </strong> <span id="previewamt"> </span></p>
        <input type="hidden" name="action" value="maasasevatests">
       <input type="hidden" name="pname" id="pname">
       <input type="hidden" name="paddress" id="paddress">
      <input type="hidden" name="pemail" id="pemail">
        <input type="hidden" name="pmobile" id="pmobile">
-        <input type="hidden" name="psms" id="psms">
+        <input type="hidden" name="psvt" id="psvt">
+                <input type="hidden" name="psa" id="psa">
+
+        <input type="hidden" name="psv" id="psv">
+
+        <input type="hidden" name="pss" id="pss">
+                <input type="hidden" name="psm" id="psm">
+
+        <input type="hidden" name="pst" id="pst">
+
     <input type="hidden" name="phrn" id="phrn">
       <button type="submit" id="submitButton">Submit</button>
     </form>
-     
-
-  </div>
   <div class="loading hidden" id="loading">
-   <iframe id="loaderk" src="https://durgaparameshwarisevatrust.vercel.app/loading/index.html" width=100% height=500px></iframe>
+    <p class="hourglass"></p>
+ <p class="loading-text">ದಯವಿಟ್ಟು ನಿರೀಕ್ಷಿಸಿ, ನಾವು ನಿಮ್ಮ ವಿನಂತಿಯನ್ನು ಪ್ರಕ್ರಿಯೆಗೊಳಿಸುತ್ತಿದ್ದೇವೆ.</p>
     </div>
   <div class="rp hidden" id="rp">
  <p id="response"></p>
-    </div>
-    <script>
-        const detailsFormContainer = document.getElementById("fc");
+    </div> 
+ <script>
+  const detailsFormContainer = document.getElementById("fc");
     const previewContainer = document.getElementById("previewContainer");
-    let setCount = 1;
+        let setCount = 1;
         function addSet() {
             setCount++;
             const setContainer = document.getElementById('field7Sets');
@@ -417,7 +471,7 @@ summary:hover {
                     <option value="ಪುನರ್ವಸು">ಪುನರ್ವಸು</option>
                     <option value="ಪುಷ್ಯ">ಪುಷ್ಯ</option>
                     <option value="ಆಶ್ಲೇಷ">ಆಶ್ಲೇಷ</option>
-                    <option value="ಮಖ">ಮಖ</option>
+                    <option value="ಮಘಾ">ಮಘಾ</option>
                     <option value="ಪುಬ್ಬ">ಪುಬ್ಬ (ಪೂರ್ವ ಫಲ್ಗುಣಿ)</option>
                     <option value="ಉತ್ತರಾ">ಉತ್ತರಾ (ಉತ್ತರ ಫಲ್ಗುಣಿ)</option>
                     <option value="ಹಸ್ತ">ಹಸ್ತ</option>
@@ -439,99 +493,32 @@ summary:hover {
             `;
             setContainer.appendChild(newSet);
         }
-        
-        let setCounts = 1;
-        function addSets() {
-            setCounts++;
-            const setsContainer = document.getElementById('smm');
-            const newSets = document.createElement('div');
-            newSets.className = 'sets';
-            newSets.innerHTML = `
-                <select type="text" id="sm${setCounts}" name="sm${setCounts}">
-                    <option value="ಕ್ರೋಧಿ">ಕ್ರೋಧಿ</option>
-    <option value="ವಿಶ್ವಾವಸು">ವಿಶ್ವಾವಸು</option>
-    <option value="ಪರಾಭವ">ಪರಾಭವ</option>
-    <option value="ಪ್ಲವಂಗ">ಪ್ಲವಂಗ</option>
-    <option value="ಕೀಲಕ">ಕೀಲಕ</option>
-    <option value="ಸೌಮ್ಯ">ಸೌಮ್ಯ</option>
-    <option value="ಸಾಧಾರಣ">ಸಾಧಾರಣ</option>
-    <option value="ವಿರೋಧಿಕೃತ್">ವಿರೋಧಿಕೃತ್</option>
-    <option value="ಪರೀಧಾವಿ">ಪರೀಧಾವಿ</option>
-    <option value="ಪ್ರಮಾದೀಚ">ಪ್ರಮಾದೀಚ</option>
-    <option value="ಆನಂದ">ಆನಂದ</option>
-    <option value="ರಾಕ್ಷಸ">ರಾಕ್ಷಸ</option>
-    <option value="ನಳ">ನಳ</option>
-    <option value="ಪೈಂಗಳ">ಪೈಗಳ</option>
-    <option value="ಕಾಳಯುಕ್ತಿ">ಕಾಳಯುಕ್ತಿ</option>
-    <option value="ಸಿದ್ಧಾರ್ಥಿ">ಸಿದ್ಧಾರ್ಥಿ</option>
-    <option value="ರುದ್ರ / ರೌದ್ರಿ">ರುದ್ರ / ರೌದ್ರಿ</option>
-    <option value="ದುರ್ಮತಿ">ದುರ್ಮತಿ</option>
-    <option value="ದುಂದುಭಿ">ದುಂದುಭಿ</option>
-    <option value="ರುಧಿರೋದ್ಗಾರಿ">ರುಧಿರೋದ್ಗಾರಿ</option>
-    <option value="ರಕ್ತಾಕ್ಷಿ">ರಕ್ತಾಕ್ಷಿ</option>
-    <option value="ಕ್ರೋಧನ">ಕ್ರೋಧನ</option>
-    <option value="ಅಕ್ಷಯ/ಕ್ಷಯ">ಅಕ್ಷಯ/ಕ್ಷಯ</option>
-    <option value="ಪ್ರಭವ">ಪ್ರಭವ</option>
-    <option value="ವಿಭವ">ವಿಭವ</option>
-    <option value="ಶುಕ್ಲ">ಶುಕ್ಲ</option>
-    <option value="ಪ್ರಮೋದೂತ">ಪ್ರಮೋದೂತ</option>
-    <option value="ಪ್ರಜೋತ್ಪತ್ತಿ">ಪ್ರಜೋತ್ಪತ್ತಿ</option>
-    <option value="ಅಂಗಿರಸ">ಅಂಗಿರಸ</option>
-    <option value="ಶ್ರೀಮುಖ">ಶ್ರೀಮುಖ</option>
-    <option value="ಭಾವ">ಭಾವ</option>
-    <option value="ಯುವ">ಯುವ</option>
-    <option value="ಧಾತು">ಧಾತು</option>
-    <option value="ಈಶ್ವರ">ಈಶ್ವರ</option>
-    <option value="ಬಹುಧಾನ್ಯ">ಬಹುಧಾನ್ಯ</option>
-    <option value="ಪ್ರಮಾಥಿ">ಪ್ರಮಾಥಿ</option>
-    <option value="ವಿಕ್ರಮ">ವಿಕ್ರಮ</option>
-    <option value="ವೃಷ/ವಿಷು">ವೃಷ/ವಿಷು</option>
-    <option value="ಚಿತ್ರಭಾನು">ಚಿತ್ರಭಾನು</option>
-    <option value="ಸ್ವಭಾನು">ಸ್ವಭಾನು</option>
-    <option value="ತಾರಣ">ತಾರಣ</option>
-    <option value="ಪಾರ್ಥಿವ">ಪಾರ್ಥಿವ</option>
-    <option value="ವ್ಯಯ">ವ್ಯಯ</option>
-    <option value="ಸರ್ವಜಿತ್">ಸರ್ವಜಿತ್</option>
-    <option value="ಸರ್ವಧಾರಿ">ಸರ್ವಧಾರಿ</option>
-    <option value="ವಿರೋಧಿ">ವಿರೋಧಿ</option>
-    <option value="ವಿಕೃತಿ">ವಿಕೃತಿ</option>
-    <option value="ಖರ">ಖರ</option>
-    <option value="ನಂದನ">ನಂದನ</option>
-    <option value="ವಿಜಯ">ವಿಜಯ</option>
-    <option value="ಜಯ">ಜಯ</option>
-    <option value="ಮನ್ಮಥ">ಮನ್ಮಥ</option>
-    <option value="ದುರ್ಮುಖಿ">ದುರ್ಮುಖಿ</option>
-    <option value="ಹೇವಿಳಂಬಿ">ಹೇವಿಳಂಬಿ</option>
-    <option value="ವಿಳಂಬಿ">ವಿಳಂಬಿ</option>
-    <option value="ವಿಕಾರಿ">ವಿಕಾರಿ</option>
-    <option value="ಶಾರ್ವರಿ">ಶಾರ್ವರಿ</option>
-    <option value="ಪ್ಲವ">ಪ್ಲವ</option>
-    <option value="ಶುಭಕೃತ್">ಶುಭಕೃತ್</option>
-    <option value="ಶೋಭಕೃತ್">ಶೋಭಕೃತ್</option>
-                </select>
-                <select type="text" id="ms${setCounts}" name="ms${setCounts}">
-                   <option value="ಚೈತ್ರ">ಚೈತ್ರ ಮಾಸ</option>
-    <option value="ವೈಶಾಖ">ವೈಶಾಖ ಮಾಸ</option>
-    <option value="ಜ್ಯೇಷ್ಠ">ಜ್ಯೇಷ್ಠ ಮಾಸ</option>
-    <option value="ಆಷಾಢ">ಆಷಾಢ ಮಾಸ</option>
-    <option value="ಶ್ರಾವಣ">ಶ್ರಾವಣ ಮಾಸ</option>
-    <option value="ಭಾದ್ರಪದ">ಭಾದ್ರಪದ ಮಾಸ</option>
-    <option value="ಆಶ್ವಯುಜ">ಆಶ್ವಯುಜ ಮಾಸ</option>
-    <option value="ಕಾರ್ತಿಕ">ಕಾರ್ತಿಕ ಮಾಸ</option>
-    <option value="ಮಾರ್ಗಶಿರ">ಮಾರ್ಗಶಿರ ಮಾಸ</option>
-    <option value="ಪುಷ್ಯ">ಪುಷ್ಯ ಮಾಸ</option>
-    <option value="ಮಾಘ">ಮಾಘ ಮಾಸ</option>
-    <option value="ಫಾಲ್ಗುಣ">ಫಾಲ್ಗುಣ ಮಾಸ</option>
-                </select>
-            `;
-            setsContainer.appendChild(newSets);
+
+        function validateKannadaInput(event) {
+            const kannadaRegex = /^[\u0C80-\u0CFF\s]*$/;
+            const inputField = event.target;
+
+            const inputValue = inputField.value;
+
+            if (!kannadaRegex.test(inputValue)) {
+                alert("Please enter only Kannada characters.");
+                inputField.value = inputValue.replace(/[^ \u0C80-\u0CFF]/g, ''); 
+            }
         }
-       function clearFormInputs() {
-    setTimeout(function() {
-      document.getElementById('maasaForm').reset();  
-    }, 10);
-  }
-   previewButton.addEventListener("click", () => {
+         
+ 
+        function handleSelectChange() {
+            var selectElement = document.getElementById('svt');
+            var selectedValue = selectElement.value;
+            var additionalOptionDiv = document.getElementById('additionalOption');
+            
+            if (selectedValue === 'ಒಂದು ದಿನದ ಪೂಜಾ ಸೇವೆ,500') {
+                additionalOptionDiv.style.display = 'block'; 
+            } else {
+                additionalOptionDiv.style.display = 'none'; 
+            }
+        }
+     previewButton.addEventListener("click", () => {
       event.preventDefault();
       let isValid = true;
       const name = document.getElementById('name').value;
@@ -559,14 +546,8 @@ summary:hover {
   }
   if (!isValid) return;
   
-          const form = document.getElementById("maasaForm");
+          const form = document.getElementById("sevaForm");
 
-      const smsData = [];
-    document.querySelectorAll("#smm .sets").forEach((set, index) => {
-      const sm = document.getElementById(`sm${index + 1}`).value;
-      const ms = document.getElementById(`ms${index + 1}`).value;
-      if (sm && ms) smsData.push(`${ms} - ${sm}`);
-    });
 
     const hrnData = [];
     document.querySelectorAll("#field7Sets .set").forEach((set, index) => {
@@ -583,23 +564,39 @@ document.getElementById("previewName").innerText = form.name.value;
 
       document.getElementById("previewAddress").innerText = form.address.value;
       document.getElementById("paddress").value = form.address.value;
-    
-     document.getElementById("previewamt").innerText = setCounts *2500;
+         document.getElementById("previewv").innerText = (form.svt.value).split(",")[0];
+                     document.getElementById("psv").value = (form.svt.value).split(",")[0];
 
-      document.getElementById("previewsms").innerText = smsData.join(", ");;
-            document.getElementById("psms").value = smsData.join(", ");
+   document.getElementById("psa").value = (form.svt.value).split(",")[1];
+     document.getElementById("previewamt").innerText = (form.svt.value).split(",")[1];
+
+            document.getElementById("psvt").value = form.svt.value;
 
       document.getElementById("previewhrn").innerText = hrnData.join(", ");;
             document.getElementById("phrn").value = hrnData.join(", ");;
 
       document.getElementById("previewMobile").innerText = form.mobile.value;
             document.getElementById("pmobile").value = form.mobile.value;
-
-
+document.getElementById("previewm").innerText = form.maasa.value;
+      document.getElementById("psm").value = form.maasa.value;
+document.getElementById("previewt").innerText = form.tithi.value;
+      document.getElementById("pst").value = form.tithi.value;
+   if (parseInt(form.svt.value.split(",")[1]) === 500) {
+   document.getElementById("previews").innerText = form.yearOption.value;
+  document.getElementById("pss").value = form.yearOption.value;
+} else if (parseInt(form.svt.value.split(",")[1]) === 5000) {
+  document.getElementById("previews").innerText = "ಪ್ರತಿ ಸಂವತ್ಸರ";
+  document.getElementById("pss").value = "ಪ್ರತಿವರ್ಷ";
+}
       detailsFormContainer.classList.add("hidden");
       previewContainer.classList.remove("hidden");
     });  
-function base64EncodeUnicode(text) {
+function clearFormInputs() {
+    setTimeout(function() {
+      document.getElementById('sevaForm').reset();  
+    }, 10);
+  }
+       function base64EncodeUnicode(text) {
   return btoa(unescape(encodeURIComponent(text)));
 }
 
@@ -607,11 +604,12 @@ function base64DecodeUnicode(base64) {
   return decodeURIComponent(escape(atob(base64)));
 }
 
+
       const form1 = document.getElementById('previewForm');
     const responseParagraph = document.getElementById('response');
 form1.addEventListener('submit', async (e) => {
   e.preventDefault();
-  const pc = document.getElementById("previewForm");
+  const pc = document.getElementById("fc");
   const ld = document.getElementById("loading");
   const rp = document.getElementById("rp");
 
@@ -669,6 +667,5 @@ form1.addEventListener('submit', async (e) => {
   }
 });
     </script>
-
 </body>
 </html>

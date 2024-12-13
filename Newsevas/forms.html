@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Input Form</title>
+</head>
+ <style>
+/* Basic body styling */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f7fb;
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+
+/* Form container styling */
+/* Global Styles */
+body {
+    font-family: 'Poppins', sans-serif;
+    background: #f5f5f5;
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+
+/* Form container */
+form {
+    background: #ffffff;
+    border-radius: 15px;
+    padding: 40px 50px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    width: 60%;
+    margin: 30px auto;
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+
+/* Hover effect for form */
+form:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+/* Header style */
+h3 {
+    text-align: center;
+    font-size: 28px;
+    font-weight: 600;
+    color: #3b3b3b;
+    margin-bottom: 25px;
+    font-family: 'Roboto', sans-serif;
+}
+
+/* Label styling */
+label {
+    font-size: 16px;
+    font-weight: 500;
+    color: #5d1000;
+    display: block;
+    margin-bottom: 10px;
+    transition: all 0.3s ease;
+}
+
+/* Input and select styling */
+input[type="text"], input[type="email"], select {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 20px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    font-size: 16px;
+    background-color: #f9f9f9;
+    transition: all 0.3s ease;
+}
+
+input[type="text"]:focus, input[type="email"]:focus, select:focus {
+    border-color: #5d1000;
+    background-color: #fff;
+    box-shadow: 0 0 8px rgba(93, 16, 0, 0.2);
+    outline: none;
+}
+
+/* Button Styling */
+button {
+    background: #5d1000;
+    color: white;
+    border-radius: 30px;
+    padding: 12px 30px;
+    font-size: 16px;
+    font-weight: 500;
+    text-transform: uppercase;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    margin-top: 15px;
+}
+.hidden 
+{
+display:none;
+}
+
+button:hover {
+    background: #8a2000;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+}
+
+/* Hover effect for preview button */
+#previewButton {
+    background-color: green;
+    font-weight: normal;
+}
+
+#previewButton:hover {
+    background-color: #8a2000;
+    transform: scale(1.05);
+}
+
+/* Tooltip for extra information */
+details {
+    background-color: #f1f1f1;
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+}
+
+summary {
+    font-weight: 600;
+    color: #5d1000;
+    cursor: pointer;
+    padding: 5px 0;
+    transition: all 0.3s ease;
+}
+
+details[open] {
+    background-color: #fafafa;
+}
+
+summary:hover {
+    color: #8a2000;
+}
+
+/* Preview container */
+.preview-container {
+    background-color: #ffffff;
+    padding: 25px;
+    border-radius: 15px;
+    width: 60%;
+    margin: 40px auto;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.preview-container h2 {
+    font-size: 24px;
+    font-weight: 600;
+    color: #5d1000;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.preview-container p {
+    font-size: 16px;
+    color: #555;
+    line-height: 1.5;
+}
+
+/* Submit button inside preview */
+#submitButton {
+    background: #28a745;
+    color: white;
+    padding: 12px 30px;
+    border-radius: 30px;
+    font-weight: 600;
+    text-transform: uppercase;
+    cursor: pointer;
+    font-size: 16px;
+    border: none;
+    margin-top: 20px;
+    transition: all 0.3s ease;
+}
+
+#submitButton:hover {
+    background: #218838;
+    transform: translateY(-3px);
+}
+
+/* Styling for smaller screens */
+@media (max-width: 768px) {
+    form {
+        width: 90%;
+        padding: 25px;
+    }
+    .preview-container {
+        width: 90%;
+        padding: 20px;
+    }
+}
+
+    </style>
+<body>
+
+    
+    <div class="fc " id="fc">
+    <h3>ಶ್ರೀದುರ್ಗಾಪರಮೇಶ್ವರಿ ಸೇವಾಟ್ರಸ್ಟ್(R), ವಿಶ್ವನಾಥಪುರ - ಮಾಸಿಕ ಪೂಜಾ ಸೇವೆ </h3><br>
+    <form id="maasaForm" >
+        <label for="name">ಹೆಸರು:</label>
+        <input type="text" id="name" name="name" required><br><br>
+        
+        <label for="mobile">ಮೊಬೈಲ್ ಸಂಖ್ಯೆ:</label>
+        <input type="text" id="mobile" name="mobile" pattern="[0-9]{10}" required><br><br>
+        
+        <label for="email">ಇಮೇಲ್ ವಿಳಾಸ:</label>
+        <input type="email" id="email" name="email" ><br><br>
+        
+         <label for="address">ವಿಳಾಸ:</label>
+        <input type="text" id="address" name="address" placeholder="ದಯವಿಟ್ಟು ನಿಮ್ಮ ಪೂರ್ಣ ಅಂಚೆ ವಿಳಾಸ ನಮೂದಿಸಿ."><br><br>
+        
+        <h5>ಸೇವಾ ಸಂವತ್ಸರ, ಮಾಸ </h5> <details><summary>ಎಷ್ಟು ಮಾಸದ /ಸಂವತ್ಸರ ಸೇವೆ ನೋಂದಾಯಿಸಿದ್ದೀರೋ ಅಷ್ಟನ್ನು ಆರಿಸಿ</summary> ಉದಾಹರಣೆಗೆ ನೀವು ೨ ವರ್ಷದ ಸೇವೆ ನೋಂದಾಯಿಸಿದ್ದಾರೆ ೨ ಸಂವತ್ಸರ,ಮಾಸ ಆಯ್ದುಕೊಳ್ಳಿ. ಒಂದೇ ವರ್ಷದಲ್ಲಿ ೨ ಮಾಸದ ಸೇವೆ ನೀಡಿದಲ್ಲಿ ಒಂದೇ ಸಂವತ್ಸರದ ಅಡಿಯಲ್ಲಿ ಎರಡು ಮಾಸ ನೋಂದಾಯಿಸಿ </details> <br>
+        <div id="smm">
+            <div class="sets">
+        <select type="text" id="sm1" name="sm1" required>
+    <option value="ಕ್ರೋಧಿ">ಕ್ರೋಧಿ</option>
+    <option value="ವಿಶ್ವಾವಸು">ವಿಶ್ವಾವಸು</option>
+    <option value="ಪರಾಭವ">ಪರಾಭವ</option>
+    <option value="ಪ್ಲವಂಗ">ಪ್ಲವಂಗ</option>
+    <option value="ಕೀಲಕ">ಕೀಲಕ</option>
+    <option value="ಸೌಮ್ಯ">ಸೌಮ್ಯ</option>
+    <option value="ಸಾಧಾರಣ">ಸಾಧಾರಣ</option>
+    <option value="ವಿರೋಧಿಕೃತ್">ವಿರೋಧಿಕೃತ್</option>
+    <option value="ಪರೀಧಾವಿ">ಪರೀಧಾವಿ</option>
+    <option value="ಪ್ರಮಾದೀಚ">ಪ್ರಮಾದೀಚ</option>
+    <option value="ಆನಂದ">ಆನಂದ</option>
+    <option value="ರಾಕ್ಷಸ">ರಾಕ್ಷಸ</option>
+    <option value="ನಳ">ನಳ</option>
+    <option value="ಪೈಂಗಳ">ಪೈಗಳ</option>
+    <option value="ಕಾಳಯುಕ್ತಿ">ಕಾಳಯುಕ್ತಿ</option>
+    <option value="ಸಿದ್ಧಾರ್ಥಿ">ಸಿದ್ಧಾರ್ಥಿ</option>
+    <option value="ರುದ್ರ / ರೌದ್ರಿ">ರುದ್ರ / ರೌದ್ರಿ</option>
+    <option value="ದುರ್ಮತಿ">ದುರ್ಮತಿ</option>
+    <option value="ದುಂದುಭಿ">ದುಂದುಭಿ</option>
+    <option value="ರುಧಿರೋದ್ಗಾರಿ">ರುಧಿರೋದ್ಗಾರಿ</option>
+    <option value="ರಕ್ತಾಕ್ಷಿ">ರಕ್ತಾಕ್ಷಿ</option>
+    <option value="ಕ್ರೋಧನ">ಕ್ರೋಧನ</option>
+    <option value="ಅಕ್ಷಯ/ಕ್ಷಯ">ಅಕ್ಷಯ/ಕ್ಷಯ</option>
+    <option value="ಪ್ರಭವ">ಪ್ರಭವ</option>
+    <option value="ವಿಭವ">ವಿಭವ</option>
+    <option value="ಶುಕ್ಲ">ಶುಕ್ಲ</option>
+    <option value="ಪ್ರಮೋದೂತ">ಪ್ರಮೋದೂತ</option>
+    <option value="ಪ್ರಜೋತ್ಪತ್ತಿ">ಪ್ರಜೋತ್ಪತ್ತಿ</option>
+    <option value="ಅಂಗಿರಸ">ಅಂಗಿರಸ</option>
+    <option value="ಶ್ರೀಮುಖ">ಶ್ರೀಮುಖ</option>
+    <option value="ಭಾವ">ಭಾವ</option>
+    <option value="ಯುವ">ಯುವ</option>
+    <option value="ಧಾತು">ಧಾತು</option>
+    <option value="ಈಶ್ವರ">ಈಶ್ವರ</option>
+    <option value="ಬಹುಧಾನ್ಯ">ಬಹುಧಾನ್ಯ</option>
+    <option value="ಪ್ರಮಾಥಿ">ಪ್ರಮಾಥಿ</option>
+    <option value="ವಿಕ್ರಮ">ವಿಕ್ರಮ</option>
+    <option value="ವೃಷ/ವಿಷು">ವೃಷ/ವಿಷು</option>
+    <option value="ಚಿತ್ರಭಾನು">ಚಿತ್ರಭಾನು</option>
+    <option value="ಸ್ವಭಾನು">ಸ್ವಭಾನು</option>
+    <option value="ತಾರಣ">ತಾರಣ</option>
+    <option value="ಪಾರ್ಥಿವ">ಪಾರ್ಥಿವ</option>
+    <option value="ವ್ಯಯ">ವ್ಯಯ</option>
+    <option value="ಸರ್ವಜಿತ್">ಸರ್ವಜಿತ್</option>
+    <option value="ಸರ್ವಧಾರಿ">ಸರ್ವಧಾರಿ</option>
+    <option value="ವಿರೋಧಿ">ವಿರೋಧಿ</option>
+    <option value="ವಿಕೃತಿ">ವಿಕೃತಿ</option>
+    <option value="ಖರ">ಖರ</option>
+    <option value="ನಂದನ">ನಂದನ</option>
+    <option value="ವಿಜಯ">ವಿಜಯ</option>
+    <option value="ಜಯ">ಜಯ</option>
+    <option value="ಮನ್ಮಥ">ಮನ್ಮಥ</option>
+    <option value="ದುರ್ಮುಖಿ">ದುರ್ಮುಖಿ</option>
+    <option value="ಹೇವಿಳಂಬಿ">ಹೇವಿಳಂಬಿ</option>
+    <option value="ವಿಳಂಬಿ">ವಿಳಂಬಿ</option>
+    <option value="ವಿಕಾರಿ">ವಿಕಾರಿ</option>
+    <option value="ಶಾರ್ವರಿ">ಶಾರ್ವರಿ</option>
+    <option value="ಪ್ಲವ">ಪ್ಲವ</option>
+    <option value="ಶುಭಕೃತ್">ಶುಭಕೃತ್</option>
+    <option value="ಶೋಭಕೃತ್">ಶೋಭಕೃತ್</option>
+</select>
+<br>
+       
+ <select id="ms1" name="ms1">
+     <option value="ಚೈತ್ರ">ಚೈತ್ರ ಮಾಸ</option>
+    <option value="ವೈಶಾಖ">ವೈಶಾಖ ಮಾಸ</option>
+    <option value="ಜ್ಯೇಷ್ಠ">ಜ್ಯೇಷ್ಠ ಮಾಸ</option>
+    <option value="ಆಷಾಢ">ಆಷಾಢ ಮಾಸ</option>
+    <option value="ಶ್ರಾವಣ">ಶ್ರಾವಣ ಮಾಸ</option>
+    <option value="ಭಾದ್ರಪದ">ಭಾದ್ರಪದ ಮಾಸ</option>
+    <option value="ಆಶ್ವಯುಜ">ಆಶ್ವಯುಜ ಮಾಸ</option>
+    <option value="ಕಾರ್ತಿಕ">ಕಾರ್ತಿಕ ಮಾಸ</option>
+    <option value="ಮಾರ್ಗಶಿರ">ಮಾರ್ಗಶಿರ ಮಾಸ</option>
+    <option value="ಪುಷ್ಯ">ಪುಷ್ಯ ಮಾಸ</option>
+    <option value="ಮಾಘ">ಮಾಘ ಮಾಸ</option>
+    <option value="ಫಾಲ್ಗುಣ">ಫಾಲ್ಗುಣ ಮಾಸ</option>
+</select></div></div>
+ <button type="button" onclick="addSets()">ಇನ್ನೊಂದು ಸೇವಾ ಸಂವತ್ಸರ, ಮಾಸ ಸೇರಿಸಿ 
+</button><br><br>
+        <h5>ಹೆಸರು, ರಾಶಿ, ನಕ್ಷತ್ರ:</h5>
+        <div id="field7Sets">
+            <div class="set">
+                <input type="text" id="field7a1" name="field7a1" placeholder="ಹೆಸರು" required>
+                <select type="text" id="field7c1" name="field7c1">
+                    <option value="ಮೇಷ">ಮೇಷ</option>
+                    <option value="ವೃಷಭ">ವೃಷಭ</option>
+                    <option value="ಮಿಥುನ">ಮಿಥುನ</option>
+                    <option value="ಕಟಕ">ಕಟಕ</option>
+                    <option value="ಸಿಂಹ">ಸಿಂಹ</option>
+                    <option value="ಕನ್ಯಾ">ಕನ್ಯಾ</option>
+                    <option value="ತುಲಾ">ತುಲಾ</option>
+                    <option value="ವೃಶ್ಚಿಕ">ವೃಶ್ಚಿಕ</option>
+                    <option value="ಧನು">ಧನು</option>
+                    <option value="ಮಕರ">ಮಕರ</option>
+                    <option value="ಕುಂಭ">ಕುಂಭ</option>
+                    <option value="ಮೀನ">ಮೀನ</option>
+                </select>
+                <select type="text" id="field7b1" name="field7b1">
+                    <option value="ಅಶ್ವಿನಿ">ಅಶ್ವಿನಿ</option>
+                    <option value="ಭರಣಿ">ಭರಣಿ</option>
+                    <option value="ಕೃತಿಕಾ">ಕೃತಿಕಾ</option>
+                    <option value="ರೋಹಿಣಿ">ರೋಹಿಣಿ</option>
+                    <option value="ಮೃಗಶಿರ">ಮೃಗಶಿರ</option>
+                    <option value="ಆರ್ದ್ರಾ">ಆರ್ದ್ರಾ (ಆರಿದ್ರಾ)</option>
+                    <option value="ಪುನರ್ವಸು">ಪುನರ್ವಸು</option>
+                    <option value="ಪುಷ್ಯ">ಪುಷ್ಯ</option>
+                    <option value="ಆಶ್ಲೇಷ">ಆಶ್ಲೇಷ</option>
+                    <option value="ಮಖ">ಮಖ</option>
+                    <option value="ಪುಬ್ಬ">ಪುಬ್ಬ (ಪೂರ್ವ ಫಲ್ಗುಣಿ)</option>
+                    <option value="ಉತ್ತರಾ">ಉತ್ತರಾ (ಉತ್ತರ ಫಲ್ಗುಣಿ)</option>
+                    <option value="ಹಸ್ತ">ಹಸ್ತ</option>
+                    <option value="ಚಿತ್ತಾ">ಚಿತ್ತಾ ನಕ್ಷತ್ರ</option>
+                    <option value="ಸ್ವಾತಿ">ಸ್ವಾತಿ</option>
+                    <option value="ವಿಶಾಖ">ವಿಶಾಖ</option>
+                    <option value="ಅನುರಾಧ">ಅನುರಾಧ</option>
+                    <option value="ಜ್ಯೇಷ್ಠ">ಜ್ಯೇಷ್ಠ</option>
+                    <option value="ಮೂಲ">ಮೂಲ</option>
+                    <option value="ಪೂರ್ವಾಷಾಡಾ">ಪೂರ್ವಾಷಾಡಾ</option>
+                    <option value="ಉತ್ತರಾಷಾಡಾ">ಉತ್ತರಾಷ್ಟಾ</option>
+                    <option value="ಶ್ರವಣ">ಶ್ರವಣ</option>
+                    <option value="ಧನಿಷ್ಠ">ಧನಿಷ್ಠ</option>
+                    <option value="ಶತಭಿಷ">ಶತಭಿಷ</option>
+                    <option value="ಪೂರ್ವಭಾದ್ರ">ಪೂರ್ವಭಾದ್ರ</option>
+                    <option value="ಉತ್ತರಭಾದ್ರ">ಉತ್ತರಭಾದ್ರ</option>
+                    <option value="ರೇವತಿ">ರೇವತಿ</option>
+                </select></div>
+        </div>
+        <button type="button" onclick="addSet()">ಇನ್ನೊಂದು ಹೆಸರು, ರಾಶಿ, ನಕ್ಷತ್ರ ಸೇರಿಸಿ 
+</button><br><br>
+<button type="button" id="previewButton">Preview</button>
+    </form>
+</div>
+ <div class="preview-container hidden" id="previewContainer" style="color:#5d1000">
+    <h2>Form Preview</h2>
+    <form id="previewForm">
+      <p><strong>ಹೆಸರು :</strong> <span id="previewName"></span></p>
+      <p><strong>ಮೊಬೈಲ್ ಸಂಖ್ಯೆ :</strong> <span id="previewMobile"></span></p>
+      <p><strong>ಇಮೇಲ್ ವಿಳಾಸ :</strong> <span id="previewEmail"></span></p>
+      <p><strong>ವಿಳಾಸ :</strong> <span id="previewAddress"></span></p>
+      <p><strong> ಸೇವಾ ಮಾಸ-ಸಂವತ್ಸರ :</strong> <span id="previewsms"></span></p>
+      <p><strong> ಹೆಸರು-ನಕ್ಷತ್ರ-ರಾಶಿ :  </strong> <span id="previewhrn"></span></p>
+            <p><strong> ಸೇವಾ ಮೊತ್ತ :  </strong> <span id="previewamt"> </span></p>
+       <input type="hidden" name="action" value="maasasevatests">
+      <input type="hidden" name="pname" id="pname">
+      <input type="hidden" name="paddress" id="paddress">
+     <input type="hidden" name="pemail" id="pemail">
+       <input type="hidden" name="pmobile" id="pmobile">
+        <input type="hidden" name="psms" id="psms">
+    <input type="hidden" name="phrn" id="phrn">
+      <button type="submit" id="submitButton">Submit</button>
+    </form>
+     
+
+  </div>
+  <div class="loading hidden" id="loading">
+   <iframe id="loaderk" src="https://durgaparameshwarisevatrust.vercel.app/loading/index.html" width=100% height=500px></iframe>
+    </div>
+  <div class="rp hidden" id="rp">
+ <p id="response"></p>
+    </div>
+    <script>
+        const detailsFormContainer = document.getElementById("fc");
+    const previewContainer = document.getElementById("previewContainer");
+    let setCount = 1;
+        function addSet() {
+            setCount++;
+            const setContainer = document.getElementById('field7Sets');
+            const newSet = document.createElement('div');
+            newSet.className = 'set';
+            newSet.innerHTML = `
+                <input type="text" id="field7a${setCount}" name="field7a${setCount}" placeholder="ಹೆಸರು" oninput="validateKannadaInput(event)" required>
+                <select type="text" id="field7c${setCount}" name="field7c${setCount}">
+                    <option value="ಮೇಷ">ಮೇಷ</option>
+                    <option value="ವೃಷಭ">ವೃಷಭ</option>
+                    <option value="ಮಿಥುನ">ಮಿಥುನ</option>
+                    <option value="ಕಟಕ">ಕಟಕ</option>
+                    <option value="ಸಿಂಹ">ಸಿಂಹ</option>
+                    <option value="ಕನ್ಯಾ">ಕನ್ಯಾ</option>
+                    <option value="ತುಲಾ">ತುಲಾ</option>
+                    <option value="ವೃಶ್ಚಿಕ">ವೃಶ್ಚಿಕ</option>
+                    <option value="ಧನು">ಧನು</option>
+                    <option value="ಮಕರ">ಮಕರ</option>
+                    <option value="ಕುಂಭ">ಕುಂಭ</option>
+                    <option value="ಮೀನ">ಮೀನ</option>
+                </select>
+                <select type="text" id="field7b${setCount}" name="field7b${setCount}">
+                    <option value="ಅಶ್ವಿನಿ">ಅಶ್ವಿನಿ</option>
+                    <option value="ಭರಣಿ">ಭರಣಿ</option>
+                    <option value="ಕೃತಿಕಾ">ಕೃತಿಕಾ</option>
+                    <option value="ರೋಹಿಣಿ">ರೋಹಿಣಿ</option>
+                    <option value="ಮೃಗಶಿರ">ಮೃಗಶಿರ</option>
+                    <option value="ಆರ್ದ್ರಾ">ಆರ್ದ್ರಾ (ಆರಿದ್ರಾ)</option>
+                    <option value="ಪುನರ್ವಸು">ಪುನರ್ವಸು</option>
+                    <option value="ಪುಷ್ಯ">ಪುಷ್ಯ</option>
+                    <option value="ಆಶ್ಲೇಷ">ಆಶ್ಲೇಷ</option>
+                    <option value="ಮಖ">ಮಖ</option>
+                    <option value="ಪುಬ್ಬ">ಪುಬ್ಬ (ಪೂರ್ವ ಫಲ್ಗುಣಿ)</option>
+                    <option value="ಉತ್ತರಾ">ಉತ್ತರಾ (ಉತ್ತರ ಫಲ್ಗುಣಿ)</option>
+                    <option value="ಹಸ್ತ">ಹಸ್ತ</option>
+                    <option value="ಚಿತ್ತಾ">ಚಿತ್ತಾ ನಕ್ಷತ್ರ</option>
+                    <option value="ಸ್ವಾತಿ">ಸ್ವಾತಿ</option>
+                    <option value="ವಿಶಾಖ">ವಿಶಾಖ</option>
+                    <option value="ಅನುರಾಧ">ಅನುರಾಧ</option>
+                    <option value="ಜ್ಯೇಷ್ಠ">ಜ್ಯೇಷ್ಠ</option>
+                    <option value="ಮೂಲ">ಮೂಲ</option>
+                    <option value="ಪೂರ್ವಾಷಾಡಾ">ಪೂರ್ವಾಷಾಡಾ</option>
+                    <option value="ಉತ್ತರಾಷಾಡಾ">ಉತ್ತರಾಷ್ಟಾ</option>
+                    <option value="ಶ್ರವಣ">ಶ್ರವಣ</option>
+                    <option value="ಧನಿಷ್ಠ">ಧನಿಷ್ಠ</option>
+                    <option value="ಶತಭಿಷ">ಶತಭಿಷ</option>
+                    <option value="ಪೂರ್ವಭಾದ್ರ">ಪೂರ್ವಭಾದ್ರ</option>
+                    <option value="ಉತ್ತರಭಾದ್ರ">ಉತ್ತರಭಾದ್ರ</option>
+                    <option value="ರೇವತಿ">ರೇವತಿ</option>
+                </select>
+            `;
+            setContainer.appendChild(newSet);
+        }
+        
+        let setCounts = 1;
+        function addSets() {
+            setCounts++;
+            const setsContainer = document.getElementById('smm');
+            const newSets = document.createElement('div');
+            newSets.className = 'sets';
+            newSets.innerHTML = `
+                <select type="text" id="sm${setCounts}" name="sm${setCounts}">
+                    <option value="ಕ್ರೋಧಿ">ಕ್ರೋಧಿ</option>
+    <option value="ವಿಶ್ವಾವಸು">ವಿಶ್ವಾವಸು</option>
+    <option value="ಪರಾಭವ">ಪರಾಭವ</option>
+    <option value="ಪ್ಲವಂಗ">ಪ್ಲವಂಗ</option>
+    <option value="ಕೀಲಕ">ಕೀಲಕ</option>
+    <option value="ಸೌಮ್ಯ">ಸೌಮ್ಯ</option>
+    <option value="ಸಾಧಾರಣ">ಸಾಧಾರಣ</option>
+    <option value="ವಿರೋಧಿಕೃತ್">ವಿರೋಧಿಕೃತ್</option>
+    <option value="ಪರೀಧಾವಿ">ಪರೀಧಾವಿ</option>
+    <option value="ಪ್ರಮಾದೀಚ">ಪ್ರಮಾದೀಚ</option>
+    <option value="ಆನಂದ">ಆನಂದ</option>
+    <option value="ರಾಕ್ಷಸ">ರಾಕ್ಷಸ</option>
+    <option value="ನಳ">ನಳ</option>
+    <option value="ಪೈಂಗಳ">ಪೈಗಳ</option>
+    <option value="ಕಾಳಯುಕ್ತಿ">ಕಾಳಯುಕ್ತಿ</option>
+    <option value="ಸಿದ್ಧಾರ್ಥಿ">ಸಿದ್ಧಾರ್ಥಿ</option>
+    <option value="ರುದ್ರ / ರೌದ್ರಿ">ರುದ್ರ / ರೌದ್ರಿ</option>
+    <option value="ದುರ್ಮತಿ">ದುರ್ಮತಿ</option>
+    <option value="ದುಂದುಭಿ">ದುಂದುಭಿ</option>
+    <option value="ರುಧಿರೋದ್ಗಾರಿ">ರುಧಿರೋದ್ಗಾರಿ</option>
+    <option value="ರಕ್ತಾಕ್ಷಿ">ರಕ್ತಾಕ್ಷಿ</option>
+    <option value="ಕ್ರೋಧನ">ಕ್ರೋಧನ</option>
+    <option value="ಅಕ್ಷಯ/ಕ್ಷಯ">ಅಕ್ಷಯ/ಕ್ಷಯ</option>
+    <option value="ಪ್ರಭವ">ಪ್ರಭವ</option>
+    <option value="ವಿಭವ">ವಿಭವ</option>
+    <option value="ಶುಕ್ಲ">ಶುಕ್ಲ</option>
+    <option value="ಪ್ರಮೋದೂತ">ಪ್ರಮೋದೂತ</option>
+    <option value="ಪ್ರಜೋತ್ಪತ್ತಿ">ಪ್ರಜೋತ್ಪತ್ತಿ</option>
+    <option value="ಅಂಗಿರಸ">ಅಂಗಿರಸ</option>
+    <option value="ಶ್ರೀಮುಖ">ಶ್ರೀಮುಖ</option>
+    <option value="ಭಾವ">ಭಾವ</option>
+    <option value="ಯುವ">ಯುವ</option>
+    <option value="ಧಾತು">ಧಾತು</option>
+    <option value="ಈಶ್ವರ">ಈಶ್ವರ</option>
+    <option value="ಬಹುಧಾನ್ಯ">ಬಹುಧಾನ್ಯ</option>
+    <option value="ಪ್ರಮಾಥಿ">ಪ್ರಮಾಥಿ</option>
+    <option value="ವಿಕ್ರಮ">ವಿಕ್ರಮ</option>
+    <option value="ವೃಷ/ವಿಷು">ವೃಷ/ವಿಷು</option>
+    <option value="ಚಿತ್ರಭಾನು">ಚಿತ್ರಭಾನು</option>
+    <option value="ಸ್ವಭಾನು">ಸ್ವಭಾನು</option>
+    <option value="ತಾರಣ">ತಾರಣ</option>
+    <option value="ಪಾರ್ಥಿವ">ಪಾರ್ಥಿವ</option>
+    <option value="ವ್ಯಯ">ವ್ಯಯ</option>
+    <option value="ಸರ್ವಜಿತ್">ಸರ್ವಜಿತ್</option>
+    <option value="ಸರ್ವಧಾರಿ">ಸರ್ವಧಾರಿ</option>
+    <option value="ವಿರೋಧಿ">ವಿರೋಧಿ</option>
+    <option value="ವಿಕೃತಿ">ವಿಕೃತಿ</option>
+    <option value="ಖರ">ಖರ</option>
+    <option value="ನಂದನ">ನಂದನ</option>
+    <option value="ವಿಜಯ">ವಿಜಯ</option>
+    <option value="ಜಯ">ಜಯ</option>
+    <option value="ಮನ್ಮಥ">ಮನ್ಮಥ</option>
+    <option value="ದುರ್ಮುಖಿ">ದುರ್ಮುಖಿ</option>
+    <option value="ಹೇವಿಳಂಬಿ">ಹೇವಿಳಂಬಿ</option>
+    <option value="ವಿಳಂಬಿ">ವಿಳಂಬಿ</option>
+    <option value="ವಿಕಾರಿ">ವಿಕಾರಿ</option>
+    <option value="ಶಾರ್ವರಿ">ಶಾರ್ವರಿ</option>
+    <option value="ಪ್ಲವ">ಪ್ಲವ</option>
+    <option value="ಶುಭಕೃತ್">ಶುಭಕೃತ್</option>
+    <option value="ಶೋಭಕೃತ್">ಶೋಭಕೃತ್</option>
+                </select>
+                <select type="text" id="ms${setCounts}" name="ms${setCounts}">
+                   <option value="ಚೈತ್ರ">ಚೈತ್ರ ಮಾಸ</option>
+    <option value="ವೈಶಾಖ">ವೈಶಾಖ ಮಾಸ</option>
+    <option value="ಜ್ಯೇಷ್ಠ">ಜ್ಯೇಷ್ಠ ಮಾಸ</option>
+    <option value="ಆಷಾಢ">ಆಷಾಢ ಮಾಸ</option>
+    <option value="ಶ್ರಾವಣ">ಶ್ರಾವಣ ಮಾಸ</option>
+    <option value="ಭಾದ್ರಪದ">ಭಾದ್ರಪದ ಮಾಸ</option>
+    <option value="ಆಶ್ವಯುಜ">ಆಶ್ವಯುಜ ಮಾಸ</option>
+    <option value="ಕಾರ್ತಿಕ">ಕಾರ್ತಿಕ ಮಾಸ</option>
+    <option value="ಮಾರ್ಗಶಿರ">ಮಾರ್ಗಶಿರ ಮಾಸ</option>
+    <option value="ಪುಷ್ಯ">ಪುಷ್ಯ ಮಾಸ</option>
+    <option value="ಮಾಘ">ಮಾಘ ಮಾಸ</option>
+    <option value="ಫಾಲ್ಗುಣ">ಫಾಲ್ಗುಣ ಮಾಸ</option>
+                </select>
+            `;
+            setsContainer.appendChild(newSets);
+        }
+       function clearFormInputs() {
+    setTimeout(function() {
+      document.getElementById('maasaForm').reset();  
+    }, 10);
+  }
+   previewButton.addEventListener("click", () => {
+      event.preventDefault();
+      let isValid = true;
+      const name = document.getElementById('name').value;
+  if (!name) {
+    alert("ಹೆಸರು ನಮೂದಿಸಿ!");
+    isValid = false;
+  }
+  
+
+  const address = document.getElementById('address').value;
+  if (!address) {
+    alert("ವಿಳಾಸ ನಮೂದಿಸಿ!");
+    isValid = false;
+  }
+
+  const mobile = document.getElementById('mobile').value;
+  if (!mobile) {
+    alert("ಮೊಬೈಲ್ ಸಂಖ್ಯೆ ನಮೂದಿಸಿ!");
+    isValid = false;
+  }
+   const m = document.getElementById('field7a1').value;
+  if (!m) {
+    alert("ಸೇವಾ ಹೆಸರು ನಮೂದಿಸಿ!");
+    isValid = false;
+  }
+  if (!isValid) return;
+  
+          const form = document.getElementById("maasaForm");
+
+      const smsData = [];
+    document.querySelectorAll("#smm .sets").forEach((set, index) => {
+      const sm = document.getElementById(`sm${index + 1}`).value;
+      const ms = document.getElementById(`ms${index + 1}`).value;
+      if (sm && ms) smsData.push(`${ms} - ${sm}`);
+    });
+
+    const hrnData = [];
+    document.querySelectorAll("#field7Sets .set").forEach((set, index) => {
+      const name = document.getElementById(`field7a${index + 1}`).value;
+      const nakshatra = document.getElementById(`field7b${index + 1}`).value;
+      const raashi = document.getElementById(`field7c${index + 1}`).value;
+      if (name && nakshatra && raashi) hrnData.push(`${name} - ${nakshatra} - ${raashi}`);
+    });
+document.getElementById("previewName").innerText = form.name.value;
+            document.getElementById("pname").value = form.name.value;
+
+      document.getElementById("previewEmail").innerText = form.email.value;
+            document.getElementById("pemail").value = form.email.value;
+
+      document.getElementById("previewAddress").innerText = form.address.value;
+      document.getElementById("paddress").value = form.address.value;
+    
+     document.getElementById("previewamt").innerText = setCounts *2500;
+
+      document.getElementById("previewsms").innerText = smsData.join(", ");;
+            document.getElementById("psms").value = smsData.join(", ");
+
+      document.getElementById("previewhrn").innerText = hrnData.join(", ");;
+            document.getElementById("phrn").value = hrnData.join(", ");;
+
+      document.getElementById("previewMobile").innerText = form.mobile.value;
+            document.getElementById("pmobile").value = form.mobile.value;
+
+
+      detailsFormContainer.classList.add("hidden");
+      previewContainer.classList.remove("hidden");
+    });  
+function base64EncodeUnicode(text) {
+  return btoa(unescape(encodeURIComponent(text)));
+}
+
+function base64DecodeUnicode(base64) {
+  return decodeURIComponent(escape(atob(base64)));
+}
+
+      const form1 = document.getElementById('previewForm');
+    const responseParagraph = document.getElementById('response');
+form1.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const pc = document.getElementById("previewForm");
+  const ld = document.getElementById("loading");
+  const rp = document.getElementById("rp");
+
+  pc.classList.add("hidden");
+  ld.classList.remove("hidden");
+  const formData1 = new FormData(form1);
+  const data1 = Object.fromEntries(formData1.entries());
+  clearFormInputs();
+
+  try {
+    const res = await fetch('/api/test', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ data1 }),
+    });
+
+    if (!res.ok) {
+      throw new Error('Error submitting data');
+    }
+
+    const contentType = res.headers.get('Content-Type');
+
+    if (contentType && contentType.includes('application/json')) {
+      const result1 = await res.json();
+
+      // Handle a link response
+      if (result1.link) {
+        window.location.href = result1.link; 
+      }
+      else if (result1.base64html) {
+        const decodedHTML =  base64DecodeUnicode(result1.base64html);
+        responseParagraph.innerHTML = decodedHTML;
+        ld.classList.add("hidden");
+        rp.classList.remove("hidden");
+      }
+      else {
+        responseParagraph.textContent = 'No valid data received in the response.';
+        ld.classList.add("hidden");
+        rp.classList.remove("hidden");
+      }
+    } 
+    else if (contentType && contentType.includes('text/html')) {
+      const htmlContent = await res.text();
+      responseParagraph.innerHTML = htmlContent; 
+      ld.classList.add("hidden");
+      rp.classList.remove("hidden");
+    } 
+    else {
+      throw new Error('Unsupported response format from the server');
+    }
+  } catch (error) {
+    responseParagraph.textContent = `Error: ${error.message}`;
+    ld.classList.add("hidden");
+    rp.classList.remove("hidden");
+  }
+});
+    </script>
+
+</body>
+</html>
